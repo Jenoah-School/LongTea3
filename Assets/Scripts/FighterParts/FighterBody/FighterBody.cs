@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class FighterBody : FighterPart
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] List<Transform> wheelLocations = new List<Transform>();
+    [SerializeField] Transform weaponLocationFront;
+    [SerializeField] Transform weaponLocationTop;
+
+    public List<Transform> GetWheelLocations()
     {
-        
+        return wheelLocations;
     }
 
-    // Update is called once per frame
-    void Update()
+    public Transform GetWeaponFrontLocation()
     {
-        
+        return weaponLocationFront;
+    }
+
+    public Transform GetWeaponTopLocation()
+    {
+        return weaponLocationTop;
     }
 }
