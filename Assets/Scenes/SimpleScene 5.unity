@@ -735,12 +735,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b40fb04a134cfd43a6313598577fbe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emptyFighter: {fileID: 5880640649918137463, guid: ea0e7afe39aeb2941b67f434ce66284d,
+    type: 3}
   fighterBodies:
   - {fileID: 2819372194517125383, guid: 6bafc6aed2b06454fa85d6c7b1a81c4a, type: 3}
   fighterWheels:
   - {fileID: -6694941428791556549, guid: 2d081addeb6c0d149b29f571d1a6abfc, type: 3}
   fighterWeapons:
-  - {fileID: 2901901628766849231, guid: a5b977abd9f0c33428a98a276539e77b, type: 3}
+  - {fileID: 4489666271711470983, guid: a5b977abd9f0c33428a98a276539e77b, type: 3}
 --- !u!1 &1150280705
 GameObject:
   m_ObjectHideFlags: 0

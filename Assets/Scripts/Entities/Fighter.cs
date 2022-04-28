@@ -1,57 +1,68 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Linq;
 
 public class Fighter : MonoBehaviour
 {
     FighterBody body;
-    FighterWheels wheels;
-    FighterWeapon primaryWeapon;
+    List<FighterWheels> wheels = new List<FighterWheels>();
+    [SerializeField] FighterWeapon primaryWeapon;
     FighterWeapon secondaryWeapon;
 
-    public void AssembleFighter(FighterBody body, FighterWheels wheels, FighterWeapon primaryWeapon, FighterWeapon secondaryWeapon = null)
-    {
-        this.body = body;
-        this.wheels = wheels;
-        this.primaryWeapon = primaryWeapon;
-        this.secondaryWeapon = secondaryWeapon;
+    [SerializeField] InputActionReference reference;
 
-        Instantiate(body, transform);
-        body.transform.localPosition = new Vector3(0, 0, 0);
+    public void AssembleFighterParts(FighterBody body, FighterWheels wheels, FighterWeapon primaryWeapon, FighterWeapon secondaryWeapon = null)
+    {
+        FighterBody bodyObject = Instantiate(body, transform);
+        bodyObject.transform.localPosition = new Vector3(0, 0, 0);
+        this.body = bodyObject;
 
         for (int i = 0; i < body.GetWheelLocations().Count; i++)
         {
-            Instantiate(wheels, transform);
-            wheels.transform.localPosition = body.GetWheelLocations().ElementAt(i).transform.position;
-            wheels.transform.localEulerAngles = body.GetWheelLocations().ElementAt(i).transform.eulerAngles;
+            FighterWheels wheelsObject = Instantiate(wheels, transform);
+            wheelsObject.transform.localPosition = bodyObject.GetWheelLocations().ElementAt(i).transform.position;
+            wheelsObject.transform.localEulerAngles = bodyObject.GetWheelLocations().ElementAt(i).transform.eulerAngles;
+            this.wheels.Add(wheelsObject);
         }
 
-        Instantiate(primaryWeapon, transform);
-        if (primaryWeapon.weaponLocation == FighterWeapon.WeaponLocations.FRONT)
+        FighterWeapon primaryWeaponObject = Instantiate(primaryWeapon, transform);
+        if (primaryWeaponObject.weaponLocation == FighterWeapon.WeaponLocations.FRONT)
         {
-            primaryWeapon.transform.localPosition = body.GetWeaponFrontLocation().position;
-            primaryWeapon.transform.localEulerAngles = body.GetWeaponFrontLocation().eulerAngles;
+            primaryWeaponObject.transform.localPosition = bodyObject.GetWeaponFrontLocation().position;
+            primaryWeaponObject.transform.localEulerAngles = bodyObject.GetWeaponFrontLocation().eulerAngles;
         }
         else
         {
-            primaryWeapon.transform.localPosition = body.GetWeaponTopLocation().position;
-            primaryWeapon.transform.localEulerAngles = body.GetWeaponTopLocation().eulerAngles;
+            primaryWeaponObject.transform.localPosition = bodyObject.GetWeaponTopLocation().position;
+            primaryWeaponObject.transform.localEulerAngles = bodyObject.GetWeaponTopLocation().eulerAngles;
         }
+        this.primaryWeapon = primaryWeaponObject;
         
         if (secondaryWeapon)
         {
-            Instantiate(secondaryWeapon, transform);
-            if (secondaryWeapon.weaponLocation == FighterWeapon.WeaponLocations.FRONT)
+            FighterWeapon secondaryWeaponObject = Instantiate(secondaryWeapon, transform);
+            if (secondaryWeaponObject.weaponLocation == FighterWeapon.WeaponLocations.FRONT)
             {
-                secondaryWeapon.transform.localPosition = body.GetWeaponFrontLocation().position;
-                secondaryWeapon.transform.localEulerAngles = body.GetWeaponFrontLocation().eulerAngles;
+                secondaryWeaponObject.transform.localPosition = bodyObject.GetWeaponFrontLocation().position;
+                secondaryWeaponObject.transform.localEulerAngles = bodyObject.GetWeaponFrontLocation().eulerAngles;
             }
             else
             {
-                secondaryWeapon.transform.localPosition = body.GetWeaponTopLocation().position;
-                secondaryWeapon.transform.localEulerAngles = body.GetWeaponTopLocation().eulerAngles;
+                secondaryWeaponObject.transform.localPosition = bodyObject.GetWeaponTopLocation().position;
+                secondaryWeaponObject.transform.localEulerAngles = bodyObject.GetWeaponTopLocation().eulerAngles;
             }
+            this.secondaryWeapon = secondaryWeaponObject;
+        }
+    }
+
+    private void Update()
+    {
+        if(reference.action.WasPressedThisFrame())
+        {
+            print("hoi");
+            primaryWeapon.ActivateWeapon();
         }
     }
 }
