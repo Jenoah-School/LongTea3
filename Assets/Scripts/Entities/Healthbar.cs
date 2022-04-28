@@ -19,9 +19,10 @@ public class Healthbar : MonoBehaviour
 
     public void SetFighterParts(List<FighterPart> fighterParts)
     {
-        foreach (FighterPart fighterPart in fighterParts) {
+        foreach (FighterPart fighterPart in fighterParts)
+        {
             playerFighterparts.Add(fighterPart);
-            maxHealth += 10f;// fighterPart.health;
+            maxHealth += fighterPart.healthPoints;
         }
 
     }
@@ -31,7 +32,7 @@ public class Healthbar : MonoBehaviour
         float currentHealth = 0f;
         foreach (FighterPart fighterPart in playerFighterparts)
         {
-            currentHealth += 9f; //fighterPart.health <---- Replace this with health variable from the fighterpart to server as start health*/
+            currentHealth += fighterPart.healthPoints; //<---- Replace this with health variable from the fighterpart to server as start health*/
         }
 
         SetFill(1f / maxHealth * currentHealth);

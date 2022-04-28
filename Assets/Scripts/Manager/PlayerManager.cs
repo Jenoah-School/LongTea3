@@ -60,6 +60,7 @@ public class PlayerManager : MonoBehaviour
             healthbar.gameObject.SetActive(true);
             healthbar.SetColor(playerColors[spawnedPlayerInput.playerIndex % playerColors.Count]);
             healthbar.SetFill(1f);
+            healthbar.RecalculateHealth();
         }
 
         OnPlayerJoin.Invoke();
