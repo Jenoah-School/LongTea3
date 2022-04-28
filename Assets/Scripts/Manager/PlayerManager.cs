@@ -10,6 +10,8 @@ public class PlayerManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Transform playerParent = null;
+    [SerializeField] private List<Healthbar> healthbars = new List<Healthbar>();
+    [SerializeField] private List<PlayerInput> players = new List<PlayerInput>();
 
     [Header("Player settings")]
     [SerializeField] private GameObject playerPrefab = null;
@@ -37,6 +39,8 @@ public class PlayerManager : MonoBehaviour
     {
         Debug.Log("Attempting to spawn new player");
         PlayerInput spawnedPlayerInput = PlayerInput.Instantiate(playerPrefab);
+        players.Add(spawnedPlayerInput);
+        int playerIndex = players.IndexOf(spawnedPlayerInput);
         
         GameObject spawnedPlayer = spawnedPlayerInput.gameObject;
         spawnedPlayer.name = $"Fighter {spawnedPlayerInput.playerIndex}";
@@ -47,6 +51,15 @@ public class PlayerManager : MonoBehaviour
         if (ringObject && ringObject.TryGetComponent(out SpriteRenderer ringRenderer))
         {
             ringRenderer.color = playerColors[spawnedPlayerInput.playerIndex % playerColors.Count];
+        }
+
+        //Couple healthbar
+        if (healthbars.Count >= playerIndex)
+        {
+            Healthbar healthbar = healthbars[playerIndex];
+            healthbar.gameObject.SetActive(true);
+            healthbar.SetColor(playerColors[spawnedPlayerInput.playerIndex % playerColors.Count]);
+            healthbar.SetFill(1f);
         }
 
         OnPlayerJoin.Invoke();
