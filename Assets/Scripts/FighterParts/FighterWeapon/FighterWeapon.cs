@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class FighterWeapon : FighterPart
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public enum WeaponLocations { FRONT, TOP }
+    public WeaponLocations weaponLocation;
 }
