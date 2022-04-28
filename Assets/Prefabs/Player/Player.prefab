@@ -292,8 +292,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   inputSmoothing: 10
-  rotationSmoothing: 15
+  rotationSmoothing: 10
+  backwardsMultiplier: 0.5
   playerInput: {fileID: 1784022586683437499}
+  rotationSpeed: 5
+  minRotationSpeed: 0.5
 --- !u!1 &1784022587192300850
 GameObject:
   m_ObjectHideFlags: 0

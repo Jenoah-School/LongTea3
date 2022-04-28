@@ -6,22 +6,25 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Speed")]
     [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private float rotationSpeed = 5f;
+    [SerializeField, Range(0f, 1f)] private float minRotationSpeed = 0.2f;
+    [SerializeField] private float backwardsMultiplier = 0.5f;
+
+    [Header("Smoothing")]
     [SerializeField] private float inputSmoothing = 10f;
     [SerializeField] private float rotationSmoothing = 8f;
 
+    [Header("References")]
+    [SerializeField] private PlayerInput playerInput;
+
     private Rigidbody rb = null;
 
-    private Vector2 lookDirection = Vector2.zero;
     private Vector2 movementVector = Vector2.zero;
     private float movementInput = 0;
     private Vector2 rotationVector = Vector2.zero;
     private Quaternion targetRotation = Quaternion.identity;
-
-
-    //Debugging
-    [SerializeField] private PlayerInput playerInput;
-    [SerializeField] private float keyboardRotationSpeed = 5f;
 
     private void Start()
     {
@@ -42,7 +45,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 moveInput = new Vector2(transform.forward.x, transform.forward.z);
 
-        movementVector = Vector2.Lerp(movementVector, moveInput * movementInput, inputSmoothing * Time.deltaTime);
+        float moveMultiplier = movementInput >= 0 ? movementInput : movementInput * backwardsMultiplier;
+        movementVector = Vector2.Lerp(movementVector, moveInput * moveMultiplier, inputSmoothing * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSmoothing * Time.deltaTime);
     }
 
@@ -54,20 +58,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void Rotate()
     {
-        if(playerInput.currentControlScheme == "PC")
-        {
-            targetRotation.eulerAngles += new Vector3(0, rotationVector.x * keyboardRotationSpeed, 0);
+        //if(playerInput.currentControlScheme != "PC")
+        //{
+            targetRotation.eulerAngles += new Vector3(0, rotationVector.x * rotationSpeed, 0) * Mathf.Max(0.2f, Mathf.Abs(movementInput));
+        //}
+        //else
+        //{
+        //    Vector3 lookDirection = new Vector3(rotationVector.x, 0, rotationVector.y);
 
-            //if (lookDirection.magnitude > 0.1f) { targetRotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up); }
-        }
-        else
-        {
-            Vector3 lookDirection = new Vector3(rotationVector.x, 0, rotationVector.y);
+        //    lookDirection = lookDirection.sqrMagnitude > 1 ? lookDirection.normalized : lookDirection;
 
-            lookDirection = lookDirection.sqrMagnitude > 1 ? lookDirection.normalized : lookDirection;
-
-            if (lookDirection.magnitude > 0.1f) { targetRotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up); }
-        }
+        //    if (lookDirection.magnitude > 0.1f) { targetRotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up); }
+        //}
     }
 
 
