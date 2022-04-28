@@ -9,7 +9,7 @@
                     "name": "Movement",
                     "type": "Value",
                     "id": "df3659ee-5c18-4682-aae0-7f7046bd8ce2",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Analog",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -45,91 +45,69 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "a7b64836-67dd-4298-8465-ccd37b236e6d",
+                    "id": "5a456c91-564d-4af1-8049-e684d3f8f78f",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "StickDeadzone",
                     "groups": "Gamepad",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "WASD",
-                    "id": "57817eb2-e17d-4557-92c2-deaf4b17ba82",
+                    "name": "Keyboard",
+                    "id": "e643e3e6-c317-4f86-900c-6a4f3d947d5f",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "up",
-                    "id": "9c53f9fe-cd06-4b4c-b6b7-afebbfcf0008",
-                    "path": "<Keyboard>/w",
+                    "id": "c32fca30-a134-4fe7-89b1-2509fb48c71f",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
-                    "id": "3dbd7a62-864a-4195-abca-62a30d357d85",
-                    "path": "<Keyboard>/s",
+                    "id": "029f5151-9721-49b5-a9dc-6655835aff40",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "left",
-                    "id": "d7b5ecce-4e56-4a5e-9416-20b537db0409",
+                    "id": "6aa3b443-b6f4-4259-9421-3cc071df0566",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "77d2658c-0461-493c-a27f-e1f521c15be0",
+                    "id": "76528df9-3b6c-484e-bc3e-6f20bcc6b443",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "5a456c91-564d-4af1-8049-e684d3f8f78f",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "StickDeadzone",
-                    "groups": "Gamepad",
-                    "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6d8e9b2d-c6b6-4650-b4fd-4ca10990b771",
-                    "path": "<Mouse>/delta",
-                    "interactions": "",
-                    "processors": "ScaleVector2(x=0.2,y=0.2)",
-                    "groups": "PC",
-                    "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -174,6 +152,72 @@
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "Gamepad triggers",
+                    "id": "b2e9bf46-d2eb-456a-847f-11328621b3af",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "d189ad23-25f0-4e0c-b2ac-6f9e0ded496c",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "3afb86e8-78b6-45e2-add0-7a0c09904229",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Keyboard",
+                    "id": "43f1f698-1bc2-4957-93d5-e072fdc4847a",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "f69e2691-6439-4b45-b1f2-7483818127bb",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "045bcd0e-b89c-4aae-9534-282d7e9f0732",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         },

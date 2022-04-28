@@ -12,9 +12,16 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb = null;
 
+    private Vector2 lookDirection = Vector2.zero;
     private Vector2 movementVector = Vector2.zero;
-    private Vector2 inputVector = Vector2.zero;
+    private float movementInput = 0;
+    private Vector2 rotationVector = Vector2.zero;
     private Quaternion targetRotation = Quaternion.identity;
+
+
+    //Debugging
+    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private float keyboardRotationSpeed = 5f;
 
     private void Start()
     {
@@ -23,18 +30,44 @@ public class PlayerMovement : MonoBehaviour
 
     public void UpdateMovementInput(InputAction.CallbackContext context)
     {
-        inputVector = context.ReadValue<Vector2>();
+        movementInput = context.ReadValue<float>();
+    }
+
+    public void UpdateRotationInput(InputAction.CallbackContext context)
+    {
+        rotationVector = context.ReadValue<Vector2>();
     }
 
     private void Update()
     {
-        movementVector = Vector2.Lerp(movementVector, inputVector, inputSmoothing * Time.deltaTime);
+        Vector2 moveInput = new Vector2(transform.forward.x, transform.forward.z);
+
+        movementVector = Vector2.Lerp(movementVector, moveInput * movementInput, inputSmoothing * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSmoothing * Time.deltaTime);
     }
 
     private void FixedUpdate()
     {
+        Rotate();
         Move();
+    }
+
+    private void Rotate()
+    {
+        if(playerInput.currentControlScheme == "PC")
+        {
+            targetRotation.eulerAngles += new Vector3(0, rotationVector.x * keyboardRotationSpeed, 0);
+
+            //if (lookDirection.magnitude > 0.1f) { targetRotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up); }
+        }
+        else
+        {
+            Vector3 lookDirection = new Vector3(rotationVector.x, 0, rotationVector.y);
+
+            lookDirection = lookDirection.sqrMagnitude > 1 ? lookDirection.normalized : lookDirection;
+
+            if (lookDirection.magnitude > 0.1f) { targetRotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up); }
+        }
     }
 
 
@@ -43,8 +76,6 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveDirection = new Vector3(movementVector.x, 0, movementVector.y);
 
         moveDirection = moveDirection.sqrMagnitude > 1 ? moveDirection.normalized : moveDirection;
-
-        if (moveDirection.magnitude > 0.1f) { targetRotation = Quaternion.LookRotation(moveDirection.normalized, Vector3.up); }
 
         rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * moveDirection);
     }
