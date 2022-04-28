@@ -60,7 +60,8 @@ public class PlayerMovement : MonoBehaviour
     {
         //if(playerInput.currentControlScheme != "PC")
         //{
-            targetRotation.eulerAngles += new Vector3(0, rotationVector.x * rotationSpeed, 0) * Mathf.Max(0.2f, Mathf.Abs(movementInput));
+        float rotationMultiplier = movementInput >= 0 ? Mathf.Max(0.2f, Mathf.Abs(movementInput)) : Mathf.Max(0.2f, Mathf.Abs(movementInput) * backwardsMultiplier);
+        targetRotation.eulerAngles += new Vector3(0, rotationVector.x * rotationSpeed, 0) * rotationMultiplier;
         //}
         //else
         //{
@@ -79,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection = moveDirection.sqrMagnitude > 1 ? moveDirection.normalized : moveDirection;
 
-        rb.MovePosition(rb.position + moveSpeed * Time.fixedDeltaTime * moveDirection);
+        rb.velocity += moveSpeed * Time.fixedDeltaTime * moveDirection;
     }
 }
 
