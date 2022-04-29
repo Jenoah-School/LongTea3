@@ -165,7 +165,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 8
   m_Drag: 10
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
@@ -291,9 +291,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 100
-  rotationSpeed: 5
+  rotationSpeed: 2
   minRotationSpeed: 0.5
   backwardsMultiplier: 0.5
+  maxRotationSpeed: 3
   inputSmoothing: 100
   rotationSmoothing: 10
   playerInput: {fileID: 1784022586683437499}
@@ -519,7 +520,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5694506902718335033}
   m_LocalRotation: {x: 0.15971656, y: -0.68883187, z: -0.15971702, w: 0.6888337}
-  m_LocalPosition: {x: 0, y: 0.175, z: 0.525}
+  m_LocalPosition: {x: 0, y: 0.183, z: 0.529}
   m_LocalScale: {x: 0.6, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

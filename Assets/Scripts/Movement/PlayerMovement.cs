@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField, Range(0f, 1f)] private float minRotationSpeed = 0.2f;
     [SerializeField] private float backwardsMultiplier = 0.5f;
+    [SerializeField] private float maxRotationSpeed = 3f;
 
     [Header("Smoothing")]
     [SerializeField] private float inputSmoothing = 10f;
@@ -47,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
         float moveMultiplier = movementInput >= 0 ? movementInput : movementInput * backwardsMultiplier;
         movementVector = Vector2.Lerp(movementVector, moveInput * moveMultiplier, inputSmoothing * Time.deltaTime);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSmoothing * Time.deltaTime);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSmoothing * Time.deltaTime);
     }
 
     private void FixedUpdate()
@@ -60,8 +61,14 @@ public class PlayerMovement : MonoBehaviour
     {
         //if(playerInput.currentControlScheme != "PC")
         //{
-        float rotationMultiplier = movementInput >= 0 ? Mathf.Max(0.2f, Mathf.Abs(movementInput)) : Mathf.Max(0.2f, Mathf.Abs(movementInput) * backwardsMultiplier);
-        targetRotation.eulerAngles += new Vector3(0, rotationVector.x * rotationSpeed, 0) * rotationMultiplier;
+        float rotationMultiplier = 0f;
+        if (Mathf.Abs(rb.angularVelocity.y) < maxRotationSpeed)
+        {
+            rotationMultiplier = movementInput >= 0 ? Mathf.Max(minRotationSpeed, Mathf.Abs(movementInput)) : Mathf.Max(minRotationSpeed, Mathf.Abs(movementInput) * backwardsMultiplier);
+        }
+
+        //targetRotation.eulerAngles += new Vector3(0, rotationVector.x * rotationSpeed, 0) * rotationMultiplier;
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(rotationMultiplier * rotationSpeed * rotationVector.x * transform.up));
         //}
         //else
         //{

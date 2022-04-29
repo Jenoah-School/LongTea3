@@ -550,6 +550,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: --== ScreenFade ==--
       objectReference: {fileID: 0}
+    - target: {fileID: 1177021443344445437, guid: 0a0f0cc1a5c57a949a537d978a184767,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0f0cc1a5c57a949a537d978a184767, type: 3}
 --- !u!1 &166477792
@@ -4899,7 +4904,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7784654, y: 1}
+    m_SensorSize: {x: 1.7776414, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
