@@ -20,13 +20,15 @@ public class PlayerManager : MonoBehaviour
     [Header("Events")]
     [SerializeField] private UnityEvent OnPlayerJoin;
 
-    private void Start()
+    private void Awake()
     {
+        Debug.Log("BRUH");
         ++InputUser.listenForUnpairedDeviceActivity;
 
         InputUser.onUnpairedDeviceUsed +=
     (control, eventPtr) =>
     {
+        Debug.Log("BRUH BRUH");
         // Ignore anything but button presses.
         if (!(control is ButtonControl))
             return;
@@ -41,7 +43,7 @@ public class PlayerManager : MonoBehaviour
         PlayerInput spawnedPlayerInput = PlayerInput.Instantiate(playerPrefab);
         players.Add(spawnedPlayerInput);
         int playerIndex = players.IndexOf(spawnedPlayerInput);
-        
+
         GameObject spawnedPlayer = spawnedPlayerInput.gameObject;
         spawnedPlayer.name = $"Fighter {spawnedPlayerInput.playerIndex}";
         spawnedPlayer.transform.SetParent(playerParent);
