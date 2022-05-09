@@ -8,4 +8,5 @@ public abstract class FighterWeapon : FighterPart, IWeapon
     public enum WeaponLocations { FRONT, TOP }
     public WeaponLocations weaponLocation;
     public virtual void ActivateWeapon() { }
+    public virtual void CheckCollision() { }
 }

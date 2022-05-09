@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2819372194517125383}
   m_Layer: 0
   m_Name: TestBody1
-  m_TagString: Untagged
+  m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c144d1ea8b0e70d44b0185a43e50ff99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthPoints: 300
+  weight: 0
   wheelLocations:
   - {fileID: 1198450227438854532}
   - {fileID: 2556594133730238476}
@@ -65,7 +67,7 @@ GameObject:
   - component: {fileID: 1198450227438854532}
   m_Layer: 0
   m_Name: WheelFrontLeft
-  m_TagString: Untagged
+  m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,7 +98,7 @@ GameObject:
   - component: {fileID: 2556594133730238476}
   m_Layer: 0
   m_Name: WheelFrontRight
-  m_TagString: Untagged
+  m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,7 +129,7 @@ GameObject:
   - component: {fileID: 3591274624986414361}
   m_Layer: 0
   m_Name: WheelBackLeft
-  m_TagString: Untagged
+  m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,7 +160,7 @@ GameObject:
   - component: {fileID: 8593379393771262636}
   m_Layer: 0
   m_Name: WeaponLocationFront
-  m_TagString: Untagged
+  m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,7 +191,7 @@ GameObject:
   - component: {fileID: 8168642830676175591}
   m_Layer: 0
   m_Name: WheelBackRight (1)
-  m_TagString: Untagged
+  m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,7 +225,7 @@ GameObject:
   - component: {fileID: 855593077473644498}
   m_Layer: 0
   m_Name: Hull
-  m_TagString: Untagged
+  m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,7 +320,7 @@ GameObject:
   - component: {fileID: 4494157829835681}
   m_Layer: 0
   m_Name: WheelLocations
-  m_TagString: Untagged
+  m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,7 +355,7 @@ GameObject:
   - component: {fileID: 7491732604597283371}
   m_Layer: 0
   m_Name: WeaponLocationTop
-  m_TagString: Untagged
+  m_TagString: Fighter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

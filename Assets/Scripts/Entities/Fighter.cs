@@ -8,10 +8,11 @@ public class Fighter : MonoBehaviour
 {
     FighterBody body;
     List<FighterWheels> wheels = new List<FighterWheels>();
-    [SerializeField] FighterWeapon primaryWeapon;
+    FighterWeapon primaryWeapon;
     FighterWeapon secondaryWeapon;
 
-    [SerializeField] InputActionReference reference;
+    [SerializeField] InputActionReference primaryReference;
+    [SerializeField] InputActionReference secondaryReference;
 
     public void AssembleFighterParts(FighterBody body, FighterWheels wheels, FighterWeapon primaryWeapon, FighterWeapon secondaryWeapon = null)
     {
@@ -55,14 +56,41 @@ public class Fighter : MonoBehaviour
             }
             this.secondaryWeapon = secondaryWeaponObject;
         }
+        IgnoreCollisionOnItself();
+    }
+
+    private void IgnoreCollisionOnItself()
+    {
+        foreach(Collider col1 in GetComponentsInChildren<Collider>())
+        {
+            foreach(Collider col2 in GetComponentsInChildren<Collider>())
+            {
+                Physics.IgnoreCollision(col1, col2);
+            }       
+        }
+    }
+
+    public float GetTotalPartHealth()
+    {
+        float totalHealth = 0;
+        foreach(FighterPart part in GetComponentsInChildren<FighterPart>())
+        {
+            totalHealth += part.healthPoints;
+        }
+        return totalHealth;
     }
 
     private void Update()
     {
-        if(reference.action.WasPressedThisFrame())
+        if(primaryReference.action.WasPressedThisFrame())
         {
-            print("hoi");
+            Debug.Log("activate primary weapon");
             primaryWeapon.ActivateWeapon();
+        }
+        if(secondaryReference.action.WasPerformedThisFrame())
+        {
+            Debug.Log("activate secondary weapon");
+            secondaryWeapon.ActivateWeapon();
         }
     }
 }

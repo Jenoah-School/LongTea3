@@ -24,7 +24,6 @@ public class Healthbar : MonoBehaviour
             playerFighterparts.Add(fighterPart);
             maxHealth += fighterPart.healthPoints;
         }
-
     }
 
     public void RecalculateHealth()
@@ -32,7 +31,7 @@ public class Healthbar : MonoBehaviour
         float currentHealth = 0f;
         foreach (FighterPart fighterPart in playerFighterparts)
         {
-            currentHealth += fighterPart.healthPoints; //<---- Replace this with health variable from the fighterpart to server as start health*/
+            currentHealth += fighterPart.healthPoints;
         }
 
         SetFill(1f / maxHealth * currentHealth);

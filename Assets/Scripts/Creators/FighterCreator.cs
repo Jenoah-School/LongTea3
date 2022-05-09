@@ -11,15 +11,36 @@ public class FighterCreator : MonoBehaviour
     [SerializeField] private List<FighterWheels> fighterWheels = new List<FighterWheels>();
     [SerializeField] private List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
 
+    public static FighterCreator singleton;
+
     private void Start()
     {
-        CreateNewFighter();
+        DontDestroyOnLoad(this);
+        Fighter fighter = CreateNewFighter(0,0,1,0);
+        if(singleton == null)
+        {
+            singleton = this;
+        }
+        else
+        {
+            Destroy(singleton);
+            return;
+        }
     }
 
-    void CreateNewFighter()
+    public Fighter CreateNewFighter(int bodyIndex, int wheelIndex, int weaponIndex)
     {
         GameObject fighterObject = Instantiate(emptyFighter);
         Fighter fighter = fighterObject.GetComponent<Fighter>();
-        fighter.AssembleFighterParts(fighterBodies[0], fighterWheels[0], fighterWeapons[0]);
+        fighter.AssembleFighterParts(fighterBodies[bodyIndex], fighterWheels[wheelIndex], fighterWeapons[weaponIndex]);
+        return fighter;
+    }
+
+    public Fighter CreateNewFighter(int bodyIndex, int wheelIndex, int weapon1Index, int weapon2Index)
+    {
+        GameObject fighterObject = Instantiate(emptyFighter);
+        Fighter fighter = fighterObject.GetComponent<Fighter>();
+        fighter.AssembleFighterParts(fighterBodies[bodyIndex], fighterWheels[wheelIndex], fighterWeapons[weapon1Index], fighterWeapons[weapon2Index]);
+        return fighter;
     }
 }

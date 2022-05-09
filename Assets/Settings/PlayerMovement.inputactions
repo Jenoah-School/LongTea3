@@ -131,7 +131,7 @@
                     "name": "",
                     "id": "e357532e-7041-4ed7-8e84-987c096d4600",
                     "path": "<Gamepad>/buttonWest",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Primary Weapon",

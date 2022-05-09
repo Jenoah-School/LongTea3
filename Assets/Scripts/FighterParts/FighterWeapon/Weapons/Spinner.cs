@@ -6,6 +6,6 @@ public class Spinner : FighterWeapon, IWeapon
 {
     public override void ActivateWeapon()
     {
-
+        
     }
 }

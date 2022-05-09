@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class FighterPart : MonoBehaviour
 {
-    public float healthPoints;   
+    public float healthPoints;
+    public float weight;
+    public void TakeDamage(int damage)
+    {
+        healthPoints -= damage;
+    }
 }
