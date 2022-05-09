@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Interact",
+                    "name": "Primary Weapon",
                     "type": "Button",
                     "id": "5dbde0c8-6e55-4d1f-aa23-956d709d7988",
                     "expectedControlType": "Button",
@@ -33,9 +33,27 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Secondary Weapon",
+                    "type": "Button",
+                    "id": "fcbcd26a-3411-4fa4-9843-e320142ce689",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "0b38c752-0f8c-4183-9b73-d334c8f38f22",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Power Up",
+                    "type": "Button",
+                    "id": "260c7b0c-81f6-4934-b8bf-37268cc044c5",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -116,7 +134,7 @@
                     "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Interact",
+                    "action": "Primary Weapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -127,7 +145,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "PC",
-                    "action": "Interact",
+                    "action": "Primary Weapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -218,6 +236,50 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "0ba7cfc4-b8d0-47d7-94f8-7dd69fa6865f",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Secondary Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef468e97-bf28-4e8e-9362-ac0a5b1bfaaa",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Secondary Weapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f1f0c13-44e0-40e6-8929-5fb38ae535a5",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Power Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1947d276-fb08-48ab-a2ff-42e4bb7f3406",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "PC",
+                    "action": "Power Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
