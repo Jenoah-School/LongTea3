@@ -1,5 +1,89 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3836626037550774784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3039886705176494698}
+  - component: {fileID: 8465084013433560026}
+  m_Layer: 0
+  m_Name: Ring
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3039886705176494698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3836626037550774784}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.015, z: 0}
+  m_LocalScale: {x: 0.39999998, y: 0.4, z: 0.4}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2303582392232483765}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!212 &8465084013433560026
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3836626037550774784}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 66c6f97107c18c34693ac240e5ed6868, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.2, y: 0.2}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &4860532667529296067
 GameObject:
   m_ObjectHideFlags: 0
@@ -24,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4860532667529296067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,7 +126,6 @@ GameObject:
   - component: {fileID: 2303582392232483765}
   - component: {fileID: 9115376806083636152}
   - component: {fileID: 2556934592488449388}
-  - component: {fileID: 480798358494110123}
   - component: {fileID: 5637381278339306294}
   m_Layer: 0
   m_Name: EmptyFighter
@@ -64,6 +147,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8656163137134453866}
+  - {fileID: 3039886705176494698}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -95,9 +179,9 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 480798358494110123}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: UpdateMovementInput
+      - m_Target: {fileID: 5637381278339306294}
+        m_TargetAssemblyTypeName: Fighter, Assembly-CSharp
+        m_MethodName: ApplyMotorTorque
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -111,9 +195,9 @@ MonoBehaviour:
     m_ActionName: Regular/Movement[/DualShock4GamepadHID/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 480798358494110123}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: UpdateRotationInput
+      - m_Target: {fileID: 5637381278339306294}
+        m_TargetAssemblyTypeName: Fighter, Assembly-CSharp
+        m_MethodName: ApplyWheelRotation
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -126,7 +210,19 @@ MonoBehaviour:
     m_ActionId: 6a0d39f3-81b2-4c8b-a7ab-07b23a55a063
     m_ActionName: Regular/Rotation[/DualShock4GamepadHID/rightStick,/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5637381278339306294}
+        m_TargetAssemblyTypeName: Fighter, Assembly-CSharp
+        m_MethodName: ExecutePrimary
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 5dbde0c8-6e55-4d1f-aa23-956d709d7988
     m_ActionName: Regular/Interact[/DualShock4GamepadHID/buttonWest,/Keyboard/e]
   - m_PersistentCalls:
@@ -170,7 +266,19 @@ MonoBehaviour:
     m_ActionId: 2ade52b6-c4b6-4691-aa73-d0e6c4b0a02b
     m_ActionName: UI/Unpause[/DualShock4GamepadHID/start,/Keyboard/escape]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5637381278339306294}
+        m_TargetAssemblyTypeName: Fighter, Assembly-CSharp
+        m_MethodName: ExecuteSecondary
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: fcbcd26a-3411-4fa4-9843-e320142ce689
     m_ActionName: Regular/Secondary Weapon[/DualShock4GamepadHID/buttonEast,/DualShock4GamepadHID1/buttonEast,/Keyboard/f]
   - m_PersistentCalls:
@@ -190,35 +298,14 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5880640649918137463}
   serializedVersion: 2
-  m_Mass: 30
-  m_Drag: 10
+  m_Mass: 80
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
---- !u!114 &480798358494110123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5880640649918137463}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 214b19b8f43a9df409a673c756b3b1cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 100
-  rotationSpeed: 5
-  minRotationSpeed: 0.2
-  backwardsMultiplier: 0.5
-  maxRotationSpeed: 3
-  inputSmoothing: 100
-  rotationSmoothing: 50
-  playerInput: {fileID: 9115376806083636152}
-  centerOfMass: {fileID: 8656163137134453866}
 --- !u!114 &5637381278339306294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +318,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb737027fb87b04985069c0e31496af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryReference: {fileID: -7107079703693766592, guid: 7284fe7500a87284f8800917276ef50c,
-    type: 3}
-  secondaryReference: {fileID: 3633986213136594724, guid: 7284fe7500a87284f8800917276ef50c,
-    type: 3}
+  wheels: []
+  primaryWeapon: {fileID: 0}
+  secondaryWeapon: {fileID: 0}
+  steerableWheels: []
+  motorWheels: []
+  maxMotorTorque: 35
+  steerSmoothing: 10
+  backwardsMultiplier: 0.6

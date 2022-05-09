@@ -7,12 +7,18 @@ using System.Linq;
 public class Fighter : MonoBehaviour
 {
     FighterBody body;
-    List<FighterWheels> wheels = new List<FighterWheels>();
-    FighterWeapon primaryWeapon;
-    FighterWeapon secondaryWeapon;
+    [SerializeField] List<FighterWheels> wheels = new List<FighterWheels>();
+    [SerializeField] FighterWeapon primaryWeapon;
+    [SerializeField] FighterWeapon secondaryWeapon;
 
-    [SerializeField] InputActionReference primaryReference;
-    [SerializeField] InputActionReference secondaryReference;
+    [Header("Driving")]
+    [SerializeField] List<FighterWheels> steerableWheels = new List<FighterWheels>();
+    [SerializeField] List<FighterWheels> motorWheels = new List<FighterWheels>();
+    [SerializeField] float maxMotorTorque = 3000f;
+    [SerializeField] float steerSmoothing = 10f;
+    [SerializeField] float backwardsMultiplier = 0.5f;
+
+    private float targetSteeringAngle = 0f;
 
     public void AssembleFighterParts(FighterBody body, FighterWheels wheels, FighterWeapon primaryWeapon, FighterWeapon secondaryWeapon = null)
     {
@@ -25,6 +31,9 @@ public class Fighter : MonoBehaviour
             FighterWheels wheelsObject = Instantiate(wheels, transform);
             wheelsObject.transform.localPosition = bodyObject.GetWheelLocations().ElementAt(i).transform.position;
             wheelsObject.transform.localEulerAngles = bodyObject.GetWheelLocations().ElementAt(i).transform.eulerAngles;
+            wheelsObject.name = $"Wheel {i}";
+            motorWheels.Add(wheelsObject);
+            if (wheelsObject.transform.localPosition.z > 0) steerableWheels.Add(wheelsObject);
             this.wheels.Add(wheelsObject);
         }
 
@@ -40,7 +49,7 @@ public class Fighter : MonoBehaviour
             primaryWeaponObject.transform.localEulerAngles = bodyObject.GetWeaponTopLocation().eulerAngles;
         }
         this.primaryWeapon = primaryWeaponObject;
-        
+
         if (secondaryWeapon)
         {
             FighterWeapon secondaryWeaponObject = Instantiate(secondaryWeapon, transform);
@@ -61,36 +70,70 @@ public class Fighter : MonoBehaviour
 
     private void IgnoreCollisionOnItself()
     {
-        foreach(Collider col1 in GetComponentsInChildren<Collider>())
+        foreach (Collider col1 in GetComponentsInChildren<Collider>())
         {
-            foreach(Collider col2 in GetComponentsInChildren<Collider>())
+            foreach (Collider col2 in GetComponentsInChildren<Collider>())
             {
                 Physics.IgnoreCollision(col1, col2);
-            }       
+            }
         }
     }
 
     public float GetTotalPartHealth()
     {
         float totalHealth = 0;
-        foreach(FighterPart part in GetComponentsInChildren<FighterPart>())
+        foreach (FighterPart part in GetComponentsInChildren<FighterPart>())
         {
             totalHealth += part.healthPoints;
         }
         return totalHealth;
     }
 
-    private void Update()
+    public void ApplyMotorTorque(InputAction.CallbackContext context)
     {
-        if(primaryReference.action.WasPressedThisFrame())
+        foreach (FighterWheels wheel in motorWheels)
         {
-            Debug.Log("activate primary weapon");
+            wheel.wheelCollider.motorTorque = maxMotorTorque * Mathf.Max(-backwardsMultiplier, context.ReadValue<float>());
+        }
+    }
+
+    public void ApplyWheelRotation(InputAction.CallbackContext context)
+    {
+        targetSteeringAngle = steerableWheels[0].maxSteeringAngle * context.ReadValue<Vector2>().x;
+    }
+
+    public void ExecutePrimary(InputAction.CallbackContext context)
+    {
+        if (context.action.WasPerformedThisFrame())
+        {
+            Debug.Log("Activating primary weapon");
             primaryWeapon.ActivateWeapon();
         }
-        if(secondaryReference.action.WasPerformedThisFrame())
+    }
+
+    public void ExecuteSecondary(InputAction.CallbackContext context)
+    {
+        if (context.action.WasPerformedThisFrame())
         {
-            Debug.Log("activate secondary weapon");
+            Debug.Log("Activating secondary weapon");
             secondaryWeapon.ActivateWeapon();
+        }
+    }
+
+    private void Update()
+    {
+        foreach (FighterWheels wheel in steerableWheels)
+        {
+            wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, targetSteeringAngle, steerSmoothing * Time.deltaTime);
+        }
+
+        foreach (FighterWheels wheel in wheels)
+        {
+            if (wheel.wheelMesh != null && wheel.wheelCollider != null)
+            {
+                wheel.wheelCollider.GetWorldPose(out Vector3 wheelPosition, out Quaternion wheelRotation);
+                wheel.wheelMesh.transform.SetPositionAndRotation(wheelPosition, wheelRotation);
+            }
         }
     }
 }

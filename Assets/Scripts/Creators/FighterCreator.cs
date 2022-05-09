@@ -10,13 +10,14 @@ public class FighterCreator : MonoBehaviour
     [SerializeField] private List<FighterBody> fighterBodies = new List<FighterBody>();
     [SerializeField] private List<FighterWheels> fighterWheels = new List<FighterWheels>();
     [SerializeField] private List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
-
+    [SerializeField] private bool spawnOnInitialisation = true;
     public static FighterCreator singleton;
 
     private void Start()
     {
         DontDestroyOnLoad(this);
-        Fighter fighter = CreateNewFighter(0,0,1,0);
+        Fighter fighter;
+        if(spawnOnInitialisation) fighter = CreateNewFighter(0,0,1,0);
         if(singleton == null)
         {
             singleton = this;

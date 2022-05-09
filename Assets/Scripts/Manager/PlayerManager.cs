@@ -11,7 +11,8 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Transform playerParent = null;
+    [SerializeField] private Transform controllerParent = null;
+    [SerializeField] private Transform fighterParent = null;
     [SerializeField] private List<Healthbar> healthbars = new List<Healthbar>();
     [SerializeField] private List<PlayerJoinView> playerJoinViews = new List<PlayerJoinView>();
     [SerializeField] private List<PlayerInput> players = new List<PlayerInput>();
@@ -20,6 +21,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject controllerPrefab = null;
     [SerializeField] private GameObject fighterPrefab = null;
     [SerializeField] private List<Color> playerColors = new List<Color>();
+    [SerializeField] private List<GameObject> spawnPoints = new List<GameObject>();
 
     [Header("Events")]
     [SerializeField] private bool spawnFighter = false;
@@ -47,8 +49,7 @@ public class PlayerManager : MonoBehaviour
             return;
         }
 
-
-        Debug.Log("Listening for player input");
+        Debug.Log("Listening for new player input");
 
         ++InputUser.listenForUnpairedDeviceActivity;
 
@@ -69,6 +70,7 @@ public class PlayerManager : MonoBehaviour
     {
         Debug.Log("Attempting to spawn new player");
         PlayerInput spawnedPlayerInput = PlayerInput.Instantiate(controllerPrefab);
+        //If weapons don't work anymore, try to comment out the line below
         spawnedPlayerInput.transform.SetParent(transform);
         players.Add(spawnedPlayerInput);
         int playerID = players.IndexOf(spawnedPlayerInput);
@@ -95,6 +97,7 @@ public class PlayerManager : MonoBehaviour
     public void OnSceneChange(Scene scene, LoadSceneMode mode)
     {
         healthbars.AddRange(FindObjectsOfType<Healthbar>(true).OrderBy(m => m.transform.GetSiblingIndex()).ToArray());
+        spawnPoints.AddRange(GameObject.FindGameObjectsWithTag("Spawnpoint").OrderBy(m => m.transform.GetSiblingIndex()).ToArray());
         SpawnAllFighters();
     }
 
@@ -116,19 +119,18 @@ public class PlayerManager : MonoBehaviour
         InputDevice[] playerInputDevices = spawnedPlayerInput.devices.ToArray();
         spawnedPlayerInput.DeactivateInput();
 
-        PlayerInput fighterInput = PlayerInput.Instantiate(fighterPrefab, -1, controlScheme, -1, playerInputDevices[0]);
+        GameObject fighterGameObject = FighterCreator.singleton.CreateNewFighter(0, 0, 0).gameObject;
+        PlayerInput fighterInput = PlayerInput.Instantiate(fighterGameObject, -1, controlScheme, -1, playerInputDevices[0]);
+        GameObject fighterObject = fighterInput.gameObject;
+        if (spawnPoints.Count > 0)
+        {
+            fighterObject.transform.SetPositionAndRotation(spawnPoints[playerID % spawnPoints.Count].transform.position, spawnPoints[playerID % spawnPoints.Count].transform.rotation);
+        }
+        Destroy(fighterGameObject);
         fighterInput.SwitchCurrentControlScheme(controlScheme, playerInputDevices[0]);
 
-        GameObject fighterObject = fighterInput.gameObject;
-
-
-        //Destroy(spawnedPlayerInput.gameObject);
-        //players[playerID] = fighterInput;
-
-        //Debug.Log($"{playerInputDevices[0]}");
-        //fighterInput.SwitchCurrentControlScheme(playerInputDevices);
         fighterObject.name = $"Fighter {playerID}";
-        fighterObject.transform.SetParent(playerParent);
+        fighterObject.transform.SetParent(fighterParent);
 
         //Color the player ring
         Transform ringObject = fighterObject.transform.Find("Ring");
@@ -141,6 +143,7 @@ public class PlayerManager : MonoBehaviour
         if (healthbars.Count > playerID)
         {
             Healthbar healthbar = healthbars[playerID];
+            healthbar.SetFighterParts(fighterObject.GetComponentsInChildren<FighterPart>().ToList());
             healthbar.gameObject.SetActive(true);
             healthbar.SetColor(playerColors[playerID % playerColors.Count]);
             healthbar.SetFill(1f);
