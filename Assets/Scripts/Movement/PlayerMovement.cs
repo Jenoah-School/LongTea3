@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private Transform centerOfMass;
 
     private Rigidbody rb = null;
 
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        if(centerOfMass) rb.centerOfMass = centerOfMass.localPosition;
     }
 
     public void UpdateMovementInput(InputAction.CallbackContext context)
