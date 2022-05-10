@@ -68,7 +68,6 @@ public class PlayerManager : MonoBehaviour
 
     public void SpawnNewPlayer()
     {
-        Debug.Log("Attempting to spawn new player");
         PlayerInput spawnedPlayerInput = PlayerInput.Instantiate(controllerPrefab);
         //If weapons don't work anymore, try to comment out the line below
         spawnedPlayerInput.transform.SetParent(transform);

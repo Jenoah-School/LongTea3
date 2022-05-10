@@ -7,4 +7,5 @@ public class FighterWheels : FighterPart
     public WheelCollider wheelCollider = null;
     public Transform wheelMesh = null;
     public float maxSteeringAngle = 35f;
+    public float speed = 35f;
 }

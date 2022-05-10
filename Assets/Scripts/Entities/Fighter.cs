@@ -14,7 +14,6 @@ public class Fighter : MonoBehaviour
     [Header("Driving")]
     [SerializeField] List<FighterWheels> steerableWheels = new List<FighterWheels>();
     [SerializeField] List<FighterWheels> motorWheels = new List<FighterWheels>();
-    [SerializeField] float maxMotorTorque = 3000f;
     [SerializeField] float steerSmoothing = 10f;
     [SerializeField] float backwardsMultiplier = 0.5f;
 
@@ -93,7 +92,7 @@ public class Fighter : MonoBehaviour
     {
         foreach (FighterWheels wheel in motorWheels)
         {
-            wheel.wheelCollider.motorTorque = maxMotorTorque * Mathf.Max(-backwardsMultiplier, context.ReadValue<float>());
+            wheel.wheelCollider.motorTorque = wheel.speed * Mathf.Max(-backwardsMultiplier, context.ReadValue<float>());
         }
     }
 
