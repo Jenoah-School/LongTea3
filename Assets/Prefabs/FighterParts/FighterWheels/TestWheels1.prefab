@@ -83,6 +83,7 @@ MonoBehaviour:
   wheelCollider: {fileID: 8787089024425682269}
   wheelMesh: {fileID: 1248882591794546934}
   maxSteeringAngle: 40
+  speed: 35
 --- !u!1 &5775853614468659396
 GameObject:
   m_ObjectHideFlags: 0

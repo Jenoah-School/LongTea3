@@ -6,10 +6,12 @@ using System.Linq;
 
 public class Fighter : MonoBehaviour
 {
-    FighterBody body;
+    [Header("Vehicle")]
     [SerializeField] List<FighterWheels> wheels = new List<FighterWheels>();
     [SerializeField] FighterWeapon primaryWeapon;
     [SerializeField] FighterWeapon secondaryWeapon;
+    [SerializeField] Rigidbody rb;
+    [SerializeField] FighterBody body;
 
     [Header("Driving")]
     [SerializeField] List<FighterWheels> steerableWheels = new List<FighterWheels>();
@@ -64,6 +66,12 @@ public class Fighter : MonoBehaviour
             }
             this.secondaryWeapon = secondaryWeaponObject;
         }
+
+        if(this.body.GetCenterOfMass() != null)
+        {
+            rb.centerOfMass = rb.transform.InverseTransformPoint(this.body.GetCenterOfMass().localPosition);
+        }
+
         IgnoreCollisionOnItself();
     }
 
@@ -133,6 +141,15 @@ public class Fighter : MonoBehaviour
                 wheel.wheelCollider.GetWorldPose(out Vector3 wheelPosition, out Quaternion wheelRotation);
                 wheel.wheelMesh.transform.SetPositionAndRotation(wheelPosition, wheelRotation);
             }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (rb != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(rb.position + body.GetCenterOfMass().localPosition, 0.2f);
         }
     }
 }

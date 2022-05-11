@@ -7,6 +7,12 @@ public class FighterBody : FighterPart
     [SerializeField] List<Transform> wheelLocations = new List<Transform>();
     [SerializeField] Transform weaponLocationFront;
     [SerializeField] Transform weaponLocationTop;
+    [SerializeField] Transform centerOfMass;
+
+    public Transform GetCenterOfMass()
+    {
+        return centerOfMass;
+    }
 
     public List<Transform> GetWheelLocations()
     {
