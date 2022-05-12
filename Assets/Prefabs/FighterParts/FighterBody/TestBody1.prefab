@@ -50,6 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 300
   weight: 0
+  damageText: {fileID: 5358459428584915330, guid: b93281c106ecca2448815a3859578236,
+    type: 3}
   wheelLocations:
   - {fileID: 1198450227438854532}
   - {fileID: 2556594133730238476}

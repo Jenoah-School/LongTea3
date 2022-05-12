@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3039886705176494698
 Transform:
   m_ObjectHideFlags: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 260c7b0c-81f6-4934-b8bf-37268cc044c5
     m_ActionName: Regular/Power Up[/DualShock4GamepadHID/buttonNorth,/DualShock4GamepadHID1/buttonNorth,/Keyboard/q]
-  m_NeverAutoSwitchControlSchemes: 1
+  m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Regular
   m_SplitScreenIndex: -1
@@ -279,4 +279,4 @@ MonoBehaviour:
   steerableWheels: []
   motorWheels: []
   steerSmoothing: 10
-  backwardsMultiplier: 0.6
+  backwardsMultiplier: 2

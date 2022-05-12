@@ -80,6 +80,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 150
   weight: 0
+  damageText: {fileID: 5358459428584915330, guid: b93281c106ecca2448815a3859578236,
+    type: 3}
   wheelCollider: {fileID: 8787089024425682269}
   wheelMesh: {fileID: 1248882591794546934}
   maxSteeringAngle: 35
@@ -238,8 +240,8 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8984461514804640546}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
