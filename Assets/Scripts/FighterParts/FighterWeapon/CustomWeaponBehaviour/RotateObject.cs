@@ -26,13 +26,14 @@ public class RotateObject : MonoBehaviour
 
     private IEnumerator RotateObjectToAngleEnum(GameObject rotateObject, Vector3 rotationPointEnd, float rotateTime)
     {
-        Vector3 startRotation = rotateObject.transform.localEulerAngles;
+        Quaternion startRotation = rotateObject.transform.localRotation;
         float currentRotateTime = 0;     
         while(currentRotateTime < rotateTime)
         {
             currentRotateTime += Time.deltaTime;
-            rotateObject.transform.localEulerAngles = Vector3.Lerp(startRotation, rotationPointEnd, currentRotateTime / rotateTime);
+            rotateObject.transform.localRotation = Quaternion.Lerp(startRotation, Quaternion.Euler(rotationPointEnd), currentRotateTime / rotateTime);
             yield return new WaitForEndOfFrame();
         }
+        rotateObject.transform.localEulerAngles = rotationPointEnd;
     }
 }

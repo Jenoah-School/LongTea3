@@ -52,7 +52,7 @@ public class Hammer : FighterWeapon, IWeapon
             {
                 if (hit.gameObject.transform.root != this.gameObject.transform.root)
                 {
-                    //Debug.Log("Hit something " + hit.name);
+                    Debug.Log("Hit something: " + hit.name);
 
                     RotateObject.instance.StopCoroutine(hammerSwingRotationRoutine);
                     isSwinging = false;
@@ -68,11 +68,16 @@ public class Hammer : FighterWeapon, IWeapon
                 if (hit.gameObject.transform.root != this.gameObject.transform.root && hit.gameObject.transform.root.CompareTag("Fighter"))
                 {
                     Fighter otherFighter = hit.gameObject.transform.root.GetComponent<Fighter>();
-                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition(hit.transform.InverseTransformPoint(hammerTip.transform.position), hammerTip.transform.forward * ((hammerForce * hammerLaunchForceMultiplier) * transform.localEulerAngles.x));
+                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition(hit.transform.InverseTransformPoint(hammerTip.transform.position), hammerTip.transform.forward * ((hammerForce * hammerLaunchForceMultiplier * 10) * (transform.localEulerAngles.x / 4)));
+
+                    RotateObject.instance.StopCoroutine(hammerSwingRotationRoutine);
+                    isSwinging = false;
+                    hammerSwingRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(0, 0, 0), transform.localEulerAngles.x / 90);
 
                     if (hit.GetComponentInParent<FighterPart>())
                     {
                         FighterPart part = hit.GetComponentInParent<FighterPart>();
+                        Debug.Log("Hit something tip: " + hit.name);
                         part.TakeDamage(damage, hammerTip.transform.position);
                     }             
                 }
