@@ -111,18 +111,16 @@ public class Fighter : MonoBehaviour
 
     public void ExecutePrimary(InputAction.CallbackContext context)
     {
-        if (context.action.WasPerformedThisFrame())
+        if (context.action.WasPerformedThisFrame() && primaryWeapon != null)
         {
-            Debug.Log("Activating primary weapon");
             primaryWeapon.ActivateWeapon();
         }
     }
 
     public void ExecuteSecondary(InputAction.CallbackContext context)
     {
-        if (context.action.WasPerformedThisFrame())
+        if (context.action.WasPerformedThisFrame() && secondaryWeapon != null)
         {
-            Debug.Log("Activating secondary weapon");
             secondaryWeapon.ActivateWeapon();
         }
     }
