@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.InputSystem.Users;
 using UnityEngine.SceneManagement;
 
@@ -89,8 +91,21 @@ public class PlayerManager : MonoBehaviour
     public void SpawnController(int playerID)
     {
         PlayerJoinView playerJoinView = playerJoinViews[playerID];
+        MultiplayerEventSystem playerUISystem = players[playerID].GetComponent<MultiplayerEventSystem>();
+
         playerJoinView.backgroundImage.color = playerColors[playerID];
-        playerJoinView.joinText.SetText($"Player {playerID}");
+        playerJoinView.characterSelectPanel.SetActive(true);
+        playerJoinView.continueText.gameObject.SetActive(true);
+        playerJoinView.joinText.gameObject.SetActive(false);
+        playerJoinView.OnJoinEvent.Invoke();
+
+        if (playerJoinView.playerRoot != null) playerUISystem.playerRoot = playerJoinView.playerRoot;
+        if (playerJoinView.firstSelected != null)
+        {
+            playerUISystem.firstSelectedGameObject = playerJoinView.firstSelected;
+            playerUISystem.SetSelectedGameObject(playerJoinView.firstSelected);
+        }
+
     }
 
     public void OnSceneChange(Scene scene, LoadSceneMode mode)

@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5211181214260311966}
-  - component: {fileID: 967808546010257573}
   - component: {fileID: 8484156162824478330}
+  - component: {fileID: 3213515727470039759}
+  - component: {fileID: -8431723194247561075}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -33,18 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &967808546010257573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3570653424592897648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c3b6f1b1b8b3d946b20ee6fdf07ff96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8484156162824478330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,7 +49,7 @@ MonoBehaviour:
   m_Actions: {fileID: -944628639613478452, guid: 7284fe7500a87284f8800917276ef50c,
     type: 3}
   m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
+  m_UIInputModule: {fileID: -8431723194247561075}
   m_DeviceLostEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -123,8 +112,67 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 2ade52b6-c4b6-4691-aa73-d0e6c4b0a02b
     m_ActionName: UI/Unpause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fcbcd26a-3411-4fa4-9843-e320142ce689
+    m_ActionName: Regular/Secondary Weapon[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 260c7b0c-81f6-4934-b8bf-37268cc044c5
+    m_ActionName: Regular/Power Up[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Regular
+  m_DefaultActionMap: 783dfd42-63cc-48a5-9d34-a1cbb94fe1df
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &3213515727470039759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3570653424592897648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16c6f78230fa4964a222622d8aae332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+  m_PlayerRoot: {fileID: 0}
+--- !u!114 &-8431723194247561075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3570653424592897648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 7284fe7500a87284f8800917276ef50c,
+    type: 3}
+  m_PointAction: {fileID: -5150689399304873519, guid: 7284fe7500a87284f8800917276ef50c,
+    type: 3}
+  m_MoveAction: {fileID: -4429290058010352347, guid: 7284fe7500a87284f8800917276ef50c,
+    type: 3}
+  m_SubmitAction: {fileID: 0}
+  m_CancelAction: {fileID: -8014548547328747134, guid: 7284fe7500a87284f8800917276ef50c,
+    type: 3}
+  m_LeftClickAction: {fileID: -4022314934077664705, guid: 7284fe7500a87284f8800917276ef50c,
+    type: 3}
+  m_MiddleClickAction: {fileID: 0}
+  m_RightClickAction: {fileID: 6914110191751275280, guid: 7284fe7500a87284f8800917276ef50c,
+    type: 3}
+  m_ScrollWheelAction: {fileID: -1893482341062291080, guid: 7284fe7500a87284f8800917276ef50c,
+    type: 3}
+  m_TrackedDevicePositionAction: {fileID: 0}
+  m_TrackedDeviceOrientationAction: {fileID: 0}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0

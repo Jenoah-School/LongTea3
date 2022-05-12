@@ -146,7 +146,7 @@ public class Fighter : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (rb != null)
+        if (rb != null && body != null)
         {
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(rb.position + body.GetCenterOfMass().localPosition, 0.2f);
