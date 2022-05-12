@@ -122,7 +122,7 @@ MonoBehaviour:
     m_ActionName: Regular/Power Up[/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 783dfd42-63cc-48a5-9d34-a1cbb94fe1df
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &3213515727470039759
@@ -162,7 +162,8 @@ MonoBehaviour:
     type: 3}
   m_MoveAction: {fileID: -4429290058010352347, guid: 7284fe7500a87284f8800917276ef50c,
     type: 3}
-  m_SubmitAction: {fileID: 0}
+  m_SubmitAction: {fileID: 6441933893278246414, guid: 7284fe7500a87284f8800917276ef50c,
+    type: 3}
   m_CancelAction: {fileID: -8014548547328747134, guid: 7284fe7500a87284f8800917276ef50c,
     type: 3}
   m_LeftClickAction: {fileID: -4022314934077664705, guid: 7284fe7500a87284f8800917276ef50c,

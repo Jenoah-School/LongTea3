@@ -11,9 +11,9 @@ public class FighterPartSelection : MonoBehaviour
     [SerializeField] private List<FighterWeaponInformation> fighterWeapons = new List<FighterWeaponInformation>();
     [SerializeField] private List<FighterPowerupInformation> fighterPowerups = new List<FighterPowerupInformation>();
 
-    private int currentBodyIndex = 0;
-    private int currentWeaponIndex = 0;
-    private int currentPowerupIndex = 0;
+    public int currentBodyIndex = 0;
+    public int currentWeaponIndex = 0;
+    public int currentPowerupIndex = 0;
 
     [Header("Body references")]
     [SerializeField] private Image bodyPreviewImage = null;

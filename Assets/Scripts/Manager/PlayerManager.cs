@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private Transform fighterParent = null;
     [SerializeField] private List<Healthbar> healthbars = new List<Healthbar>();
     [SerializeField] private List<PlayerJoinView> playerJoinViews = new List<PlayerJoinView>();
+    [SerializeField] private List<FighterPartSelection> fighterPartSelections = new List<FighterPartSelection>();
     [SerializeField] private List<PlayerInput> players = new List<PlayerInput>();
 
     [Header("Player settings")]
@@ -31,6 +32,11 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private int spawnFighterSceneIndex = -1;
     [SerializeField] private UnityEvent OnPlayerJoin;
     [SerializeField] private UnityEvent OnSceneSwitch;
+
+    [Header("Ready")]
+    [SerializeField] private bool allPlayersReady = false;
+    [SerializeField] private UnityEvent onAllPlayersReady = null;
+    [SerializeField] private UnityEvent onPlayersUnready = null;
 
     public static PlayerManager singleton;
 
@@ -93,10 +99,11 @@ public class PlayerManager : MonoBehaviour
         PlayerJoinView playerJoinView = playerJoinViews[playerID];
         MultiplayerEventSystem playerUISystem = players[playerID].GetComponent<MultiplayerEventSystem>();
 
+        playerJoinView.isPlayer = true;
+        playerJoinView.onReadyChange += CheckAllPlayersReady;
+
         playerJoinView.backgroundImage.color = playerColors[playerID];
         playerJoinView.characterSelectPanel.SetActive(true);
-        playerJoinView.continueText.gameObject.SetActive(true);
-        playerJoinView.joinText.gameObject.SetActive(false);
         playerJoinView.OnJoinEvent.Invoke();
 
         if (playerJoinView.playerRoot != null) playerUISystem.playerRoot = playerJoinView.playerRoot;
@@ -106,6 +113,28 @@ public class PlayerManager : MonoBehaviour
             playerUISystem.SetSelectedGameObject(playerJoinView.firstSelected);
         }
 
+    }
+
+    public void CheckAllPlayersReady()
+    {
+        foreach (PlayerJoinView playerJoinView in playerJoinViews)
+        {
+            if (playerJoinView.isPlayer && !playerJoinView.isReady)
+            {
+                if (allPlayersReady)
+                {
+                    allPlayersReady = false;
+                    onPlayersUnready.Invoke();
+                }
+                return;
+            }
+        }
+
+        if (!allPlayersReady)
+        {
+            allPlayersReady = true;
+            onAllPlayersReady.Invoke();
+        }
     }
 
     public void OnSceneChange(Scene scene, LoadSceneMode mode)
@@ -133,7 +162,16 @@ public class PlayerManager : MonoBehaviour
         InputDevice[] playerInputDevices = spawnedPlayerInput.devices.ToArray();
         spawnedPlayerInput.DeactivateInput();
 
-        GameObject fighterGameObject = FighterCreator.singleton.CreateNewFighter(0, 0, 0).gameObject;
+        GameObject fighterGameObject;
+        if(fighterPartSelections.Count > playerID && fighterPartSelections[playerID] != null)
+        {
+            fighterGameObject = FighterCreator.singleton.CreateNewFighter(fighterPartSelections[playerID].currentBodyIndex, 0, fighterPartSelections[playerID].currentWeaponIndex, fighterPartSelections[playerID].currentPowerupIndex).gameObject;
+        }
+        else
+        {
+            fighterGameObject = FighterCreator.singleton.CreateNewFighter(0, 0, 0, 1).gameObject;
+        }
+        
         PlayerInput fighterInput = PlayerInput.Instantiate(fighterGameObject, -1, controlScheme, -1, playerInputDevices[0]);
         GameObject fighterObject = fighterInput.gameObject;
         if (spawnPoints.Count > 0)

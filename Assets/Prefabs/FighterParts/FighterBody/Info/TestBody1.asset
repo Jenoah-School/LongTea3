@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5274a77336dd73a41a6ed7d6aed3a684, type: 3}
-  m_Name: Flipper
+  m_Script: {fileID: 11500000, guid: 42553d2605f503e46ba146ce7ed70646, type: 3}
+  m_Name: TestBody1
   m_EditorClassIdentifier: 
-  partIndex: 1
-  previewImage: {fileID: 21300000, guid: 90f02518930cdd342b69a226ac486d22, type: 3}
-  weaponName: Flipper
-  damage: 5
-  range: 2
+  partIndex: 0
+  previewImage: {fileID: 21300000, guid: 693225cc9e52b674f82189ce10213275, type: 3}
+  hp: 150
+  attack: 80
+  defense: 40
+  speed: 40
+  weight: 8

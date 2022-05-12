@@ -5365,6 +5365,7 @@ GameObject:
   - component: {fileID: 1566668144}
   - component: {fileID: 1566668146}
   - component: {fileID: 1566668147}
+  - component: {fileID: 1566668148}
   m_Layer: 0
   m_Name: --== Game Manager ==--
   m_TagString: Spawnpoint
@@ -5407,6 +5408,7 @@ MonoBehaviour:
   - {fileID: 974400528}
   - {fileID: 341865377}
   playerJoinViews: []
+  fighterPartSelections: []
   players: []
   controllerPrefab: {fileID: 3570653424592897648, guid: 3b1702cb2360ff249be54710dfed1796,
     type: 3}
@@ -5427,6 +5429,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnSceneSwitch:
+    m_PersistentCalls:
+      m_Calls: []
+  allPlayersReady: 0
+  onAllPlayersReady:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayersUnready:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1566668147
@@ -5451,6 +5460,18 @@ MonoBehaviour:
   - {fileID: 4489666271711470983, guid: a5b977abd9f0c33428a98a276539e77b, type: 3}
   - {fileID: 587068950702300206, guid: bd886fb8aa574b540885e32cc7d32513, type: 3}
   spawnOnInitialisation: 0
+--- !u!114 &1566668148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566668142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae7d6c9490796e4ca9b51a26f6b738b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1620671305
 GameObject:
   m_ObjectHideFlags: 0
@@ -5895,7 +5916,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7776414, y: 1}
+    m_SensorSize: {x: 1.7769607, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

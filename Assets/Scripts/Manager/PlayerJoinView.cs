@@ -11,7 +11,31 @@ public class PlayerJoinView : MonoBehaviour
     public GameObject playerRoot = null;
     public Image backgroundImage = null;
     public GameObject characterSelectPanel = null;
-    public TMPro.TextMeshProUGUI joinText = null;
-    public TMPro.TextMeshProUGUI continueText = null;
     public UnityEvent OnJoinEvent = null;
+
+    [Header("Ready")]
+    public bool isReady = false;
+    public UnityEvent OnReady = null;
+    public UnityEvent OnUnready = null;
+
+    public delegate void OnReadyChange();
+    public OnReadyChange onReadyChange;
+
+    public bool isPlayer = false;
+
+    public void Ready()
+    {
+        if (isReady) return;
+        isReady = true;
+        OnReady.Invoke();
+        onReadyChange();
+    }
+
+    public void Unready()
+    {
+        if (!isReady) return;
+        isReady = false;
+        OnUnready.Invoke();
+        onReadyChange();
+    }
 }
