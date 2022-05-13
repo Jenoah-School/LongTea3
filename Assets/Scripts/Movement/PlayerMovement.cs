@@ -12,6 +12,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float minRotationSpeed = 0.2f;
     [SerializeField] private float backwardsMultiplier = 0.5f;
     [SerializeField] private float maxRotationSpeed = 3f;
+    [SerializeField, Range(0f,1f)] private float driftDrag = 0.3f;
+    [SerializeField] private bool isGrounded = false;
+
+    [Header("Grounded state")]
+    [SerializeField] private Transform groundedTransform = null;
+    [SerializeField] private float groundedCheckLength = 0.1f;
+    [SerializeField] private bool useWorldDirection = true;
+    [SerializeField] private LayerMask groundedLayers = Physics.AllLayers;
 
     [Header("Smoothing")]
     [SerializeField] private float inputSmoothing = 10f;
@@ -47,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Vector2 moveInput = new Vector2(transform.forward.x, transform.forward.z);
+        float moveDot = Vector3.Dot(transform.forward, rb.velocity.normalized);
 
         float moveMultiplier = movementInput >= 0 ? movementInput : movementInput * backwardsMultiplier;
         movementVector = Vector2.Lerp(movementVector, moveInput * moveMultiplier, inputSmoothing * Time.deltaTime);
@@ -55,8 +64,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Rotate();
-        Move();
+        if (IsGrounded())
+        {
+            Rotate();
+            Move();
+            RemoveDrift();
+        }
     }
 
     private void Rotate()
@@ -90,6 +103,19 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = moveDirection.sqrMagnitude > 1 ? moveDirection.normalized : moveDirection;
 
         rb.velocity += moveSpeed * Time.fixedDeltaTime * moveDirection;
+    }
+
+    private void RemoveDrift()
+    {
+        Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
+        localVelocity.x *= 1f - driftDrag;
+        rb.velocity = transform.TransformDirection(localVelocity);
+    }
+
+    public bool IsGrounded()
+    {
+        isGrounded = Physics.Raycast(groundedTransform.position, useWorldDirection ? Vector3.down : -groundedTransform.up, groundedCheckLength, groundedLayers);
+        return isGrounded;
     }
 }
 

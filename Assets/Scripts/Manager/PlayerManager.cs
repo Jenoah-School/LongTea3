@@ -13,7 +13,6 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Transform controllerParent = null;
     [SerializeField] private Transform fighterParent = null;
     [SerializeField] private List<Healthbar> healthbars = new List<Healthbar>();
     [SerializeField] private List<PlayerJoinView> playerJoinViews = new List<PlayerJoinView>();
@@ -22,7 +21,6 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Player settings")]
     [SerializeField] private GameObject controllerPrefab = null;
-    [SerializeField] private GameObject fighterPrefab = null;
     [SerializeField] private List<Color> playerColors = new List<Color>();
     [SerializeField] private List<GameObject> spawnPoints = new List<GameObject>();
 
@@ -139,9 +137,12 @@ public class PlayerManager : MonoBehaviour
 
     public void OnSceneChange(Scene scene, LoadSceneMode mode)
     {
-        healthbars.AddRange(FindObjectsOfType<Healthbar>(true).OrderBy(m => m.transform.GetSiblingIndex()).ToArray());
-        spawnPoints.AddRange(GameObject.FindGameObjectsWithTag("Spawnpoint").OrderBy(m => m.transform.GetSiblingIndex()).ToArray());
-        SpawnAllFighters();
+        if (spawnFighterSceneIndex != -1 && scene.buildIndex == spawnFighterSceneIndex)
+        {
+            healthbars.AddRange(FindObjectsOfType<Healthbar>(true).OrderBy(m => m.transform.GetSiblingIndex()).ToArray());
+            spawnPoints.AddRange(GameObject.FindGameObjectsWithTag("Spawnpoint").OrderBy(m => m.transform.GetSiblingIndex()).ToArray());
+            SpawnAllFighters();
+        }
     }
 
     public void SpawnAllFighters()
