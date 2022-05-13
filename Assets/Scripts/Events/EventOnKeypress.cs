@@ -24,7 +24,6 @@ public class EventOnKeypress : MonoBehaviour
         {
             if(playerControls.Regular.PrimaryWeapon.WasPerformedThisFrame())
             {
-                Debug.Log("YEEEAA");
                 OnKeyPress.Invoke();
             }
         }

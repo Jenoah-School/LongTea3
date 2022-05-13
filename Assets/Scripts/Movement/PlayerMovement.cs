@@ -7,13 +7,17 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Speed")]
-    [SerializeField] private float moveSpeed = 1f;
+    [SerializeField] private float accelerationSpeed = 60f;
+    [SerializeField] private float maximumSpeed = 10f;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField, Range(0f, 1f)] private float minRotationSpeed = 0.2f;
     [SerializeField] private float backwardsMultiplier = 0.5f;
     [SerializeField] private float maxRotationSpeed = 3f;
-    [SerializeField, Range(0f,1f)] private float driftDrag = 0.3f;
     [SerializeField] private bool isGrounded = false;
+
+    [Header("Drag")]
+    [SerializeField, Range(0f, 1f)] private float brakeDrag = .2f;
+    [SerializeField, Range(0f, 1f)] private float driftDrag = 0.3f;
 
     [Header("Grounded state")]
     [SerializeField] private Transform groundedTransform = null;
@@ -27,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private PlayerInput playerInput;
-    [SerializeField] private Transform centerOfMass;
 
     private Rigidbody rb = null;
 
@@ -39,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        if(centerOfMass) rb.centerOfMass = centerOfMass.localPosition;
     }
 
     public void UpdateMovementInput(InputAction.CallbackContext context)
@@ -68,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Rotate();
             Move();
-            RemoveDrift();
+            ApplyDrag();
         }
     }
 
@@ -102,13 +104,15 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection = moveDirection.sqrMagnitude > 1 ? moveDirection.normalized : moveDirection;
 
-        rb.velocity += moveSpeed * Time.fixedDeltaTime * moveDirection;
+        rb.velocity += accelerationSpeed * Time.fixedDeltaTime * moveDirection;
     }
 
-    private void RemoveDrift()
+    private void ApplyDrag()
     {
         Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
         localVelocity.x *= 1f - driftDrag;
+        localVelocity.z *= 1f - (brakeDrag * (movementInput == 0 ? 1f : 0f));
+        localVelocity.z = Mathf.Clamp(localVelocity.z, -maximumSpeed, maximumSpeed);
         rb.velocity = transform.TransformDirection(localVelocity);
     }
 

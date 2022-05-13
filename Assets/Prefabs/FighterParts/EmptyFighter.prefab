@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2333101089224913742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4412861838294635556}
+  m_Layer: 0
+  m_Name: GroundedCheckOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4412861838294635556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2333101089224913742}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2303582392232483765}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3836626037550774784
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,6 +112,7 @@ GameObject:
   - component: {fileID: 9115376806083636152}
   - component: {fileID: 2556934592488449388}
   - component: {fileID: 5637381278339306294}
+  - component: {fileID: -9172192976430678138}
   m_Layer: 0
   m_Name: EmptyFighter
   m_TagString: Fighter
@@ -101,6 +133,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3039886705176494698}
+  - {fileID: 4412861838294635556}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -132,9 +165,9 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5637381278339306294}
-        m_TargetAssemblyTypeName: Fighter, Assembly-CSharp
-        m_MethodName: ApplyMotorTorque
+      - m_Target: {fileID: -9172192976430678138}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: UpdateMovementInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -148,9 +181,9 @@ MonoBehaviour:
     m_ActionName: Regular/Movement[/DualShock4GamepadHID/leftStick,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5637381278339306294}
-        m_TargetAssemblyTypeName: Fighter, Assembly-CSharp
-        m_MethodName: ApplyWheelRotation
+      - m_Target: {fileID: -9172192976430678138}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: UpdateRotationInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -271,12 +304,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb737027fb87b04985069c0e31496af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheels: []
   primaryWeapon: {fileID: 0}
   secondaryWeapon: {fileID: 0}
   rb: {fileID: 2556934592488449388}
   body: {fileID: 0}
-  steerableWheels: []
-  motorWheels: []
-  steerSmoothing: 10
-  backwardsMultiplier: 2
+  playerMovement: {fileID: -9172192976430678138}
+--- !u!114 &-9172192976430678138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5880640649918137463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 214b19b8f43a9df409a673c756b3b1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  accelerationSpeed: 25
+  maximumSpeed: 10
+  rotationSpeed: 3
+  minRotationSpeed: 0.2
+  backwardsMultiplier: 0.5
+  maxRotationSpeed: 3
+  isGrounded: 1
+  brakeDrag: 0.1
+  driftDrag: 0.7
+  groundedTransform: {fileID: 4412861838294635556}
+  groundedCheckLength: 0.1
+  useWorldDirection: 1
+  groundedLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  inputSmoothing: 10
+  rotationSmoothing: 8
+  playerInput: {fileID: 9115376806083636152}

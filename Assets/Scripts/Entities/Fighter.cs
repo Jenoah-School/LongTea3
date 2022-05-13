@@ -7,20 +7,13 @@ using System.Linq;
 public class Fighter : MonoBehaviour
 {
     [Header("Vehicle")]
+    [SerializeField] private FighterWeapon primaryWeapon;
+    [SerializeField] private FighterWeapon secondaryWeapon;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private FighterBody body;
+    [SerializeField] private PlayerMovement playerMovement;
+
     private List<FighterPart> fighterParts = new List<FighterPart>();
-    [SerializeField] List<FighterWheels> wheels = new List<FighterWheels>();
-    [SerializeField] FighterWeapon primaryWeapon;
-    [SerializeField] FighterWeapon secondaryWeapon;
-    [SerializeField] Rigidbody rb;
-    [SerializeField] FighterBody body;
-
-    [Header("Driving")]
-    [SerializeField] List<FighterWheels> steerableWheels = new List<FighterWheels>();
-    [SerializeField] List<FighterWheels> motorWheels = new List<FighterWheels>();
-    [SerializeField] float steerSmoothing = 10f;
-    [SerializeField] float backwardsMultiplier = 0.5f;
-
-    private float targetSteeringAngle = 0f;
 
     public void AssembleFighterParts(FighterBody body, FighterWheels wheels, FighterWeapon primaryWeapon, FighterWeapon secondaryWeapon = null)
     {
@@ -35,9 +28,7 @@ public class Fighter : MonoBehaviour
             wheelsObject.transform.localPosition = bodyObject.GetWheelLocations().ElementAt(i).transform.position;
             wheelsObject.transform.localEulerAngles = bodyObject.GetWheelLocations().ElementAt(i).transform.eulerAngles;
             wheelsObject.name = $"Wheel {i}";
-            motorWheels.Add(wheelsObject);
-            if (wheelsObject.transform.localPosition.z > 0) steerableWheels.Add(wheelsObject);
-            this.wheels.Add(wheelsObject);
+
             fighterParts.Add(wheelsObject);
         }
 
@@ -110,19 +101,6 @@ public class Fighter : MonoBehaviour
         return totalHealth;
     }
 
-    public void ApplyMotorTorque(InputAction.CallbackContext context)
-    {
-        foreach (FighterWheels wheel in motorWheels)
-        {
-            wheel.wheelCollider.motorTorque = wheel.speed * Mathf.Max(-backwardsMultiplier, context.ReadValue<float>());
-        }
-    }
-
-    public void ApplyWheelRotation(InputAction.CallbackContext context)
-    {
-        targetSteeringAngle = steerableWheels[0].maxSteeringAngle * context.ReadValue<Vector2>().x;
-    }
-
     public void ExecutePrimary(InputAction.CallbackContext context)
     {
         if (context.action.WasPerformedThisFrame() && primaryWeapon != null)
@@ -136,23 +114,6 @@ public class Fighter : MonoBehaviour
         if (context.action.WasPerformedThisFrame() && secondaryWeapon != null)
         {
             secondaryWeapon.ActivateWeapon();
-        }
-    }
-
-    private void Update()
-    {
-        foreach (FighterWheels wheel in steerableWheels)
-        {
-            wheel.wheelCollider.steerAngle = Mathf.Lerp(wheel.wheelCollider.steerAngle, targetSteeringAngle, steerSmoothing * Time.deltaTime);
-        }
-
-        foreach (FighterWheels wheel in wheels)
-        {
-            if (wheel.wheelMesh != null && wheel.wheelCollider != null)
-            {
-                wheel.wheelCollider.GetWorldPose(out Vector3 wheelPosition, out Quaternion wheelRotation);
-                wheel.wheelMesh.transform.SetPositionAndRotation(wheelPosition, wheelRotation);
-            }
         }
     }
 

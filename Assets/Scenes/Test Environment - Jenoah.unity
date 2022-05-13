@@ -5400,7 +5400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90310cf269ae6e2409af87622d138d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerParent: {fileID: 1566668144}
   fighterParent: {fileID: 0}
   healthbars:
   - {fileID: 706344985}
@@ -5411,8 +5410,6 @@ MonoBehaviour:
   fighterPartSelections: []
   players: []
   controllerPrefab: {fileID: 3570653424592897648, guid: 3b1702cb2360ff249be54710dfed1796,
-    type: 3}
-  fighterPrefab: {fileID: 1784022586683437496, guid: 85c13e0a39f3e704ab318001aadb3621,
     type: 3}
   playerColors:
   - {r: 0.13725491, g: 0.9803922, b: 0.49411768, a: 1}
