@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class FighterWeapon : FighterPart, IWeapon
 {
     public int damage;
+    public int IFrameAmount;
     public enum WeaponLocations { FRONT, TOP }
     public WeaponLocations weaponLocation;
     public virtual void ActivateWeapon() { }

@@ -7,6 +7,7 @@ using System.Linq;
 public class Fighter : MonoBehaviour
 {
     [Header("Vehicle")]
+    private List<FighterPart> fighterParts = new List<FighterPart>();
     [SerializeField] List<FighterWheels> wheels = new List<FighterWheels>();
     [SerializeField] FighterWeapon primaryWeapon;
     [SerializeField] FighterWeapon secondaryWeapon;
@@ -26,6 +27,7 @@ public class Fighter : MonoBehaviour
         FighterBody bodyObject = Instantiate(body, transform);
         bodyObject.transform.localPosition = new Vector3(0, 0, 0);
         this.body = bodyObject;
+        fighterParts.Add(bodyObject);
 
         for (int i = 0; i < body.GetWheelLocations().Count; i++)
         {
@@ -36,6 +38,7 @@ public class Fighter : MonoBehaviour
             motorWheels.Add(wheelsObject);
             if (wheelsObject.transform.localPosition.z > 0) steerableWheels.Add(wheelsObject);
             this.wheels.Add(wheelsObject);
+            fighterParts.Add(wheelsObject);
         }
 
         FighterWeapon primaryWeaponObject = Instantiate(primaryWeapon, transform);
@@ -50,6 +53,7 @@ public class Fighter : MonoBehaviour
             primaryWeaponObject.transform.localEulerAngles = bodyObject.GetWeaponTopLocation().eulerAngles;
         }
         this.primaryWeapon = primaryWeaponObject;
+        fighterParts.Add(primaryWeaponObject);
 
         if (secondaryWeapon)
         {
@@ -65,6 +69,7 @@ public class Fighter : MonoBehaviour
                 secondaryWeaponObject.transform.localEulerAngles = bodyObject.GetWeaponTopLocation().eulerAngles;
             }
             this.secondaryWeapon = secondaryWeaponObject;
+            fighterParts.Add(secondaryWeaponObject);
         }
 
         if(this.body.GetCenterOfMass() != null)
@@ -73,6 +78,7 @@ public class Fighter : MonoBehaviour
         }
 
         IgnoreCollisionOnItself();
+        SetFighterPartRigidBodies();
     }
 
     private void IgnoreCollisionOnItself()
@@ -86,10 +92,18 @@ public class Fighter : MonoBehaviour
         }
     }
 
+    private void SetFighterPartRigidBodies()
+    {
+        foreach (FighterPart part in fighterParts)
+        {
+            part.SetReferenceRigidBody(rb);
+        }
+    }
+
     public float GetTotalPartHealth()
     {
         float totalHealth = 0;
-        foreach (FighterPart part in GetComponentsInChildren<FighterPart>())
+        foreach (FighterPart part in fighterParts)
         {
             totalHealth += part.healthPoints;
         }
