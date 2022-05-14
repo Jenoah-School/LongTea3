@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Lean.Pool;
 
 public class Flipper : FighterWeapon, IWeapon
 {
     [SerializeField] float flipForce;
     [SerializeField] GameObject flipper;
     [SerializeField] LayerMask flipperMask;
+    [SerializeField] GameObject hitParticles;
+    [SerializeField] AudioClip flipSound;
 
     bool isFlipping;
 
@@ -40,7 +43,9 @@ public class Flipper : FighterWeapon, IWeapon
                 {
                     Fighter otherFighter = hit.gameObject.transform.root.GetComponent<Fighter>();
                     otherFighter.GetComponent<Rigidbody>().AddForceAtPosition(hit.transform.InverseTransformPoint(flipper.transform.position), flipper.transform.forward * (flipForce * 500));
+                    if (hitParticles) LeanPool.Spawn(hitParticles, flipper.transform.position, Quaternion.Euler(-90f, 0, 0));
                     isFlipping = false;
+                    if (flipSound) otherFighter.GetComponent<AudioSource>().PlayOneShot(flipSound);
                 }
             }
         }

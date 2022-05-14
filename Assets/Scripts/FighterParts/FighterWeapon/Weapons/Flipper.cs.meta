@@ -3,7 +3,11 @@ guid: 76f2d55b46a87224db9583b5ae6a02f6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - damageText: {instanceID: 0}
+  - flipper: {instanceID: 0}
+  - hitParticles: {fileID: 3864607287636471426, guid: a9b91e67eef0053479032f65ac821ae8,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

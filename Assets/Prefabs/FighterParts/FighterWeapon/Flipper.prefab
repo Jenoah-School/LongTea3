@@ -155,6 +155,8 @@ MonoBehaviour:
   flipperMask:
     serializedVersion: 2
     m_Bits: 64
+  hitParticles: {fileID: 3864607287636471426, guid: a9b91e67eef0053479032f65ac821ae8,
+    type: 3}
 --- !u!1 &6896181074803485098
 GameObject:
   m_ObjectHideFlags: 0
