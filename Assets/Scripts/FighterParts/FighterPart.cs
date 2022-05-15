@@ -22,10 +22,9 @@ public class FighterPart : MonoBehaviour
     {
         healthPoints -= damage;
         GameObject damageTextObject = LeanPool.Spawn(damageText, hitPos, transform.rotation);
-        Debug.Log("Bruuuuh", gameObject);
         damageTextObject.GetComponent<TMPro.TextMeshPro>().alpha = 1;
-        //damageTextObject.GetComponent<TMPro.TextMeshPro>().text = damage.ToString();
-        damageTextObject.GetComponent<TMPro.TextMeshPro>().text = "Bruh";
+        damageTextObject.GetComponent<TMPro.TextMeshPro>().text = damage.ToString();
+        //damageTextObject.GetComponent<TMPro.TextMeshPro>().text = "Bruh";
         damageTextObject.transform.DOMoveY(transform.position.y + damageTextObject.transform.position.y + 2, 3);
         LeanPool.Despawn(damageTextObject, 3);
     }

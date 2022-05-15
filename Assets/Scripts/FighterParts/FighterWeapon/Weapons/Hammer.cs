@@ -22,6 +22,7 @@ public class Hammer : FighterWeapon, IWeapon
             float hammerTime = (100 / hammerForce) / 2;
             hammerSwingRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(90, 0, 0), hammerTime);
             isSwinging = true;
+            OnAttack.Invoke();
             StartCoroutine(ResetHammerWhenDone(hammerTime));
         }
     }

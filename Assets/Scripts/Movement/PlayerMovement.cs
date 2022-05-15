@@ -21,13 +21,17 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Grounded state")]
     [SerializeField] private Transform groundedTransform = null;
-    [SerializeField] private float groundedCheckLength = 0.1f;
-    [SerializeField] private bool useWorldDirection = true;
+    [SerializeField] private Vector3 groundedCheckBox = Vector3.one;
     [SerializeField] private LayerMask groundedLayers = Physics.AllLayers;
 
     [Header("Smoothing")]
     [SerializeField] private float inputSmoothing = 10f;
     [SerializeField] private float rotationSmoothing = 8f;
+
+    [Header("Audio")]
+    [SerializeField] private AnimationCurve volumeCurve;
+    [SerializeField] private AnimationCurve pitchCurve;
+    [SerializeField] private AudioSource engineAudioSource;
 
     [Header("References")]
     [SerializeField] private PlayerInput playerInput;
@@ -57,10 +61,16 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Vector2 moveInput = new Vector2(transform.forward.x, transform.forward.z);
-        float moveDot = Vector3.Dot(transform.forward, rb.velocity.normalized);
 
         float moveMultiplier = movementInput >= 0 ? movementInput : movementInput * backwardsMultiplier;
         movementVector = Vector2.Lerp(movementVector, moveInput * moveMultiplier, inputSmoothing * Time.deltaTime);
+
+        if (engineAudioSource)
+        {
+            float currentSpeed = rb.velocity.magnitude;
+            engineAudioSource.pitch = pitchCurve.Evaluate(currentSpeed / maximumSpeed);
+            engineAudioSource.volume = volumeCurve.Evaluate(currentSpeed / maximumSpeed);
+        }
         //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSmoothing * Time.deltaTime);
     }
 
@@ -118,8 +128,16 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsGrounded()
     {
-        isGrounded = Physics.Raycast(groundedTransform.position, useWorldDirection ? Vector3.down : -groundedTransform.up, groundedCheckLength, groundedLayers);
+        isGrounded = Physics.CheckBox(groundedTransform.position, groundedCheckBox / 2, transform.rotation, groundedLayers);
         return isGrounded;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Matrix4x4 rotationMatrix = Matrix4x4.TRS(groundedTransform.position, transform.rotation, transform.lossyScale);
+        Gizmos.matrix = rotationMatrix;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(Vector3.zero, groundedCheckBox);
     }
 }
 

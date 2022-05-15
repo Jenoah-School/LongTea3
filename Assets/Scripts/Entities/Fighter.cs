@@ -63,13 +63,27 @@ public class Fighter : MonoBehaviour
             fighterParts.Add(secondaryWeaponObject);
         }
 
-        if(this.body.GetCenterOfMass() != null)
-        {
-            rb.centerOfMass = rb.transform.InverseTransformPoint(this.body.GetCenterOfMass().localPosition);
-        }
+    }
 
+    public void PostAssemblyStart()
+    {
+        GetPartReferences();
         IgnoreCollisionOnItself();
         SetFighterPartRigidBodies();
+        SetCenterOfMass();
+    }
+
+    private void GetPartReferences()
+    {
+        fighterParts.AddRange(GetComponentsInChildren<FighterPart>());
+    }
+
+    private void SetCenterOfMass()
+    {
+        if (body.GetCenterOfMass() != null)
+        {
+            rb.centerOfMass = body.GetCenterOfMass().localPosition;
+        }
     }
 
     private void IgnoreCollisionOnItself()
@@ -119,10 +133,10 @@ public class Fighter : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (rb != null && body != null)
+        if (rb != null)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(rb.position + body.GetCenterOfMass().localPosition, 0.2f);
+            Gizmos.DrawSphere(rb.position + rb.centerOfMass, 0.2f);
         }
     }
 }

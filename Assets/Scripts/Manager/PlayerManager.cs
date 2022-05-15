@@ -181,6 +181,7 @@ public class PlayerManager : MonoBehaviour
         }
         Destroy(fighterGameObject);
         fighterInput.SwitchCurrentControlScheme(controlScheme, playerInputDevices[0]);
+        fighterInput.GetComponent<Fighter>().PostAssemblyStart();
 
         fighterObject.name = $"Fighter {playerID}";
         fighterObject.transform.SetParent(fighterParent);

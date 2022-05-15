@@ -10,7 +10,6 @@ public class Flipper : FighterWeapon, IWeapon
     [SerializeField] GameObject flipper;
     [SerializeField] LayerMask flipperMask;
     [SerializeField] GameObject hitParticles;
-    [SerializeField] AudioClip flipSound;
 
     bool isFlipping;
 
@@ -23,13 +22,14 @@ public class Flipper : FighterWeapon, IWeapon
             float flipTime = 10 / flipForce;
             flipperFlipRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(-90, 0, 0), flipTime);
             isFlipping = true;
+            OnAttack.Invoke();
             StartCoroutine(ResetFlipperWhenDone(flipTime));
         }
     }
 
     private void Update()
     {
-        if(isFlipping) CheckCollision();
+        if (isFlipping) CheckCollision();
     }
 
     public override void CheckCollision()
@@ -45,7 +45,6 @@ public class Flipper : FighterWeapon, IWeapon
                     otherFighter.GetComponent<Rigidbody>().AddForceAtPosition(hit.transform.InverseTransformPoint(flipper.transform.position), flipper.transform.forward * (flipForce * 500));
                     if (hitParticles) LeanPool.Spawn(hitParticles, flipper.transform.position, Quaternion.Euler(-90f, 0, 0));
                     isFlipping = false;
-                    if (flipSound) otherFighter.GetComponent<AudioSource>().PlayOneShot(flipSound);
                 }
             }
         }
