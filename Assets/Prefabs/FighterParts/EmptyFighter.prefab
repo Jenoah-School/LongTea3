@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: -9172192976430678138}
   - component: {fileID: 8861937715703117127}
   - component: {fileID: 67427789764291886}
+  - component: {fileID: 4004338858088698128}
   m_Layer: 0
   m_Name: EmptyFighter
   m_TagString: Fighter
@@ -484,3 +485,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4004338858088698128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5880640649918137463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b492235265c73345b32ef9cb4472c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flipInitiationTime: 2
+  flipThreshold: 0.25
+  rotateTime: 0.15
+  OnFlip:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 67427789764291886}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 8137228d9efb737479472401fb89a890,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  particlesOnFlip: {fileID: 4324984127352915482, guid: a9b91e67eef0053479032f65ac821ae8,
+    type: 3}
