@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private List<PlayerJoinView> playerJoinViews = new List<PlayerJoinView>();
     [SerializeField] private List<FighterPartSelection> fighterPartSelections = new List<FighterPartSelection>();
     [SerializeField] private List<PlayerInput> players = new List<PlayerInput>();
+    [SerializeField] private List<Fighter> fighters = new List<Fighter>();
 
     [Header("Player settings")]
     [SerializeField] private GameObject controllerPrefab = null;
@@ -85,6 +86,14 @@ public class PlayerManager : MonoBehaviour
 
         OnPlayerJoin.Invoke();
         Debug.Log($"Player with ID {playerID} succesfully spawned");
+    }
+
+    public void SetMoveStates(bool newMoveStates)
+    {
+        foreach(Fighter fighter in fighters)
+        {
+            fighter.GetComponent<PlayerMovement>().SetMoveState(newMoveStates);
+        }
     }
 
     public void StopListeningForInput()
@@ -175,13 +184,15 @@ public class PlayerManager : MonoBehaviour
         
         PlayerInput fighterInput = PlayerInput.Instantiate(fighterGameObject, -1, controlScheme, -1, playerInputDevices[0]);
         GameObject fighterObject = fighterInput.gameObject;
+        Fighter fighter = fighterInput.GetComponent<Fighter>();
+        fighters.Add(fighter);
         if (spawnPoints.Count > 0)
         {
             fighterObject.transform.SetPositionAndRotation(spawnPoints[playerID % spawnPoints.Count].transform.position, spawnPoints[playerID % spawnPoints.Count].transform.rotation);
         }
         Destroy(fighterGameObject);
         fighterInput.SwitchCurrentControlScheme(controlScheme, playerInputDevices[0]);
-        fighterInput.GetComponent<Fighter>().PostAssemblyStart();
+        fighter.PostAssemblyStart();
 
         fighterObject.name = $"Fighter {playerID}";
         fighterObject.transform.SetParent(fighterParent);

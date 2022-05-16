@@ -9,10 +9,15 @@ public class Countdown : MonoBehaviour
     [SerializeField] private TMPro.TextMeshProUGUI textLabel;
     [SerializeField] private UnityEvent OnChangeSecond = null;
     [SerializeField] private UnityEvent OnCountdownFinish = null;
+    [SerializeField] private bool startOnInit;
 
     private float currentTimeLeft = 0;
     private int previousSecond = 0;
 
+    private void Start()
+    {
+        if (startOnInit) StartCountdown();
+    }
 
     public void StartCountdown()
     {

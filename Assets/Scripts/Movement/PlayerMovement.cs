@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private bool canMove = true;
 
     private Rigidbody rb = null;
 
@@ -76,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (IsGrounded())
+        if (IsGrounded() && canMove)
         {
             Rotate();
             Move();
@@ -130,6 +131,11 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics.CheckBox(groundedTransform.position, groundedCheckBox / 2, transform.rotation, groundedLayers);
         return isGrounded;
+    }
+
+    public void SetMoveState(bool newMoveState)
+    {
+        canMove = newMoveState;
     }
 
     private void OnDrawGizmosSelected()
