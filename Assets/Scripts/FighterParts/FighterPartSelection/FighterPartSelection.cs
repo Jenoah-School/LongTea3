@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class FighterPartSelection : MonoBehaviour
 {
@@ -11,12 +12,15 @@ public class FighterPartSelection : MonoBehaviour
     [SerializeField] private List<FighterWeaponInformation> fighterWeapons = new List<FighterWeaponInformation>();
     [SerializeField] private List<FighterPowerupInformation> fighterPowerups = new List<FighterPowerupInformation>();
 
-    public int currentBodyIndex = 0;
-    public int currentWeaponIndex = 0;
-    public int currentPowerupIndex = 0;
+    public int currentBodyID = 0;
+    public int currentWeaponID = 0;
+    public int currentPowerupID = 0;
+
+    private int currentBodyIndex;
+    private int currentWeaponIndex;
+    private int currentPowerupIndex;
 
     [Header("Body references")]
-    [SerializeField] private Image bodyPreviewImage = null;
     [SerializeField] private Image hpBar = null;
     [SerializeField] private Image attackBar = null;
     [SerializeField] private Image defenseBar = null;
@@ -24,17 +28,18 @@ public class FighterPartSelection : MonoBehaviour
     [SerializeField] private TextMeshProUGUI weightString = null;
 
     [Header("Weapon references")]
-    [SerializeField] private Image weaponPreviewImage = null;
     [SerializeField] private Image weaponSecondaryPreviewImage = null;
     [SerializeField] private TextMeshProUGUI weaponNameField = null;
     [SerializeField] private Image damageBar = null;
     [SerializeField] private Image rangeBar = null;
 
     [Header("Powerup references")]
-    [SerializeField] private Image powerupPreviewImage = null;
     [SerializeField] private Image powerupSecondaryPreviewImage = null;
     [SerializeField] private TextMeshProUGUI powerupNameField = null;
     [SerializeField] private TextMeshProUGUI powerupDescriptionField = null;
+
+    [Header("Events")]
+    [SerializeField] private UnityEvent OnChangePart = new UnityEvent();
 
     private float maxAvailableHP = 0;
     private float maxAvailableAttack = 0;
@@ -71,23 +76,25 @@ public class FighterPartSelection : MonoBehaviour
     {
         currentBodyIndex = index;
         FighterBodyInformation fighterBody = fighterBodies[currentBodyIndex];
-        bodyPreviewImage.sprite = fighterBody.previewImage;
+        currentBodyID = fighterBody.partID;
 
         hpBar.DOFillAmount(1f / maxAvailableHP * fighterBody.hp, 0.1f);
         attackBar.DOFillAmount(1f / maxAvailableAttack * fighterBody.attack, 0.1f);
         defenseBar.DOFillAmount(1f / maxAvailableDefense * fighterBody.defense, 0.1f);
         speedBar.DOFillAmount(1f / maxAvailableSpeed * fighterBody.speed, 0.1f);
         weightString.text = $"Weight: {fighterBody.weight}";
+
+        OnChangePart.Invoke();
     }
 
     public void SelectNextBody()
     {
-        ChangeBody((currentBodyIndex + 1) % fighterBodies.Count);
+        ChangeBody((currentBodyID + 1) % fighterBodies.Count);
     }
 
     public void SelectPreviousBody()
     {
-        ChangeBody(currentBodyIndex - 1 >= 0 ? currentBodyIndex - 1 : fighterBodies.Count - 1);
+        ChangeBody(currentBodyID - 1 >= 0 ? currentBodyID - 1 : fighterBodies.Count - 1);
     }
 
     #endregion
@@ -97,22 +104,24 @@ public class FighterPartSelection : MonoBehaviour
     {
         currentWeaponIndex = index;
         FighterWeaponInformation fighterWeapon = fighterWeapons[currentWeaponIndex];
-        weaponPreviewImage.sprite = fighterWeapon.previewImage;
+        currentWeaponID = fighterWeapon.partID;
         if (weaponSecondaryPreviewImage) weaponSecondaryPreviewImage.sprite = fighterWeapon.previewImage;
         weaponNameField.text = fighterWeapon.weaponName;
 
         damageBar.DOFillAmount(1f / maxWeaponDamage * fighterWeapon.damage, 0.1f);
         rangeBar.DOFillAmount(1f / maxWeaponRange * fighterWeapon.range, 0.1f);
+
+        OnChangePart.Invoke();
     }
 
     public void SelectNextWeapon()
     {
-        ChangeWeapon((currentWeaponIndex + 1) % fighterWeapons.Count);
+        ChangeWeapon((currentWeaponID + 1) % fighterWeapons.Count);
     }
 
     public void SelectPreviousWeapon()
     {
-        ChangeWeapon(currentWeaponIndex - 1 >= 0 ? currentWeaponIndex - 1 : fighterWeapons.Count - 1);
+        ChangeWeapon(currentWeaponID - 1 >= 0 ? currentWeaponID - 1 : fighterWeapons.Count - 1);
     }
 
     #endregion
@@ -122,21 +131,23 @@ public class FighterPartSelection : MonoBehaviour
     {
         currentPowerupIndex = index;
         FighterPowerupInformation fighterPowerup = fighterPowerups[currentPowerupIndex];
-        powerupPreviewImage.sprite = fighterPowerup.previewImage;
+        currentPowerupID = fighterPowerup.partID;
         if (powerupSecondaryPreviewImage) powerupSecondaryPreviewImage.sprite = fighterPowerup.previewImage;
 
         powerupNameField.text = fighterPowerup.powerupName;
         powerupDescriptionField.text = fighterPowerup.powerupDescription;
+
+        OnChangePart.Invoke();
     }
 
     public void SelectNextPowerup()
     {
-        ChangePowerup((currentPowerupIndex + 1) % fighterPowerups.Count);
+        ChangePowerup((currentPowerupID + 1) % fighterPowerups.Count);
     }
 
     public void SelectPreviousPowerup()
     {
-        ChangePowerup(currentPowerupIndex - 1 >= 0 ? currentPowerupIndex - 1 : fighterPowerups.Count - 1);
+        ChangePowerup(currentPowerupID - 1 >= 0 ? currentPowerupID - 1 : fighterPowerups.Count - 1);
     }
 
     #endregion

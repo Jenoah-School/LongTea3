@@ -5,14 +5,15 @@ using UnityEngine.InputSystem;
 
 public class FighterCreator : MonoBehaviour
 {
-    [SerializeField] private GameObject emptyFighter;
+    public GameObject emptyFighter;
 
-    [SerializeField] private List<FighterBody> fighterBodies = new List<FighterBody>();
-    [SerializeField] private List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
+    public List<FighterBody> fighterBodies = new List<FighterBody>();
+    public List<FighterWheels> fighterWheels = new List<FighterWheels>();
+    public List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
     [SerializeField] private bool spawnOnInitialisation = true;
     public static FighterCreator singleton;
 
-    private void Start()
+    private void Awake()
     {
         DontDestroyOnLoad(this);
         Fighter fighter;

@@ -10,6 +10,7 @@ public class Hammer : FighterWeapon, IWeapon
     [SerializeField] float hammerLaunchForceMultiplier;
     [SerializeField] GameObject hammerTip;
     [SerializeField] LayerMask hammerTipMask;
+    [SerializeField] LayerMask collidableLayers = Physics.AllLayers;
 
     bool isSwinging;
 
@@ -41,10 +42,10 @@ public class Hammer : FighterWeapon, IWeapon
         {
             if (childCollider.gameObject != hammerTip.gameObject)
             {
-                hits.AddRange(Physics.OverlapBox(childCollider.transform.position, childCollider.transform.lossyScale / 2, childCollider.transform.rotation, Physics.AllLayers, QueryTriggerInteraction.Collide).ToList());
+                hits.AddRange(Physics.OverlapBox(childCollider.transform.position, childCollider.transform.lossyScale / 2, childCollider.transform.rotation, collidableLayers, QueryTriggerInteraction.Collide).ToList());
             }
         }
-        tipHits.AddRange(Physics.OverlapBox(hammerTip.transform.position, hammerTip.transform.lossyScale / 2, hammerTip.transform.rotation, Physics.AllLayers, QueryTriggerInteraction.Collide).ToList());
+        tipHits.AddRange(Physics.OverlapBox(hammerTip.transform.position, hammerTip.transform.lossyScale / 2, hammerTip.transform.rotation, collidableLayers, QueryTriggerInteraction.Collide).ToList());
 
         if (hits.Count > 0)
         {

@@ -175,7 +175,7 @@ public class PlayerManager : MonoBehaviour
         GameObject fighterGameObject;
         if(fighterPartSelections.Count > playerID && fighterPartSelections[playerID] != null)
         {
-            fighterGameObject = FighterCreator.singleton.CreateNewFighter(fighterPartSelections[playerID].currentBodyIndex, fighterPartSelections[playerID].currentWeaponIndex, fighterPartSelections[playerID].currentPowerupIndex).gameObject;
+            fighterGameObject = FighterCreator.singleton.CreateNewFighter(fighterPartSelections[playerID].currentBodyID, fighterPartSelections[playerID].currentWeaponID, fighterPartSelections[playerID].currentPowerupID).gameObject;
         }
         else
         {

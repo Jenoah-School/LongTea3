@@ -75,6 +75,9 @@ MonoBehaviour:
   hammerTipMask:
     serializedVersion: 2
     m_Bits: 8
+  collidableLayers:
+    serializedVersion: 2
+    m_Bits: 251
 --- !u!82 &3053562625235015419
 AudioSource:
   m_ObjectHideFlags: 0

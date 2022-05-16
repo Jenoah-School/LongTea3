@@ -24,16 +24,16 @@ public class Fighter : MonoBehaviour
         for(int i = 0; i < weapons.Count; i++)
         {
             FighterWeapon weapon = Instantiate(weapons[i], transform);
-            weapon.transform.position = bodyObject.GetWeaponLocation(weapon.weaponLocation).position;
-            weapon.transform.localEulerAngles = bodyObject.GetWeaponLocation(weapon.weaponLocation).eulerAngles;
+            weapon.transform.localPosition = bodyObject.GetWeaponLocation(weapon.weaponLocation).localPosition;
+            weapon.transform.localEulerAngles = bodyObject.GetWeaponLocation(weapon.weaponLocation).localEulerAngles;
             weapon.weaponOrder = (FighterWeapon.WeaponOrder)i;
             fighterWeapons.Add(weapon);
 
             if (weapons[i].isPair)
             {             
                 FighterWeapon weapon2 = Instantiate(weapons[i], transform);
-                weapon2.transform.position = bodyObject.GetWeaponRightSideLocation().position;
-                weapon2.transform.localEulerAngles = bodyObject.GetWeaponRightSideLocation().eulerAngles;
+                weapon2.transform.localPosition = bodyObject.GetWeaponRightSideLocation().localPosition;
+                weapon2.transform.localEulerAngles = bodyObject.GetWeaponRightSideLocation().localEulerAngles;
                 weapon2.weaponOrder = (FighterWeapon.WeaponOrder)i;
                 fighterWeapons.Add(weapon2);
             }
@@ -57,7 +57,7 @@ public class Fighter : MonoBehaviour
 
     private void SetCenterOfMass()
     {
-        if (body.GetCenterOfMass() != null)
+        if (rb != null && body.GetCenterOfMass() != null)
         {
             rb.centerOfMass = body.GetCenterOfMass().localPosition;
         }

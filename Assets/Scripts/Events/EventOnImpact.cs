@@ -20,7 +20,6 @@ public class EventOnImpact : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         bool isInBounds = IsInside(collision.contacts[0].point, checkCollider);
-        Debug.Log($"Bounds is {isInBounds} inside");
 
         if (Time.time >= nextImpactTime && collision.relativeVelocity.magnitude > minimumImpactSpeed && (!ignoreBounds || isInBounds))
         {
