@@ -25,7 +25,8 @@ public class SceneSwitcher : MonoBehaviour
 
     private IEnumerator SwitchWithFade(int buildIndex)
     {
-        fadeAnimator.SetTrigger("FadeIn");
+        fadeAnimator.StopPlayback();
+        fadeAnimator.Play("FadeIn");
         yield return new WaitForSecondsRealtime(fadeDuration);
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync(buildIndex, LoadSceneMode.Single);
@@ -33,7 +34,8 @@ public class SceneSwitcher : MonoBehaviour
 
     private IEnumerator SwitchWithFade(string sceneName)
     {
-        fadeAnimator.SetTrigger("FadeIn");
+        fadeAnimator.StopPlayback();
+        fadeAnimator.Play("FadeIn");
         yield return new WaitForSecondsRealtime(fadeDuration);
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync(SceneManager.GetSceneByName(sceneName).buildIndex, LoadSceneMode.Single);

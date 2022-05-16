@@ -2081,7 +2081,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1594235457}
         m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
-        m_MethodName: InstantSwitch
+        m_MethodName: SwitchScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2091,6 +2091,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  startOnInit: 0
 --- !u!114 &63755831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11276,6 +11277,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704844814}
   m_CullTransparentMesh: 1
+--- !u!1 &708579556 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1177021443344445437, guid: 0a0f0cc1a5c57a949a537d978a184767,
+    type: 3}
+  m_PrefabInstance: {fileID: 1177021443923320909}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &723716208
 GameObject:
   m_ObjectHideFlags: 0
@@ -21360,7 +21367,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90310cf269ae6e2409af87622d138d43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerParent: {fileID: 1274748866}
   fighterParent: {fileID: 0}
   healthbars: []
   playerJoinViews:
@@ -21374,9 +21380,8 @@ MonoBehaviour:
   - {fileID: 1362784668}
   - {fileID: 63416251}
   players: []
+  fighters: []
   controllerPrefab: {fileID: 3570653424592897648, guid: 3b1702cb2360ff249be54710dfed1796,
-    type: 3}
-  fighterPrefab: {fileID: 1784022586683437496, guid: 85c13e0a39f3e704ab318001aadb3621,
     type: 3}
   playerColors:
   - {r: 0.4, g: 0.75686276, b: 0.3019608, a: 1}
@@ -21422,18 +21427,6 @@ MonoBehaviour:
   onAllPlayersReady:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
       - m_Target: {fileID: 63755828}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -21461,18 +21454,6 @@ MonoBehaviour:
   onPlayersUnready:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 63755830}
         m_TargetAssemblyTypeName: Countdown, Assembly-CSharp
         m_MethodName: StopCountdown
@@ -27390,6 +27371,30 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 708579556}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1568739249}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: FadeIn
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1594235458
 MonoBehaviour:
