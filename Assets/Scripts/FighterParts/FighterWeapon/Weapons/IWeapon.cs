@@ -1,5 +1,5 @@
 public interface IWeapon
 {
-    void ActivateWeapon();
-    void CheckCollision();
+    public void ActivateWeapon();
+    public void CheckCollision();
 }

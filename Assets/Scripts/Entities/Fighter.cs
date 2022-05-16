@@ -7,62 +7,39 @@ using System.Linq;
 public class Fighter : MonoBehaviour
 {
     [Header("Vehicle")]
-    [SerializeField] private FighterWeapon primaryWeapon;
-    [SerializeField] private FighterWeapon secondaryWeapon;
+    [SerializeField] private List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
     [SerializeField] private Rigidbody rb;
     [SerializeField] private FighterBody body;
     [SerializeField] private PlayerMovement playerMovement;
 
     private List<FighterPart> fighterParts = new List<FighterPart>();
 
-    public void AssembleFighterParts(FighterBody body, FighterWheels wheels, FighterWeapon primaryWeapon, FighterWeapon secondaryWeapon = null)
+    public void AssembleFighterParts(FighterBody body, List<FighterWeapon> weapons)
     {
         FighterBody bodyObject = Instantiate(body, transform);
         bodyObject.transform.localPosition = new Vector3(0, 0, 0);
         this.body = bodyObject;
         fighterParts.Add(bodyObject);
 
-        for (int i = 0; i < body.GetWheelLocations().Count; i++)
+        for(int i = 0; i < weapons.Count; i++)
         {
-            FighterWheels wheelsObject = Instantiate(wheels, transform);
-            wheelsObject.transform.localPosition = bodyObject.GetWheelLocations().ElementAt(i).transform.position;
-            wheelsObject.transform.localEulerAngles = bodyObject.GetWheelLocations().ElementAt(i).transform.eulerAngles;
-            wheelsObject.name = $"Wheel {i}";
+            FighterWeapon weapon = Instantiate(weapons[i], transform);
+            weapon.transform.position = bodyObject.GetWeaponLocation(weapon.weaponLocation).position;
+            weapon.transform.localEulerAngles = bodyObject.GetWeaponLocation(weapon.weaponLocation).eulerAngles;
+            weapon.weaponOrder = (FighterWeapon.WeaponOrder)i;
+            fighterWeapons.Add(weapon);
 
-            fighterParts.Add(wheelsObject);
-        }
-
-        FighterWeapon primaryWeaponObject = Instantiate(primaryWeapon, transform);
-        if (primaryWeaponObject.weaponLocation == FighterWeapon.WeaponLocations.FRONT)
-        {
-            primaryWeaponObject.transform.localPosition = bodyObject.GetWeaponFrontLocation().position;
-            primaryWeaponObject.transform.localEulerAngles = bodyObject.GetWeaponFrontLocation().eulerAngles;
-        }
-        else
-        {
-            primaryWeaponObject.transform.localPosition = bodyObject.GetWeaponTopLocation().position;
-            primaryWeaponObject.transform.localEulerAngles = bodyObject.GetWeaponTopLocation().eulerAngles;
-        }
-        this.primaryWeapon = primaryWeaponObject;
-        fighterParts.Add(primaryWeaponObject);
-
-        if (secondaryWeapon)
-        {
-            FighterWeapon secondaryWeaponObject = Instantiate(secondaryWeapon, transform);
-            if (secondaryWeaponObject.weaponLocation == FighterWeapon.WeaponLocations.FRONT)
-            {
-                secondaryWeaponObject.transform.localPosition = bodyObject.GetWeaponFrontLocation().position;
-                secondaryWeaponObject.transform.localEulerAngles = bodyObject.GetWeaponFrontLocation().eulerAngles;
+            if (weapons[i].isPair)
+            {             
+                FighterWeapon weapon2 = Instantiate(weapons[i], transform);
+                weapon2.transform.position = bodyObject.GetWeaponRightSideLocation().position;
+                weapon2.transform.localEulerAngles = bodyObject.GetWeaponRightSideLocation().eulerAngles;
+                weapon2.weaponOrder = (FighterWeapon.WeaponOrder)i;
+                fighterWeapons.Add(weapon2);
             }
-            else
-            {
-                secondaryWeaponObject.transform.localPosition = bodyObject.GetWeaponTopLocation().position;
-                secondaryWeaponObject.transform.localEulerAngles = bodyObject.GetWeaponTopLocation().eulerAngles;
-            }
-            this.secondaryWeapon = secondaryWeaponObject;
-            fighterParts.Add(secondaryWeaponObject);
-        }
-
+        }        
+        
+        PostAssemblyStart();
     }
 
     public void PostAssemblyStart()
@@ -117,17 +94,29 @@ public class Fighter : MonoBehaviour
 
     public void ExecutePrimary(InputAction.CallbackContext context)
     {
-        if (context.action.WasPerformedThisFrame() && primaryWeapon != null)
+        if (context.action.WasPerformedThisFrame())
         {
-            primaryWeapon.ActivateWeapon();
+            foreach(FighterWeapon weapon in fighterWeapons)
+            {
+                if(weapon.weaponOrder == FighterWeapon.WeaponOrder.PRIMARY)
+                {
+                    weapon.ActivateWeapon();
+                }
+            }
         }
     }
 
     public void ExecuteSecondary(InputAction.CallbackContext context)
     {
-        if (context.action.WasPerformedThisFrame() && secondaryWeapon != null)
+        if (context.action.WasPerformedThisFrame())
         {
-            secondaryWeapon.ActivateWeapon();
+            foreach (FighterWeapon weapon in fighterWeapons)
+            {
+                if (weapon.weaponOrder == FighterWeapon.WeaponOrder.SECONDARY)
+                {
+                    weapon.ActivateWeapon();
+                }
+            }
         }
     }
 

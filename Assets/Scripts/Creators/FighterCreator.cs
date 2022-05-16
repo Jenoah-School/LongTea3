@@ -8,7 +8,6 @@ public class FighterCreator : MonoBehaviour
     [SerializeField] private GameObject emptyFighter;
 
     [SerializeField] private List<FighterBody> fighterBodies = new List<FighterBody>();
-    [SerializeField] private List<FighterWheels> fighterWheels = new List<FighterWheels>();
     [SerializeField] private List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
     [SerializeField] private bool spawnOnInitialisation = true;
     public static FighterCreator singleton;
@@ -17,7 +16,7 @@ public class FighterCreator : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         Fighter fighter;
-        if(spawnOnInitialisation) fighter = CreateNewFighter(0,0,1,0);
+        if(spawnOnInitialisation) fighter = CreateNewFighter(0,0,2);
         if(singleton == null)
         {
             singleton = this;
@@ -29,19 +28,11 @@ public class FighterCreator : MonoBehaviour
         }
     }
 
-    public Fighter CreateNewFighter(int bodyIndex, int wheelIndex, int weaponIndex)
+    public Fighter CreateNewFighter(int bodyIndex, int weapon1Index, int weapon2Index)
     {
         GameObject fighterObject = Instantiate(emptyFighter);
         Fighter fighter = fighterObject.GetComponent<Fighter>();
-        fighter.AssembleFighterParts(fighterBodies[bodyIndex], fighterWheels[wheelIndex], fighterWeapons[weaponIndex]);
-        return fighter;
-    }
-
-    public Fighter CreateNewFighter(int bodyIndex, int wheelIndex, int weapon1Index, int weapon2Index)
-    {
-        GameObject fighterObject = Instantiate(emptyFighter);
-        Fighter fighter = fighterObject.GetComponent<Fighter>();
-        fighter.AssembleFighterParts(fighterBodies[bodyIndex], fighterWheels[wheelIndex], fighterWeapons[weapon1Index], fighterWeapons[weapon2Index]);
+        fighter.AssembleFighterParts(fighterBodies[bodyIndex], new List<FighterWeapon>() { fighterWeapons[weapon1Index], fighterWeapons[weapon2Index] });
         return fighter;
     }
 }

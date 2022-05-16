@@ -166,11 +166,11 @@ public class PlayerManager : MonoBehaviour
         GameObject fighterGameObject;
         if(fighterPartSelections.Count > playerID && fighterPartSelections[playerID] != null)
         {
-            fighterGameObject = FighterCreator.singleton.CreateNewFighter(fighterPartSelections[playerID].currentBodyIndex, 0, fighterPartSelections[playerID].currentWeaponIndex, fighterPartSelections[playerID].currentPowerupIndex).gameObject;
+            fighterGameObject = FighterCreator.singleton.CreateNewFighter(fighterPartSelections[playerID].currentBodyIndex, fighterPartSelections[playerID].currentWeaponIndex, fighterPartSelections[playerID].currentPowerupIndex).gameObject;
         }
         else
         {
-            fighterGameObject = FighterCreator.singleton.CreateNewFighter(0, 0, 0, 1).gameObject;
+            fighterGameObject = FighterCreator.singleton.CreateNewFighter(0, 0, 1).gameObject;
         }
         
         PlayerInput fighterInput = PlayerInput.Instantiate(fighterGameObject, -1, controlScheme, -1, playerInputDevices[0]);

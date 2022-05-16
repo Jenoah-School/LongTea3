@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class FighterBody : FighterPart
 {
-    [SerializeField] List<Transform> wheelLocations = new List<Transform>();
     [SerializeField] Transform weaponLocationFront;
     [SerializeField] Transform weaponLocationTop;
+    [SerializeField] Transform weaponLocationSideLeft;
+    [SerializeField] Transform weaponLocationSideRight;
     [SerializeField] Transform centerOfMass;
 
     public Transform GetCenterOfMass()
@@ -14,18 +15,40 @@ public class FighterBody : FighterPart
         return centerOfMass;
     }
 
-    public List<Transform> GetWheelLocations()
-    {
-        return wheelLocations;
-    }
-
-    public Transform GetWeaponFrontLocation()
+    private Transform GetWeaponFrontLocation()
     {
         return weaponLocationFront;
     }
 
-    public Transform GetWeaponTopLocation()
+    private Transform GetWeaponTopLocation()
     {
         return weaponLocationTop;
+    }
+
+    private Transform GetWeaponLeftSideLocation()
+    {
+        return weaponLocationSideLeft;
+    }
+
+    public Transform GetWeaponRightSideLocation()
+    {
+        return weaponLocationSideRight;
+    }
+
+    public Transform GetWeaponLocation(FighterWeapon.WeaponLocations location)
+    {
+        if(location == FighterWeapon.WeaponLocations.FRONT)
+        {
+            return GetWeaponFrontLocation();
+        }
+        if (location == FighterWeapon.WeaponLocations.TOP)
+        {
+            return GetWeaponTopLocation();
+        }
+        if (location == FighterWeapon.WeaponLocations.SIDE)
+        {
+            return GetWeaponLeftSideLocation();
+        }
+        return null;
     }
 }
