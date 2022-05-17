@@ -9,12 +9,15 @@ public class FighterPart : MonoBehaviour
 {
     public float healthPoints;
     public float weight;
+
+    protected Fighter fighterRoot;
     protected Rigidbody fighterRigidBody;
 
     [SerializeField] protected GameObject damageText;
  
-    public void SetReferenceRigidBody(Rigidbody rb)
+    public void SetReferences(Fighter fighter, Rigidbody rb)
     {
+        fighterRoot = fighter;
         fighterRigidBody = rb;
     }
 

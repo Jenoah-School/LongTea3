@@ -10,9 +10,9 @@ public abstract class FighterWeapon : FighterPart, IWeapon
 
     [HideInInspector] public WeaponOrder weaponOrder;
 
+    public int damage;
     public bool isPair;
     public WeaponLocations weaponLocation;
-    public int damage;
     public UnityEvent OnAttack;
 
     public virtual void ActivateWeapon() { }
