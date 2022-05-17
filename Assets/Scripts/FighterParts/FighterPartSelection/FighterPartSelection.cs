@@ -138,7 +138,6 @@ public class FighterPartSelection : MonoBehaviour
         powerupDescriptionField.text = fighterPowerup.powerupDescription;
 
         OnChangePart.Invoke();
-        Debug.Log($"Changing powerup to {currentPowerupIndex}");
     }
 
     public void SelectNextPowerup()

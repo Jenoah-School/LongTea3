@@ -38,10 +38,21 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private UnityEvent onPlayersUnready = null;
 
     public static PlayerManager singleton;
+    [SerializeField] private List<FighterInfo> fighterInfos = new List<FighterInfo>();
+
 
     private void Start()
     {
         DontDestroyOnLoad(this);
+
+        for (int i = 0; i < fighterPartSelections.Count; i++)
+        {
+            FighterInfo fighterInfo = new FighterInfo
+            {
+                playerID = i
+            };
+            fighterInfos.Add(fighterInfo);
+        }
 
         if (singleton == null)
         {
@@ -71,6 +82,19 @@ public class PlayerManager : MonoBehaviour
 
         SpawnNewPlayer();
     };
+    }
+
+    public void SafePlayerInfo()
+    {
+        for (int i = 0; i < fighterInfos.Count; i++)
+        {
+            FighterInfo fighterInfo = fighterInfos[i];
+            fighterInfo.bodyID = fighterPartSelections[i].currentBodyID;
+            fighterInfo.weaponID = fighterPartSelections[i].currentWeaponID;
+            fighterInfo.powerupID = fighterPartSelections[i].currentPowerupID;
+
+            fighterInfos[i] = fighterInfo;
+        }
     }
 
     public void SpawnNewPlayer()
@@ -173,13 +197,13 @@ public class PlayerManager : MonoBehaviour
         spawnedPlayerInput.DeactivateInput();
 
         GameObject fighterGameObject;
-        if(fighterPartSelections.Count > playerID && fighterPartSelections[playerID] != null)
+        if(fighterInfos.Count > playerID)
         {
-            fighterGameObject = FighterCreator.singleton.CreateNewFighter(fighterPartSelections[playerID].currentBodyID, fighterPartSelections[playerID].currentWeaponID, fighterPartSelections[playerID].currentPowerupID).gameObject;
+            fighterGameObject = FighterCreator.singleton.CreateNewFighter(fighterInfos[playerID].bodyID, fighterInfos[playerID].weaponID, fighterInfos[playerID].powerupID).gameObject;
         }
         else
         {
-            Debug.Log("No fighterPartSelection found");
+            Debug.Log("No info found about fighter");
             fighterGameObject = FighterCreator.singleton.CreateNewFighter(0, 0, 1).gameObject;
         }
         
@@ -216,4 +240,13 @@ public class PlayerManager : MonoBehaviour
             healthbar.RecalculateHealth();
         }
     }
+}
+
+[System.Serializable]
+struct FighterInfo
+{
+    public int playerID;
+    public int bodyID;
+    public int weaponID;
+    public int powerupID;
 }

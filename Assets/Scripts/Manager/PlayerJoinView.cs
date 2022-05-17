@@ -41,11 +41,6 @@ public class PlayerJoinView : MonoBehaviour
         onReadyChange();
     }
 
-    private void Update()
-    {
-        Debug.Log($"Fighter ({previewGameObject.name})", previewGameObject);
-    }
-
     public void BuildPreview()
     {
             foreach (Transform child in previewGameObject.transform)
