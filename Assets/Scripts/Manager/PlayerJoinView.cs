@@ -13,7 +13,7 @@ public class PlayerJoinView : MonoBehaviour
     public GameObject characterSelectPanel = null;
     public UnityEvent OnJoinEvent = null;
     public FighterPartSelection fighterPartSelection;
-    [SerializeField] private Fighter fighterPreviewObject = null;
+    public Fighter previewGameObject = null;
 
     [Header("Ready")]
     public bool isReady = false;
@@ -41,22 +41,21 @@ public class PlayerJoinView : MonoBehaviour
         onReadyChange();
     }
 
+    private void Update()
+    {
+        Debug.Log($"Fighter ({previewGameObject.name})", previewGameObject);
+    }
+
     public void BuildPreview()
     {
-        if (fighterPreviewObject == null)
-        {
-            fighterPreviewObject = Instantiate(FighterCreator.singleton.emptyFighter).GetComponent<Fighter>();
-        }
-        else
-        {
-            foreach (Transform child in fighterPreviewObject.transform)
+            foreach (Transform child in previewGameObject.transform)
             {
                 Destroy(child.gameObject);
             }
-        }
+
         List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
         fighterWeapons.Add(FighterCreator.singleton.fighterWeapons[fighterPartSelection.currentWeaponID]);
         fighterWeapons.Add(FighterCreator.singleton.fighterWeapons[fighterPartSelection.currentPowerupID]);
-        fighterPreviewObject.AssembleFighterParts(FighterCreator.singleton.fighterBodies[fighterPartSelection.currentBodyID], fighterWeapons);
-    }
+        previewGameObject.AssembleFighterParts(FighterCreator.singleton.fighterBodies[fighterPartSelection.currentBodyID], fighterWeapons);
+	    }
 }

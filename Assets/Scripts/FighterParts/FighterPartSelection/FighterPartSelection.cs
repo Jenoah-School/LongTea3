@@ -89,12 +89,12 @@ public class FighterPartSelection : MonoBehaviour
 
     public void SelectNextBody()
     {
-        ChangeBody((currentBodyID + 1) % fighterBodies.Count);
+        ChangeBody((currentBodyIndex + 1) % fighterBodies.Count);
     }
 
     public void SelectPreviousBody()
     {
-        ChangeBody(currentBodyID - 1 >= 0 ? currentBodyID - 1 : fighterBodies.Count - 1);
+        ChangeBody(currentBodyIndex - 1 >= 0 ? currentBodyIndex - 1 : fighterBodies.Count - 1);
     }
 
     #endregion
@@ -116,12 +116,12 @@ public class FighterPartSelection : MonoBehaviour
 
     public void SelectNextWeapon()
     {
-        ChangeWeapon((currentWeaponID + 1) % fighterWeapons.Count);
+        ChangeWeapon((currentWeaponIndex + 1) % fighterWeapons.Count);
     }
 
     public void SelectPreviousWeapon()
     {
-        ChangeWeapon(currentWeaponID - 1 >= 0 ? currentWeaponID - 1 : fighterWeapons.Count - 1);
+        ChangeWeapon(currentWeaponIndex - 1 >= 0 ? currentWeaponIndex - 1 : fighterWeapons.Count - 1);
     }
 
     #endregion
@@ -138,16 +138,17 @@ public class FighterPartSelection : MonoBehaviour
         powerupDescriptionField.text = fighterPowerup.powerupDescription;
 
         OnChangePart.Invoke();
+        Debug.Log($"Changing powerup to {currentPowerupIndex}");
     }
 
     public void SelectNextPowerup()
     {
-        ChangePowerup((currentPowerupID + 1) % fighterPowerups.Count);
+        ChangePowerup((currentPowerupIndex + 1) % fighterPowerups.Count);
     }
 
     public void SelectPreviousPowerup()
     {
-        ChangePowerup(currentPowerupID - 1 >= 0 ? currentPowerupID - 1 : fighterPowerups.Count - 1);
+        ChangePowerup(currentPowerupIndex - 1 >= 0 ? currentPowerupIndex - 1 : fighterPowerups.Count - 1);
     }
 
     #endregion

@@ -6815,6 +6815,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1093fbe4a48d8eb4d840a39b8d77762e, type: 2}
   fighterPowerups:
   - {fileID: 11400000, guid: 0be0ebaf7c49ab74083d2011903488ab, type: 2}
+  - {fileID: 11400000, guid: eaa77b76a1243439fbab55abe5d72156, type: 2}
   currentBodyID: 0
   currentWeaponID: 0
   currentPowerupID: 0

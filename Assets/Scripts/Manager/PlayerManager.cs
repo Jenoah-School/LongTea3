@@ -179,6 +179,7 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("No fighterPartSelection found");
             fighterGameObject = FighterCreator.singleton.CreateNewFighter(0, 0, 1).gameObject;
         }
         

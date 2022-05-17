@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -258,6 +258,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5911444962225737752, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
+      propertyPath: previewGameObject
+      value: 
+      objectReference: {fileID: 1564642106}
+    - target: {fileID: 5911444962225737752, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
       propertyPath: fighterPreviewObject
       value: 
       objectReference: {fileID: 1564642106}
@@ -275,6 +280,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 0.1792453
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 227.82957
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa66786bc246594fa0abdf740f63735, type: 3}
@@ -578,6 +588,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5911444962225737752, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
+      propertyPath: previewGameObject
+      value: 
+      objectReference: {fileID: 915919838}
+    - target: {fileID: 5911444962225737752, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
       propertyPath: fighterPreviewObject
       value: 
       objectReference: {fileID: 915919838}
@@ -595,6 +610,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 0.1792453
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 227.82957
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa66786bc246594fa0abdf740f63735, type: 3}
@@ -970,8 +990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb737027fb87b04985069c0e31496af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 0}
-  secondaryWeapon: {fileID: 0}
+  fighterWeapons: []
   rb: {fileID: 0}
   body: {fileID: 0}
   playerMovement: {fileID: 0}
@@ -1565,8 +1584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb737027fb87b04985069c0e31496af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 0}
-  secondaryWeapon: {fileID: 0}
+  fighterWeapons: []
   rb: {fileID: 0}
   body: {fileID: 0}
   playerMovement: {fileID: 0}
@@ -2248,18 +2266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8088b98fc8f14f4a8e3e9a345463109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1208003419 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-    type: 3}
-  m_PrefabInstance: {fileID: 5911444961017756482}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97e0eae91facda749be8b895fa994944, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1274748864
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,7 +2305,7 @@ MonoBehaviour:
   - {fileID: 1512317122}
   - {fileID: 1841057327}
   fighterPartSelections:
-  - {fileID: 1208003419}
+  - {fileID: 0}
   - {fileID: 2002678192}
   - {fileID: 1512317123}
   - {fileID: 1841057328}
@@ -2438,6 +2444,7 @@ MonoBehaviour:
   fighterWeapons:
   - {fileID: 4489666271711470983, guid: a5b977abd9f0c33428a98a276539e77b, type: 3}
   - {fileID: 587068950702300206, guid: bd886fb8aa574b540885e32cc7d32513, type: 3}
+  - {fileID: 3645540404555492273, guid: fad10b5167acce0468a0a3f9763beffe, type: 3}
   spawnOnInitialisation: 0
 --- !u!114 &1274748868
 MonoBehaviour:
@@ -2849,9 +2856,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5911444962225737752, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
+      propertyPath: previewGameObject
+      value: 
+      objectReference: {fileID: 568015507}
+    - target: {fileID: 5911444962225737752, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
       propertyPath: fighterPreviewObject
       value: 
       objectReference: {fileID: 568015507}
+    - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 227.82957
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa66786bc246594fa0abdf740f63735, type: 3}
 --- !u!224 &1398820812 stripped
@@ -3039,8 +3056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb737027fb87b04985069c0e31496af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 0}
-  secondaryWeapon: {fileID: 0}
+  fighterWeapons: []
   rb: {fileID: 0}
   body: {fileID: 0}
   playerMovement: {fileID: 0}
@@ -3829,8 +3845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb737027fb87b04985069c0e31496af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryWeapon: {fileID: 0}
-  secondaryWeapon: {fileID: 0}
+  fighterWeapons: []
   rb: {fileID: 0}
   body: {fileID: 0}
   playerMovement: {fileID: 0}
@@ -4082,8 +4097,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5911444962225737752, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
+      propertyPath: previewGameObject
+      value: 
+      objectReference: {fileID: 2134738578}
+    - target: {fileID: 5911444962225737752, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
       propertyPath: fighterPreviewObject
       value: 
       objectReference: {fileID: 2134738578}
+    - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 227.82957
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa66786bc246594fa0abdf740f63735, type: 3}
