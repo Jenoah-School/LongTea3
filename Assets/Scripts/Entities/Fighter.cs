@@ -46,7 +46,7 @@ public class Fighter : MonoBehaviour
     {
         GetPartReferences();
         IgnoreCollisionOnItself();
-        SetFighterPartRigidBodies();
+        SetFighterPartReferences();
         SetCenterOfMass();
     }
 
@@ -74,11 +74,22 @@ public class Fighter : MonoBehaviour
         }
     }
 
-    private void SetFighterPartRigidBodies()
+    public void IgnoreCollisionWithObject(GameObject gameObject)
+    {
+        foreach (Collider fighterCol in GetComponentsInChildren<Collider>())
+        {
+            foreach (Collider gameObjectCol in gameObject.GetComponentsInChildren<Collider>())
+            {
+                Physics.IgnoreCollision(fighterCol, gameObjectCol);
+            }
+        }
+    }
+
+    private void SetFighterPartReferences()
     {
         foreach (FighterPart part in fighterParts)
         {
-            part.SetReferenceRigidBody(rb);
+            part.SetReferences(this, rb);
         }
     }
 

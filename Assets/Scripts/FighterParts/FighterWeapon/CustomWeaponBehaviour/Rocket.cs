@@ -11,7 +11,6 @@ public class Rocket : MonoBehaviour
     [SerializeField] private float rocketForce;
 
     private int damage;
-    private GameObject originGameObject;
 
     private void Start()
     {
@@ -19,23 +18,26 @@ public class Rocket : MonoBehaviour
         GetComponent<Rigidbody>().velocity = transform.forward * rocketForce;
     }
 
-    public void SetVariables(int damage, GameObject origin)
+    public void SetVariables(int damage, Fighter origin)
     {
         this.damage = damage;
-        originGameObject = origin;
+        origin.IgnoreCollisionWithObject(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.transform.root.CompareTag("Fighter") && other.transform.root != originGameObject)
+        if (other.transform.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast"))
         {
-            RocketDeath();    
-            if (other.GetComponentInParent<FighterPart>())
+            RocketDeath();
+            if (other.gameObject.transform.root.CompareTag("Fighter"))
             {
-                FighterPart part = other.GetComponentInParent<FighterPart>();
-                part.TakeDamage(damage, transform.position);
+                if (other.GetComponentInParent<FighterPart>())
+                {
+                    FighterPart part = other.GetComponentInParent<FighterPart>();
+                    part.TakeDamage(damage, transform.position);
+                }
             }
-        }  
+        }
     }
 
     private IEnumerator DestroyAfterTime()

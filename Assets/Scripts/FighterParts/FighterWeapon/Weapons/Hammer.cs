@@ -6,11 +6,17 @@ using DG.Tweening;
 
 public class Hammer : FighterWeapon, IWeapon
 {
+    [Header("Hammer behaviour properties")]
     [SerializeField] float hammerForce;
-    [SerializeField] float hammerLaunchForceMultiplier;
+    [SerializeField] float hammerLaunchForceAngleMultiplier;
+    [SerializeField] float hammerLaunchForceDistanceFromCenterOfMassMultiplier;
+    [SerializeField] float totalHammerLaunchForceMultiplier;
+
+    [Header("Hammer references")]
     [SerializeField] GameObject hammerTip;
     [SerializeField] LayerMask hammerTipMask;
     [SerializeField] LayerMask collidableLayers = Physics.AllLayers;
+
 
     bool isSwinging;
 
@@ -70,7 +76,7 @@ public class Hammer : FighterWeapon, IWeapon
                 if (hit.gameObject.transform.root != this.gameObject.transform.root && hit.gameObject.transform.root.CompareTag("Fighter"))
                 {
                     Fighter otherFighter = hit.gameObject.transform.root.GetComponent<Fighter>();
-                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition(hit.transform.InverseTransformPoint(hammerTip.transform.position), transform.forward * ((hammerForce * hammerLaunchForceMultiplier * 10) * (transform.localEulerAngles.x / 2)) * Vector3.Distance(hammerTip.transform.position, fighterRigidBody.centerOfMass) / 1);
+                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition(hit.transform.InverseTransformPoint(hammerTip.transform.position), transform.forward * ((hammerForce) * (transform.localEulerAngles.x / hammerLaunchForceAngleMultiplier)) * Vector3.Distance(hammerTip.transform.position, fighterRigidBody.centerOfMass) / hammerLaunchForceDistanceFromCenterOfMassMultiplier * (totalHammerLaunchForceMultiplier * 10));
 
                     RotateObject.instance.StopCoroutine(hammerSwingRotationRoutine);
                     isSwinging = false;
