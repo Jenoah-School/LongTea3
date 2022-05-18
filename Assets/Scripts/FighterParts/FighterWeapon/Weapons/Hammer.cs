@@ -8,9 +8,9 @@ public class Hammer : FighterWeapon, IWeapon
 {
     [Header("Hammer behaviour properties")]
     [SerializeField] float hammerForce;
-    [SerializeField] float hammerLaunchForceAngleMultiplier;
-    [SerializeField] float hammerLaunchForceDistanceFromCenterOfMassMultiplier;
-    [SerializeField] float totalHammerLaunchForceMultiplier;
+    [SerializeField, Range(-100,100)] int hammerLaunchForceAngleModifier;
+    [SerializeField, Range(-100,100)] int hammerLaunchForceDistanceFromCenterOfMassModifier;
+    [SerializeField, Range(1,10)] float totalHammerLaunchForceMultiplier;
 
     [Header("Hammer references")]
     [SerializeField] GameObject hammerTip;
@@ -34,7 +34,7 @@ public class Hammer : FighterWeapon, IWeapon
         }
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         if (isSwinging) CheckCollision();
     }
@@ -55,12 +55,11 @@ public class Hammer : FighterWeapon, IWeapon
 
         if (hits.Count > 0)
         {
-            //TODO only add alot of force when hammertip or maybe even fix for stick
             foreach (Collider hit in hits)
             {
                 if (hit.gameObject.transform.root != this.gameObject.transform.root)
                 {
-                    Debug.Log("Hit something: " + hit.name);
+                    //Debug.Log("Hit something: " + hit.name);
 
                     RotateObject.instance.StopCoroutine(hammerSwingRotationRoutine);
                     isSwinging = false;
@@ -76,7 +75,7 @@ public class Hammer : FighterWeapon, IWeapon
                 if (hit.gameObject.transform.root != this.gameObject.transform.root && hit.gameObject.transform.root.CompareTag("Fighter"))
                 {
                     Fighter otherFighter = hit.gameObject.transform.root.GetComponent<Fighter>();
-                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition(hit.transform.InverseTransformPoint(hammerTip.transform.position), transform.forward * ((hammerForce) * (transform.localEulerAngles.x / hammerLaunchForceAngleMultiplier)) * Vector3.Distance(hammerTip.transform.position, fighterRigidBody.centerOfMass) / hammerLaunchForceDistanceFromCenterOfMassMultiplier * (totalHammerLaunchForceMultiplier * 10));
+                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition(hit.transform.InverseTransformPoint(hammerTip.transform.position), transform.forward * ((hammerForce) * (Mathf.Clamp(transform.localEulerAngles.x, 10, 45) / hammerLaunchForceAngleModifier)) * ((Vector3.Distance(hammerTip.transform.position, fighterRigidBody.centerOfMass) * 2) / hammerLaunchForceDistanceFromCenterOfMassModifier) * (totalHammerLaunchForceMultiplier * 10));
 
                     RotateObject.instance.StopCoroutine(hammerSwingRotationRoutine);
                     isSwinging = false;
@@ -85,7 +84,7 @@ public class Hammer : FighterWeapon, IWeapon
                     if (hit.GetComponentInParent<FighterPart>())
                     {
                         FighterPart part = hit.GetComponentInParent<FighterPart>();
-                        Debug.Log("Hit something tip: " + hit.name);
+                        //Debug.Log("Hit something tip: " + hit.name);
                         part.TakeDamage(damage, hammerTip.transform.position);
                     }             
                 }

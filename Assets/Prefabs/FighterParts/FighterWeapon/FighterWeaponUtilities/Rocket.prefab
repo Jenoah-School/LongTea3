@@ -63,10 +63,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0cfa9a7aadd34498db29275c812c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rocketForce: 20
+  rocketHitLaunchForce: 1250
+  rocketMaxTime: 4
   explosion: {fileID: 4904167690773235388}
   model: {fileID: 5419897203111961401}
-  rocketMaxTime: 4
-  rocketForce: 20
 --- !u!1 &3585984236112263285
 GameObject:
   m_ObjectHideFlags: 0

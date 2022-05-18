@@ -21,6 +21,11 @@ public class FighterPart : MonoBehaviour
         fighterRigidBody = rb;
     }
 
+    public Rigidbody GetRigidBodyFighter()
+    {
+        return fighterRigidBody;
+    }
+
     public void TakeDamage(int damage, Vector3 hitPos)
     {
         healthPoints -= damage;

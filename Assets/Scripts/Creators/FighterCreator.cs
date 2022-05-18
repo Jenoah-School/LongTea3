@@ -11,13 +11,20 @@ public class FighterCreator : MonoBehaviour
     public List<FighterWheels> fighterWheels = new List<FighterWheels>();
     public List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
     [SerializeField] private bool spawnOnInitialisation = true;
+    [SerializeField] private bool spawnDummyOnInitialisation = false;
     public static FighterCreator singleton;
 
     private void Awake()
     {
         DontDestroyOnLoad(this);
         Fighter fighter;
+        Fighter fighterDummy;
         if(spawnOnInitialisation) fighter = CreateNewFighter(0,0,2);
+        if (spawnDummyOnInitialisation)
+        {
+            fighterDummy = CreateNewFighter(0, 0, 2);
+            fighterDummy.transform.position = new Vector3(0, 1, 6);
+        }
         if(singleton == null)
         {
             singleton = this;

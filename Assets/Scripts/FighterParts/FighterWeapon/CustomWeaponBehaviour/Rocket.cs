@@ -5,10 +5,11 @@ using Lean.Pool;
 
 public class Rocket : MonoBehaviour
 {
+    [SerializeField] private float rocketForce;
+    [SerializeField] private float rocketHitLaunchForce;
+    [SerializeField] float rocketMaxTime;
     [SerializeField] ParticleSystem explosion;
     [SerializeField] GameObject model;
-    [SerializeField] float rocketMaxTime;
-    [SerializeField] private float rocketForce;
 
     private int damage;
 
@@ -35,6 +36,8 @@ public class Rocket : MonoBehaviour
                 {
                     FighterPart part = other.GetComponentInParent<FighterPart>();
                     part.TakeDamage(damage, transform.position);
+                    part.GetRigidBodyFighter().AddForceAtPosition((part.transform.up * rocketForce) * (rocketHitLaunchForce * 1.5f), transform.position);
+                    part.GetRigidBodyFighter().AddForceAtPosition((transform.forward * rocketForce) * rocketHitLaunchForce, transform.position);
                 }
             }
         }

@@ -50,9 +50,10 @@ MonoBehaviour:
   weight: 0
   damageText: {fileID: 5358459428584915330, guid: b93281c106ecca2448815a3859578236,
     type: 3}
-  weaponLocation: 1
+  weaponOrder: 0
   damage: 30
-  IFrameAmount: 2
+  isPair: 0
+  weaponLocation: 1
   OnAttack:
     m_PersistentCalls:
       m_Calls:
@@ -70,7 +71,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   hammerForce: 250
-  hammerLaunchForceMultiplier: 2
+  hammerLaunchForceAngleModifier: 30
+  hammerLaunchForceDistanceFromCenterOfMassModifier: 3
+  totalHammerLaunchForceMultiplier: 1.5
   hammerTip: {fileID: 4958063635510173404}
   hammerTipMask:
     serializedVersion: 2
