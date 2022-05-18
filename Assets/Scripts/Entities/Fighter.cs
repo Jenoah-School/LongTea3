@@ -12,7 +12,11 @@ public class Fighter : MonoBehaviour
     [SerializeField] private FighterBody body;
     [SerializeField] private PlayerMovement playerMovement;
 
+    [SerializeField, Range(10, 100)] private int healthTreshHold;
+
     private List<FighterPart> fighterParts = new List<FighterPart>();
+
+    private float startTotalHealth;
 
     public void AssembleFighterParts(FighterBody body, List<FighterWeapon> weapons)
     {
@@ -37,9 +41,10 @@ public class Fighter : MonoBehaviour
                 weapon2.weaponOrder = (FighterWeapon.WeaponOrder)i;
                 fighterWeapons.Add(weapon2);
             }
-        }        
-        
+        }
+
         PostAssemblyStart();
+        startTotalHealth = GetTotalPartHealth();
     }
 
     public void PostAssemblyStart()
@@ -101,6 +106,20 @@ public class Fighter : MonoBehaviour
             totalHealth += part.healthPoints;
         }
         return totalHealth;
+    }
+
+    public void CheckDeath()
+    {
+        Debug.Log(GetTotalPartHealth());
+        if(GetTotalPartHealth() < startTotalHealth / 100 * healthTreshHold)
+        {
+            OnDeath();
+        }
+    }
+
+    private void OnDeath()
+    {
+        Debug.Log("He ded boy");
     }
 
     public void ExecutePrimary(InputAction.CallbackContext context)

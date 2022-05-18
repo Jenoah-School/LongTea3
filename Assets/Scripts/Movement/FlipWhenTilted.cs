@@ -54,7 +54,7 @@ public class FlipWhenTilted : MonoBehaviour
         isTilted = false;
         StopAllCoroutines();
         StartCoroutine(RotateTo(Quaternion.Euler(0f, transform.eulerAngles.y, 0f), rotateTime));
-        Debug.Log("This is when it would flip");
+        //Debug.Log("This is when it would flip");
     }
 
     IEnumerator RotateTo(Quaternion targetRotation, float rotateTime)

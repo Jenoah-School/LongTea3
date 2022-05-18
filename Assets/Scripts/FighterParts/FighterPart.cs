@@ -35,5 +35,6 @@ public class FighterPart : MonoBehaviour
         //damageTextObject.GetComponent<TMPro.TextMeshPro>().text = "Bruh";
         damageTextObject.transform.DOMoveY(transform.position.y + damageTextObject.transform.position.y + 2, 3);
         LeanPool.Despawn(damageTextObject, 3);
+        fighterRoot.CheckDeath();
     }
 }

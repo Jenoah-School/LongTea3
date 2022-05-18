@@ -538,6 +538,7 @@ MonoBehaviour:
   rb: {fileID: 2556934592488449388}
   body: {fileID: 0}
   playerMovement: {fileID: -9172192976430678138}
+  healthTreshHold: 50
 --- !u!114 &-9172192976430678138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +555,7 @@ MonoBehaviour:
   maximumSpeed: 10
   rotationSpeed: 3
   minRotationSpeed: 0.2
-  backwardsMultiplier: 0.5
+  backwardsMultiplier: 0.75
   maxRotationSpeed: 3
   isGrounded: 1
   brakeDrag: 0.1
@@ -570,8 +571,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.006034851
-      value: 0.5018799
+      time: 0
+      value: 0.15
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -580,7 +581,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 1
+      value: 0.85
       inSlope: 0
       outSlope: 0
       tangentMode: 0
