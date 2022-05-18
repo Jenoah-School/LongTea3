@@ -30,7 +30,7 @@ public class Rocket : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer != ignoreLayer.value)
+        if (other.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast"))
         {
             RocketDeath();
             if (other.gameObject.transform.root.CompareTag("Fighter"))
