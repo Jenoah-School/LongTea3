@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private UnityEvent onAllPlayersReady = null;
     [SerializeField] private UnityEvent onPlayersUnready = null;
 
+    [Header("Health checking")]
+    [SerializeField] private bool isAllDead = false;
+
     public static PlayerManager singleton;
     [SerializeField] private List<FighterInfo> fighterInfos = new List<FighterInfo>();
 
@@ -68,35 +72,29 @@ public class PlayerManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("Listening for new player input");
+        Debug.Log("Gonna start trying to listen for activity");
 
         ++InputUser.listenForUnpairedDeviceActivity;
 
+        Debug.Log("Listening for new player input");
 
-        InputUser.onUnpairedDeviceUsed +=
-    (control, eventPtr) =>
-    {
-        Debug.Log("Unpaired device found");
+        if (InputUser.listenForUnpairedDeviceActivity > 0)
+        {
+
+            InputUser.onUnpairedDeviceUsed +=
+        (control, eventPtr) =>
+        {
+            Debug.Log("Unpaired device found");
         // Ignore anything but button presses.
         if (!(control is ButtonControl))
-            return;
+                return;
 
-        SpawnNewPlayer();
-    };
-    }
-
-    public void SafePlayerInfo()
-    {
-        for (int i = 0; i < fighterInfos.Count; i++)
-        {
-            FighterInfo fighterInfo = fighterInfos[i];
-            fighterInfo.bodyID = fighterPartSelections[i].currentBodyID;
-            fighterInfo.weaponID = fighterPartSelections[i].currentWeaponID;
-            fighterInfo.powerupID = fighterPartSelections[i].currentPowerupID;
-
-            fighterInfos[i] = fighterInfo;
+            PlayerManager.singleton.SpawnNewPlayer();
+        };
         }
     }
+
+    #region Spawning
 
     public void SpawnNewPlayer()
     {
@@ -111,19 +109,6 @@ public class PlayerManager : MonoBehaviour
 
         OnPlayerJoin.Invoke();
         Debug.Log($"Player with ID {playerID} succesfully spawned");
-    }
-
-    public void SetMoveStates(bool newMoveStates)
-    {
-        foreach(Fighter fighter in fighters)
-        {
-            fighter.GetComponent<PlayerMovement>().SetMoveState(newMoveStates);
-        }
-    }
-
-    public void StopListeningForInput()
-    {
-        --InputUser.listenForUnpairedDeviceActivity;
     }
 
     public void SpawnController(int playerID)
@@ -145,38 +130,6 @@ public class PlayerManager : MonoBehaviour
             playerUISystem.SetSelectedGameObject(playerJoinView.firstSelected);
         }
 
-    }
-
-    public void CheckAllPlayersReady()
-    {
-        foreach (PlayerJoinView playerJoinView in playerJoinViews)
-        {
-            if (playerJoinView.isPlayer && !playerJoinView.isReady)
-            {
-                if (allPlayersReady)
-                {
-                    allPlayersReady = false;
-                    onPlayersUnready.Invoke();
-                }
-                return;
-            }
-        }
-
-        if (!allPlayersReady)
-        {
-            allPlayersReady = true;
-            onAllPlayersReady.Invoke();
-        }
-    }
-
-    public void OnSceneChange(Scene scene, LoadSceneMode mode)
-    {
-        if (spawnFighterSceneIndex != -1 && scene.buildIndex == spawnFighterSceneIndex)
-        {
-            healthbars.AddRange(FindObjectsOfType<Healthbar>(true).OrderBy(m => m.transform.GetSiblingIndex()).ToArray());
-            spawnPoints.AddRange(GameObject.FindGameObjectsWithTag("Spawnpoint").OrderBy(m => m.transform.GetSiblingIndex()).ToArray());
-            SpawnAllFighters();
-        }
     }
 
     public void SpawnAllFighters()
@@ -234,13 +187,122 @@ public class PlayerManager : MonoBehaviour
         if (healthbars.Count > playerID)
         {
             Healthbar healthbar = healthbars[playerID];
-            healthbar.SetFighterParts(fighterObject.GetComponentsInChildren<FighterPart>().ToList());
+            healthbar.SetFighter(fighter);
             healthbar.gameObject.SetActive(true);
             healthbar.SetColor(playerColors[playerID % playerColors.Count]);
             healthbar.SetFill(1f);
             healthbar.RecalculateHealth();
+            fighter.onTakeDamage += healthbar.RecalculateHealth;
         }
     }
+    #endregion
+
+    #region Input
+
+    public void StopListeningForInput()
+    {
+        if(InputUser.listenForUnpairedDeviceActivity > 0) --InputUser.listenForUnpairedDeviceActivity;
+        Debug.Log("Input listening is  " + InputUser.listenForUnpairedDeviceActivity);
+    }
+
+    public void UnbindAllInput()
+    {
+        foreach (PlayerInput playerInput in PlayerInput.all.ToList())
+        {
+            Destroy(playerInput);
+            Debug.Log("Player index is " + playerInput.playerIndex);
+        }
+
+        foreach (InputUser inputUser in InputUser.all.ToList())
+        {
+            inputUser.UnpairDevicesAndRemoveUser();
+            Debug.Log("Input users is " + InputUser.all.Count);
+        }
+    }
+
+    #endregion
+
+    #region Gameplay
+    public void SafePlayerInfo()
+    {
+        for (int i = 0; i < fighterInfos.Count; i++)
+        {
+            FighterInfo fighterInfo = fighterInfos[i];
+            fighterInfo.bodyID = fighterPartSelections[i].currentBodyID;
+            fighterInfo.weaponID = fighterPartSelections[i].currentWeaponID;
+            fighterInfo.powerupID = fighterPartSelections[i].currentPowerupID;
+
+            fighterInfos[i] = fighterInfo;
+        }
+    }
+
+    public void TogglePlayer(Fighter fighter, bool toggleState = false)
+    {
+        fighter.GetComponent<PlayerMovement>().enabled = toggleState;
+        fighter.enabled = toggleState;
+    }
+
+    public void SetMoveStates(bool newMoveStates)
+    {
+        foreach(Fighter fighter in fighters)
+        {
+            TogglePlayer(fighter, newMoveStates);
+        }
+    }
+    
+    public void CheckAllPlayersReady()
+    {
+        foreach (PlayerJoinView playerJoinView in playerJoinViews)
+        {
+            if (playerJoinView.isPlayer && !playerJoinView.isReady)
+            {
+                if (allPlayersReady)
+                {
+                    allPlayersReady = false;
+                    onPlayersUnready.Invoke();
+                }
+                return;
+            }
+        }
+
+        if (!allPlayersReady)
+        {
+            allPlayersReady = true;
+            onAllPlayersReady.Invoke();
+        }
+    }
+    
+    public void CheckDeathRate()
+    {
+        int fightersAlive = 0;
+        foreach(Fighter fighter in fighters)
+        {
+            if (!fighter.isDead) fightersAlive++;
+        }
+
+        if(fightersAlive <= 1)
+        {
+            RoundManager.singleton.EndRound();
+        }
+    }
+
+    #endregion
+
+    #region Misc
+
+    public void OnSceneChange(Scene scene, LoadSceneMode mode)
+    {
+        if (spawnFighterSceneIndex != -1 && scene.buildIndex == spawnFighterSceneIndex)
+        {
+            healthbars.AddRange(FindObjectsOfType<Healthbar>(true).OrderBy(m => m.transform.GetSiblingIndex()).ToArray());
+            spawnPoints.AddRange(GameObject.FindGameObjectsWithTag("Spawnpoint").OrderBy(m => m.transform.GetSiblingIndex()).ToArray());
+            SpawnAllFighters();
+        }
+    }
+
+    #endregion
+
+
 }
 
 [System.Serializable]

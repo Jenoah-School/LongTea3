@@ -949,8 +949,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbarFill: {fileID: 1687753480}
   healthSmoothing: 0.25
-  playerFighterparts: []
-  maxHealth: 0
 --- !u!1 &239907375
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,7 +1422,6 @@ GameObject:
   - component: {fileID: 331227489}
   - component: {fileID: 331227488}
   - component: {fileID: 331227487}
-  - component: {fileID: 331227491}
   m_Layer: 5
   m_Name: --== UI ==--
   m_TagString: Untagged
@@ -1520,18 +1517,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &331227491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331227486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 575bdbe881965e444b0d2a072ff07fae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &341865373
 GameObject:
   m_ObjectHideFlags: 0
@@ -1627,8 +1612,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbarFill: {fileID: 725515705}
   healthSmoothing: 0.25
-  playerFighterparts: []
-  maxHealth: 0
 --- !u!1 &355217329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2703,7 +2686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2c06e09801f334b8e6222a426b11c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingTimeInSeconds: 10
+  startingTimeInSeconds: 300
   prefix: 
   timeLabel: {fileID: 278545978}
   OnFinishTimer:
@@ -3687,8 +3670,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbarFill: {fileID: 1835444145}
   healthSmoothing: 0.25
-  playerFighterparts: []
-  maxHealth: 0
 --- !u!1 &725515703
 GameObject:
   m_ObjectHideFlags: 0
@@ -4067,7 +4048,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Time's up!
+  m_text: That's it!\nRound over
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b1958296be8298149b5e3a6389c1b5af, type: 2}
   m_sharedMaterial: {fileID: 2491692343564422817, guid: b1958296be8298149b5e3a6389c1b5af,
@@ -4593,8 +4574,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthbarFill: {fileID: 391934679}
   healthSmoothing: 0.25
-  playerFighterparts: []
-  maxHealth: 0
 --- !u!1 &979014702
 GameObject:
   m_ObjectHideFlags: 0
@@ -5400,7 +5379,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1160871147
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5493,7 +5472,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 331227491}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerManagerProxy, Assembly-CSharp
         m_MethodName: SetMoveStates
         m_Mode: 6
@@ -5609,7 +5588,7 @@ MonoBehaviour:
   timedEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 331227491}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerManagerProxy, Assembly-CSharp
         m_MethodName: SetMoveStates
         m_Mode: 6
@@ -6433,6 +6412,65 @@ Transform:
   m_Father: {fileID: 1460489541}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -120, z: 0}
+--- !u!1 &1445289954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1177021443344445437, guid: 0a0f0cc1a5c57a949a537d978a184767,
+    type: 3}
+  m_PrefabInstance: {fileID: 53643216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1445289959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445289954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e4edda49a1ba24da39281bc1f29acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitTime: 3
+  autoStart: 0
+  timedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1445289954}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1046695467}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: FadeIn
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2026525153}
+        m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
+        m_MethodName: SwitchScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1460489540
 GameObject:
   m_ObjectHideFlags: 0
@@ -7009,7 +7047,6 @@ GameObject:
   - component: {fileID: 1566668144}
   - component: {fileID: 1566668146}
   - component: {fileID: 1566668147}
-  - component: {fileID: 1566668148}
   m_Layer: 0
   m_Name: --== Player Manager ==--
   m_TagString: Spawnpoint
@@ -7085,6 +7122,7 @@ MonoBehaviour:
   onPlayersUnready:
     m_PersistentCalls:
       m_Calls: []
+  isAllDead: 0
   fighterInfos: []
 --- !u!114 &1566668147
 MonoBehaviour:
@@ -7110,18 +7148,6 @@ MonoBehaviour:
   - {fileID: 3645540404555492273, guid: fad10b5167acce0468a0a3f9763beffe, type: 3}
   spawnOnInitialisation: 0
   spawnDummyOnInitialisation: 0
---- !u!114 &1566668148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1566668142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae7d6c9490796e4ca9b51a26f6b738b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1620671305
 GameObject:
   m_ObjectHideFlags: 0
@@ -8564,6 +8590,10 @@ GameObject:
   - component: {fileID: 2026525150}
   - component: {fileID: 2026525149}
   - component: {fileID: 2026525151}
+  - component: {fileID: 2026525152}
+  - component: {fileID: 2026525153}
+  - component: {fileID: 2026525154}
+  - component: {fileID: 2026525155}
   m_Layer: 0
   m_Name: --== Manager ==--
   m_TagString: Untagged
@@ -8631,7 +8661,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 331227491}
+      - m_Target: {fileID: 2026525154}
         m_TargetAssemblyTypeName: PlayerManagerProxy, Assembly-CSharp
         m_MethodName: SetMoveStates
         m_Mode: 6
@@ -8643,6 +8673,122 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1445289959}
+        m_TargetAssemblyTypeName: EventAfterTime, Assembly-CSharp
+        m_MethodName: StartTimedEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2026525152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026525148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6946ed0d771f5ff478e81b4a52b5bd66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEndRound:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2026525151}
+        m_TargetAssemblyTypeName: EventAfterTime, Assembly-CSharp
+        m_MethodName: StartTimedEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2026525154}
+        m_TargetAssemblyTypeName: PlayerManagerProxy, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2026525154}
+        m_TargetAssemblyTypeName: PlayerManagerProxy, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2026525154}
+        m_TargetAssemblyTypeName: PlayerManagerProxy, Assembly-CSharp
+        m_MethodName: DestroyPlayerManager
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2026525153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026525148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3cee9330a2aaad4ba91c533e395d71a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeAnimator: {fileID: 1046695467}
+  fadeDuration: 1.25
+  OnSwitchScene:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2026525154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026525148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575bdbe881965e444b0d2a072ff07fae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2026525155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026525148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae7d6c9490796e4ca9b51a26f6b738b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2047106477
 GameObject:
   m_ObjectHideFlags: 3

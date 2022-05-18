@@ -9,32 +9,21 @@ public class Healthbar : MonoBehaviour
     [SerializeField] private Image healthbarFill = null;
     [SerializeField] private float healthSmoothing = .1f;
 
-    [SerializeField] private List<FighterPart> playerFighterparts = new List<FighterPart>();
-    [SerializeField] private float maxHealth = 0;
+    private Fighter fighterReference;
 
     public void SetColor(Color healthbarColor)
     {
         healthbarFill.color = healthbarColor;
     }
 
-    public void SetFighterParts(List<FighterPart> fighterParts)
+    public void SetFighter(Fighter fighter)
     {
-        foreach (FighterPart fighterPart in fighterParts)
-        {
-            playerFighterparts.Add(fighterPart);
-            maxHealth += fighterPart.healthPoints;
-        }
+        fighterReference = fighter;
     }
 
     public void RecalculateHealth()
-    {
-        float currentHealth = 0f;
-        foreach (FighterPart fighterPart in playerFighterparts)
-        {
-            currentHealth += fighterPart.healthPoints;
-        }
-
-        SetFill(1f / maxHealth * currentHealth);
+    { 
+        SetFill(1f / fighterReference.GetStartHealth() * fighterReference.GetTotalPartHealth());
     }
 
     public void SetFill(float fillAmount)

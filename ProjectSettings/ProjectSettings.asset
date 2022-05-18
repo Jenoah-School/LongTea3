@@ -16,7 +16,7 @@ PlayerSettings:
   productName: Battle Bots - Prototype
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.18431373, g: 0.18431373, b: 0.18431373, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.15294118, g: 0.14901961, b: 0.16078432, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 1
@@ -137,7 +137,8 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleVersion: 0.1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1

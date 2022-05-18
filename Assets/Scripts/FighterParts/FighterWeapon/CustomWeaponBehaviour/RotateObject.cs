@@ -6,7 +6,7 @@ public class RotateObject : MonoBehaviour
 {
     public static RotateObject instance;
 
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {

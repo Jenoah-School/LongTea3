@@ -341,6 +341,7 @@ GameObject:
   - component: {fileID: 8861937715703117127}
   - component: {fileID: 67427789764291886}
   - component: {fileID: 4004338858088698128}
+  - component: {fileID: 8218084604820809492}
   m_Layer: 0
   m_Name: EmptyFighter
   m_TagString: Fighter
@@ -501,7 +502,7 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 260c7b0c-81f6-4934-b8bf-37268cc044c5
     m_ActionName: Regular/Power Up[/DualShock4GamepadHID/buttonNorth,/DualShock4GamepadHID1/buttonNorth,/Keyboard/q]
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Regular
   m_SplitScreenIndex: -1
@@ -539,6 +540,7 @@ MonoBehaviour:
   body: {fileID: 0}
   playerMovement: {fileID: -9172192976430678138}
   healthTreshHold: 50
+  isDead: 0
 --- !u!114 &-9172192976430678138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -795,3 +797,20 @@ MonoBehaviour:
         m_CallState: 2
   particlesOnFlip: {fileID: 4324984127352915482, guid: a9b91e67eef0053479032f65ac821ae8,
     type: 3}
+--- !u!114 &8218084604820809492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5880640649918137463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 246ba0b4dd0301a4283d303bbb935e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  referencePlayerInput: {fileID: 9115376806083636152}
+  fighterReference: {fileID: 5637381278339306294}
+  smallMotorIntensity: 0.4
+  largeMotorIntensity: 0.3
+  hapticDuration: 0.1

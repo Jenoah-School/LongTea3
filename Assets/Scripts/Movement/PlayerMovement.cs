@@ -41,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 movementVector = Vector2.zero;
     private float movementInput = 0;
+    private float targetSpeed = 0f;
+    private float moveMultiplier = 1f;
     private Vector2 rotationVector = Vector2.zero;
     private Quaternion targetRotation = Quaternion.identity;
 
@@ -63,7 +65,8 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 moveInput = new Vector2(transform.forward.x, transform.forward.z);
 
-        float moveMultiplier = movementInput >= 0 ? movementInput : movementInput * backwardsMultiplier;
+        moveMultiplier = movementInput >= 0 ? movementInput : movementInput * backwardsMultiplier;
+
         movementVector = Vector2.Lerp(movementVector, moveInput * moveMultiplier, inputSmoothing * Time.deltaTime);
 
         if (engineAudioSource)
@@ -72,24 +75,30 @@ public class PlayerMovement : MonoBehaviour
             engineAudioSource.pitch = pitchCurve.Evaluate(currentSpeed / maximumSpeed);
             engineAudioSource.volume = volumeCurve.Evaluate(currentSpeed / maximumSpeed);
         }
-        //transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSmoothing * Time.deltaTime);
     }
 
     private void FixedUpdate()
     {
         if (IsGrounded() && canMove)
         {
-            Rotate();
-            Move();
+            if (playerInput.currentControlScheme == "PC")
+            {
+                Rotate();
+                Move();
+            }
+            else
+            {
+                MoveAndRotate();
+            }
             ApplyDrag();
         }
     }
 
+    #region PC Controls
+
     private void Rotate()
     {
-        //if(playerInput.currentControlScheme != "PC")
-        //{
-        float rotationMultiplier = 0f;
+            float rotationMultiplier = 0f;
         if (Mathf.Abs(rb.angularVelocity.y) < maxRotationSpeed)
         {
             rotationMultiplier = movementInput >= 0 ? Mathf.Max(minRotationSpeed, Mathf.Abs(movementInput)) : Mathf.Max(minRotationSpeed, Mathf.Abs(movementInput) * backwardsMultiplier);
@@ -97,15 +106,6 @@ public class PlayerMovement : MonoBehaviour
 
         //targetRotation.eulerAngles += new Vector3(0, rotationVector.x * rotationSpeed, 0) * rotationMultiplier;
         rb.MoveRotation(rb.rotation * Quaternion.Euler(rotationMultiplier * rotationSpeed * rotationVector.x * transform.up));
-        //}
-        //else
-        //{
-        //    Vector3 lookDirection = new Vector3(rotationVector.x, 0, rotationVector.y);
-
-        //    lookDirection = lookDirection.sqrMagnitude > 1 ? lookDirection.normalized : lookDirection;
-
-        //    if (lookDirection.magnitude > 0.1f) { targetRotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up); }
-        //}
     }
 
 
@@ -115,14 +115,42 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection = moveDirection.sqrMagnitude > 1 ? moveDirection.normalized : moveDirection;
 
+        targetSpeed = (brakeDrag * (movementInput == 0 ? 1f : 0f));
+
         rb.velocity += accelerationSpeed * Time.fixedDeltaTime * moveDirection;
     }
+
+    #endregion
+
+    #region Gamepad Controls
+
+    private void MoveAndRotate()
+    {
+        //Rotation
+        Vector3 lookDirection = new Vector3(rotationVector.x, 0, rotationVector.y);
+
+        lookDirection = lookDirection.sqrMagnitude > 1 ? lookDirection.normalized : lookDirection;
+
+        if (lookDirection.magnitude > 0.1f) { targetRotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up); }
+
+        rb.MoveRotation(Quaternion.Lerp(transform.rotation, targetRotation, rotationSmoothing * Time.deltaTime));
+
+
+        //Position
+        Vector3 moveDirection = new Vector3(transform.forward.x, 0, transform.forward.z);
+        moveDirection = moveDirection.sqrMagnitude > 1 ? moveDirection.normalized : moveDirection;
+        rb.velocity += accelerationSpeed * lookDirection.magnitude * Time.fixedDeltaTime * moveDirection;
+
+        targetSpeed = (brakeDrag * (lookDirection.magnitude == 0 ? 1f : 0f));
+    }
+
+    #endregion
 
     private void ApplyDrag()
     {
         Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
         localVelocity.x *= 1f - driftDrag;
-        localVelocity.z *= 1f - (brakeDrag * (movementInput == 0 ? 1f : 0f));
+        localVelocity.z *= 1f - targetSpeed;
         localVelocity.z = Mathf.Clamp(localVelocity.z, -maximumSpeed, maximumSpeed);
         rb.velocity = transform.TransformDirection(localVelocity);
     }

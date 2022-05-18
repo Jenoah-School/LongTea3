@@ -30,6 +30,7 @@ public class Hammer : FighterWeapon, IWeapon
             hammerSwingRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(90, 0, 0), hammerTime);
             isSwinging = true;
             OnAttack.Invoke();
+            if(fighterRoot) fighterRoot.onAttack();
             StartCoroutine(ResetHammerWhenDone(hammerTime));
         }
     }

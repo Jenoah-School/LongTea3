@@ -11,4 +11,19 @@ public class PlayerManagerProxy : MonoBehaviour
             PlayerManager.singleton.SetMoveStates(newMoveState);
         }
     }
+
+    public void DestroyPlayerManager()
+    {
+        Destroy(PlayerManager.singleton.gameObject);
+    }
+
+    public void StopListeningForInput()
+    {
+        PlayerManager.singleton.StopListeningForInput();
+    }
+
+    public void UnbindAllPlayers()
+    {
+        PlayerManager.singleton.UnbindAllInput();
+    }
 }

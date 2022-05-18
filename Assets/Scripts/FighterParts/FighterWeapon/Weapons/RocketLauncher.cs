@@ -19,6 +19,7 @@ public class RocketLauncher : FighterWeapon, IWeapon
             Rocket rocketClone = Instantiate(rocket, launcherTip.transform.position + launcherTip.transform.forward / 3, launcherTip.transform.rotation);
             rocketClone.SetVariables(damage, fighterRoot);
             fighterRigidBody.velocity += -transform.right * 10;
+            if (fighterRoot) fighterRoot.onAttack();
         }
     }
 }

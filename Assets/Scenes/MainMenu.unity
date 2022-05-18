@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 45fed7a263a40404b8697b83ce9ad802,
+    type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: fa6512073665b0a4b8484bda5a3a799a,
     type: 2}
 --- !u!196 &4
@@ -1646,6 +1647,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   body: {fileID: 0}
   playerMovement: {fileID: 0}
+  healthTreshHold: 0
+  isDead: 0
 --- !u!114 &568015508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2240,6 +2243,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   body: {fileID: 0}
   playerMovement: {fileID: 0}
+  healthTreshHold: 0
+  isDead: 0
 --- !u!114 &915919839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2930,7 +2935,6 @@ GameObject:
   - component: {fileID: 1274748866}
   - component: {fileID: 1274748865}
   - component: {fileID: 1274748867}
-  - component: {fileID: 1274748868}
   m_Layer: 0
   m_Name: --== PlayerManager ==--
   m_TagString: Untagged
@@ -2972,6 +2976,11 @@ MonoBehaviour:
   - {r: 0.6037736, g: 0.5028667, b: 0.259167, a: 1}
   - {r: 0.44738325, g: 0.1445799, b: 0.5377358, a: 1}
   spawnPoints: []
+  defaultFighterBuild:
+    playerID: 0
+    bodyID: 0
+    weaponID: 0
+    powerupID: 0
   spawnFighter: 0
   spawnFighterController: 1
   spawnFighterSceneIndex: 1
@@ -3073,6 +3082,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  isAllDead: 0
   fighterInfos: []
 --- !u!4 &1274748866
 Transform:
@@ -3112,18 +3122,7 @@ MonoBehaviour:
   - {fileID: 587068950702300206, guid: bd886fb8aa574b540885e32cc7d32513, type: 3}
   - {fileID: 3645540404555492273, guid: fad10b5167acce0468a0a3f9763beffe, type: 3}
   spawnOnInitialisation: 0
---- !u!114 &1274748868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274748864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae7d6c9490796e4ca9b51a26f6b738b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  spawnDummyOnInitialisation: 0
 --- !u!1 &1295486089
 GameObject:
   m_ObjectHideFlags: 0
@@ -4063,6 +4062,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   body: {fileID: 0}
   playerMovement: {fileID: 0}
+  healthTreshHold: 0
+  isDead: 0
 --- !u!114 &1564642107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4094,6 +4095,7 @@ GameObject:
   - component: {fileID: 1594235459}
   - component: {fileID: 1594235458}
   - component: {fileID: 1594235457}
+  - component: {fileID: 1594235460}
   m_Layer: 0
   m_Name: --== Manager ==--
   m_TagString: Untagged
@@ -4211,6 +4213,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1594235460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594235456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ad8ae96777e7bb4f8a099cde6a06d30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerThreshold: 1
+  splashScreenAnimator: {fileID: 1568739249}
+  animationName: FadeOut
+  enableOtherwise: 1
 --- !u!1 &1647623631
 GameObject:
   m_ObjectHideFlags: 0
@@ -4852,6 +4870,8 @@ MonoBehaviour:
   rb: {fileID: 0}
   body: {fileID: 0}
   playerMovement: {fileID: 0}
+  healthTreshHold: 0
+  isDead: 0
 --- !u!1001 &1177021443923320909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4990,7 +5010,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1177021443344445435, guid: 0a0f0cc1a5c57a949a537d978a184767, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0a0f0cc1a5c57a949a537d978a184767, type: 3}
 --- !u!1001 &5911444961017756482
 PrefabInstance:

@@ -23,6 +23,7 @@ public class Flipper : FighterWeapon, IWeapon
             flipperFlipRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(-90, 0, 0), flipTime);
             isFlipping = true;
             OnAttack.Invoke();
+            if (fighterRoot) fighterRoot.onAttack();
             StartCoroutine(ResetFlipperWhenDone(flipTime));
         }
     }

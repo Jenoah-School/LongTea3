@@ -17,6 +17,13 @@ public class Fighter : MonoBehaviour
     private List<FighterPart> fighterParts = new List<FighterPart>();
 
     private float startTotalHealth;
+    public bool isDead = false;
+
+    public delegate void OnTakeDamage();
+    public OnTakeDamage onTakeDamage;
+
+    public delegate void OnAttack();
+    public OnTakeDamage onAttack;
 
     public void AssembleFighterParts(FighterBody body, List<FighterWeapon> weapons)
     {
@@ -44,7 +51,6 @@ public class Fighter : MonoBehaviour
         }
 
         PostAssemblyStart();
-        startTotalHealth = GetTotalPartHealth();
     }
 
     public void PostAssemblyStart()
@@ -53,11 +59,17 @@ public class Fighter : MonoBehaviour
         IgnoreCollisionOnItself();
         SetFighterPartReferences();
         SetCenterOfMass();
+        startTotalHealth = GetTotalPartHealth();
     }
 
     private void GetPartReferences()
     {
         fighterParts.AddRange(GetComponentsInChildren<FighterPart>());
+    }
+
+    public float GetStartHealth()
+    {
+        return startTotalHealth;
     }
 
     private void SetCenterOfMass()
@@ -100,6 +112,7 @@ public class Fighter : MonoBehaviour
 
     public float GetTotalPartHealth()
     {
+        if (isDead) return 0;
         float totalHealth = 0;
         foreach (FighterPart part in fighterParts)
         {
@@ -110,7 +123,7 @@ public class Fighter : MonoBehaviour
 
     public void CheckDeath()
     {
-        Debug.Log(GetTotalPartHealth());
+        if (isDead) return;
         if(GetTotalPartHealth() < startTotalHealth / 100 * healthTreshHold)
         {
             OnDeath();
@@ -119,11 +132,16 @@ public class Fighter : MonoBehaviour
 
     private void OnDeath()
     {
+        isDead = true;
+        onTakeDamage();
+        PlayerManager.singleton.TogglePlayer(this, false);
+        PlayerManager.singleton.CheckDeathRate();
         Debug.Log("He ded boy");
     }
 
     public void ExecutePrimary(InputAction.CallbackContext context)
     {
+        if (isDead) return;
         if (context.action.WasPerformedThisFrame())
         {
             foreach(FighterWeapon weapon in fighterWeapons)
@@ -138,6 +156,7 @@ public class Fighter : MonoBehaviour
 
     public void ExecuteSecondary(InputAction.CallbackContext context)
     {
+        if (isDead) return;
         if (context.action.WasPerformedThisFrame())
         {
             foreach (FighterWeapon weapon in fighterWeapons)
