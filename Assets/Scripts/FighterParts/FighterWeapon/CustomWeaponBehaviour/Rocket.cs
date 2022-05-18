@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Lean.Pool;
+using UnityEngine.Events;
 
 public class Rocket : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Rocket : MonoBehaviour
     [SerializeField] float rocketMaxTime;
     [SerializeField] ParticleSystem explosion;
     [SerializeField] GameObject model;
+    [SerializeField] private UnityEvent OnExplode;
+    [SerializeField] private LayerMask ignoreLayer;
 
     private int damage;
 
@@ -27,7 +30,7 @@ public class Rocket : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast"))
+        if (other.gameObject.layer != ignoreLayer.value)
         {
             RocketDeath();
             if (other.gameObject.transform.root.CompareTag("Fighter"))
@@ -52,6 +55,7 @@ public class Rocket : MonoBehaviour
     private void RocketDeath()
     {
         explosion.Play();
+        OnExplode.Invoke();
         model.SetActive(false);
         GetComponent<Rigidbody>().isKinematic = true;
         StartCoroutine(DespawnSequence(explosion.main.startLifetime.constant));

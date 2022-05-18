@@ -24,6 +24,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject controllerPrefab = null;
     [SerializeField] private List<Color> playerColors = new List<Color>();
     [SerializeField] private List<GameObject> spawnPoints = new List<GameObject>();
+    [SerializeField] private FighterInfo defaultFighterBuild = new FighterInfo();
 
     [Header("Events")]
     [SerializeField] private bool spawnFighter = false;
@@ -204,7 +205,7 @@ public class PlayerManager : MonoBehaviour
         else
         {
             Debug.Log("No info found about fighter");
-            fighterGameObject = FighterCreator.singleton.CreateNewFighter(0, 0, 1).gameObject;
+            fighterGameObject = FighterCreator.singleton.CreateNewFighter(defaultFighterBuild.bodyID, defaultFighterBuild.weaponID, defaultFighterBuild.powerupID).gameObject;
         }
         
         PlayerInput fighterInput = PlayerInput.Instantiate(fighterGameObject, -1, controlScheme, -1, playerInputDevices[0]);
