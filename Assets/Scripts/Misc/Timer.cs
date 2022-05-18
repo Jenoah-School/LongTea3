@@ -44,6 +44,7 @@ public class Timer : MonoBehaviour
         }else if(currentTimeLeft <= 0 && !timerFinished)
         {
             timerFinished = true;
+            currentTimeLeft = 0;
             OnFinishTimer.Invoke();
         }
     }
