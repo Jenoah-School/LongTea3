@@ -22,11 +22,14 @@ public class ControllerHaptics : MonoBehaviour
     private float vibrationTimeLeft = 0f;
     private bool isVibrating = false;
 
-    private void Awake()
+    #region Starting and ending
+
+    private void Start()
     {
         if (referencePlayerInput.currentControlScheme == "Gamepad")
         {
             playerGamepad = referencePlayerInput.GetDevice<Gamepad>();
+            if(playerGamepad != null) Debug.Log("Found haptics compatible controller for " + gameObject.name);
         }
 
         fighterReference.onAttack += QuickHaptic;
@@ -37,8 +40,14 @@ public class ControllerHaptics : MonoBehaviour
     {
         fighterReference.onAttack -= QuickHaptic;
         fighterReference.onTakeDamage -= MediumHaptic;
+        if(playerGamepad != null) playerGamepad.ResetHaptics();
     }
 
+    #endregion
+
+    #region Haptics
+
+    [ContextMenu("Trigger Quick haptics")]
     public void QuickHaptic()
     {
         if (playerGamepad != null)
@@ -50,6 +59,7 @@ public class ControllerHaptics : MonoBehaviour
         }
     }
 
+    [ContextMenu("Trigger Medium haptics")]
     public void MediumHaptic()
     {
         if (playerGamepad != null)
@@ -61,6 +71,8 @@ public class ControllerHaptics : MonoBehaviour
         }
     }
 
+    #endregion
+
     private void Update()
     {
         if (isVibrating) {
@@ -70,6 +82,7 @@ public class ControllerHaptics : MonoBehaviour
             }
             else
             {
+                Debug.Log("Stopping haptics for " + gameObject.name);
                 playerGamepad.ResetHaptics();
                 isVibrating = false;
             }

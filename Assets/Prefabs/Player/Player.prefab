@@ -120,7 +120,7 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 260c7b0c-81f6-4934-b8bf-37268cc044c5
     m_ActionName: Regular/Power Up[/Keyboard/q]
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
   m_SplitScreenIndex: -1

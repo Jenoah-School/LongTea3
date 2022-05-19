@@ -45,10 +45,12 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager singleton;
     [SerializeField] private List<FighterInfo> fighterInfos = new List<FighterInfo>();
 
+    Action<UnityEngine.InputSystem.InputControl, UnityEngine.InputSystem.LowLevel.InputEventPtr> playerJoinEvent;
+
 
     private void Start()
     {
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(gameObject);
 
         for (int i = 0; i < fighterPartSelections.Count; i++)
         {
@@ -62,9 +64,7 @@ public class PlayerManager : MonoBehaviour
         if (singleton == null)
         {
             singleton = this;
-            SceneManager.sceneLoaded += delegate { StopListeningForInput(); };
             SceneManager.sceneLoaded += OnSceneChange;
-            SceneManager.sceneLoaded += delegate { OnSceneSwitch.Invoke(); };
         }
         else
         {
@@ -78,19 +78,19 @@ public class PlayerManager : MonoBehaviour
 
         Debug.Log("Listening for new player input");
 
-        if (InputUser.listenForUnpairedDeviceActivity > 0)
-        {
-
-            InputUser.onUnpairedDeviceUsed +=
-        (control, eventPtr) =>
+        playerJoinEvent = (control, eventPtr) =>
         {
             Debug.Log("Unpaired device found");
-        // Ignore anything but button presses.
-        if (!(control is ButtonControl))
+            // Ignore anything but button presses.
+            if (!(control is ButtonControl))
                 return;
 
             PlayerManager.singleton.SpawnNewPlayer();
         };
+
+        if (InputUser.listenForUnpairedDeviceActivity > 0)
+        {
+            InputUser.onUnpairedDeviceUsed += playerJoinEvent;
         }
     }
 
@@ -151,7 +151,7 @@ public class PlayerManager : MonoBehaviour
         spawnedPlayerInput.DeactivateInput();
 
         GameObject fighterGameObject;
-        if(fighterInfos.Count > playerID)
+        if (fighterInfos.Count > playerID)
         {
             fighterGameObject = FighterCreator.singleton.CreateNewFighter(fighterInfos[playerID].bodyID, fighterInfos[playerID].weaponID, fighterInfos[playerID].powerupID).gameObject;
         }
@@ -160,7 +160,7 @@ public class PlayerManager : MonoBehaviour
             Debug.Log("No info found about fighter");
             fighterGameObject = FighterCreator.singleton.CreateNewFighter(defaultFighterBuild.bodyID, defaultFighterBuild.weaponID, defaultFighterBuild.powerupID).gameObject;
         }
-        
+
         PlayerInput fighterInput = PlayerInput.Instantiate(fighterGameObject, -1, controlScheme, -1, playerInputDevices[0]);
         GameObject fighterObject = fighterInput.gameObject;
         Fighter fighter = fighterInput.GetComponent<Fighter>();
@@ -195,29 +195,25 @@ public class PlayerManager : MonoBehaviour
             fighter.onTakeDamage += healthbar.RecalculateHealth;
         }
     }
+
     #endregion
 
     #region Input
 
     public void StopListeningForInput()
     {
-        if(InputUser.listenForUnpairedDeviceActivity > 0) --InputUser.listenForUnpairedDeviceActivity;
+        if (InputUser.listenForUnpairedDeviceActivity > 0) --InputUser.listenForUnpairedDeviceActivity;
         Debug.Log("Input listening is  " + InputUser.listenForUnpairedDeviceActivity);
     }
 
     public void UnbindAllInput()
     {
-        foreach (PlayerInput playerInput in PlayerInput.all.ToList())
-        {
-            Destroy(playerInput);
-            Debug.Log("Player index is " + playerInput.playerIndex);
-        }
-
         foreach (InputUser inputUser in InputUser.all.ToList())
         {
             inputUser.UnpairDevicesAndRemoveUser();
-            Debug.Log("Input users is " + InputUser.all.Count);
         }
+
+        Debug.Log("Input users is " + InputUser.all.Count);
     }
 
     #endregion
@@ -244,12 +240,12 @@ public class PlayerManager : MonoBehaviour
 
     public void SetMoveStates(bool newMoveStates)
     {
-        foreach(Fighter fighter in fighters)
+        foreach (Fighter fighter in fighters)
         {
             TogglePlayer(fighter, newMoveStates);
         }
     }
-    
+
     public void CheckAllPlayersReady()
     {
         foreach (PlayerJoinView playerJoinView in playerJoinViews)
@@ -271,16 +267,16 @@ public class PlayerManager : MonoBehaviour
             onAllPlayersReady.Invoke();
         }
     }
-    
+
     public void CheckDeathRate()
     {
         int fightersAlive = 0;
-        foreach(Fighter fighter in fighters)
+        foreach (Fighter fighter in fighters)
         {
             if (!fighter.isDead) fightersAlive++;
         }
 
-        if(fightersAlive <= 1)
+        if (fightersAlive <= 1)
         {
             RoundManager.singleton.EndRound();
         }
@@ -292,17 +288,26 @@ public class PlayerManager : MonoBehaviour
 
     public void OnSceneChange(Scene scene, LoadSceneMode mode)
     {
+        StopListeningForInput();
+
         if (spawnFighterSceneIndex != -1 && scene.buildIndex == spawnFighterSceneIndex)
         {
             healthbars.AddRange(FindObjectsOfType<Healthbar>(true).OrderBy(m => m.transform.GetSiblingIndex()).ToArray());
             spawnPoints.AddRange(GameObject.FindGameObjectsWithTag("Spawnpoint").OrderBy(m => m.transform.GetSiblingIndex()).ToArray());
             SpawnAllFighters();
         }
+
+        OnSceneSwitch.Invoke();
+
+    }
+
+    public void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneChange;
+        if(playerJoinEvent != null) InputUser.onUnpairedDeviceUsed -= playerJoinEvent;
     }
 
     #endregion
-
-
 }
 
 [System.Serializable]

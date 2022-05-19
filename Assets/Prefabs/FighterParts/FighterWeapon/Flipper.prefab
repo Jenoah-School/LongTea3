@@ -148,9 +148,10 @@ MonoBehaviour:
   weight: 0
   damageText: {fileID: 5358459428584915330, guid: b93281c106ecca2448815a3859578236,
     type: 3}
+  weaponOrder: 0
+  damage: 20
+  isPair: 0
   weaponLocation: 0
-  damage: 0
-  IFrameAmount: 2
   OnAttack:
     m_PersistentCalls:
       m_Calls:

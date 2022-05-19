@@ -274,7 +274,15 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 2ade52b6-c4b6-4691-aa73-d0e6c4b0a02b
     m_ActionName: UI/Unpause[/Keyboard/escape]
-  m_NeverAutoSwitchControlSchemes: 0
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fcbcd26a-3411-4fa4-9843-e320142ce689
+    m_ActionName: Regular/Secondary Weapon[/XInputControllerWindows/buttonEast,/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 260c7b0c-81f6-4934-b8bf-37268cc044c5
+    m_ActionName: Regular/Power Up[/XInputControllerWindows/buttonNorth,/Keyboard/q]
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Regular
   m_SplitScreenIndex: -1
@@ -291,15 +299,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214b19b8f43a9df409a673c756b3b1cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 100
+  accelerationSpeed: 60
+  maximumSpeed: 10
   rotationSpeed: 2
   minRotationSpeed: 0.3
   backwardsMultiplier: 0.5
   maxRotationSpeed: 3
+  isGrounded: 0
+  brakeDrag: 0.2
+  driftDrag: 0.3
+  groundedTransform: {fileID: 0}
+  groundedCheckBox: {x: 1, y: 1, z: 1}
+  groundedLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   inputSmoothing: 100
   rotationSmoothing: 10
+  volumeCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  pitchCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  engineAudioSource: {fileID: 0}
   playerInput: {fileID: 1784022586683437499}
-  centerOfMass: {fileID: 3984180871799951542}
+  canMove: 1
 --- !u!1 &1784022587192300850
 GameObject:
   m_ObjectHideFlags: 0

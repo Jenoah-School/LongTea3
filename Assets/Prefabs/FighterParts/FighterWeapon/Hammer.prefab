@@ -51,7 +51,7 @@ MonoBehaviour:
   damageText: {fileID: 5358459428584915330, guid: b93281c106ecca2448815a3859578236,
     type: 3}
   weaponOrder: 0
-  damage: 400
+  damage: 100
   isPair: 0
   weaponLocation: 1
   OnAttack:

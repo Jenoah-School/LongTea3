@@ -172,7 +172,6 @@ public class PlayerMovement : MonoBehaviour
 
         if(wasGrounded == false && isGrounded == true)
         {
-            Debug.Log("Touched ground");
             onTouchGround();
         }
 

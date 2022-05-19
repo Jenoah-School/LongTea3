@@ -178,7 +178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3039886705176494698
 Transform:
   m_ObjectHideFlags: 0
@@ -811,6 +811,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   referencePlayerInput: {fileID: 9115376806083636152}
   fighterReference: {fileID: 5637381278339306294}
-  smallMotorIntensity: 0.4
-  largeMotorIntensity: 0.3
-  hapticDuration: 0.1
+  quickSmallMotorIntensity: 0.2
+  quickLargeMotorIntensity: 0.2
+  quickHapticDuration: 0.1
+  mediumSmallMotorIntensity: 0.4
+  mediumLargeMotorIntensity: 0.3
+  mediumHapticDuration: 0.1
