@@ -46,9 +46,15 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 rotationVector = Vector2.zero;
     private Quaternion targetRotation = Quaternion.identity;
 
+    private bool wasGrounded = false;
+
+    public delegate void OnTouchGround();
+    public OnTouchGround onTouchGround;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        onTouchGround += SetTargetRotationToCurrentRotation;
     }
 
     public void UpdateMovementInput(InputAction.CallbackContext context)
@@ -144,6 +150,11 @@ public class PlayerMovement : MonoBehaviour
         targetSpeed = (brakeDrag * (lookDirection.magnitude == 0 ? 1f : 0f));
     }
 
+    private void SetTargetRotationToCurrentRotation()
+    {
+        targetRotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+    }
+
     #endregion
 
     private void ApplyDrag()
@@ -158,6 +169,14 @@ public class PlayerMovement : MonoBehaviour
     public bool IsGrounded()
     {
         isGrounded = Physics.CheckBox(groundedTransform.position, groundedCheckBox / 2, transform.rotation, groundedLayers);
+
+        if(wasGrounded == false && isGrounded == true)
+        {
+            Debug.Log("Touched ground");
+            onTouchGround();
+        }
+
+        wasGrounded = isGrounded;
         return isGrounded;
     }
 
