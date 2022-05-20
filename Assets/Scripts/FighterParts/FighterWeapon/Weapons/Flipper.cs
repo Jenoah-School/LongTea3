@@ -7,11 +7,13 @@ using Lean.Pool;
 public class Flipper : FighterWeapon, IWeapon
 {
     [SerializeField] float flipForce;
+    [SerializeField] float flipLaunchForce;
     [SerializeField] GameObject flipper;
     [SerializeField] LayerMask flipperMask;
     [SerializeField] GameObject hitParticles;
 
     bool isFlipping;
+    bool canHit;
 
     Coroutine flipperFlipRotationRoutine;
 
@@ -22,6 +24,7 @@ public class Flipper : FighterWeapon, IWeapon
             float flipTime = 10 / flipForce;
             flipperFlipRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(-90, 0, 0), flipTime);
             isFlipping = true;
+            canHit = true;
             OnAttack.Invoke();
             if (fighterRoot) fighterRoot.onAttack();
             StartCoroutine(ResetFlipperWhenDone(flipTime));
@@ -35,7 +38,7 @@ public class Flipper : FighterWeapon, IWeapon
 
     public override void CheckCollision()
     {
-        Collider[] hits = Physics.OverlapBox(flipper.transform.position, flipper.transform.localScale / 2, flipper.transform.rotation, ~flipperMask);
+        Collider[] hits = Physics.OverlapBox(flipper.transform.position, flipper.transform.lossyScale / 2, flipper.transform.rotation, ~flipperMask);
         if (hits.Length > 0)
         {
             foreach (Collider hit in hits)
@@ -43,9 +46,10 @@ public class Flipper : FighterWeapon, IWeapon
                 if (hit.gameObject.transform.root.CompareTag("Fighter") && hit.gameObject.transform.root != this.gameObject.transform.root)
                 {
                     Fighter otherFighter = hit.gameObject.transform.root.GetComponent<Fighter>();
-                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition(flipper.transform.forward * (flipForce * 500), hit.transform.InverseTransformPoint(flipper.transform.position));
+                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition((fighterRoot.transform.forward - transform.forward) * (flipForce * 500) * flipLaunchForce, hit.transform.InverseTransformPoint(flipper.transform.position + (otherFighter.transform.position - flipper.transform.position) / 2));
                     if (hitParticles) LeanPool.Spawn(hitParticles, flipper.transform.position, Quaternion.Euler(-90f, 0, 0));
                     isFlipping = false;
+                    canHit = false;
                 }
             }
         }

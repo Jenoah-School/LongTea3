@@ -19,7 +19,7 @@ public class FighterCreator : MonoBehaviour
         DontDestroyOnLoad(this);
         Fighter fighter;
         Fighter fighterDummy;
-        if(spawnOnInitialisation) fighter = CreateNewFighter(0,0,2);
+        if(spawnOnInitialisation) fighter = CreateNewFighter(0,0,1);
         if (spawnDummyOnInitialisation)
         {
             fighterDummy = CreateNewFighter(0, 0, 2);
