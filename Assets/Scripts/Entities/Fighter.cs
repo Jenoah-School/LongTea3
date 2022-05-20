@@ -13,6 +13,7 @@ public class Fighter : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
 
     [SerializeField, Range(10, 100)] private int healthTreshHold;
+    [SerializeField] private float fallDamageMultiplier;
 
     private List<FighterPart> fighterParts = new List<FighterPart>();
 
@@ -165,6 +166,29 @@ public class Fighter : MonoBehaviour
                 {
                     weapon.ActivateWeapon();
                 }
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        FallDamage(collision.relativeVelocity, collision.contacts[0].thisCollider.gameObject);
+    }
+
+    private void FallDamage(Vector3 hitForce, GameObject col)
+    {
+        Debug.Log(hitForce.y);
+        if(Mathf.Abs(hitForce.y) > 10)
+        {
+            if(col.gameObject.GetComponent<FighterPart>())
+            {
+                FighterPart part = col.gameObject.GetComponent<FighterPart>();
+                part.TakeDamage(10 * fallDamageMultiplier, part.transform.position, Color.blue);
+            }
+            else if (col.gameObject.GetComponentInParent<FighterPart>())
+            {
+                FighterPart part = col.gameObject.GetComponentInParent<FighterPart>();
+                part.TakeDamage(hitForce.y * fallDamageMultiplier, part.transform.position, Color.blue);
             }
         }
     }

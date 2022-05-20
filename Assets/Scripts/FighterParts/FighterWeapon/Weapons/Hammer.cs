@@ -8,15 +8,12 @@ public class Hammer : FighterWeapon, IWeapon
 {
     [Header("Hammer behaviour properties")]
     [SerializeField] float hammerForce;
-    [SerializeField, Range(-100,100)] int hammerLaunchForceAngleModifier;
-    [SerializeField, Range(-100,100)] int hammerLaunchForceDistanceFromCenterOfMassModifier;
     [SerializeField, Range(-10,10)] float totalHammerLaunchForceMultiplier;
 
     [Header("Hammer references")]
     [SerializeField] GameObject hammerTip;
     [SerializeField] LayerMask hammerTipMask;
     [SerializeField] LayerMask collidableLayers = Physics.AllLayers;
-
 
     bool isSwinging;
     bool canHit;
@@ -78,7 +75,7 @@ public class Hammer : FighterWeapon, IWeapon
                 if (hit.gameObject.transform.root != this.gameObject.transform.root && hit.gameObject.transform.root.CompareTag("Fighter"))
                 {
                     Fighter otherFighter = hit.gameObject.transform.root.GetComponent<Fighter>();
-                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition((fighterRoot.transform.up) * ((hammerForce) * (Mathf.Clamp(transform.localEulerAngles.x, 25, 50) / hammerLaunchForceAngleModifier)) * ((Vector3.Distance(hammerTip.transform.position, fighterRigidBody.centerOfMass) * 2) / hammerLaunchForceDistanceFromCenterOfMassModifier) * (totalHammerLaunchForceMultiplier * 10), hit.transform.InverseTransformPoint(hammerTip.transform.position));
+                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition((hammerTip.transform.forward + (otherFighter.transform.up * 2)) * ((hammerForce) * (totalHammerLaunchForceMultiplier * 20)) * Mathf.Abs(Physics.gravity.y / 10), hit.gameObject.transform.position);
 
                     Debug.Log("Hit with hammer");                
 
@@ -86,12 +83,12 @@ public class Hammer : FighterWeapon, IWeapon
                     isSwinging = false;
                     hammerSwingRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(0, 0, 0), transform.localEulerAngles.x / 90);
 
-                    if (hit.GetComponentInParent<FighterPart>())
+                    if (hit.GetComponentInParent<FighterPart>() && canHit)
                     {
                         canHit = false;
                         FighterPart part = hit.GetComponentInParent<FighterPart>();
                         //Debug.Log("Hit something tip: " + hit.name);
-                        part.TakeDamage(damage, hammerTip.transform.position);
+                        part.TakeDamage(damage, hammerTip.transform.position, Color.white);
                     }             
                 }
             }

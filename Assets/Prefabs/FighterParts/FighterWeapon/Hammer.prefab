@@ -73,11 +73,11 @@ MonoBehaviour:
   hammerForce: 250
   hammerLaunchForceAngleModifier: 50
   hammerLaunchForceDistanceFromCenterOfMassModifier: 10
-  totalHammerLaunchForceMultiplier: 1
+  totalHammerLaunchForceMultiplier: 5
   hammerTip: {fileID: 4958063635510173404}
   hammerTipMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 12
   collidableLayers:
     serializedVersion: 2
     m_Bits: 251

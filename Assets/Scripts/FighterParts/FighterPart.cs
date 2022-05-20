@@ -26,14 +26,17 @@ public class FighterPart : MonoBehaviour
         return fighterRigidBody;
     }
 
-    public void TakeDamage(int damage, Vector3 hitPos)
+    public void TakeDamage(float damage, Vector3 hitPos, Color color)
     {
         if (fighterRoot.isDead) return;
+        damage = Mathf.Round(damage);
         healthPoints -= damage;
         GameObject damageTextObject = LeanPool.Spawn(damageText, hitPos, transform.rotation);
-        damageTextObject.GetComponent<TextMeshPro>().alpha = 1;
-        damageTextObject.GetComponent<TextMeshPro>().text = damage.ToString();
-        //damageTextObject.GetComponent<TMPro.TextMeshPro>().text = "Bruh";
+        TextMeshPro damageTextObjectText = damageTextObject.GetComponent<TextMeshPro>();
+        damageTextObjectText.alpha = 1;
+        damageTextObjectText.text = damage.ToString();
+        damageTextObjectText.color = color;
+        //damageTextObjectText.text = "Bruh";
         damageTextObject.transform.DOMoveY(transform.position.y + damageTextObject.transform.position.y + 2, 3);
         LeanPool.Despawn(damageTextObject, 3);
         fighterRoot.onTakeDamage();

@@ -540,6 +540,7 @@ MonoBehaviour:
   body: {fileID: 0}
   playerMovement: {fileID: -9172192976430678138}
   healthTreshHold: 50
+  fallDamageMultiplier: 5
   isDead: 0
 --- !u!114 &-9172192976430678138
 MonoBehaviour:
