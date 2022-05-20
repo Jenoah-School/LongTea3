@@ -10,7 +10,7 @@ public class Hammer : FighterWeapon, IWeapon
     [SerializeField] float hammerForce;
     [SerializeField, Range(-100,100)] int hammerLaunchForceAngleModifier;
     [SerializeField, Range(-100,100)] int hammerLaunchForceDistanceFromCenterOfMassModifier;
-    [SerializeField, Range(1,10)] float totalHammerLaunchForceMultiplier;
+    [SerializeField, Range(-10,10)] float totalHammerLaunchForceMultiplier;
 
     [Header("Hammer references")]
     [SerializeField] GameObject hammerTip;
@@ -19,6 +19,7 @@ public class Hammer : FighterWeapon, IWeapon
 
 
     bool isSwinging;
+    bool canHit;
 
     Coroutine hammerSwingRotationRoutine;
 
@@ -29,6 +30,7 @@ public class Hammer : FighterWeapon, IWeapon
             float hammerTime = (100 / hammerForce) / 2;
             hammerSwingRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(90, 0, 0), hammerTime);
             isSwinging = true;
+            canHit = true;
             OnAttack.Invoke();
             if(fighterRoot) fighterRoot.onAttack();
             StartCoroutine(ResetHammerWhenDone(hammerTime));
@@ -76,7 +78,9 @@ public class Hammer : FighterWeapon, IWeapon
                 if (hit.gameObject.transform.root != this.gameObject.transform.root && hit.gameObject.transform.root.CompareTag("Fighter"))
                 {
                     Fighter otherFighter = hit.gameObject.transform.root.GetComponent<Fighter>();
-                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition(hit.transform.InverseTransformPoint(hammerTip.transform.position), transform.forward * ((hammerForce) * (Mathf.Clamp(transform.localEulerAngles.x, 10, 45) / hammerLaunchForceAngleModifier)) * ((Vector3.Distance(hammerTip.transform.position, fighterRigidBody.centerOfMass) * 2) / hammerLaunchForceDistanceFromCenterOfMassModifier) * (totalHammerLaunchForceMultiplier * 10));
+                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition((fighterRoot.transform.up) * ((hammerForce) * (Mathf.Clamp(transform.localEulerAngles.x, 25, 50) / hammerLaunchForceAngleModifier)) * ((Vector3.Distance(hammerTip.transform.position, fighterRigidBody.centerOfMass) * 2) / hammerLaunchForceDistanceFromCenterOfMassModifier) * (totalHammerLaunchForceMultiplier * 10), hit.transform.InverseTransformPoint(hammerTip.transform.position));
+
+                    Debug.Log("Hit with hammer");                
 
                     RotateObject.instance.StopCoroutine(hammerSwingRotationRoutine);
                     isSwinging = false;
@@ -84,6 +88,7 @@ public class Hammer : FighterWeapon, IWeapon
 
                     if (hit.GetComponentInParent<FighterPart>())
                     {
+                        canHit = false;
                         FighterPart part = hit.GetComponentInParent<FighterPart>();
                         //Debug.Log("Hit something tip: " + hit.name);
                         part.TakeDamage(damage, hammerTip.transform.position);

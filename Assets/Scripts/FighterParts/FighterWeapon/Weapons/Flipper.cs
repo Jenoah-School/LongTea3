@@ -43,7 +43,7 @@ public class Flipper : FighterWeapon, IWeapon
                 if (hit.gameObject.transform.root.CompareTag("Fighter") && hit.gameObject.transform.root != this.gameObject.transform.root)
                 {
                     Fighter otherFighter = hit.gameObject.transform.root.GetComponent<Fighter>();
-                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition(hit.transform.InverseTransformPoint(flipper.transform.position), flipper.transform.forward * (flipForce * 500));
+                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition(flipper.transform.forward * (flipForce * 500), hit.transform.InverseTransformPoint(flipper.transform.position));
                     if (hitParticles) LeanPool.Spawn(hitParticles, flipper.transform.position, Quaternion.Euler(-90f, 0, 0));
                     isFlipping = false;
                 }

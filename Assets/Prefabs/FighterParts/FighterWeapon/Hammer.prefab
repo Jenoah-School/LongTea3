@@ -71,9 +71,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   hammerForce: 250
-  hammerLaunchForceAngleModifier: 30
-  hammerLaunchForceDistanceFromCenterOfMassModifier: 3
-  totalHammerLaunchForceMultiplier: 1.5
+  hammerLaunchForceAngleModifier: 50
+  hammerLaunchForceDistanceFromCenterOfMassModifier: 10
+  totalHammerLaunchForceMultiplier: 1
   hammerTip: {fileID: 4958063635510173404}
   hammerTipMask:
     serializedVersion: 2

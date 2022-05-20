@@ -955,8 +955,9 @@ GameObject:
   - component: {fileID: 1079827558}
   - component: {fileID: 1079827557}
   - component: {fileID: 1079827556}
+  - component: {fileID: 1079827560}
   m_Layer: 0
-  m_Name: --== Player Manager ==--
+  m_Name: --== Manager ==--
   m_TagString: Spawnpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1027,6 +1028,11 @@ MonoBehaviour:
   - {r: 0.98039216, g: 0.7535798, b: 0.14509805, a: 1}
   spawnPoints:
   - {fileID: 1585930610}
+  defaultFighterBuild:
+    playerID: 0
+    bodyID: 0
+    weaponID: 0
+    powerupID: 0
   spawnFighter: 1
   spawnFighterController: 0
   spawnFighterSceneIndex: -1
@@ -1043,6 +1049,7 @@ MonoBehaviour:
   onPlayersUnready:
     m_PersistentCalls:
       m_Calls: []
+  isAllDead: 0
   fighterInfos: []
 --- !u!4 &1079827559
 Transform:
@@ -1059,6 +1066,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1079827560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079827555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6946ed0d771f5ff478e81b4a52b5bd66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnEndRound:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1150280705
 GameObject:
   m_ObjectHideFlags: 0
