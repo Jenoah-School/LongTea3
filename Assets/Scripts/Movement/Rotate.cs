@@ -11,6 +11,6 @@ public class Rotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localEulerAngles += rotationSpeed * Time.deltaTime * axisWeight;
+        transform.Rotate(rotationSpeed * Time.deltaTime * axisWeight, Space.Self);
     }
 }

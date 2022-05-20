@@ -72,16 +72,11 @@ public class PlayerManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("Gonna start trying to listen for activity");
-
+        Debug.Log("Listening for player input");
         ++InputUser.listenForUnpairedDeviceActivity;
-
-        Debug.Log("Listening for new player input");
 
         playerJoinEvent = (control, eventPtr) =>
         {
-            Debug.Log("Unpaired device found");
-            // Ignore anything but button presses.
             if (!(control is ButtonControl))
                 return;
 
