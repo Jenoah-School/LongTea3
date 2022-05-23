@@ -22,8 +22,13 @@ public class Healthbar : MonoBehaviour
     }
 
     public void RecalculateHealth()
-    { 
-        SetFill(1f / fighterReference.GetStartHealth() * fighterReference.GetTotalPartHealth());
+    {
+        //This only works for half health threshold for some reason. I will look to it next week :/
+        //TODO: Fix the threshold
+        float fatalHealth = fighterReference.GetStartHealth() / 100f * fighterReference.GetHealthThreshold();
+        float fillValue = (fighterReference.GetTotalPartHealth() - fatalHealth) / fatalHealth;
+
+        SetFill(fillValue);
     }
 
     public void SetFill(float fillAmount)

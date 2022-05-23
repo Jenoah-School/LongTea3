@@ -45,21 +45,12 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager singleton;
     [SerializeField] private List<FighterInfo> fighterInfos = new List<FighterInfo>();
 
-    Action<UnityEngine.InputSystem.InputControl, UnityEngine.InputSystem.LowLevel.InputEventPtr> playerJoinEvent;
+    Action<InputControl, UnityEngine.InputSystem.LowLevel.InputEventPtr> playerJoinEvent;
 
 
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
-
-        for (int i = 0; i < fighterPartSelections.Count; i++)
-        {
-            FighterInfo fighterInfo = new FighterInfo
-            {
-                playerID = i
-            };
-            fighterInfos.Add(fighterInfo);
-        }
 
         if (singleton == null)
         {
@@ -110,6 +101,16 @@ public class PlayerManager : MonoBehaviour
     {
         PlayerJoinView playerJoinView = playerJoinViews[playerID];
         MultiplayerEventSystem playerUISystem = players[playerID].GetComponent<MultiplayerEventSystem>();
+        if (fighterInfos.Where(x => x.playerID == playerID).Count() <= 0)
+        {
+            FighterInfo fighterInfo = new FighterInfo();
+            fighterInfo.playerID = playerID;
+            fighterInfo.bodyID = 0;
+            fighterInfo.powerupID = 0;
+            fighterInfo.weaponID = 0;
+            fighterInfo.score = 0;
+            fighterInfos.Add(fighterInfo);
+        }
 
         playerJoinView.isPlayer = true;
         playerJoinView.onReadyChange += CheckAllPlayersReady;
@@ -289,27 +290,33 @@ public class PlayerManager : MonoBehaviour
         {
             healthbars.AddRange(FindObjectsOfType<Healthbar>(true).OrderBy(m => m.transform.GetSiblingIndex()).ToArray());
             spawnPoints.AddRange(GameObject.FindGameObjectsWithTag("Spawnpoint").OrderBy(m => m.transform.GetSiblingIndex()).ToArray());
-            SpawnAllFighters();
+            Invoke(nameof(SpawnAllFighters), 0.1f);
         }
 
         OnSceneSwitch.Invoke();
 
     }
 
+    public List<FighterInfo> GetFighterInfo()
+    {
+        return fighterInfos;
+    }
+
     public void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneChange;
-        if(playerJoinEvent != null) InputUser.onUnpairedDeviceUsed -= playerJoinEvent;
+        if (playerJoinEvent != null) InputUser.onUnpairedDeviceUsed -= playerJoinEvent;
     }
 
     #endregion
 }
 
 [System.Serializable]
-struct FighterInfo
+public struct FighterInfo
 {
     public int playerID;
     public int bodyID;
     public int weaponID;
     public int powerupID;
+    public int score;
 }

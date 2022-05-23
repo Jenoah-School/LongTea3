@@ -14,6 +14,7 @@ public class SceneSwitcher : MonoBehaviour
 
     public void SwitchScene(int buildIndex)
     {
+        if (!fadeAnimator.gameObject.activeSelf) fadeAnimator.gameObject.SetActive(true);
         if (!fadeAnimator.enabled) fadeAnimator.enabled = true;
         if (!isTransitioning)
         {

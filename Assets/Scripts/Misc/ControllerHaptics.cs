@@ -29,7 +29,6 @@ public class ControllerHaptics : MonoBehaviour
         if (referencePlayerInput.currentControlScheme == "Gamepad")
         {
             playerGamepad = referencePlayerInput.GetDevice<Gamepad>();
-            if(playerGamepad != null) Debug.Log("Found haptics compatible controller for " + gameObject.name);
         }
 
         fighterReference.onAttack += QuickHaptic;
@@ -82,7 +81,6 @@ public class ControllerHaptics : MonoBehaviour
             }
             else
             {
-                Debug.Log("Stopping haptics for " + gameObject.name);
                 playerGamepad.ResetHaptics();
                 isVibrating = false;
             }
