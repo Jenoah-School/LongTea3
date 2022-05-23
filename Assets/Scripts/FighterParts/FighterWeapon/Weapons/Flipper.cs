@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Lean.Pool;
+using UnityEngine.InputSystem;
 
 public class Flipper : FighterWeapon, IWeapon
 {
@@ -17,17 +18,20 @@ public class Flipper : FighterWeapon, IWeapon
 
     Coroutine flipperFlipRotationRoutine;
 
-    public override void ActivateWeapon()
+    public override void ActivateWeapon(InputAction.CallbackContext context)
     {
-        if (transform.localEulerAngles.x > -1 && transform.localEulerAngles.x < 1)
+        if (context.action.WasPerformedThisFrame())
         {
-            float flipTime = 10 / flipForce;
-            flipperFlipRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(-90, 0, 0), flipTime);
-            isFlipping = true;
-            canHit = true;
-            OnAttack.Invoke();
-            if (fighterRoot) fighterRoot.onAttack();
-            StartCoroutine(ResetFlipperWhenDone(flipTime));
+            if (transform.localEulerAngles.x > -1 && transform.localEulerAngles.x < 1)
+            {
+                float flipTime = 10 / flipForce;
+                flipperFlipRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(-90, 0, 0), flipTime);
+                isFlipping = true;
+                canHit = true;
+                OnAttack.Invoke();
+                if (fighterRoot) fighterRoot.onAttack();
+                StartCoroutine(ResetFlipperWhenDone(flipTime));
+            }
         }
     }
 
@@ -46,8 +50,8 @@ public class Flipper : FighterWeapon, IWeapon
                 if (hit.gameObject.transform.root.CompareTag("Fighter") && hit.gameObject.transform.root != this.gameObject.transform.root && canHit)
                 {
                     Fighter otherFighter = hit.gameObject.transform.root.GetComponent<Fighter>();
-                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition((fighterRoot.transform.up) * (flipForce * 250) * flipLaunchForce * Mathf.Abs(Physics.gravity.y / 10), otherFighter.transform.position);
-                    otherFighter.GetComponent<Rigidbody>().AddRelativeTorque(transform.forward * flipForce * 100 * Mathf.Abs(Vector3.Distance(otherFighter.transform.position, transform.position) * 2));
+                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition((fighterRoot.transform.up + (fighterRoot.transform.forward + fighterRoot.transform.up) / 5) * (flipForce * 250) * flipLaunchForce * Mathf.Abs(Physics.gravity.y / 10), otherFighter.transform.position);
+                    otherFighter.GetComponent<Rigidbody>().AddRelativeTorque(fighterRoot.transform.forward * flipForce * 100 * 4);
                     if (hitParticles) LeanPool.Spawn(hitParticles, flipper.transform.position, Quaternion.Euler(-90f, 0, 0));
                     isFlipping = false;
                     canHit = false;

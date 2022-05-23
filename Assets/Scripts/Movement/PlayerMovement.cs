@@ -168,7 +168,14 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsGrounded()
     {
-        isGrounded = Physics.CheckBox(groundedTransform.position, groundedCheckBox / 2, transform.rotation, groundedLayers);
+        if(Physics.CheckBox(groundedTransform.position, groundedCheckBox / 2, transform.rotation, groundedLayers) && Mathf.Abs(rb.velocity.y) < 2)
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
 
         if(wasGrounded == false && isGrounded == true)
         {

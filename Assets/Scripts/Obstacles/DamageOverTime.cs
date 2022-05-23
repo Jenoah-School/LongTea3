@@ -27,7 +27,7 @@ public class DamageOverTime : MonoBehaviour
                 FighterPart fighterPart = other.gameObject.GetComponentInParent<FighterPart>();
                 if (fighterPart != null)
                 {
-                    fighterPart.TakeDamage(damageAmount, other.transform.position, Color.white);
+                    fighterPart.TakeDamage(damageAmount, other.transform.position);
                     OnHit.Invoke();
                     if (particlesToSpawn != null) LeanPool.Spawn(particlesToSpawn, other.ClosestPointOnBounds(transform.position), Quaternion.LookRotation((other.transform.position - transform.position).normalized));
                     nextDamageTime = Time.time + cooldown;
