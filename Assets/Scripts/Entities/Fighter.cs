@@ -89,6 +89,11 @@ public class Fighter : MonoBehaviour
         return startTotalHealth;
     }
 
+    public float GetHealthThreshold()
+    {
+        return healthTreshHold;
+    }
+
     private void SetCenterOfMass()
     {
         if (rb != null && body.GetCenterOfMass() != null)
@@ -141,7 +146,7 @@ public class Fighter : MonoBehaviour
     public void CheckDeath()
     {
         if (isDead) return;
-        if (GetTotalPartHealth() < startTotalHealth / 100 * healthTreshHold)
+        if(GetTotalPartHealth() < startTotalHealth / 100f * (float)healthTreshHold)
         {
             OnDeath();
         }
@@ -187,7 +192,7 @@ public class Fighter : MonoBehaviour
 
     private void FallDamage(Vector3 hitForce, GameObject col1, GameObject col2)
     {
-        if ((hitForce.y) > fallDamageTreshHold && !col2.gameObject.transform.root.CompareTag("Fighter") && Time.time >= lastFallDmgTime)
+        if(Mathf.Abs(hitForce.y) > 10)
         {
             lastFallDmgTime = Time.time + 1;
             float fallDamage = Mathf.Round(hitForce.y * fallDamageMultiplier);
