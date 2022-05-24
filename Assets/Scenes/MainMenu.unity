@@ -640,7 +640,7 @@ PrefabInstance:
     - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 227.82965
+      value: 227.82967
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa66786bc246594fa0abdf740f63735, type: 3}
@@ -1325,7 +1325,7 @@ PrefabInstance:
     - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 227.82965
+      value: 227.82967
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa66786bc246594fa0abdf740f63735, type: 3}
@@ -1708,6 +1708,7 @@ MonoBehaviour:
   body: {fileID: 0}
   playerMovement: {fileID: 0}
   healthTreshHold: 0
+  fallDamageMultiplier: 0
   isDead: 0
 --- !u!114 &568015508
 MonoBehaviour:
@@ -2304,6 +2305,7 @@ MonoBehaviour:
   body: {fileID: 0}
   playerMovement: {fileID: 0}
   healthTreshHold: 0
+  fallDamageMultiplier: 0
   isDead: 0
 --- !u!114 &915919839
 MonoBehaviour:
@@ -3031,16 +3033,18 @@ MonoBehaviour:
   controllerPrefab: {fileID: 3570653424592897648, guid: 3b1702cb2360ff249be54710dfed1796,
     type: 3}
   playerColors:
-  - {r: 0.27085856, g: 0.38679248, b: 0.23900856, a: 1}
-  - {r: 0.22459063, g: 0.33523178, b: 0.46226418, a: 1}
-  - {r: 0.6037736, g: 0.5028667, b: 0.259167, a: 1}
-  - {r: 0.44738325, g: 0.1445799, b: 0.5377358, a: 1}
+  - {r: 0.14509805, g: 0.6342765, b: 0.83137256, a: 1}
+  - {r: 0.14489143, g: 0.8301887, b: 0.3978837, a: 1}
+  - {r: 0.83137256, g: 0.74826014, b: 0.14509805, a: 1}
+  - {r: 0.7619745, g: 0.14509805, b: 0.83137256, a: 1}
   spawnPoints: []
   defaultFighterBuild:
     playerID: 0
     bodyID: 0
     weaponID: 0
     powerupID: 0
+    ranking: 0
+  showPlayerRing: 1
   spawnFighter: 0
   spawnFighterController: 1
   spawnFighterSceneIndex: 1
@@ -3959,7 +3963,7 @@ PrefabInstance:
     - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 227.82965
+      value: 227.82967
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa66786bc246594fa0abdf740f63735, type: 3}
@@ -4153,6 +4157,7 @@ MonoBehaviour:
   body: {fileID: 0}
   playerMovement: {fileID: 0}
   healthTreshHold: 0
+  fallDamageMultiplier: 0
   isDead: 0
 --- !u!114 &1564642107
 MonoBehaviour:
@@ -4961,6 +4966,7 @@ MonoBehaviour:
   body: {fileID: 0}
   playerMovement: {fileID: 0}
   healthTreshHold: 0
+  fallDamageMultiplier: 0
   isDead: 0
 --- !u!1001 &1177021443923320909
 PrefabInstance:
@@ -5603,7 +5609,7 @@ PrefabInstance:
     - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 227.82965
+      value: 227.82967
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa66786bc246594fa0abdf740f63735, type: 3}
