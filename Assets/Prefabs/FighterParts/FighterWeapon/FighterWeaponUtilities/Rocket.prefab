@@ -73,8 +73,6 @@ MonoBehaviour:
   rocketMaxTime: 4
   explosion: {fileID: 4904167690773235388}
   model: {fileID: 5419897203111961401}
-  rocketMaxTime: 4
-  rocketForce: 20
   OnExplode:
     m_PersistentCalls:
       m_Calls:
@@ -143,9 +141,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4823663591530247096, guid: 3a421fc3667c3384085ee29a2ed96507,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: aecfb5f68375c7b48adcdfdd6e566e63, type: 3}
+  m_audioClip: {fileID: 8300000, guid: af224e26a33218844a7457fc20868781, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 0.82
   Loop: 1
   Mute: 0
