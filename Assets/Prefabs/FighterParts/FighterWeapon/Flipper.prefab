@@ -169,7 +169,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   flipForce: 100
-  flipLaunchForce: 2
+  flipLaunchForce: 3
   flipper: {fileID: 6896181074803485098}
   flipperMask:
     serializedVersion: 2

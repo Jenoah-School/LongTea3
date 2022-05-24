@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public abstract class FighterWeapon : FighterPart, IWeapon
 {
@@ -15,6 +16,6 @@ public abstract class FighterWeapon : FighterPart, IWeapon
     public WeaponLocations weaponLocation;
     public UnityEvent OnAttack;
 
-    public virtual void ActivateWeapon() { }
+    public virtual void ActivateWeapon(InputAction.CallbackContext context) { }
     public virtual void CheckCollision() { }
 }

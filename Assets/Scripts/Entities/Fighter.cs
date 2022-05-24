@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
+using Lean.Pool;
+using DG.Tweening;
+using TMPro;
 
 public class Fighter : MonoBehaviour
 {
     [Header("Vehicle")]
-    [SerializeField] private List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private FighterBody body;
     [SerializeField] private PlayerMovement playerMovement;
 
+    private FighterBody body;
+    private List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
+
     [SerializeField, Range(10, 100)] private int healthTreshHold;
+    [SerializeField] private int fallDamageTreshHold;
     [SerializeField] private float fallDamageMultiplier;
+
+    [SerializeField] protected GameObject damageText;
 
     private List<FighterPart> fighterParts = new List<FighterPart>();
 
@@ -26,6 +33,10 @@ public class Fighter : MonoBehaviour
     public delegate void OnAttack();
     public OnTakeDamage onAttack;
 
+    public Color fighterColor;
+
+    private float lastFallDmgTime;
+
     public void AssembleFighterParts(FighterBody body, List<FighterWeapon> weapons)
     {
         FighterBody bodyObject = Instantiate(body, transform);
@@ -33,7 +44,7 @@ public class Fighter : MonoBehaviour
         this.body = bodyObject;
         fighterParts.Add(bodyObject);
 
-        for(int i = 0; i < weapons.Count; i++)
+        for (int i = 0; i < weapons.Count; i++)
         {
             FighterWeapon weapon = Instantiate(weapons[i], transform);
             weapon.transform.localPosition = bodyObject.GetWeaponLocation(weapon.weaponLocation).localPosition;
@@ -42,13 +53,18 @@ public class Fighter : MonoBehaviour
             fighterWeapons.Add(weapon);
 
             if (weapons[i].isPair)
-            {             
+            {
                 FighterWeapon weapon2 = Instantiate(weapons[i], transform);
                 weapon2.transform.localPosition = bodyObject.GetWeaponRightSideLocation().localPosition;
                 weapon2.transform.localEulerAngles = bodyObject.GetWeaponRightSideLocation().localEulerAngles;
                 weapon2.weaponOrder = (FighterWeapon.WeaponOrder)i;
                 fighterWeapons.Add(weapon2);
             }
+        }
+
+        foreach (FighterWheels wheelsPart in bodyObject.GetComponentsInChildren<FighterWheels>())
+        {
+            fighterParts.Add(wheelsPart);
         }
 
         PostAssemblyStart();
@@ -142,20 +158,18 @@ public class Fighter : MonoBehaviour
         onTakeDamage();
         PlayerManager.singleton.TogglePlayer(this, false);
         PlayerManager.singleton.CheckDeathRate();
-        Debug.Log("He ded boy");
+        PlayerManager.singleton.IncreaseRankingForAlive();
+        Debug.Log($"<color='red'>Player {gameObject.name} died</color>");
     }
 
     public void ExecutePrimary(InputAction.CallbackContext context)
     {
         if (isDead) return;
-        if (context.action.WasPerformedThisFrame())
+        foreach (FighterWeapon weapon in fighterWeapons)
         {
-            foreach(FighterWeapon weapon in fighterWeapons)
+            if (weapon.weaponOrder == FighterWeapon.WeaponOrder.PRIMARY)
             {
-                if(weapon.weaponOrder == FighterWeapon.WeaponOrder.PRIMARY)
-                {
-                    weapon.ActivateWeapon();
-                }
+                weapon.ActivateWeapon(context);
             }
         }
     }
@@ -163,38 +177,47 @@ public class Fighter : MonoBehaviour
     public void ExecuteSecondary(InputAction.CallbackContext context)
     {
         if (isDead) return;
-        if (context.action.WasPerformedThisFrame())
+        foreach (FighterWeapon weapon in fighterWeapons)
         {
-            foreach (FighterWeapon weapon in fighterWeapons)
+            if (weapon.weaponOrder == FighterWeapon.WeaponOrder.SECONDARY)
             {
-                if (weapon.weaponOrder == FighterWeapon.WeaponOrder.SECONDARY)
-                {
-                    weapon.ActivateWeapon();
-                }
+                weapon.ActivateWeapon(context);
             }
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        FallDamage(collision.relativeVelocity, collision.contacts[0].thisCollider.gameObject);
+        FallDamage(collision.relativeVelocity, collision.contacts[0].thisCollider.gameObject, collision.transform.gameObject);
     }
 
-    private void FallDamage(Vector3 hitForce, GameObject col)
+    private void FallDamage(Vector3 hitForce, GameObject col1, GameObject col2)
     {
         if(Mathf.Abs(hitForce.y) > 10)
         {
-            if(col.gameObject.GetComponent<FighterPart>())
+            lastFallDmgTime = Time.time + 1;
+            float fallDamage = Mathf.Round(hitForce.y * fallDamageMultiplier);
+
+            foreach (FighterPart part in fighterParts)
             {
-                FighterPart part = col.gameObject.GetComponent<FighterPart>();
-                part.TakeDamage(10 * fallDamageMultiplier, part.transform.position, Color.blue);
+                part.TakeDamage(fallDamage / fighterParts.Count, part.transform.position, false);
             }
-            else if (col.gameObject.GetComponentInParent<FighterPart>())
-            {
-                FighterPart part = col.gameObject.GetComponentInParent<FighterPart>();
-                part.TakeDamage(hitForce.y * fallDamageMultiplier, part.transform.position, Color.blue);
-            }
+            Debug.Log(GetTotalPartHealth());
+            DamageIndication(fallDamage, transform.position);
         }
+    }
+
+    public void DamageIndication(float damage, Vector3 hitPos)
+    {
+        GameObject damageTextObject = LeanPool.Spawn(damageText, hitPos, transform.rotation);
+        TextMeshPro damageTextObjectText = damageTextObject.GetComponent<TextMeshPro>();
+        damageTextObjectText.alpha = 1;
+        damageTextObjectText.text = damage.ToString();
+        damageTextObjectText.color = fighterColor;
+        //damageTextObjectText.text = "Bruh";
+        damageTextObject.transform.DOMoveY(transform.position.y + damageTextObject.transform.position.y + Random.Range(1.5f, 2.5f), Random.Range(2.5f, 3.5f));
+        LeanPool.Despawn(damageTextObject, 3);
+        onTakeDamage();
     }
 
     private void OnDrawGizmosSelected()

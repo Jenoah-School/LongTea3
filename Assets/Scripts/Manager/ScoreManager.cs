@@ -11,6 +11,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private GameObject leaderboardItem = null;
     [SerializeField] private float spawnDelay = .5f;
     [SerializeField] private UnityEvent OnSpawnEvent;
+    [SerializeField] private bool destroyAfterLoadingScore = true;
 
     List<FighterInfo> fighterInfos = new List<FighterInfo>();
 
@@ -49,7 +50,7 @@ public class ScoreManager : MonoBehaviour
 
     public IEnumerator ShowScoresTimed()
     {
-        fighterInfos = fighterInfos.OrderByDescending(player => player.score).ToList();
+        fighterInfos = fighterInfos.OrderByDescending(player => player.ranking).ToList();
         GameObject leaderboardGO = GameObject.Find(leaderboardParentName);
         if (leaderboardGO != null)
         {
@@ -58,10 +59,12 @@ public class ScoreManager : MonoBehaviour
                 GameObject scoreItem = Instantiate(leaderboardItem, leaderboardGO.transform);
                 scoreItem.GetComponent<QuickAnimations>().Squish(.5f);
                 scoreItem.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = $"Player {fighterInfos[i].playerID + 1}";
-                scoreItem.transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = $"{fighterInfos[i].score}";
+                scoreItem.transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = $"{fighterInfos[i].ranking}";
                 OnSpawnEvent.Invoke();
                 yield return new WaitForSeconds(spawnDelay);
             }
         }
+
+        if (destroyAfterLoadingScore) Destroy(gameObject);
     }
 }

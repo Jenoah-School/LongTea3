@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Lean.Pool;
+using UnityEngine.InputSystem;
 
 public class RocketLauncher : FighterWeapon, IWeapon
 {
@@ -11,9 +12,9 @@ public class RocketLauncher : FighterWeapon, IWeapon
 
     private float nextUseTime;
 
-    public override void ActivateWeapon()
+    public override void ActivateWeapon(InputAction.CallbackContext context)
     { 
-        if(Time.time >= nextUseTime)
+        if(Time.time >= nextUseTime && context.action.WasPerformedThisFrame())      
         {
             nextUseTime = Time.time + cooldown;
             Rocket rocketClone = Instantiate(rocket, launcherTip.transform.position + launcherTip.transform.forward / 3, launcherTip.transform.rotation);

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using DG.Tweening;
+using UnityEngine.InputSystem;
 
 public class Hammer : FighterWeapon, IWeapon
 {
@@ -20,17 +21,20 @@ public class Hammer : FighterWeapon, IWeapon
 
     Coroutine hammerSwingRotationRoutine;
 
-    public override void ActivateWeapon()
+    public override void ActivateWeapon(InputAction.CallbackContext context)
     {
-        if (transform.localEulerAngles.x > -1 && transform.localEulerAngles.x < 1)
+        if (context.action.WasPerformedThisFrame())
         {
-            float hammerTime = (100 / hammerForce) / 2;
-            hammerSwingRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(90, 0, 0), hammerTime);
-            isSwinging = true;
-            canHit = true;
-            OnAttack.Invoke();
-            if(fighterRoot) fighterRoot.onAttack();
-            StartCoroutine(ResetHammerWhenDone(hammerTime));
+            if (transform.localEulerAngles.x > -1 && transform.localEulerAngles.x < 1)
+            {
+                float hammerTime = (100 / hammerForce) / 2;
+                hammerSwingRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(90, 0, 0), hammerTime);
+                isSwinging = true;
+                canHit = true;
+                OnAttack.Invoke();
+                if (fighterRoot) fighterRoot.onAttack();
+                StartCoroutine(ResetHammerWhenDone(hammerTime));
+            }
         }
     }
 
@@ -75,7 +79,7 @@ public class Hammer : FighterWeapon, IWeapon
                 if (hit.gameObject.transform.root != this.gameObject.transform.root && hit.gameObject.transform.root.CompareTag("Fighter"))
                 {
                     Fighter otherFighter = hit.gameObject.transform.root.GetComponent<Fighter>();
-                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition((hammerTip.transform.forward + (otherFighter.transform.up * 2)) * ((hammerForce) * (totalHammerLaunchForceMultiplier * 20)) * Mathf.Abs(Physics.gravity.y / 10), hit.gameObject.transform.position);
+                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition(((transform.up * 2)) * ((hammerForce) * (totalHammerLaunchForceMultiplier * 20)) * Mathf.Abs(Physics.gravity.y / 10), hit.gameObject.transform.position);
 
                     Debug.Log("Hit with hammer");                
 
@@ -88,7 +92,7 @@ public class Hammer : FighterWeapon, IWeapon
                         canHit = false;
                         FighterPart part = hit.GetComponentInParent<FighterPart>();
                         //Debug.Log("Hit something tip: " + hit.name);
-                        part.TakeDamage(damage, hammerTip.transform.position, Color.white);
+                        part.TakeDamage(damage, hammerTip.transform.position);
                     }             
                 }
             }

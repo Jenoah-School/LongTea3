@@ -6931,9 +6931,9 @@ MonoBehaviour:
   controllerPrefab: {fileID: 3570653424592897648, guid: 3b1702cb2360ff249be54710dfed1796,
     type: 3}
   playerColors:
-  - {r: 0.13725491, g: 0.9803922, b: 0.49411768, a: 1}
-  - {r: 0.98039216, g: 0.7535798, b: 0.14509805, a: 1}
-  - {r: 0.6981132, g: 0.24038802, b: 0.63235617, a: 1}
+  - {r: 0, g: 0.57883954, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0.63107514, a: 1}
+  - {r: 0.8962264, g: 0.19023676, b: 0.7936469, a: 1}
   spawnPoints:
   - {fileID: 539132314}
   - {fileID: 933117567}
@@ -6944,7 +6944,8 @@ MonoBehaviour:
     bodyID: 0
     weaponID: 0
     powerupID: 2
-    score: 0
+    ranking: 0
+  showPlayerRing: 1
   spawnFighter: 1
   spawnFighterController: 0
   spawnFighterSceneIndex: -1
@@ -7433,7 +7434,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1420233, y: 1}
+    m_SensorSize: {x: 1.7782258, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8568,6 +8569,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  destroyAfterLoadingScore: 1
 --- !u!82 &2018559012
 AudioSource:
   m_ObjectHideFlags: 0

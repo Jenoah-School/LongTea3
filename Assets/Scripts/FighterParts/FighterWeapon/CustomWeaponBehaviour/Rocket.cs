@@ -38,7 +38,7 @@ public class Rocket : MonoBehaviour
                 if (other.GetComponentInParent<FighterPart>())
                 {
                     FighterPart part = other.GetComponentInParent<FighterPart>();
-                    part.TakeDamage(damage, transform.position, Color.white);
+                    part.TakeDamage(damage, transform.position);
                     part.GetRigidBodyFighter().AddForceAtPosition((part.transform.up * rocketForce) * (rocketHitLaunchForce * 1.5f) * Mathf.Abs(Physics.gravity.y / 10), transform.position);
                     part.GetRigidBodyFighter().AddForceAtPosition((transform.forward * rocketForce) * rocketHitLaunchForce * Mathf.Abs(Physics.gravity.y / 10), transform.position);
                 }
