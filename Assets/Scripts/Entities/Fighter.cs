@@ -142,7 +142,8 @@ public class Fighter : MonoBehaviour
         onTakeDamage();
         PlayerManager.singleton.TogglePlayer(this, false);
         PlayerManager.singleton.CheckDeathRate();
-        Debug.Log("He ded boy");
+        PlayerManager.singleton.IncreaseRankingForAlive();
+        Debug.Log($"<color='red'>Player {gameObject.name} died</color>");
     }
 
     public void ExecutePrimary(InputAction.CallbackContext context)

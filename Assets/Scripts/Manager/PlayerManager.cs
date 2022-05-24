@@ -26,6 +26,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private List<Color> playerColors = new List<Color>();
     [SerializeField] private List<GameObject> spawnPoints = new List<GameObject>();
     [SerializeField] private FighterInfo defaultFighterBuild = new FighterInfo();
+    [SerializeField] private bool showPlayerRing = true;
+
 
     [Header("Events")]
     [SerializeField] private bool spawnFighter = false;
@@ -94,7 +96,7 @@ public class PlayerManager : MonoBehaviour
         if (spawnFighterController) SpawnController(playerID);
 
         OnPlayerJoin.Invoke();
-        Debug.Log($"Player with ID {playerID} succesfully spawned");
+        Debug.Log($"Player {playerID + 1} succesfully spawned");
     }
 
     public void SpawnController(int playerID)
@@ -108,7 +110,7 @@ public class PlayerManager : MonoBehaviour
             fighterInfo.bodyID = 0;
             fighterInfo.powerupID = 0;
             fighterInfo.weaponID = 0;
-            fighterInfo.score = 0;
+            fighterInfo.ranking = 0;
             fighterInfos.Add(fighterInfo);
         }
 
@@ -173,11 +175,15 @@ public class PlayerManager : MonoBehaviour
         fighterObject.transform.SetParent(fighterParent);
 
         //Color the player ring
+
         Transform ringObject = fighterObject.transform.Find("Ring");
-        if (ringObject && ringObject.TryGetComponent(out SpriteRenderer ringRenderer))
+        if (showPlayerRing) {
+            ringObject.gameObject.SetActive(showPlayerRing);
+        if (ringObject.TryGetComponent(out SpriteRenderer ringRenderer))
         {
             ringRenderer.color = playerColors[playerID % playerColors.Count];
         }
+    }	
 
         //Couple healthbar
         if (healthbars.Count > playerID)
@@ -199,7 +205,6 @@ public class PlayerManager : MonoBehaviour
     public void StopListeningForInput()
     {
         if (InputUser.listenForUnpairedDeviceActivity > 0) --InputUser.listenForUnpairedDeviceActivity;
-        Debug.Log("Input listening is  " + InputUser.listenForUnpairedDeviceActivity);
     }
 
     public void UnbindAllInput()
@@ -209,7 +214,6 @@ public class PlayerManager : MonoBehaviour
             inputUser.UnpairDevicesAndRemoveUser();
         }
 
-        Debug.Log("Input users is " + InputUser.all.Count);
     }
 
     #endregion
@@ -278,6 +282,20 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    public void IncreaseRankingForAlive()
+    {	
+        for (int i = 0; i < fighters.Count; i++)
+        {
+            if (!fighters[i].isDead)
+            {
+
+                FighterInfo fighterInfo = fighterInfos[i];
+                fighterInfo.ranking++;
+                fighterInfos[i] = fighterInfo;
+            }
+        }
+    }
+
     #endregion
 
     #region Misc
@@ -318,5 +336,5 @@ public struct FighterInfo
     public int bodyID;
     public int weaponID;
     public int powerupID;
-    public int score;
+    public int ranking;
 }
