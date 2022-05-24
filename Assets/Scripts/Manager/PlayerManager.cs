@@ -177,13 +177,14 @@ public class PlayerManager : MonoBehaviour
         //Color the player ring
 
         Transform ringObject = fighterObject.transform.Find("Ring");
-        if (showPlayerRing) {
-            ringObject.gameObject.SetActive(showPlayerRing);
-        if (ringObject.TryGetComponent(out SpriteRenderer ringRenderer))
+        if (showPlayerRing)
         {
-            ringRenderer.color = playerColors[playerID % playerColors.Count];
+            ringObject.gameObject.SetActive(showPlayerRing);
+            if (ringObject.TryGetComponent(out SpriteRenderer ringRenderer))
+            {
+                ringRenderer.color = playerColors[playerID % playerColors.Count];
+            }
         }
-    }	
 
         //Couple healthbar
         if (healthbars.Count > playerID)
@@ -283,7 +284,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     public void IncreaseRankingForAlive()
-    {	
+    {
         for (int i = 0; i < fighters.Count; i++)
         {
             if (!fighters[i].isDead)

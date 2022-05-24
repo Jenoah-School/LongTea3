@@ -13,7 +13,7 @@ public class Fighter : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerMovement playerMovement;
 
-    private FighterBody body;
+    [SerializeField] private FighterBody body;
     private List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
 
     [SerializeField, Range(10, 100)] private int healthTreshHold;
@@ -51,6 +51,7 @@ public class Fighter : MonoBehaviour
             weapon.transform.localEulerAngles = bodyObject.GetWeaponLocation(weapon.weaponLocation).localEulerAngles;
             weapon.weaponOrder = (FighterWeapon.WeaponOrder)i;
             fighterWeapons.Add(weapon);
+            Debug.Log($"Added {weapon.name} to {transform.root.name}");
 
             if (weapons[i].isPair)
             {
@@ -81,7 +82,15 @@ public class Fighter : MonoBehaviour
 
     private void GetPartReferences()
     {
-        fighterParts.AddRange(GetComponentsInChildren<FighterPart>());
+        List<FighterPart> fighterPartRefences = GetComponentsInChildren<FighterPart>().ToList();
+        foreach(FighterPart fighterPart in fighterPartRefences)
+        {
+            if(fighterPart is FighterWeapon)
+            {
+                fighterWeapons.Add(fighterPart as FighterWeapon);
+            }
+        }
+        fighterParts.AddRange(fighterPartRefences);
     }
 
     public float GetStartHealth()
@@ -164,11 +173,13 @@ public class Fighter : MonoBehaviour
 
     public void ExecutePrimary(InputAction.CallbackContext context)
     {
+        Debug.Log("Trying primary");
         if (isDead) return;
         foreach (FighterWeapon weapon in fighterWeapons)
         {
             if (weapon.weaponOrder == FighterWeapon.WeaponOrder.PRIMARY)
             {
+                Debug.Log("Firing primary");
                 weapon.ActivateWeapon(context);
             }
         }
@@ -202,7 +213,7 @@ public class Fighter : MonoBehaviour
             {
                 part.TakeDamage(fallDamage / fighterParts.Count, part.transform.position, false);
             }
-            Debug.Log(GetTotalPartHealth());
+            //Debug.Log(GetTotalPartHealth());
             DamageIndication(fallDamage, transform.position);
         }
     }

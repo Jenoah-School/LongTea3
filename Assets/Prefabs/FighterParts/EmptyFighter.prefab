@@ -537,13 +537,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 2556934592488449388}
   playerMovement: {fileID: -9172192976430678138}
-  healthTreshHold: 10
+  body: {fileID: 0}
+  healthTreshHold: 50
   fallDamageTreshHold: 8
   fallDamageMultiplier: 10
   damageText: {fileID: 5358459428584915330, guid: b93281c106ecca2448815a3859578236,
     type: 3}
   isDead: 0
-  fighterColor: {r: 0, g: 0, b: 1, a: 1}
+  fighterColor: {r: 0.33490568, g: 0.61180556, b: 1, a: 1}
 --- !u!114 &-9172192976430678138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -586,7 +587,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0.85
+      value: 0.4
       inSlope: 0
       outSlope: 0
       tangentMode: 0
