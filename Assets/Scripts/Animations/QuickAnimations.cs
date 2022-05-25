@@ -25,6 +25,17 @@ public class QuickAnimations : MonoBehaviour
     [SerializeField] private Vector3 targetOffset = new Vector3(0f, 20f, 0f);
     [SerializeField, ColorUsage(true, true)] private Color colorTarget = Color.white;
 
+    [Header("Continues pulsing size")]
+    [SerializeField] private bool isPulsingSize;
+    [SerializeField] private float scaleDifference = 0.2f;
+    [SerializeField] private float pulseSizeSpeed = 4f;
+
+    [Header("Continues pulsing rotation")]
+    [SerializeField] private bool isPulsingRotation;
+    [SerializeField] private float rotationAngleDifference = 30f;
+    [SerializeField] private float pulseRotationSpeed = 4f;
+    [SerializeField] private Vector3 affectedAngle = Vector3.one;
+
     [Header("Ground settings")]
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float maxGroundDistance = 100f;
@@ -35,6 +46,13 @@ public class QuickAnimations : MonoBehaviour
     private List<Color> defaultMaterialColor = new List<Color>();
     private Image image = null;
     private Color startColor;
+
+    //Pulse
+    private Vector3 startScale = Vector3.one;
+    private Vector3 startRotation = Vector3.zero;
+    private float currentPulseSizeTime;
+    private float currentPulseRotationTime;
+
 
     private void Start()
     {
@@ -51,6 +69,22 @@ public class QuickAnimations : MonoBehaviour
         }
 
         if (gameObject.TryGetComponent(out image)) startColor = image.color;
+        startRotation = transform.localEulerAngles;
+    }
+
+    private void Update()
+    {
+        if (isPulsingSize)
+        {
+            currentPulseSizeTime += Time.deltaTime * pulseSizeSpeed;
+            transform.localScale = startScale * ((Mathf.Sin(currentPulseSizeTime) * scaleDifference) + 1f);
+        }
+
+        if (isPulsingRotation)
+        {
+            currentPulseRotationTime += Time.deltaTime * pulseRotationSpeed;
+            transform.localEulerAngles = startRotation + affectedAngle * ((Mathf.Sin(currentPulseRotationTime) * rotationAngleDifference) + 1f);
+        }
     }
 
     public void Squish(float speed)

@@ -538,7 +538,7 @@ MonoBehaviour:
   rb: {fileID: 2556934592488449388}
   playerMovement: {fileID: -9172192976430678138}
   body: {fileID: 0}
-  healthTreshHold: 50
+  healthTreshHold: 95
   fallDamageTreshHold: 8
   fallDamageMultiplier: 10
   damageText: {fileID: 5358459428584915330, guid: b93281c106ecca2448815a3859578236,
@@ -815,6 +815,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   referencePlayerInput: {fileID: 9115376806083636152}
   fighterReference: {fileID: 5637381278339306294}
+  tapLowFrequency: 0.2
+  tapHighFrequencyIntensity: 0.6
+  tapHapticDuration: 0.05
   quickLowFrequency: 0.2
   quickHighFrequencyIntensity: 0.2
   quickHapticDuration: 0.1

@@ -102,6 +102,11 @@ public class PlayerManager : MonoBehaviour
     public void SpawnController(int playerID)
     {
         PlayerJoinView playerJoinView = playerJoinViews[playerID];
+        if (playerJoinView.TryGetComponent(out ControllerHaptics controllerHaptics))
+        {
+            controllerHaptics.LinkPlayerInput(players[playerID]);
+        }
+
         MultiplayerEventSystem playerUISystem = players[playerID].GetComponent<MultiplayerEventSystem>();
         if (fighterInfos.Where(x => x.playerID == playerID).Count() <= 0)
         {
