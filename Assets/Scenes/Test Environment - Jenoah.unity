@@ -7695,7 +7695,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.779703, y: 1}
+    m_SensorSize: {x: 1.7771665, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8822,7 +8822,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 73d3a3b173bb6514e8d9e492cbd8fc29,
+          m_ObjectArgument: {fileID: 8300000, guid: 191151b671d9fab4dabaef457956234f,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
@@ -8830,7 +8830,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  destroyAfterLoadingScore: 1
+  destroyAfterLoadingScore: 0
 --- !u!82 &2018559012
 AudioSource:
   m_ObjectHideFlags: 0
