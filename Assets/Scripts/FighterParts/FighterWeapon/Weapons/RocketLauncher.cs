@@ -21,6 +21,7 @@ public class RocketLauncher : FighterWeapon, IWeapon
             rocketClone.SetVariables(damage, fighterRoot);
             fighterRigidBody.velocity += -transform.right * Mathf.Abs(Physics.gravity.y) * 5;
             if (fighterRoot) fighterRoot.onAttack();
+            OnAttack.Invoke();
         }
     }
 }

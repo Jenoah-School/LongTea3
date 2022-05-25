@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Leaderboard.unity
     guid: 2a60e9efdad33ee468bc2d66bf3bdf19
   - enabled: 0
-    path: Assets/Scenes/DestroyCauseBug.unity
-    guid: 04c34b2fbe46dfc44be9e1646b0df7d6
-  - enabled: 0
     path: Assets/Scenes/SimpleScene 5.unity
     guid: 2c6b1f8a03ee59d4998cd71230ab1f61
   m_configObjects:

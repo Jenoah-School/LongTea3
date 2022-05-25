@@ -373,8 +373,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 150
   weight: 0
-  damageText: {fileID: 5358459428584915330, guid: b93281c106ecca2448815a3859578236,
-    type: 3}
   weaponOrder: 0
   damage: 50
   isPair: 1
@@ -411,7 +409,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -455,7 +453,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.9
       inSlope: 0
       outSlope: 0
       tangentMode: 0
