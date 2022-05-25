@@ -11,7 +11,6 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private GameObject leaderboardItem = null;
     [SerializeField] private float spawnDelay = .5f;
     [SerializeField] private UnityEvent OnSpawnEvent;
-    [SerializeField] private bool destroyAfterLoadingScore = true;
 
     List<FighterInfo> fighterInfos = new List<FighterInfo>();
 
@@ -64,7 +63,5 @@ public class ScoreManager : MonoBehaviour
                 yield return new WaitForSeconds(spawnDelay);
             }
         }
-
-        if (destroyAfterLoadingScore) Destroy(gameObject);
     }
 }
