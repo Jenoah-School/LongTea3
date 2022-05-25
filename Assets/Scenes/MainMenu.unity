@@ -640,7 +640,7 @@ PrefabInstance:
     - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 227.82967
+      value: 227.82968
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa66786bc246594fa0abdf740f63735, type: 3}
@@ -1325,7 +1325,7 @@ PrefabInstance:
     - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 227.82967
+      value: 227.82968
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa66786bc246594fa0abdf740f63735, type: 3}
@@ -1703,13 +1703,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb737027fb87b04985069c0e31496af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fighterWeapons: []
   rb: {fileID: 0}
-  body: {fileID: 0}
   playerMovement: {fileID: 0}
+  body: {fileID: 0}
   healthTreshHold: 0
+  fallDamageTreshHold: 0
   fallDamageMultiplier: 0
+  damageText: {fileID: 0}
   isDead: 0
+  fighterColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &568015508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2300,13 +2302,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb737027fb87b04985069c0e31496af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fighterWeapons: []
   rb: {fileID: 0}
-  body: {fileID: 0}
   playerMovement: {fileID: 0}
+  body: {fileID: 0}
   healthTreshHold: 0
+  fallDamageTreshHold: 0
   fallDamageMultiplier: 0
+  damageText: {fileID: 0}
   isDead: 0
+  fighterColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &915919839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3963,7 +3967,7 @@ PrefabInstance:
     - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 227.82967
+      value: 227.82968
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa66786bc246594fa0abdf740f63735, type: 3}
@@ -4152,13 +4156,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb737027fb87b04985069c0e31496af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fighterWeapons: []
   rb: {fileID: 0}
-  body: {fileID: 0}
   playerMovement: {fileID: 0}
+  body: {fileID: 0}
   healthTreshHold: 0
+  fallDamageTreshHold: 0
   fallDamageMultiplier: 0
+  damageText: {fileID: 0}
   isDead: 0
+  fighterColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1564642107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4285,7 +4291,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 717e5b3fc616f9d40b502bd3e038d583,
+          m_ObjectArgument: {fileID: 8300000, guid: 890e52bc3c6ad374498fe1cae761230c,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
@@ -4961,13 +4967,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb737027fb87b04985069c0e31496af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fighterWeapons: []
   rb: {fileID: 0}
-  body: {fileID: 0}
   playerMovement: {fileID: 0}
+  body: {fileID: 0}
   healthTreshHold: 0
+  fallDamageTreshHold: 0
   fallDamageMultiplier: 0
+  damageText: {fileID: 0}
   isDead: 0
+  fighterColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &1177021443923320909
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5609,7 +5617,7 @@ PrefabInstance:
     - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 227.82967
+      value: 227.82968
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daa66786bc246594fa0abdf740f63735, type: 3}

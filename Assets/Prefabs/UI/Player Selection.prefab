@@ -6982,6 +6982,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5cf91f9fca078bf4a8c696f00488cff1, type: 2}
   fighterWeapons:
   - {fileID: 11400000, guid: 1093fbe4a48d8eb4d840a39b8d77762e, type: 2}
+  - {fileID: 11400000, guid: 604ed81fd819b8844b7a62c87e9f9fb5, type: 2}
   fighterPowerups:
   - {fileID: 11400000, guid: 0be0ebaf7c49ab74083d2011903488ab, type: 2}
   - {fileID: 11400000, guid: eaa77b76a1243439fbab55abe5d72156, type: 2}
