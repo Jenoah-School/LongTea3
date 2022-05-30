@@ -991,13 +991,13 @@ MonoBehaviour:
     type: 3}
   fighterBodies:
   - {fileID: 2819372194517125383, guid: 6bafc6aed2b06454fa85d6c7b1a81c4a, type: 3}
-  fighterWheels:
-  - {fileID: -6694941428791556549, guid: 2d081addeb6c0d149b29f571d1a6abfc, type: 3}
   fighterWeapons:
   - {fileID: 4489666271711470983, guid: a5b977abd9f0c33428a98a276539e77b, type: 3}
   - {fileID: 587068950702300206, guid: bd886fb8aa574b540885e32cc7d32513, type: 3}
   - {fileID: 3645540404555492273, guid: fad10b5167acce0468a0a3f9763beffe, type: 3}
   - {fileID: 6813855325985768809, guid: 198a857d9d277cd4cb36d3b1ddc20928, type: 3}
+  fighterPowerups:
+  - {fileID: 8221862447740667382, guid: 635757aaded8cfb49a3d35201302a602, type: 3}
   spawnOnInitialisation: 1
   spawnDummyOnInitialisation: 1
 --- !u!114 &1079827558
@@ -1034,6 +1034,8 @@ MonoBehaviour:
     bodyID: 0
     weaponID: 0
     powerupID: 0
+    ranking: 0
+  showPlayerRing: 1
   spawnFighter: 1
   spawnFighterController: 0
   spawnFighterSceneIndex: -1

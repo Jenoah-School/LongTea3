@@ -14,7 +14,7 @@ public class Rocket : MonoBehaviour
     [SerializeField] private UnityEvent OnExplode;
     [SerializeField] private LayerMask ignoreLayer;
 
-    private int damage;
+    private float damage;
 
     private void Start()
     {
@@ -22,7 +22,7 @@ public class Rocket : MonoBehaviour
         GetComponent<Rigidbody>().velocity = transform.forward * rocketForce;
     }
 
-    public void SetVariables(int damage, Fighter origin)
+    public void SetVariables(float damage, Fighter origin)
     {
         this.damage = damage;
         origin.IgnoreCollisionWithObject(gameObject);

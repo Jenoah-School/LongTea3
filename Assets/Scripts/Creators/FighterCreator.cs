@@ -8,8 +8,8 @@ public class FighterCreator : MonoBehaviour
     public GameObject emptyFighter;
 
     public List<FighterBody> fighterBodies = new List<FighterBody>();
-    public List<FighterWheels> fighterWheels = new List<FighterWheels>();
     public List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
+    public List<FighterPower> fighterPowerups = new List<FighterPower>();
     [SerializeField] private bool spawnOnInitialisation = true;
     [SerializeField] private bool spawnDummyOnInitialisation = false;
     public static FighterCreator singleton;
@@ -19,10 +19,22 @@ public class FighterCreator : MonoBehaviour
         DontDestroyOnLoad(this);
         Fighter fighter;
         Fighter fighterDummy;
+<<<<<<< Updated upstream
         if(spawnOnInitialisation) fighter = CreateNewFighter(0,1,3);
         if (spawnDummyOnInitialisation)
         {
             fighterDummy = CreateNewFighter(0, 0, 2);
+=======
+        if (spawnOnInitialisation)
+        {
+            fighter = CreateNewFighter(0, 2, 3, 0); 
+            fighter.name = "mainFighter";
+        }
+        if (spawnDummyOnInitialisation)
+        {
+            fighterDummy = CreateNewFighter(0, 0, 2, 0);
+            fighterDummy.transform.name = "fighterDummy";
+>>>>>>> Stashed changes
             fighterDummy.transform.position = new Vector3(0, 1, 6);
         }
         if(singleton == null)
@@ -36,11 +48,11 @@ public class FighterCreator : MonoBehaviour
         }
     }
 
-    public Fighter CreateNewFighter(int bodyIndex, int weapon1Index, int weapon2Index)
+    public Fighter CreateNewFighter(int bodyIndex, int weapon1Index, int weapon2Index, int powerupIndex)
     {
         GameObject fighterObject = Instantiate(emptyFighter);
         Fighter fighter = fighterObject.GetComponent<Fighter>();
-        fighter.AssembleFighterParts(fighterBodies[bodyIndex], new List<FighterWeapon>() { fighterWeapons[weapon1Index], fighterWeapons[weapon2Index] });
+        fighter.AssembleFighterParts(fighterBodies[bodyIndex], new List<FighterWeapon>() { fighterWeapons[weapon1Index], fighterWeapons[weapon2Index] }, fighterPowerups[powerupIndex]);
         return fighter;
     }
 }

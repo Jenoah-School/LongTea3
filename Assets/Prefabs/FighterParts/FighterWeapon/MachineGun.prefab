@@ -50,13 +50,16 @@ MonoBehaviour:
   healthPoints: 200
   weight: 0
   weaponOrder: 0
-  damage: 20
+  damage: 0.5
   isPair: 0
   weaponLocation: 1
   OnAttack:
     m_PersistentCalls:
       m_Calls: []
   shootInterval: 0.1
+  range: 20
+  aimAssistSpeed: 20
+  aimAssistAngle: 25
   barrelStart: {fileID: 2278103304694170088}
   barrelTip: {fileID: 7838242577286721110}
   bulletShellsPS: {fileID: 131492565664491044}
@@ -267,7 +270,6 @@ GameObject:
   - component: {fileID: 6060173441965024739}
   - component: {fileID: 5902681794111389125}
   - component: {fileID: 7804668287705844707}
-  - component: {fileID: 7770736847631186391}
   m_Layer: 0
   m_Name: PitchPoint
   m_TagString: Untagged
@@ -341,20 +343,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &7770736847631186391
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2278103304694170088}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &3022951455293993161
 GameObject:
   m_ObjectHideFlags: 0

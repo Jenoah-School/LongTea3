@@ -7,12 +7,18 @@ public class Minigun : FighterWeapon, IWeapon
 {
     [SerializeField] float shootInterval = 0.1f;
 
+    [Header("Aim Assist")]
+    [SerializeField] float aimAssistSpeed = 20;
+    [SerializeField] float aimAssistAngle = 25;
+
     [SerializeField] GameObject barrelStart;
     [SerializeField] GameObject barrelTip;
     [SerializeField] ParticleSystem bulletShellsPS;
 
     bool isShooting;
     float nextShootTime;
+
+    AimAssist aimAssist = new AimAssist();
 
     public override void ActivateWeapon(InputAction.CallbackContext context)
     {
@@ -25,23 +31,20 @@ public class Minigun : FighterWeapon, IWeapon
             isShooting = false;
         }
     }
-
-    public override void CheckCollision()
-    {
-        base.CheckCollision();
-    }
-
     private void Update()
     {
         if (isShooting)
         {
             Shooting();
-            barrelStart.transform.Rotate(0, 0, 1000 * Time.deltaTime);
+            //barrelStart.transform.Rotate(0, 0, 1000 * Time.deltaTime);
         }
         else
         {
+            //aimAssist.ResetAim(transform, aimAssistSpeed);
             bulletShellsPS.Stop();
         }
+
+        aimAssist.StartAimAssist(transform, fighterRoot, aimAssistSpeed, range, aimAssistAngle);
     }
 
     private void Shooting()
@@ -49,6 +52,7 @@ public class Minigun : FighterWeapon, IWeapon
         if (Time.time >= nextShootTime)
         {
             if (!bulletShellsPS.isPlaying) bulletShellsPS.Play();
+<<<<<<< Updated upstream
             nextShootTime = Time.time + shootInterval;            
         }
     }
@@ -56,5 +60,25 @@ public class Minigun : FighterWeapon, IWeapon
     private void AimAssist()
     {
 
+=======
+            nextShootTime = Time.time + shootInterval;
+            CheckIfHit();
+        }
+
+        Debug.DrawLine(barrelTip.transform.position, barrelTip.transform.position + barrelTip.transform.forward * range, rayColor);
+    }
+
+    private void CheckIfHit()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(barrelTip.transform.position, barrelTip.transform.forward * range, out hit))
+        {
+            if (hit.transform.gameObject.GetComponentInChildren<FighterPart>())
+            {
+                FighterPart part = hit.transform.gameObject.GetComponentInChildren<FighterPart>();
+                part.TakeDamage(damage, hit.point, true, true);
+            }
+        }
+>>>>>>> Stashed changes
     }
 }

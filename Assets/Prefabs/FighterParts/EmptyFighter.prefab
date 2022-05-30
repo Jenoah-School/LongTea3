@@ -499,7 +499,19 @@ MonoBehaviour:
     m_ActionId: fcbcd26a-3411-4fa4-9843-e320142ce689
     m_ActionName: Regular/Secondary Weapon[/DualShock4GamepadHID/buttonEast,/DualShock4GamepadHID1/buttonEast,/Keyboard/f]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5637381278339306294}
+        m_TargetAssemblyTypeName: Fighter, Assembly-CSharp
+        m_MethodName: ExecutePowerUp
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 260c7b0c-81f6-4934-b8bf-37268cc044c5
     m_ActionName: Regular/Power Up[/DualShock4GamepadHID/buttonNorth,/DualShock4GamepadHID1/buttonNorth,/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 1
@@ -538,6 +550,7 @@ MonoBehaviour:
   rb: {fileID: 2556934592488449388}
   playerMovement: {fileID: -9172192976430678138}
   body: {fileID: 0}
+  powerup: {fileID: 0}
   healthTreshHold: 50
   fallDamageTreshHold: 8
   fallDamageMultiplier: 10
