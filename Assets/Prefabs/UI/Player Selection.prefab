@@ -104,6 +104,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5911444960289380293
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +609,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5911444962086238435}
         m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
         m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1116,6 +1140,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5911444960560778517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1142,6 +1178,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 5911444960967414397}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -1582,6 +1630,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeselectEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1692,6 +1752,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5911444962225737753}
         m_TargetAssemblyTypeName: FighterPartSelection, Assembly-CSharp
         m_MethodName: SelectNextPowerup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3461,6 +3533,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeselectEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -3682,6 +3766,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5911444962225737752}
         m_TargetAssemblyTypeName: PlayerJoinView, Assembly-CSharp
         m_MethodName: Unready
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4145,6 +4241,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5911444962225737753}
         m_TargetAssemblyTypeName: FighterPartSelection, Assembly-CSharp
         m_MethodName: SelectPreviousPowerup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5308,6 +5416,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeselectEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5639,6 +5759,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeselectEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5780,6 +5912,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5911444962225737753}
         m_TargetAssemblyTypeName: FighterPartSelection, Assembly-CSharp
         m_MethodName: SelectNextBody
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6367,6 +6511,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5911444962086238438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6393,6 +6549,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 5911444960967414397}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -6570,6 +6738,7 @@ GameObject:
   - component: {fileID: 5911444962225737754}
   - component: {fileID: 5911444962225737752}
   - component: {fileID: 5911444962225737753}
+  - component: {fileID: 3970673602069394508}
   m_Layer: 5
   m_Name: Player Selection
   m_TagString: Untagged
@@ -6813,6 +6982,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5cf91f9fca078bf4a8c696f00488cff1, type: 2}
   fighterWeapons:
   - {fileID: 11400000, guid: 1093fbe4a48d8eb4d840a39b8d77762e, type: 2}
+  - {fileID: 11400000, guid: 604ed81fd819b8844b7a62c87e9f9fb5, type: 2}
+  - {fileID: 11400000, guid: 65dee5edc3fb25d42aecc8e0d4be8fae, type: 2}
   fighterPowerups:
   - {fileID: 11400000, guid: 0be0ebaf7c49ab74083d2011903488ab, type: 2}
   - {fileID: 11400000, guid: eaa77b76a1243439fbab55abe5d72156, type: 2}
@@ -6846,6 +7017,29 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3970673602069394508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5911444962225737748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 246ba0b4dd0301a4283d303bbb935e66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  referencePlayerInput: {fileID: 0}
+  fighterReference: {fileID: 0}
+  tapLowFrequency: 0
+  tapHighFrequencyIntensity: 0.25
+  tapHapticDuration: 0.05
+  quickLowFrequency: 0.2
+  quickHighFrequencyIntensity: 0.2
+  quickHapticDuration: 0.1
+  mediumLowFrequencyIntensity: 0.4
+  mediumHighFrequencyIntensity: 0.3
+  mediumHapticDuration: 0.1
 --- !u!1 &5911444962231029309
 GameObject:
   m_ObjectHideFlags: 0
@@ -6932,6 +7126,18 @@ MonoBehaviour:
       - m_Target: {fileID: 5911444962086238435}
         m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
         m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7300,6 +7506,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnDeselectEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -7453,6 +7671,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5911444962285991937
 GameObject:
   m_ObjectHideFlags: 0
@@ -7588,6 +7818,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5911444962285991946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7607,6 +7849,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3970673602069394508}
+        m_TargetAssemblyTypeName: ControllerHaptics, Assembly-CSharp
+        m_MethodName: TapHaptic
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

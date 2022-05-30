@@ -9,6 +9,8 @@ public class Healthbar : MonoBehaviour
     [SerializeField] private Image healthbarFill = null;
     [SerializeField] private float healthSmoothing = .1f;
 
+    private float healthbarMultiplier = 1f;
+
     private Fighter fighterReference;
 
     public void SetColor(Color healthbarColor)
@@ -19,16 +21,18 @@ public class Healthbar : MonoBehaviour
     public void SetFighter(Fighter fighter)
     {
         fighterReference = fighter;
+
+        float fatalHealth = fighterReference.GetStartHealth() / 100f * fighterReference.GetHealthThreshold();
+        float fillValue = (fighterReference.GetTotalPartHealth() - fatalHealth) / fighterReference.GetStartHealth();
+        healthbarMultiplier = 1f / fillValue;
     }
 
     public void RecalculateHealth()
     {
-        //This only works for half health threshold for some reason. I will look to it next week :/
-        //TODO: Fix the threshold
         float fatalHealth = fighterReference.GetStartHealth() / 100f * fighterReference.GetHealthThreshold();
-        float fillValue = (fighterReference.GetTotalPartHealth() - fatalHealth) / fatalHealth;
+        float fillValue = (fighterReference.GetTotalPartHealth() - fatalHealth) / fighterReference.GetStartHealth();
 
-        SetFill(fillValue);
+        SetFill(healthbarMultiplier * fillValue);
     }
 
     public void SetFill(float fillAmount)

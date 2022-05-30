@@ -9,6 +9,11 @@ public class ControllerHaptics : MonoBehaviour
     [SerializeField] private Gamepad playerGamepad;
     [SerializeField] private Fighter fighterReference;
 
+    [Header("Tap haptics")]
+    [SerializeField, Range(0f, 1f)] private float tapLowFrequency = 0.2f;
+    [SerializeField, Range(0f, 1f)] private float tapHighFrequencyIntensity = 0.6f;
+    [SerializeField] private float tapHapticDuration = 0.05f;
+
     [Header("Quick haptics")]
     [SerializeField, Range(0f, 1f)] private float quickLowFrequency = 0.2f;
     [SerializeField, Range(0f, 1f)] private float quickHighFrequencyIntensity = 0.2f;
@@ -26,25 +31,49 @@ public class ControllerHaptics : MonoBehaviour
 
     private void Start()
     {
+        if(referencePlayerInput) LinkPlayerInput(referencePlayerInput);
+
+        if (fighterReference)
+        {
+            fighterReference.onAttack += QuickHaptic;
+            fighterReference.onTakeDamage += MediumHaptic;
+        }
+    }
+
+    public void LinkPlayerInput(PlayerInput playerInput)
+    {
+        referencePlayerInput = playerInput;
         if (referencePlayerInput.currentControlScheme == "Gamepad")
         {
             playerGamepad = referencePlayerInput.GetDevice<Gamepad>();
         }
-
-        fighterReference.onAttack += QuickHaptic;
-        fighterReference.onTakeDamage += MediumHaptic;
     }
 
     private void OnDisable()
     {
-        fighterReference.onAttack -= QuickHaptic;
-        fighterReference.onTakeDamage -= MediumHaptic;
-        if(playerGamepad != null) playerGamepad.ResetHaptics();
+        if (fighterReference)
+        {
+            fighterReference.onAttack -= QuickHaptic;
+            fighterReference.onTakeDamage -= MediumHaptic;
+        }
+        if (playerGamepad != null) playerGamepad.ResetHaptics();
     }
 
     #endregion
 
     #region Haptics
+
+    [ContextMenu("Trigger Tap haptics")]
+    public void TapHaptic()
+    {
+        if (playerGamepad != null)
+        {
+            playerGamepad.SetMotorSpeeds(tapLowFrequency, tapHighFrequencyIntensity);
+            playerGamepad.ResumeHaptics();
+            vibrationTimeLeft = tapHapticDuration;
+            isVibrating = true;
+        }
+    }
 
     [ContextMenu("Trigger Quick haptics")]
     public void QuickHaptic()
@@ -53,7 +82,7 @@ public class ControllerHaptics : MonoBehaviour
         {
             playerGamepad.SetMotorSpeeds(quickLowFrequency, quickHighFrequencyIntensity);
             playerGamepad.ResumeHaptics();
-            vibrationTimeLeft += quickHapticDuration;
+            vibrationTimeLeft = quickHapticDuration;
             isVibrating = true;
         }
     }
@@ -65,7 +94,7 @@ public class ControllerHaptics : MonoBehaviour
         {
             playerGamepad.SetMotorSpeeds(mediumLowFrequencyIntensity, mediumHapticDuration);
             playerGamepad.ResumeHaptics();
-            vibrationTimeLeft += mediumHapticDuration;
+            vibrationTimeLeft = mediumHapticDuration;
             isVibrating = true;
         }
     }
@@ -74,7 +103,8 @@ public class ControllerHaptics : MonoBehaviour
 
     private void Update()
     {
-        if (isVibrating) {
+        if (isVibrating)
+        {
             if (vibrationTimeLeft > 0)
             {
                 vibrationTimeLeft -= Time.deltaTime;

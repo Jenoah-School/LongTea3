@@ -15,4 +15,9 @@ public class ScoreManagerProxy : MonoBehaviour
             Debug.LogError("Score manager doesn't exist. Cannot fetch scores");
         }
     }
+
+    public void DestroyScoreManager()
+    {
+        if(ScoreManager.singleton) Destroy(ScoreManager.singleton.gameObject);
+    }
 }

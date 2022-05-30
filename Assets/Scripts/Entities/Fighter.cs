@@ -17,7 +17,7 @@ public class Fighter : MonoBehaviour
     private List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
     [SerializeField] private FighterPower powerup;
 
-    [SerializeField, Range(10, 100)] private int healthTreshHold;
+    [SerializeField, Range(10, 100)] private int healthThreshold;
     [SerializeField] private int fallDamageTreshHold;
     [SerializeField] private float fallDamageMultiplier;
 
@@ -104,7 +104,7 @@ public class Fighter : MonoBehaviour
 
     public float GetHealthThreshold()
     {
-        return healthTreshHold;
+        return healthThreshold;
     }
 
     private void SetCenterOfMass()
@@ -159,7 +159,7 @@ public class Fighter : MonoBehaviour
     public void CheckDeath()
     {
         if (isDead) return;
-        if(GetTotalPartHealth() < startTotalHealth / 100f * (float)healthTreshHold)
+        if(GetTotalPartHealth() < startTotalHealth / 100f * (float)healthThreshold)
         {
             OnDeath();
         }
@@ -177,13 +177,11 @@ public class Fighter : MonoBehaviour
 
     public void ExecutePrimary(InputAction.CallbackContext context)
     {
-        Debug.Log("Trying primary");
-        if (isDead) return;
+        if (isDead || !enabled) return;
         foreach (FighterWeapon weapon in fighterWeapons)
         {
             if (weapon.weaponOrder == FighterWeapon.WeaponOrder.PRIMARY)
             {
-                Debug.Log("Firing primary");
                 weapon.ActivateWeapon(context);
             }
         }
@@ -191,7 +189,7 @@ public class Fighter : MonoBehaviour
 
     public void ExecuteSecondary(InputAction.CallbackContext context)
     {
-        if (isDead) return;
+        if (isDead || !enabled) return;
         foreach (FighterWeapon weapon in fighterWeapons)
         {
             if (weapon.weaponOrder == FighterWeapon.WeaponOrder.SECONDARY)
