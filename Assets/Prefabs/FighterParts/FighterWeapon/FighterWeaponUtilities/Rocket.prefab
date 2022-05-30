@@ -71,7 +71,8 @@ MonoBehaviour:
   rocketForce: 20
   rocketHitLaunchForce: 1250
   rocketMaxTime: 4
-  explosion: {fileID: 4904167690773235388}
+  explosion: {fileID: 8684533381969753817, guid: 77f3c72ff3f40ef45892404ab718db1a,
+    type: 3}
   model: {fileID: 5419897203111961401}
   OnExplode:
     m_PersistentCalls:
@@ -917,12 +918,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77f3c72ff3f40ef45892404ab718db1a, type: 3}
---- !u!198 &4904167690773235388 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8684533381969753817, guid: 77f3c72ff3f40ef45892404ab718db1a,
-    type: 3}
-  m_PrefabInstance: {fileID: 4362496625204572261}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7717013173600374814 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6310357856400793723, guid: 77f3c72ff3f40ef45892404ab718db1a,
