@@ -24,6 +24,7 @@ public class Skid : MonoBehaviour
 
     private Vector3 moveVelocity = Vector3.zero;
     // Start is called before the first frame update
+
     void Start()
     {
         if (movementRigidbody == null || playerMovement == null) enabled = false;
