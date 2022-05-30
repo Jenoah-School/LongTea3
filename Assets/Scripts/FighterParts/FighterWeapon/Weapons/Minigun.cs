@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Minigun : FighterWeapon, IWeapon
 {
+    [SerializeField] float range = 20f;
     [SerializeField] float shootInterval = 0.1f;
 
     [Header("Aim Assist")]
@@ -45,6 +46,8 @@ public class Minigun : FighterWeapon, IWeapon
         }
 
         aimAssist.StartAimAssist(transform, fighterRoot, aimAssistSpeed, range, aimAssistAngle);
+
+        Debug.DrawLine(barrelTip.transform.position, barrelTip.transform.position + barrelTip.transform.forward * range, Color.blue);
     }
 
     private void Shooting()
@@ -52,20 +55,9 @@ public class Minigun : FighterWeapon, IWeapon
         if (Time.time >= nextShootTime)
         {
             if (!bulletShellsPS.isPlaying) bulletShellsPS.Play();
-<<<<<<< Updated upstream
-            nextShootTime = Time.time + shootInterval;            
-        }
-    }
-
-    private void AimAssist()
-    {
-
-=======
             nextShootTime = Time.time + shootInterval;
             CheckIfHit();
-        }
-
-        Debug.DrawLine(barrelTip.transform.position, barrelTip.transform.position + barrelTip.transform.forward * range, rayColor);
+        }       
     }
 
     private void CheckIfHit()
@@ -79,6 +71,5 @@ public class Minigun : FighterWeapon, IWeapon
                 part.TakeDamage(damage, hit.point, true, true);
             }
         }
->>>>>>> Stashed changes
     }
 }
