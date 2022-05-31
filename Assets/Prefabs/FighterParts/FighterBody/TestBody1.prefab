@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2819372194517125383}
   m_Layer: 0
   m_Name: TestBody1
-  m_TagString: Fighter
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,8 +56,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 300
   weight: 0
-  damageText: {fileID: 5358459428584915330, guid: b93281c106ecca2448815a3859578236,
-    type: 3}
   weaponLocationFront: {fileID: 8593379393771262636}
   weaponLocationTop: {fileID: 7491732604597283371}
   weaponLocationSideLeft: {fileID: 8107035010811674230}

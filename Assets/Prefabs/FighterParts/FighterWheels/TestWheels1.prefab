@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: -6694941428791556549}
   m_Layer: 0
   m_Name: TestWheels1
-  m_TagString: Fighter
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,8 +79,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 150
   weight: 0
-  damageText: {fileID: 5358459428584915330, guid: b93281c106ecca2448815a3859578236,
-    type: 3}
 --- !u!1 &8984461514804640546
 GameObject:
   m_ObjectHideFlags: 0
