@@ -6378,7 +6378,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7771665, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -7777,14 +7777,14 @@ MonoBehaviour:
     type: 3}
   fighterBodies:
   - {fileID: 2819372194517125383, guid: 6bafc6aed2b06454fa85d6c7b1a81c4a, type: 3}
-  fighterWheels:
-  - {fileID: -6694941428791556549, guid: 2d081addeb6c0d149b29f571d1a6abfc, type: 3}
   fighterWeapons:
   - {fileID: 4489666271711470983, guid: a5b977abd9f0c33428a98a276539e77b, type: 3}
   - {fileID: 587068950702300206, guid: bd886fb8aa574b540885e32cc7d32513, type: 3}
   - {fileID: 3645540404555492273, guid: fad10b5167acce0468a0a3f9763beffe, type: 3}
   - {fileID: 6813855325985768809, guid: 198a857d9d277cd4cb36d3b1ddc20928, type: 3}
   - {fileID: 8298522946460067170, guid: a8c4d3fc5825540418e5e1ee3664df77, type: 3}
+  fighterPowerups:
+  - {fileID: 885014263667337596, guid: da3eedfb62945ea48845155dae05c145, type: 3}
   spawnOnInitialisation: 0
   spawnDummyOnInitialisation: 0
 --- !u!1001 &1572328040
@@ -8323,7 +8323,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7771665, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
