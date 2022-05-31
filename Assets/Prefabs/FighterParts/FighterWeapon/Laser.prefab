@@ -4907,7 +4907,7 @@ MonoBehaviour:
   lineRenderer: {fileID: 8298522946460067100}
   rayOrigin: {fileID: 8298522946592316641}
   endPointParticles: {fileID: 8368384795917341199}
-  chargeTime: 1.2
+  chargeTime: 1.25
   laserTime: 1.25
   damageTime: 0.5
   knockbackForceSelf: 15
@@ -4917,7 +4917,7 @@ MonoBehaviour:
   lineHitLayers:
     serializedVersion: 2
     m_Bits: 2147483647
-  stepSpeed: 0.075
+  stepSpeed: 0.025
   stepDistanceMargin: 0.2
   maxJumpDistance: 0.5
   OnChargeLaser:
@@ -5095,7 +5095,7 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.059341095, b: 0, a: 1}
+      key0: {r: 1, g: 0.058823533, b: 0, a: 1}
       key1: {r: 1, g: 0, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
