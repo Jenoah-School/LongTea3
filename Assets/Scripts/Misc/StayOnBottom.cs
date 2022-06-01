@@ -10,10 +10,6 @@ public class StayOnBottom : MonoBehaviour
     [SerializeField] private Vector3 offset = new Vector3(0f, 0.05f, 0f);
     [SerializeField] private Transform castOrigin = null;
 
-    [Header("Smoothing")]
-    [SerializeField] private float positionalSmoothing = 5f;
-    [SerializeField] private float rotationSmoothing = 5f;
-
     private Vector3 targetPosition = Vector3.zero;
     private Quaternion targetRotation = Quaternion.identity;
 

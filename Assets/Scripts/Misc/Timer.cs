@@ -17,7 +17,6 @@ public class Timer : MonoBehaviour
     private bool isCounting = false;
 
     private int previousSecond = 0;
-    private int previousMinute = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +30,7 @@ public class Timer : MonoBehaviour
     public void StartTimer()
     {
         isCounting = true;
-        InvokeRepeating("UpdateTextLabel", 0.25f, 1f);
+        InvokeRepeating(nameof(UpdateTextLabel), 0.25f, 1f);
     }
 
     // Update is called once per frame

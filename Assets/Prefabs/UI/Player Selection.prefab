@@ -6982,11 +6982,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5cf91f9fca078bf4a8c696f00488cff1, type: 2}
   fighterWeapons:
   - {fileID: 11400000, guid: 1093fbe4a48d8eb4d840a39b8d77762e, type: 2}
+  - {fileID: 11400000, guid: 7786e83f13f0ce648bc81ef4bc3d7942, type: 2}
+  - {fileID: 11400000, guid: d2ab148192fbc474085d1fb1b7b20c26, type: 2}
   - {fileID: 11400000, guid: 604ed81fd819b8844b7a62c87e9f9fb5, type: 2}
   - {fileID: 11400000, guid: 65dee5edc3fb25d42aecc8e0d4be8fae, type: 2}
   fighterPowerups:
-  - {fileID: 11400000, guid: 0be0ebaf7c49ab74083d2011903488ab, type: 2}
-  - {fileID: 11400000, guid: eaa77b76a1243439fbab55abe5d72156, type: 2}
+  - {fileID: 11400000, guid: 9ec882c9bed34234da4a89957381ccbd, type: 2}
+  - {fileID: 11400000, guid: bda46303c40749d4d9b12fd5ff9c0e9e, type: 2}
   currentBodyID: 0
   currentWeaponID: 0
   currentPowerupID: 0

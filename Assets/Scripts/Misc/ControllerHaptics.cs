@@ -92,7 +92,7 @@ public class ControllerHaptics : MonoBehaviour
     {
         if (playerGamepad != null)
         {
-            playerGamepad.SetMotorSpeeds(mediumLowFrequencyIntensity, mediumHapticDuration);
+            playerGamepad.SetMotorSpeeds(mediumLowFrequencyIntensity, mediumHighFrequencyIntensity);
             playerGamepad.ResumeHaptics();
             vibrationTimeLeft = mediumHapticDuration;
             isVibrating = true;
