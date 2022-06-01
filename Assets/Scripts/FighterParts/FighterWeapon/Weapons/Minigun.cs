@@ -31,13 +31,14 @@ public class Minigun : FighterWeapon, IWeapon
         {
             isShooting = false;
         }
+
     }
     private void Update()
     {
         if (isShooting)
         {
             Shooting();
-            //barrelStart.transform.Rotate(0, 0, 1000 * Time.deltaTime);
+            barrelStart.transform.Rotate(0, 0, 1000 * Time.deltaTime);
         }
         else
         {
@@ -57,6 +58,7 @@ public class Minigun : FighterWeapon, IWeapon
             if (!bulletShellsPS.isPlaying) bulletShellsPS.Play();
             nextShootTime = Time.time + shootInterval;
             CheckIfHit();
+            OnAttack.Invoke();
         }       
     }
 
