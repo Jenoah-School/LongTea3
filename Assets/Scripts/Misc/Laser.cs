@@ -25,7 +25,6 @@ public class Laser : FighterWeapon, IWeapon
 
     [Header("Step settings")]
     [SerializeField] private float stepSpeed = 2f;
-    [SerializeField] private float stepDistanceMargin = 0.2f;
     [SerializeField] private float maxJumpDistance = 0.5f;
 
     [Header("Events")]
@@ -136,7 +135,6 @@ public class Laser : FighterWeapon, IWeapon
                     if (Time.time > nextDamageTime)
                     {
 
-                        Debug.Log("Heeeej");
                         part.TakeDamage(damage, hit.point);
                         nextDamageTime = Time.time + damageTime;
                     }

@@ -50,7 +50,6 @@ public class PlayerJoinView : MonoBehaviour
 
         List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
         fighterWeapons.Add(FighterCreator.singleton.fighterWeapons[fighterPartSelection.currentWeaponID]);
-        fighterWeapons.Add(FighterCreator.singleton.fighterWeapons[fighterPartSelection.currentPowerupID]);
-        previewGameObject.AssembleFighterParts(FighterCreator.singleton.fighterBodies[fighterPartSelection.currentBodyID], fighterWeapons, FighterCreator.singleton.fighterPowerups[0]);
+        previewGameObject.AssembleFighterParts(FighterCreator.singleton.fighterBodies[fighterPartSelection.currentBodyID], fighterWeapons, FighterCreator.singleton.fighterPowerups[fighterPartSelection.currentPowerupID]);
 	    }
 }
