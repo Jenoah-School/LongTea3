@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2978032127036696297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.12, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4914,7 +4914,7 @@ ParticleSystem:
   m_GameObject: {fileID: 3523700071245288120}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 7
+  simulationSpeed: 6
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -5041,7 +5041,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 0.4
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5915,29 +5915,29 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 0
-          inSlope: 16.318108
-          outSlope: 16.318108
+          inSlope: -4.393297
+          outSlope: -4.393297
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0.20195556
+          outWeight: 0.3573873
         - serializedVersion: 3
-          time: 0.19286874
-          value: 0.7567568
-          inSlope: -2.4308684
-          outSlope: -2.4308684
+          time: 0.26893517
+          value: 1
+          inSlope: -26.15838
+          outSlope: -26.15838
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.38925955
-          outWeight: 0.13062324
+          inWeight: 0.16820435
+          outWeight: 0.07080541
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: 0.6314518
-          outSlope: 0.6314518
+          inSlope: 0.84763664
+          outSlope: 0.84763664
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.14608452
+          inWeight: 0.940599
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -6421,7 +6421,7 @@ ParticleSystem:
     uvChannelMask: -1
     rowMode: 1
     sprites:
-    - sprite: {fileID: 21300000, guid: 01b5865cccbc3e64bab7332d102d78de, type: 3}
+    - sprite: {fileID: 96502766, guid: 4d15a9cd1772c7c4f96009d63bb7f81f, type: 3}
     flipU: 0
     flipV: 0
   VelocityModule:
@@ -9793,7 +9793,7 @@ ParticleSystem:
   m_GameObject: {fileID: 8846835564512962878}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 7
+  simulationSpeed: 6
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -10803,14 +10803,14 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0.23419741
           value: 0.7837838
-          inSlope: -1.8484362
-          outSlope: -1.8484362
+          inSlope: -4.860785
+          outSlope: -4.860785
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0.17150602
+          outWeight: 0.11041538
         - serializedVersion: 3
-          time: 1
+          time: 0.8061288
           value: 0
           inSlope: -0.6296215
           outSlope: -0.6296215
