@@ -23,11 +23,9 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Player settings")]
     [SerializeField] private GameObject controllerPrefab = null;
-    [SerializeField] private List<Color> playerColors = new List<Color>();
     [SerializeField] private List<GameObject> spawnPoints = new List<GameObject>();
     [SerializeField] private FighterInfo defaultFighterBuild = new FighterInfo();
     [SerializeField] private bool showPlayerRing = true;
-
 
     [Header("Events")]
     [SerializeField] private bool spawnFighter = false;
@@ -36,13 +34,16 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private UnityEvent OnPlayerJoin;
     [SerializeField] private UnityEvent OnSceneSwitch;
 
+    [Header("Colors")]
+    [SerializeField] private Color playerListInactiveColor = new Color(200f, 200f, 200f, 1f);
+    [SerializeField] private Color playerListActiveColor = Color.white;
+    [SerializeField] private List<Color> playerRingColors = new List<Color>();
+    [SerializeField] private bool setHealthbarToPlayerColor = true;
+
     [Header("Ready")]
     [SerializeField] private bool allPlayersReady = false;
     [SerializeField] private UnityEvent onAllPlayersReady = null;
     [SerializeField] private UnityEvent onPlayersUnready = null;
-
-    [Header("Health checking")]
-    [SerializeField] private bool isAllDead = false;
 
     public static PlayerManager singleton;
     [SerializeField] private List<FighterInfo> fighterInfos = new List<FighterInfo>();
@@ -79,6 +80,14 @@ public class PlayerManager : MonoBehaviour
         if (InputUser.listenForUnpairedDeviceActivity > 0)
         {
             InputUser.onUnpairedDeviceUsed += playerJoinEvent;
+        }
+
+        if (playerJoinViews.Count > 0)
+        {
+            for (int i = 0; i < playerJoinViews.Count; i++)
+            {
+                playerJoinViews[i].backgroundImage.color = playerListInactiveColor;
+            }
         }
     }
 
@@ -122,7 +131,7 @@ public class PlayerManager : MonoBehaviour
         playerJoinView.isPlayer = true;
         playerJoinView.onReadyChange += CheckAllPlayersReady;
 
-        playerJoinView.backgroundImage.color = playerColors[playerID];
+        playerJoinView.backgroundImage.color = playerListActiveColor;
         playerJoinView.characterSelectPanel.SetActive(true);
         playerJoinView.OnJoinEvent.Invoke();
 
@@ -156,12 +165,12 @@ public class PlayerManager : MonoBehaviour
         GameObject fighterGameObject;
         if (fighterInfos.Count > playerID)
         {
-            fighterGameObject = FighterCreator.singleton.CreateNewFighter(fighterInfos[playerID].bodyID, fighterInfos[playerID].weaponID, fighterInfos[playerID].powerupID).gameObject;
+            fighterGameObject = FighterCreator.singleton.CreateNewFighter(fighterInfos[playerID].bodyID, fighterInfos[playerID].weaponID, fighterInfos[playerID].powerupID, 0).gameObject;
         }
         else
         {
             Debug.Log("No info found about fighter");
-            fighterGameObject = FighterCreator.singleton.CreateNewFighter(defaultFighterBuild.bodyID, defaultFighterBuild.weaponID, defaultFighterBuild.powerupID).gameObject;
+            fighterGameObject = FighterCreator.singleton.CreateNewFighter(defaultFighterBuild.bodyID, defaultFighterBuild.weaponID, defaultFighterBuild.powerupID, 0).gameObject;
         }
 
         PlayerInput fighterInput = PlayerInput.Instantiate(fighterGameObject, -1, controlScheme, -1, playerInputDevices[0]);
@@ -187,7 +196,7 @@ public class PlayerManager : MonoBehaviour
             ringObject.gameObject.SetActive(showPlayerRing);
             if (ringObject.TryGetComponent(out SpriteRenderer ringRenderer))
             {
-                ringRenderer.color = playerColors[playerID % playerColors.Count];
+                ringRenderer.color = playerRingColors[playerID % playerRingColors.Count];
             }
         }
 
@@ -197,7 +206,7 @@ public class PlayerManager : MonoBehaviour
             Healthbar healthbar = healthbars[playerID];
             healthbar.SetFighter(fighter);
             healthbar.gameObject.SetActive(true);
-            healthbar.SetColor(playerColors[playerID % playerColors.Count]);
+            if (setHealthbarToPlayerColor) healthbar.SetColor(playerRingColors[playerID % playerRingColors.Count]);
             healthbar.SetFill(1f);
             healthbar.RecalculateHealth();
             fighter.onTakeDamage += healthbar.RecalculateHealth;

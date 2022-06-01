@@ -11,7 +11,7 @@ public abstract class FighterWeapon : FighterPart, IWeapon
 
     [HideInInspector] public WeaponOrder weaponOrder;
 
-    public int damage;
+    public float damage;
     public bool isPair;
     public WeaponLocations weaponLocation;
     public UnityEvent OnAttack;

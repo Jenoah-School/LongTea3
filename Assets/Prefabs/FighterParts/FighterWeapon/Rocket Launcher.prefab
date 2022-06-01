@@ -393,9 +393,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  cooldown: 2
   rocket: {fileID: 2928200094969180154, guid: 74b30e961b8a52e4bb2b3f2b9424ee1c, type: 3}
   launcherTip: {fileID: 7443715554960728402}
-  cooldown: 2
 --- !u!82 &22860230170151002
 AudioSource:
   m_ObjectHideFlags: 0

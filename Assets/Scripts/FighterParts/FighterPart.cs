@@ -21,13 +21,13 @@ public class FighterPart : MonoBehaviour
         return fighterRigidBody;
     }
 
-    public void TakeDamage(float damage, Vector3 hitPos, bool showDamage = true)
+    public void TakeDamage(float damage, Vector3 hitPos, bool showDamage = true, bool doStack = false)
     {
         if (fighterRoot.isDead) return;
-        damage = Mathf.Round(damage);
+        damage = (float)System.Math.Round(damage, 2);
         healthPoints -= damage;
-
-        if(showDamage) fighterRoot.DamageIndication(damage, hitPos);
+        
+        if(showDamage) fighterRoot.DamageIndication(damage, hitPos, fighterRoot, doStack);
 
         fighterRoot.CheckDeath();
     }

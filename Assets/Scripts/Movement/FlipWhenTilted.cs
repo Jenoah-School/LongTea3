@@ -16,14 +16,7 @@ public class FlipWhenTilted : MonoBehaviour
 
     private bool isTilted = false;
     private bool isRotation = false;
-    private PlayerMovement playerMovement;
     private float flipTime = 0f;
-    private bool useGroundedState = false;
-
-    private void Start()
-    {
-        if (playerMovement != null) useGroundedState = true;
-    }
 
     // Update is called once per frame
     void Update()

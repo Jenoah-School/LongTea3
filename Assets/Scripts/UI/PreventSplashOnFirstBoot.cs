@@ -15,7 +15,7 @@ public class PreventSplashOnFirstBoot : MonoBehaviour
         {
             splashScreenAnimator.Play(animationName, 0, 1f);
         }
-        else
+        else if(enableOtherwise)
         {
             splashScreenAnimator.gameObject.SetActive(true);
         }

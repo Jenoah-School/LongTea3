@@ -13,8 +13,9 @@ public class Fighter : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerMovement playerMovement;
 
-    [SerializeField] private FighterBody body;
+    [SerializeField] private FighterBody body;    
     private List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
+    [SerializeField] private FighterPower powerup;
 
     [SerializeField, Range(10, 100)] private int healthThreshold;
     [SerializeField] private int fallDamageTreshHold;
@@ -37,7 +38,9 @@ public class Fighter : MonoBehaviour
 
     private float lastFallDmgTime;
 
-    public void AssembleFighterParts(FighterBody body, List<FighterWeapon> weapons)
+    private float lastPowerUpTime;
+
+    public void AssembleFighterParts(FighterBody body, List<FighterWeapon> weapons, FighterPower powerup)
     {
         FighterBody bodyObject = Instantiate(body, transform);
         bodyObject.transform.localPosition = new Vector3(0, 0, 0);
@@ -61,6 +64,10 @@ public class Fighter : MonoBehaviour
                 fighterWeapons.Add(weapon2);
             }
         }
+
+        FighterPower power = Instantiate(powerup, transform);
+        power.SetFighterRoot(this);
+        this.powerup = power;
 
         foreach (FighterWheels wheelsPart in bodyObject.GetComponentsInChildren<FighterWheels>())
         {
@@ -194,37 +201,49 @@ public class Fighter : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void ExecutePowerUp(InputAction.CallbackContext context)
     {
-        FallDamage(collision.relativeVelocity, collision.contacts[0].thisCollider.gameObject, collision.transform.gameObject);
+        if(Time.time >= lastPowerUpTime)
+        {
+            lastPowerUpTime = lastPowerUpTime + Time.time;
+            powerup.Activate();
+        }
     }
 
-    private void FallDamage(Vector3 hitForce, GameObject col1, GameObject col2)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(Mathf.Abs(hitForce.y) > 10)
+        FallDamage(collision.relativeVelocity);
+    }
+
+    private void FallDamage(Vector3 hitForce)
+    {
+        if(Mathf.Abs(hitForce.y) > 10 && Time.time > lastFallDmgTime)
         {
             lastFallDmgTime = Time.time + 1;
-            float fallDamage = Mathf.Round(hitForce.y * fallDamageMultiplier);
+            float fallDamage =  Mathf.Abs(Mathf.Round(hitForce.y * fallDamageMultiplier));
 
             foreach (FighterPart part in fighterParts)
             {
                 part.TakeDamage(fallDamage / fighterParts.Count, part.transform.position, false);
             }
             //Debug.Log(GetTotalPartHealth());
-            DamageIndication(fallDamage, transform.position);
+            DamageIndication(fallDamage, transform.position, this);
         }
     }
 
-    public void DamageIndication(float damage, Vector3 hitPos)
+    public void DamageIndication(float damage, Vector3 hitPos, Fighter origin, bool doStack = false)
     {
         GameObject damageTextObject = LeanPool.Spawn(damageText, hitPos, transform.rotation);
         TextMeshPro damageTextObjectText = damageTextObject.GetComponent<TextMeshPro>();
+
         damageTextObjectText.alpha = 1;
         damageTextObjectText.text = damage.ToString();
         damageTextObjectText.color = fighterColor;
-        //damageTextObjectText.text = "Bruh";
+
         damageTextObject.transform.DOMoveY(transform.position.y + damageTextObject.transform.position.y + Random.Range(1.5f, 2.5f), Random.Range(2.5f, 3.5f));
+
         LeanPool.Despawn(damageTextObject, 3);
+
         onTakeDamage();
     }
 

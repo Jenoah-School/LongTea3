@@ -5,7 +5,12 @@ using UnityEngine.InputSystem;
 
 public class Minigun : FighterWeapon, IWeapon
 {
+    [SerializeField] float range = 20f;
     [SerializeField] float shootInterval = 0.1f;
+
+    [Header("Aim Assist")]
+    [SerializeField] float aimAssistSpeed = 20;
+    [SerializeField] float aimAssistAngle = 25;
 
     [SerializeField] GameObject barrelStart;
     [SerializeField] GameObject barrelTip;
@@ -13,6 +18,8 @@ public class Minigun : FighterWeapon, IWeapon
 
     bool isShooting;
     float nextShootTime;
+
+    AimAssist aimAssist = new AimAssist();
 
     public override void ActivateWeapon(InputAction.CallbackContext context)
     {
@@ -24,13 +31,8 @@ public class Minigun : FighterWeapon, IWeapon
         {
             isShooting = false;
         }
-    }
 
-    public override void CheckCollision()
-    {
-        base.CheckCollision();
     }
-
     private void Update()
     {
         if (isShooting)
@@ -40,8 +42,13 @@ public class Minigun : FighterWeapon, IWeapon
         }
         else
         {
+            //aimAssist.ResetAim(transform, aimAssistSpeed);
             bulletShellsPS.Stop();
         }
+
+        aimAssist.StartAimAssist(transform, fighterRoot, aimAssistSpeed, range, aimAssistAngle);
+
+        Debug.DrawLine(barrelTip.transform.position, barrelTip.transform.position + barrelTip.transform.forward * range, Color.blue);
     }
 
     private void Shooting()
@@ -49,12 +56,22 @@ public class Minigun : FighterWeapon, IWeapon
         if (Time.time >= nextShootTime)
         {
             if (!bulletShellsPS.isPlaying) bulletShellsPS.Play();
-            nextShootTime = Time.time + shootInterval;            
-        }
+            nextShootTime = Time.time + shootInterval;
+            CheckIfHit();
+            OnAttack.Invoke();
+        }       
     }
 
-    private void AimAssist()
+    private void CheckIfHit()
     {
-
+        RaycastHit hit;
+        if (Physics.Raycast(barrelTip.transform.position, barrelTip.transform.forward * range, out hit))
+        {
+            if (hit.transform.gameObject.GetComponentInChildren<FighterPart>())
+            {
+                FighterPart part = hit.transform.gameObject.GetComponentInChildren<FighterPart>();
+                part.TakeDamage(damage, hit.point, true, true);
+            }
+        }
     }
 }

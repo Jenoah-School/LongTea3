@@ -14,7 +14,7 @@ public class Rocket : MonoBehaviour
     [SerializeField] private UnityEvent OnExplode;
     [SerializeField] private LayerMask ignoreLayer;
 
-    private int damage;
+    private float damage;
 
     private void Start()
     {
@@ -22,7 +22,7 @@ public class Rocket : MonoBehaviour
         GetComponent<Rigidbody>().velocity = transform.forward * rocketForce;
     }
 
-    public void SetVariables(int damage, Fighter origin)
+    public void SetVariables(float damage, Fighter origin)
     {
         this.damage = damage;
         origin.IgnoreCollisionWithObject(gameObject);
@@ -33,6 +33,7 @@ public class Rocket : MonoBehaviour
         if (other.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast"))
         {
             RocketDeath();
+            Debug.Log(other.gameObject.transform.root.name);
             if (other.gameObject.transform.root.CompareTag("Fighter"))
             {
                 if (other.GetComponentInParent<FighterPart>())
@@ -41,6 +42,7 @@ public class Rocket : MonoBehaviour
                     part.TakeDamage(damage, transform.position);
                     part.GetRigidBodyFighter().AddForceAtPosition((part.transform.up * rocketForce) * (rocketHitLaunchForce * 1.5f) * Mathf.Abs(Physics.gravity.y / 10), transform.position);
                     part.GetRigidBodyFighter().AddForceAtPosition((transform.forward * rocketForce) * rocketHitLaunchForce * Mathf.Abs(Physics.gravity.y / 10), transform.position);
+
                 }
             }
         }
