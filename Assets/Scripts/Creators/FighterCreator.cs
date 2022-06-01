@@ -19,11 +19,16 @@ public class FighterCreator : MonoBehaviour
         DontDestroyOnLoad(this);
         Fighter fighter;
         Fighter fighterDummy;
-        if(spawnOnInitialisation) fighter = CreateNewFighter(0,1,3,0);
+        if (spawnOnInitialisation)
+        {
+            fighter = CreateNewFighter(0, 3, 2, 0);
+            fighter.transform.name = "main";
+        }
         if (spawnDummyOnInitialisation)
         {
             fighterDummy = CreateNewFighter(0, 0, 2,0);
             fighterDummy.transform.position = new Vector3(0, 1, 6);
+            fighterDummy.transform.name = "dummy";
         }
         if(singleton == null)
         {

@@ -42,6 +42,8 @@ public class Laser : FighterWeapon, IWeapon
     private bool isFiring = false;
     private bool isCharging = false;
 
+    AimAssist aimassist = new AimAssist();
+
     public override void ActivateWeapon(InputAction.CallbackContext context)
     {
         if (context.action.WasPerformedThisFrame())
@@ -110,7 +112,9 @@ public class Laser : FighterWeapon, IWeapon
     }
 
     private void Update()
-    {
+    {    
+        aimassist.StartAimAssist(transform, fighterRoot, 20, 20, 45);
+
         if (!isFiring) return;
         SetOrigin(rayOrigin.position);
         if (Physics.Raycast(rayOrigin.position, rayOrigin.forward, out RaycastHit hit, maxLineDistance, lineHitLayers, QueryTriggerInteraction.Ignore))

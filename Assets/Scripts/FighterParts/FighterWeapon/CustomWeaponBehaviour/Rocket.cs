@@ -33,6 +33,7 @@ public class Rocket : MonoBehaviour
         if (other.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast"))
         {
             RocketDeath();
+            Debug.Log(other.gameObject.transform.root.name);
             if (other.gameObject.transform.root.CompareTag("Fighter"))
             {
                 if (other.GetComponentInParent<FighterPart>())
@@ -41,6 +42,7 @@ public class Rocket : MonoBehaviour
                     part.TakeDamage(damage, transform.position);
                     part.GetRigidBodyFighter().AddForceAtPosition((part.transform.up * rocketForce) * (rocketHitLaunchForce * 1.5f) * Mathf.Abs(Physics.gravity.y / 10), transform.position);
                     part.GetRigidBodyFighter().AddForceAtPosition((transform.forward * rocketForce) * rocketHitLaunchForce * Mathf.Abs(Physics.gravity.y / 10), transform.position);
+
                 }
             }
         }

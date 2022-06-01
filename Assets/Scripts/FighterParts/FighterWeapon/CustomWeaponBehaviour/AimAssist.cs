@@ -18,7 +18,7 @@ public class AimAssist : MonoBehaviour
 
             if (Vector2.Angle(new Vector2(ownerFighter.transform.forward.x, ownerFighter.transform.forward.z), new Vector2(fighter.transform.position.x - ownerFighter.transform.position.x, fighter.transform.position.z - ownerFighter.transform.position.z)) < FOV)
             {
-                float dist = Vector3.Distance(ownerTransform.transform.position, ownerFighter.transform.position);
+                float dist = Vector3.Distance(ownerTransform.transform.position, fighter.transform.position);
                 if (dist < range && dist < minDist)
                 {
                     minDist = dist;

@@ -5,6 +5,7 @@ using UnityEngine;
 public class FighterPower : MonoBehaviour
 {
     protected Fighter fighterRoot;
+    public float cooldown;
 
     public void SetFighterRoot(Fighter fighter)
     {

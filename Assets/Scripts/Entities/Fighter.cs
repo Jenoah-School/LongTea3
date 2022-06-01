@@ -38,6 +38,8 @@ public class Fighter : MonoBehaviour
 
     private float lastFallDmgTime;
 
+    private float lastPowerUpTime;
+
     public void AssembleFighterParts(FighterBody body, List<FighterWeapon> weapons, FighterPower powerup)
     {
         FighterBody bodyObject = Instantiate(body, transform);
@@ -201,7 +203,11 @@ public class Fighter : MonoBehaviour
 
     public void ExecutePowerUp(InputAction.CallbackContext context)
     {
-        powerup.Activate();
+        if(Time.time >= lastPowerUpTime)
+        {
+            lastPowerUpTime = lastPowerUpTime + Time.time;
+            powerup.Activate();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -214,7 +220,7 @@ public class Fighter : MonoBehaviour
         if(Mathf.Abs(hitForce.y) > 10 && Time.time > lastFallDmgTime)
         {
             lastFallDmgTime = Time.time + 1;
-            float fallDamage = Mathf.Round(hitForce.y * fallDamageMultiplier);
+            float fallDamage =  Mathf.Abs(Mathf.Round(hitForce.y * fallDamageMultiplier));
 
             foreach (FighterPart part in fighterParts)
             {

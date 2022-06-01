@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4226828276202145579}
   - component: {fileID: 3065630020990774302}
   - component: {fileID: 2190888720257783836}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 4351321578319392622}
   - component: {fileID: 9050135258295322951}
   - component: {fileID: 8960045557968628300}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Sphere (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2968260565478096913}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,8 +418,7 @@ GameObject:
   - component: {fileID: 8918327254464570920}
   - component: {fileID: 4520900058590190869}
   - component: {fileID: 5821184051139561178}
-  - component: {fileID: 2416892241933500577}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,19 +490,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2416892241933500577
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5674876456019935693}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8210283864574706545
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +502,7 @@ GameObject:
   - component: {fileID: 7736565054922656188}
   - component: {fileID: 5259244684023355714}
   - component: {fileID: 7884804642139223729}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,8 +602,7 @@ GameObject:
   - component: {fileID: 945334573390081469}
   - component: {fileID: 3780247276276557949}
   - component: {fileID: 8681788133585715384}
-  - component: {fileID: 3490769127826045877}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -689,19 +674,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3490769127826045877
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9124086472443598200}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2584004592004558394
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -738,6 +710,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Particles - Smoke Continues
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083588641863492917, guid: 4026926998c479c4098a601371f2a906,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4352016684240846264, guid: 4026926998c479c4098a601371f2a906,
         type: 3}
@@ -834,6 +811,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Particles - Explosion Low Poly
+      objectReference: {fileID: 0}
+    - target: {fileID: 2978032127036696297, guid: 77f3c72ff3f40ef45892404ab718db1a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6310357856400793723, guid: 77f3c72ff3f40ef45892404ab718db1a,
         type: 3}
