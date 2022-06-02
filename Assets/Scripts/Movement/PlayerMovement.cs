@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Drag")]
     [SerializeField, Range(0f, 1f)] private float brakeDrag = .2f;
     [SerializeField, Range(0f, 1f)] private float driftDrag = 0.3f;
+    [Space(10)]
+    [SerializeField, Range(0f, 1f)] private float airDrag = 0.4f;
+    [SerializeField, Range(0f, 1f)] private float airVerticalDrag = 0.2f;
 
     [Header("Grounded state")]
     [SerializeField] private Transform groundedTransform = null;
@@ -85,19 +88,26 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (IsGrounded() && canMove)
+        if (IsGrounded())
         {
-            if (playerInput.currentControlScheme == "PC")
+            if (canMove)
             {
-                Rotate();
-                Move();
+                if (playerInput.currentControlScheme == "PC")
+                {
+                    Rotate();
+                    Move();
+                }
+                else
+                {
+                    MoveAndRotate();
+                }
             }
-            else
-            {
-                MoveAndRotate();
-            }
+            ApplyGroundedDrag();
         }
-        ApplyDrag();
+        else
+        {
+            ApplyAirDrag();
+        }
     }
 
     #region PC Controls
@@ -157,13 +167,22 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
-    private void ApplyDrag()
+    private void ApplyGroundedDrag()
     {
         Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
         localVelocity.x *= 1f - driftDrag;
         localVelocity.z *= 1f - targetSpeed;
         localVelocity.z = Mathf.Clamp(localVelocity.z, -maximumSpeed, maximumSpeed);
         rb.velocity = transform.TransformDirection(localVelocity);
+    }
+
+    private void ApplyAirDrag()
+    {
+        Vector3 airedVelocity = rb.velocity;
+        airedVelocity.x *= 1f - airDrag;
+        airedVelocity.y *= 1f - airVerticalDrag;
+        airedVelocity.z *= 1f - airDrag;
+        rb.velocity = airedVelocity;
     }
 
     public bool IsGrounded()
