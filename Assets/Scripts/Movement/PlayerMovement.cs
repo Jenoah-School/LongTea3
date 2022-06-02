@@ -96,15 +96,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 MoveAndRotate();
             }
-            ApplyDrag();
         }
+        ApplyDrag();
     }
 
     #region PC Controls
 
     private void Rotate()
     {
-            float rotationMultiplier = 0f;
+        float rotationMultiplier = 0f;
         if (Mathf.Abs(rb.angularVelocity.y) < maxRotationSpeed)
         {
             rotationMultiplier = movementInput >= 0 ? Mathf.Max(minRotationSpeed, Mathf.Abs(movementInput)) : Mathf.Max(minRotationSpeed, Mathf.Abs(movementInput) * backwardsMultiplier);
@@ -168,7 +168,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsGrounded()
     {
-        if(Physics.CheckBox(groundedTransform.position, groundedCheckBox / 2, transform.rotation, groundedLayers) && Mathf.Abs(rb.velocity.y) < 2)
+        if (Physics.CheckBox(groundedTransform.position, groundedCheckBox / 2, transform.rotation, groundedLayers) && Mathf.Abs(rb.velocity.y) < 2)
         {
             isGrounded = true;
         }
@@ -177,7 +177,7 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
         }
 
-        if(wasGrounded == false && isGrounded == true)
+        if (wasGrounded == false && isGrounded == true)
         {
             onTouchGround();
         }

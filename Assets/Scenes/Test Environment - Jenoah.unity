@@ -5629,7 +5629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1160871147
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7750,7 +7750,11 @@ MonoBehaviour:
       m_Calls: []
   playerListInactiveColor: {r: 200, g: 200, b: 200, a: 1}
   playerListActiveColor: {r: 1, g: 1, b: 1, a: 1}
-  playerRingColors: []
+  playerRingColors:
+  - {r: 1, g: 0.20784314, b: 0.18431373, a: 1}
+  - {r: 0, g: 1, b: 0.12156863, a: 1}
+  - {r: 0.10980392, g: 0.69803923, b: 1, a: 1}
+  - {r: 1, g: 0.8039216, b: 0, a: 1}
   setHealthbarToPlayerColor: 1
   allPlayersReady: 0
   onAllPlayersReady:
@@ -7784,6 +7788,7 @@ MonoBehaviour:
   - {fileID: 8298522946460067170, guid: a8c4d3fc5825540418e5e1ee3664df77, type: 3}
   fighterPowerups:
   - {fileID: 885014263667337596, guid: da3eedfb62945ea48845155dae05c145, type: 3}
+  - {fileID: 8221862447740667382, guid: 635757aaded8cfb49a3d35201302a602, type: 3}
   spawnOnInitialisation: 0
   spawnDummyOnInitialisation: 0
 --- !u!1001 &1572328040
@@ -8322,7 +8327,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9319998, y: 1}
+    m_SensorSize: {x: 1.779703, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -9819,6 +9824,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ae7d6c9490796e4ca9b51a26f6b738b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &2027916894 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 442432435466173652, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+    type: 3}
+  m_PrefabInstance: {fileID: 4748110816629103758}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2047106477
 GameObject:
   m_ObjectHideFlags: 3
@@ -10534,7 +10545,6 @@ PrefabInstance:
         type: 3}
       propertyPath: fireParticle
       value: 
-      objectReference: {fileID: 4134713267187540880, guid: 1cd43ee273439294489f1783b3594a2f,
-        type: 3}
+      objectReference: {fileID: 2027916894}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163185cd5fa6f244bbdbbb6fac61ee6f, type: 3}

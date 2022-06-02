@@ -311,7 +311,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""65e7901a-6ad6-46ce-ab91-2a2536559315"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -320,7 +320,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Select"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""4c01355d-9a8f-4d6f-ba98-7c4ca178b0c7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -329,7 +329,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Cancel"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""57b8a95b-191d-4fcd-848f-01f67955388c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -338,7 +338,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Point"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""3eff569c-4a34-4eb9-b550-5e94e86ff251"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -347,7 +347,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Left click"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""dd62cd58-bd67-42ed-878b-16a0c696865c"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -356,7 +356,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Middle mouse click"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""f57caffd-02a2-46d9-a1f8-2acf6da587d8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -365,7 +365,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Right click"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""9129e219-ffa4-4640-bf71-88b5811f07eb"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -374,7 +374,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Scroll"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""f4d98141-d9ea-4182-a0d6-2c76bf2b373b"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -383,7 +383,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Unpause"",
-                    ""type"": ""Button"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""2ade52b6-c4b6-4691-aa73-d0e6c4b0a02b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
