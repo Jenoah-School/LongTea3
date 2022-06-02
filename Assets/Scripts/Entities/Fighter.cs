@@ -22,6 +22,9 @@ public class Fighter : MonoBehaviour
 
     [SerializeField] protected GameObject damageText;
 
+    [SerializeField, HideInInspector] float healthPoints;
+    [SerializeField, HideInInspector] private float startHealth;
+
     public bool isDead = false;
     public OnTakeDamage onAttack;
     public delegate void OnTakeDamage();
@@ -29,8 +32,6 @@ public class Fighter : MonoBehaviour
     public delegate void OnAttack();
     public Color fighterColor;
 
-    private float healthPoints;
-    private float startHealth;
 
     private List<FighterPart> fighterParts = new List<FighterPart>();
 
@@ -74,6 +75,8 @@ public class Fighter : MonoBehaviour
 
         startHealth = bodyObject.fighterHealth;
         healthPoints = startHealth;
+
+        Debug.Log(healthPoints);
 
         PostAssemblyStart();
     }
@@ -157,6 +160,7 @@ public class Fighter : MonoBehaviour
         if (isDead) return;
         if(healthPoints <= 0)
         {
+            Debug.Log("DEATH");
             OnDeath();
         }
     }
@@ -206,22 +210,27 @@ public class Fighter : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        FallDamage(collision.relativeVelocity);
+        FallDamage(collision);
     }
 
-    private void FallDamage(Vector3 hitForce)
+    private void FallDamage(Collision collision)
     {
-        if(Mathf.Abs(hitForce.y) > 10 && Time.time > lastFallDmgTime && !playerMovement.IsGrounded())
+        Vector3 direction = collision.transform.position - transform.position;
+        //Debug.Log(direction);
+        if(Mathf.Abs(collision.relativeVelocity.y) > 10 && Time.time > lastFallDmgTime && !playerMovement.IsGrounded())
         {
             lastFallDmgTime = Time.time + 1;
-            float fallDamage =  Mathf.Abs(Mathf.Round(hitForce.y * fallDamageMultiplier));
+            float fallDamage =  Mathf.Abs(Mathf.Round(collision.relativeVelocity.magnitude * fallDamageMultiplier));
             TakeDamage(fallDamage, this);
         }
     }
     
     public void TakeDamage(float damage, Fighter origin = null, bool showDamage = true, bool doStack = false)
     {
-        if (isDead) return;       
+        if (isDead) return;
+
+        Debug.Log("TAKING DAMAGE " + damage);
+
         damage = (float)System.Math.Round(damage, 2);
         healthPoints -= damage;
         if (origin = null) origin = this;
