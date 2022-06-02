@@ -54,8 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c144d1ea8b0e70d44b0185a43e50ff99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 300
-  weight: 0
+  fighterHealth: 2000
   weaponLocationFront: {fileID: 8593379393771262636}
   weaponLocationTop: {fileID: 7491732604597283371}
   weaponLocationSideLeft: {fileID: 8107035010811674230}

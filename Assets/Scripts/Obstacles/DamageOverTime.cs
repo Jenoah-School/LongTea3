@@ -21,16 +21,22 @@ public class DamageOverTime : MonoBehaviour
         if (Time.time > nextDamageTime)
         {
             hitThisTick.Clear();
-            if (other.gameObject.transform.root.CompareTag("Fighter") && !hitThisTick.Contains(other.gameObject.transform.root))
+
+            if (other.transform.GetComponentInParent<Fighter>())
             {
-                hitThisTick.Add(other.gameObject.transform.root);
-                FighterPart fighterPart = other.gameObject.GetComponentInParent<FighterPart>();
-                if (fighterPart != null)
+                Fighter otherFighter = other.transform.GetComponentInParent<Fighter>();
+
+                if (!hitThisTick.Contains(otherFighter.transform))
                 {
-                    fighterPart.TakeDamage(damageAmount, other.transform.position);
-                    OnHit.Invoke();
-                    if (particlesToSpawn != null) LeanPool.Spawn(particlesToSpawn, other.ClosestPointOnBounds(transform.position), Quaternion.LookRotation((other.transform.position - transform.position).normalized));
-                    nextDamageTime = Time.time + cooldown;
+                    hitThisTick.Add(other.gameObject.transform.root);
+                    FighterPart fighterPart = other.gameObject.GetComponentInParent<FighterPart>();
+                    if (fighterPart != null)
+                    {
+                        otherFighter.TakeDamage(damageAmount);
+                        OnHit.Invoke();
+                        if (particlesToSpawn != null) LeanPool.Spawn(particlesToSpawn, other.ClosestPointOnBounds(transform.position), Quaternion.LookRotation((other.transform.position - transform.position).normalized));
+                        nextDamageTime = Time.time + cooldown;
+                    }
                 }
             }
         }

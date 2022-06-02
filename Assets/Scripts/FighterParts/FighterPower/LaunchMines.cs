@@ -4,17 +4,34 @@ using UnityEngine;
 
 public class LaunchMines : FighterPower
 {
-    [SerializeField] private GameObject mineObject;
+    [SerializeField] private Mine mineObject;
+
     [SerializeField] private int mineAmount;
+    [SerializeField] private float mineSpeed;
+    [SerializeField] private float mineLaunchForce;
+    [SerializeField] private float mineLifetime;
+    [SerializeField] private float damage;
 
     public override void Activate()
     {
-        base.Activate();
+        StartCoroutine(FireMines());    
+    }
+
+    IEnumerator FireMines()
+    {
         for (int i = 0; i < mineAmount; i++)
         {
-            GameObject mine = Instantiate(mineObject);
-            mine.transform.position = fighterRoot.transform.position + new Vector3(0,3,0);
-            mine.GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(0, 1), Random.Range(0, 1), Random.Range(0, 1)).normalized * 10;
+            Mine mine = Instantiate(mineObject);
+            mine.transform.position = fighterRoot.transform.position + new Vector3(0, 1, 0);
+
+            mine.transform.Rotate(0, Random.Range(0, 360), 0);
+            mine.GetComponent<Rigidbody>().velocity = mine.transform.forward * mineSpeed;
+            mine.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(-1, 0), Random.Range(-1, 0), Random.Range(-1, 0)) * Random.Range(100,500));
+            mine.SetVariables(damage, mineLaunchForce, mineLifetime, fighterRoot);
+
+            fighterRoot.IgnoreCollisionWithObject(mine.gameObject);
+
+            yield return new WaitForSeconds(0.25f);
         }
     }
 }
