@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FighterBody : FighterPart
 {
+    public float fighterHealth;
+
     [SerializeField] Transform weaponLocationFront;
     [SerializeField] Transform weaponLocationTop;
     [SerializeField] Transform weaponLocationSideLeft;

@@ -29,7 +29,7 @@ public class AimAssist : MonoBehaviour
         if (aimTarget)
         {
             isAiming = true;
-            ownerTransform.transform.rotation = Quaternion.RotateTowards(ownerTransform.transform.rotation, Quaternion.LookRotation((aimTarget.transform.position - ownerFighter.transform.position).normalized), Time.deltaTime * aimSpeed);
+            ownerTransform.transform.rotation = Quaternion.RotateTowards(ownerTransform.transform.rotation, Quaternion.LookRotation(((aimTarget.transform.position - new Vector3(0,0.25f,0)) - ownerFighter.transform.position).normalized), Time.deltaTime * aimSpeed);
         }
         else
         {

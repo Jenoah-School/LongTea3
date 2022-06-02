@@ -125,6 +125,7 @@ public class PlayerManager : MonoBehaviour
             fighterInfo.powerupID = 0;
             fighterInfo.weaponID = 0;
             fighterInfo.ranking = 0;
+            fighterInfo.fighterColor = playerRingColors[playerID % playerRingColors.Count];
             fighterInfos.Add(fighterInfo);
         }
 
@@ -196,6 +197,7 @@ public class PlayerManager : MonoBehaviour
             ringObject.gameObject.SetActive(showPlayerRing);
             if (ringObject.TryGetComponent(out SpriteRenderer ringRenderer))
             {
+                Debug.Log($"PLayer ID is {playerID} and ringCountColor thing is {playerRingColors.Count}");
                 ringRenderer.color = playerRingColors[playerID % playerRingColors.Count];
             }
         }
@@ -352,4 +354,5 @@ public struct FighterInfo
     public int weaponID;
     public int powerupID;
     public int ranking;
+    public Color fighterColor;
 }

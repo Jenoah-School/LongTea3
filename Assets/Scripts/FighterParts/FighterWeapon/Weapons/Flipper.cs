@@ -47,11 +47,12 @@ public class Flipper : FighterWeapon, IWeapon
         {
             foreach (Collider hit in hits)
             {
-                if (hit.gameObject.transform.root.CompareTag("Fighter") && hit.gameObject.transform.root != this.gameObject.transform.root && canHit)
+                if (hit.GetComponentInParent<Fighter>())
                 {
-                    Fighter otherFighter = hit.gameObject.transform.root.GetComponent<Fighter>();
-                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition((fighterRoot.transform.up + (fighterRoot.transform.forward + fighterRoot.transform.up) / 5) * (flipForce * 250) * flipLaunchForce * Mathf.Abs(Physics.gravity.y / 10), otherFighter.transform.position);
-                    otherFighter.GetComponent<Rigidbody>().AddRelativeTorque(fighterRoot.transform.forward * flipForce * 100 * 4);
+                    Fighter otherFighter = hit.GetComponentInParent<Fighter>();
+
+                    otherFighter.GetRigidBody().AddForceAtPosition((fighterRoot.transform.up + (fighterRoot.transform.forward + fighterRoot.transform.up) / 5).normalized * (flipForce * 250) * flipLaunchForce * Mathf.Abs(Physics.gravity.y / 10), otherFighter.transform.position);
+                    otherFighter.GetRigidBody().AddRelativeTorque(transform.forward * flipForce * 400);
                     if (hitParticles) LeanPool.Spawn(hitParticles, flipper.transform.position, Quaternion.Euler(-90f, 0, 0));
                     isFlipping = false;
                     canHit = false;

@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Drag")]
     [SerializeField, Range(0f, 1f)] private float brakeDrag = .2f;
     [SerializeField, Range(0f, 1f)] private float driftDrag = 0.3f;
+    [Space(10)]
+    [SerializeField, Range(0f, 1f)] private float airDrag = 0.4f;
+    [SerializeField, Range(0f, 1f)] private float airVerticalDrag = 0.2f;
 
     [Header("Grounded state")]
     [SerializeField] private Transform groundedTransform = null;
@@ -85,18 +88,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (IsGrounded() && canMove)
+        if (IsGrounded())
         {
-            if (playerInput.currentControlScheme == "PC")
+            if (canMove)
             {
-                Rotate();
-                Move();
+                if (playerInput.currentControlScheme == "PC")
+                {
+                    Rotate();
+                    Move();
+                }
+                else
+                {
+                    MoveAndRotate();
+                }
             }
-            else
-            {
-                MoveAndRotate();
-            }
-            ApplyDrag();
+            ApplyGroundedDrag();
+        }
+        else
+        {
+            ApplyAirDrag();
         }
     }
 
@@ -104,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Rotate()
     {
-            float rotationMultiplier = 0f;
+        float rotationMultiplier = 0f;
         if (Mathf.Abs(rb.angularVelocity.y) < maxRotationSpeed)
         {
             rotationMultiplier = movementInput >= 0 ? Mathf.Max(minRotationSpeed, Mathf.Abs(movementInput)) : Mathf.Max(minRotationSpeed, Mathf.Abs(movementInput) * backwardsMultiplier);
@@ -157,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
-    private void ApplyDrag()
+    private void ApplyGroundedDrag()
     {
         Vector3 localVelocity = transform.InverseTransformDirection(rb.velocity);
         localVelocity.x *= 1f - driftDrag;
@@ -166,9 +176,18 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = transform.TransformDirection(localVelocity);
     }
 
+    private void ApplyAirDrag()
+    {
+        Vector3 airedVelocity = rb.velocity;
+        airedVelocity.x *= 1f - airDrag;
+        airedVelocity.y *= 1f - airVerticalDrag;
+        airedVelocity.z *= 1f - airDrag;
+        rb.velocity = airedVelocity;
+    }
+
     public bool IsGrounded()
     {
-        if(Physics.CheckBox(groundedTransform.position, groundedCheckBox / 2, transform.rotation, groundedLayers) && Mathf.Abs(rb.velocity.y) < 2)
+        if (Physics.CheckBox(groundedTransform.position, groundedCheckBox / 2, transform.rotation, groundedLayers) && Mathf.Abs(rb.velocity.y) < 2)
         {
             isGrounded = true;
         }
@@ -177,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
         }
 
-        if(wasGrounded == false && isGrounded == true)
+        if (wasGrounded == false && isGrounded == true)
         {
             onTouchGround();
         }

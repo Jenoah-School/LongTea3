@@ -17,24 +17,23 @@ public class Fighter : MonoBehaviour
     private List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
     [SerializeField] private FighterPower powerup;
 
-    [SerializeField, Range(10, 100)] private int healthThreshold;
     [SerializeField] private int fallDamageTreshHold;
     [SerializeField] private float fallDamageMultiplier;
 
     [SerializeField] protected GameObject damageText;
 
-    private List<FighterPart> fighterParts = new List<FighterPart>();
+    [SerializeField, HideInInspector] float healthPoints;
+    [SerializeField, HideInInspector] private float startHealth;
 
-    private float startTotalHealth;
     public bool isDead = false;
-
+    public OnTakeDamage onAttack;
     public delegate void OnTakeDamage();
     public OnTakeDamage onTakeDamage;
-
     public delegate void OnAttack();
-    public OnTakeDamage onAttack;
-
     public Color fighterColor;
+
+
+    private List<FighterPart> fighterParts = new List<FighterPart>();
 
     private float lastFallDmgTime;
 
@@ -74,6 +73,11 @@ public class Fighter : MonoBehaviour
             fighterParts.Add(wheelsPart);
         }
 
+        startHealth = bodyObject.fighterHealth;
+        healthPoints = startHealth;
+
+        Debug.Log(healthPoints);
+
         PostAssemblyStart();
     }
 
@@ -83,7 +87,6 @@ public class Fighter : MonoBehaviour
         IgnoreCollisionOnItself();
         SetFighterPartReferences();
         SetCenterOfMass();
-        startTotalHealth = GetTotalPartHealth();
     }
 
     private void GetPartReferences()
@@ -101,12 +104,12 @@ public class Fighter : MonoBehaviour
 
     public float GetStartHealth()
     {
-        return startTotalHealth;
+        return startHealth;
     }
 
-    public float GetHealthThreshold()
+    public float GetCurrentHealth()
     {
-        return healthThreshold;
+        return healthPoints;
     }
 
     private void SetCenterOfMass()
@@ -115,6 +118,11 @@ public class Fighter : MonoBehaviour
         {
             rb.centerOfMass = body.GetCenterOfMass().localPosition;
         }
+    }
+
+    public Rigidbody GetRigidBody()
+    {
+        return rb;
     }
 
     private void IgnoreCollisionOnItself()
@@ -147,22 +155,12 @@ public class Fighter : MonoBehaviour
         }
     }
 
-    public float GetTotalPartHealth()
-    {
-        if (isDead) return 0;
-        float totalHealth = 0;
-        foreach (FighterPart part in fighterParts)
-        {
-            totalHealth += part.healthPoints;
-        }
-        return totalHealth;
-    }
-
     public void CheckDeath()
     {
         if (isDead) return;
-        if(GetTotalPartHealth() < startTotalHealth / 100f * (float)healthThreshold)
+        if(healthPoints <= 0)
         {
+            Debug.Log("DEATH");
             OnDeath();
         }
     }
@@ -205,35 +203,47 @@ public class Fighter : MonoBehaviour
     {
         if(Time.time >= lastPowerUpTime)
         {
-            lastPowerUpTime = lastPowerUpTime + Time.time;
+            lastPowerUpTime = Time.time + powerup.cooldown;
             powerup.Activate();
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        FallDamage(collision.relativeVelocity);
+        FallDamage(collision);
     }
 
-    private void FallDamage(Vector3 hitForce)
+    private void FallDamage(Collision collision)
     {
-        if(Mathf.Abs(hitForce.y) > 10 && Time.time > lastFallDmgTime)
+        Vector3 direction = collision.transform.position - transform.position;
+        //Debug.Log(direction);
+        if(Mathf.Abs(collision.relativeVelocity.y) > 10 && Time.time > lastFallDmgTime && !playerMovement.IsGrounded())
         {
             lastFallDmgTime = Time.time + 1;
-            float fallDamage =  Mathf.Abs(Mathf.Round(hitForce.y * fallDamageMultiplier));
-
-            foreach (FighterPart part in fighterParts)
-            {
-                part.TakeDamage(fallDamage / fighterParts.Count, part.transform.position, false);
-            }
-            //Debug.Log(GetTotalPartHealth());
-            DamageIndication(fallDamage, transform.position, this);
+            float fallDamage =  Mathf.Abs(Mathf.Round(collision.relativeVelocity.magnitude * fallDamageMultiplier));
+            TakeDamage(fallDamage, this);
         }
     }
-
-    public void DamageIndication(float damage, Vector3 hitPos, Fighter origin, bool doStack = false)
+    
+    public void TakeDamage(float damage, Fighter origin = null, bool showDamage = true, bool doStack = false)
     {
-        GameObject damageTextObject = LeanPool.Spawn(damageText, hitPos, transform.rotation);
+        if (isDead) return;
+
+        Debug.Log("TAKING DAMAGE " + damage);
+
+        damage = (float)System.Math.Round(damage, 2);
+        healthPoints -= damage;
+        if (origin = null) origin = this;
+
+        if (showDamage) DamageIndication(damage, origin, doStack);
+
+        CheckDeath();
+        onTakeDamage();
+    }
+
+    public void DamageIndication(float damage, Fighter origin, bool doStack = false)
+    {
+        GameObject damageTextObject = LeanPool.Spawn(damageText, transform.position, transform.rotation);
         TextMeshPro damageTextObjectText = damageTextObject.GetComponent<TextMeshPro>();
 
         damageTextObjectText.alpha = 1;
@@ -243,8 +253,6 @@ public class Fighter : MonoBehaviour
         damageTextObject.transform.DOMoveY(transform.position.y + damageTextObject.transform.position.y + Random.Range(1.5f, 2.5f), Random.Range(2.5f, 3.5f));
 
         LeanPool.Despawn(damageTextObject, 3);
-
-        onTakeDamage();
     }
 
     private void OnDrawGizmosSelected()

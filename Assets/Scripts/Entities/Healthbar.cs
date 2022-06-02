@@ -21,18 +21,12 @@ public class Healthbar : MonoBehaviour
     public void SetFighter(Fighter fighter)
     {
         fighterReference = fighter;
-
-        float fatalHealth = fighterReference.GetStartHealth() / 100f * fighterReference.GetHealthThreshold();
-        float fillValue = (fighterReference.GetTotalPartHealth() - fatalHealth) / fighterReference.GetStartHealth();
-        healthbarMultiplier = 1f / fillValue;
     }
 
     public void RecalculateHealth()
     {
-        float fatalHealth = fighterReference.GetStartHealth() / 100f * fighterReference.GetHealthThreshold();
-        float fillValue = (fighterReference.GetTotalPartHealth() - fatalHealth) / fighterReference.GetStartHealth();
-
-        SetFill(healthbarMultiplier * fillValue);
+        SetFill(1f / fighterReference.GetStartHealth() * fighterReference.GetCurrentHealth());
+        Debug.Log(fighterReference.GetStartHealth() + " " + fighterReference.GetCurrentHealth());
     }
 
     public void SetFill(float fillAmount)
