@@ -26,6 +26,7 @@ public class Healthbar : MonoBehaviour
     public void RecalculateHealth()
     {
         SetFill(1f / fighterReference.GetStartHealth() * fighterReference.GetCurrentHealth());
+        Debug.Log(fighterReference.GetStartHealth() + " " + fighterReference.GetCurrentHealth());
     }
 
     public void SetFill(float fillAmount)
