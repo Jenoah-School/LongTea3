@@ -126,19 +126,16 @@ public class Laser : FighterWeapon, IWeapon
             }
             else if (endPointParticles != null && endPointParticles.isPlaying) endPointParticles.Stop();
 
-            if (hit.transform.root.CompareTag("Fighter"))
+            if (hit.transform.GetComponentInParent<Fighter>())
             {
-                if (hit.transform.GetComponentInChildren<FighterPart>())
+                Fighter otherFighter = hit.transform.GetComponentInParent<Fighter>();
+                otherFighter.GetRigidBody().velocity += knockbackForceHit * Mathf.Abs(Physics.gravity.y) * Time.deltaTime * transform.forward;
+                if (Time.time > nextDamageTime)
                 {
-                    FighterPart part = hit.transform.GetComponentInChildren<FighterPart>();
-                    part.GetRigidBodyFighter().velocity += knockbackForceHit * Mathf.Abs(Physics.gravity.y) * Time.deltaTime * transform.forward;
-                    if (Time.time > nextDamageTime)
-                    {
 
-                        part.TakeDamage(damage, hit.point);
-                        nextDamageTime = Time.time + damageTime;
-                    }
-                }
+                otherFighter.TakeDamage(damage, fighterRoot);
+                    nextDamageTime = Time.time + damageTime;
+                }             
             }
 
             if (Time.time >= nextJumpTime)

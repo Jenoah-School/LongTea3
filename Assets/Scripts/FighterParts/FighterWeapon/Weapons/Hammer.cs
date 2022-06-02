@@ -61,14 +61,13 @@ public class Hammer : FighterWeapon, IWeapon
         {
             foreach (Collider hit in hits)
             {
-                if (hit.gameObject.transform.root != this.gameObject.transform.root)
+                Fighter otherFighter = hit.GetComponentInParent<Fighter>();
+                if (otherFighter != fighterRoot)
                 {
-                    //Debug.Log("Hit something: " + hit.name);
-
                     RotateObject.instance.StopCoroutine(hammerSwingRotationRoutine);
                     isSwinging = false;
                     hammerSwingRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(0, 0, 0), transform.localEulerAngles.x / 90);
-                }
+                }               
             }
         }
 
@@ -76,24 +75,18 @@ public class Hammer : FighterWeapon, IWeapon
         {
             foreach (Collider hit in tipHits)
             {
-                if (hit.gameObject.transform.root != this.gameObject.transform.root && hit.gameObject.transform.root.CompareTag("Fighter"))
+                if (hit.GetComponentInParent<Fighter>())
                 {
-                    Fighter otherFighter = hit.gameObject.transform.root.GetComponent<Fighter>();
-                    otherFighter.GetComponent<Rigidbody>().AddForceAtPosition(((transform.up * 2)) * ((hammerForce) * (totalHammerLaunchForceMultiplier * 20)) * Mathf.Abs(Physics.gravity.y / 10), hit.gameObject.transform.position);
-
-                    Debug.Log("Hit with hammer");                
-
-                    RotateObject.instance.StopCoroutine(hammerSwingRotationRoutine);
-                    isSwinging = false;
-                    hammerSwingRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(0, 0, 0), transform.localEulerAngles.x / 90);
-
-                    if (hit.GetComponentInParent<FighterPart>() && canHit)
+                    Fighter otherFighter = hit.GetComponentInParent<Fighter>();
+                    if (otherFighter != fighterRoot && canHit)
                     {
+                        otherFighter.GetComponent<Rigidbody>().AddForceAtPosition(((transform.up * 2)) * ((hammerForce) * (totalHammerLaunchForceMultiplier * 20)) * Mathf.Abs(Physics.gravity.y / 10), hit.gameObject.transform.position);
+                        RotateObject.instance.StopCoroutine(hammerSwingRotationRoutine);
+                        isSwinging = false;
+                        hammerSwingRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(0, 0, 0), transform.localEulerAngles.x / 90);
+                        otherFighter.TakeDamage(damage, otherFighter);
                         canHit = false;
-                        FighterPart part = hit.GetComponentInParent<FighterPart>();
-                        //Debug.Log("Hit something tip: " + hit.name);
-                        part.TakeDamage(damage, hammerTip.transform.position);
-                    }             
+                    }
                 }
             }
         }

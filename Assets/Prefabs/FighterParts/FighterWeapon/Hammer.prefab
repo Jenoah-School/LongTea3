@@ -46,8 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54962054ade70cc40b81acd82f397fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 200
-  weight: 0
   weaponOrder: 0
   damage: 100
   isPair: 0
@@ -68,7 +66,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  hammerForce: 250
+  hammerForce: 350
   totalHammerLaunchForceMultiplier: 3
   hammerTip: {fileID: 4958063635510173404}
   hammerTipMask:
