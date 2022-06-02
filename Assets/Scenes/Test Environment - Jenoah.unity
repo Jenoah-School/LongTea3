@@ -5387,6 +5387,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 247606487}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1282739381 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7932993669650361058, guid: 14a29a36ee4100c448631d9a89539e31,
+    type: 3}
+  m_PrefabInstance: {fileID: 78508569}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ef42886de195a429c15d47f1922f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1359238854
 GameObject:
   m_ObjectHideFlags: 0
@@ -5772,6 +5784,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1481787024}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1481787026 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7932993669650361058, guid: 14a29a36ee4100c448631d9a89539e31,
+    type: 3}
+  m_PrefabInstance: {fileID: 1481787024}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ef42886de195a429c15d47f1922f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1493081462
 GameObject:
   m_ObjectHideFlags: 0
@@ -6241,9 +6265,9 @@ MonoBehaviour:
   fighterParent: {fileID: 0}
   healthbars:
   - {fileID: 974400528}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1669540345}
+  - {fileID: 1481787026}
+  - {fileID: 1282739381}
   playerJoinViews: []
   fighterPartSelections: []
   players: []
@@ -6444,6 +6468,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1669540345 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7932993669650361058, guid: 14a29a36ee4100c448631d9a89539e31,
+    type: 3}
+  m_PrefabInstance: {fileID: 72382553}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49ef42886de195a429c15d47f1922f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1682895453
 GameObject:
   m_ObjectHideFlags: 0
