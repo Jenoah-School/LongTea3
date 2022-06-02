@@ -67,10 +67,10 @@ public class Minigun : FighterWeapon, IWeapon
         RaycastHit hit;
         if (Physics.Raycast(barrelTip.transform.position, barrelTip.transform.forward * range, out hit))
         {
-            if (hit.transform.gameObject.GetComponentInChildren<FighterPart>())
+            if (hit.transform.GetComponentInParent<Fighter>())
             {
-                FighterPart part = hit.transform.gameObject.GetComponentInChildren<FighterPart>();
-                part.TakeDamage(damage, hit.point, true, true);
+                Fighter otherFighter = hit.transform.GetComponentInParent<Fighter>();
+                otherFighter.TakeDamage(damage, fighterRoot, true, true);
             }
         }
     }
