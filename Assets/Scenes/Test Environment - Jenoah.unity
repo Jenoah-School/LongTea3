@@ -7155,6 +7155,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  fighterInfos: []
 --- !u!82 &2018559012
 AudioSource:
   m_ObjectHideFlags: 0

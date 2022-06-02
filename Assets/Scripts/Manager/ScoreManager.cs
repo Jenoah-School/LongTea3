@@ -12,7 +12,7 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private float spawnDelay = .5f;
     [SerializeField] private UnityEvent OnSpawnEvent;
 
-    List<FighterInfo> fighterInfos = new List<FighterInfo>();
+    [HideInInspector] public List<FighterInfo> fighterInfos = new List<FighterInfo>();
 
     public static ScoreManager singleton;
 
@@ -55,10 +55,12 @@ public class ScoreManager : MonoBehaviour
         {
             for (int i = 0; i < fighterInfos.Count(); i++)
             {
-                GameObject scoreItem = Instantiate(leaderboardItem, leaderboardGO.transform);
+                LeaderboardItem scoreItem = Instantiate(leaderboardItem, leaderboardGO.transform).GetComponent<LeaderboardItem>();
+                scoreItem.SetPreview(fighterInfos[i].playerID);
+                ScoreManagerProxy.singleton.BuildPreview(fighterInfos[i].playerID);
                 scoreItem.GetComponent<QuickAnimations>().Squish(.5f);
-                scoreItem.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = $"Player {fighterInfos[i].playerID + 1}";
-                scoreItem.transform.GetChild(1).GetComponent<TMPro.TextMeshProUGUI>().text = $"{fighterInfos[i].ranking}";
+                scoreItem.SetName($"Player {fighterInfos[i].playerID + 1}");
+                scoreItem.SetRank($"{fighterInfos.Count() - fighterInfos[i].ranking}th");
                 OnSpawnEvent.Invoke();
                 yield return new WaitForSeconds(spawnDelay);
             }

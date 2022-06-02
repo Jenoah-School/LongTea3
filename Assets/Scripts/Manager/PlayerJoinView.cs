@@ -43,13 +43,13 @@ public class PlayerJoinView : MonoBehaviour
 
     public void BuildPreview()
     {
-            foreach (Transform child in previewGameObject.transform)
-            {
-                Destroy(child.gameObject);
-            }
+        foreach (Transform child in previewGameObject.transform)
+        {
+            Destroy(child.gameObject);
+        }
 
         List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
         fighterWeapons.Add(FighterCreator.singleton.fighterWeapons[fighterPartSelection.currentWeaponID]);
         previewGameObject.AssembleFighterParts(FighterCreator.singleton.fighterBodies[fighterPartSelection.currentBodyID], fighterWeapons, FighterCreator.singleton.fighterPowerups[fighterPartSelection.currentPowerupID]);
-	    }
+    }
 }
