@@ -107,8 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05adbfb1197780c47a254ee103cf1574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 150
-  cooldown: 10
+  damageAmount: 100
+  cooldown: 1
   OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -578,7 +578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 50
-  cooldown: 1.75
+  cooldown: 0.5
   OnHit:
     m_PersistentCalls:
       m_Calls:
