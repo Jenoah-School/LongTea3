@@ -9,8 +9,6 @@ public class Healthbar : MonoBehaviour
     [SerializeField] private Image healthbarFill = null;
     [SerializeField] private float healthSmoothing = .1f;
 
-    private float healthbarMultiplier = 1f;
-
     private Fighter fighterReference;
 
     public void SetColor(Color healthbarColor)
@@ -26,7 +24,6 @@ public class Healthbar : MonoBehaviour
     public void RecalculateHealth()
     {
         SetFill(1f / fighterReference.GetStartHealth() * fighterReference.GetCurrentHealth());
-        Debug.Log(fighterReference.GetStartHealth() + " " + fighterReference.GetCurrentHealth());
     }
 
     public void SetFill(float fillAmount)

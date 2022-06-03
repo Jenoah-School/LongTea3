@@ -76,8 +76,6 @@ public class Fighter : MonoBehaviour
         startHealth = bodyObject.fighterHealth;
         healthPoints = startHealth;
 
-        Debug.Log(healthPoints);
-
         PostAssemblyStart();
     }
 

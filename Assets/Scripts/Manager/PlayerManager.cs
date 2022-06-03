@@ -197,7 +197,6 @@ public class PlayerManager : MonoBehaviour
             ringObject.gameObject.SetActive(showPlayerRing);
             if (ringObject.TryGetComponent(out SpriteRenderer ringRenderer))
             {
-                Debug.Log($"PLayer ID is {playerID} and ringCountColor thing is {playerRingColors.Count}");
                 ringRenderer.color = playerRingColors[playerID % playerRingColors.Count];
             }
         }
