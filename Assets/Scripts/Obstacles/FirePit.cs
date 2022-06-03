@@ -18,9 +18,12 @@ public class FirePit : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float targetFireVolume = 1f;
     [SerializeField] private float audioFadeDuration = 0.5f;
 
+    [SerializeField] public bool isOnTimer;
+
     private bool canTrigger = true;
     private bool isFiring = true;
     private float nextInitTime = 0f;
+
 
     private void Start()
     {
@@ -36,7 +39,7 @@ public class FirePit : MonoBehaviour
 
     private void Update()
     {
-        if (!canTrigger) return;
+        if (!canTrigger || !isOnTimer) return;
 
         if(Time.time > nextInitTime)
         {
