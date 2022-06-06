@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fighter
   - Spawnpoint
+  - Mirror
   layers:
   - Default
   - TransparentFX
