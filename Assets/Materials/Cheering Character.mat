@@ -13,7 +13,7 @@ Material:
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -42,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Diffuse:
-        m_Texture: {fileID: 2800000, guid: 9b326e1c363d46445809d630ddcab419, type: 3}
+        m_Texture: {fileID: 2800000, guid: dc2db299c89b89643ab9e0d8f28effce, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -84,6 +84,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
+    - _Atlas_count: 2
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
@@ -104,6 +105,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Seed: 100
     - _Shininess: 0
     - _Smoothness: 0.2
     - _SmoothnessSource: 0
@@ -113,6 +115,8 @@ Material:
     - _Speed: 4
     - _SrcBlend: 1
     - _Surface: 0
+    - _TextureCount: 2
+    - _Variation: 16
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
