@@ -5142,7 +5142,7 @@ MonoBehaviour:
   laserTime: 1.25
   damageTime: 0.5
   knockbackForceSelf: 15
-  knockbackForceHit: 5
+  knockbackForceHit: 3
   lineSegmentCount: 10
   maxLineDistance: 30
   lineHitLayers:
