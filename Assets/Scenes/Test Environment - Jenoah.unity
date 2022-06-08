@@ -505,6 +505,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2072431794}
     m_Modifications:
+    - target: {fileID: 5241508551550743558, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 592f18b6e1c900f498d704fa9a2deb5a,
+        type: 3}
     - target: {fileID: 7932993669003594537, guid: 14a29a36ee4100c448631d9a89539e31,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -635,6 +641,12 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7932993670790699509, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 10cccabb523650346b1a6f9b27eaff42,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14a29a36ee4100c448631d9a89539e31, type: 3}
 --- !u!224 &72382554 stripped
@@ -650,6 +662,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2072431794}
     m_Modifications:
+    - target: {fileID: 5241508551550743558, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4590caec16d5fb947b58c5399c4f7a4e,
+        type: 3}
     - target: {fileID: 7932993669003594537, guid: 14a29a36ee4100c448631d9a89539e31,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -780,6 +798,12 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7932993670790699509, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 460527de5b1c22049869671a02d5e940,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14a29a36ee4100c448631d9a89539e31, type: 3}
 --- !u!224 &78508570 stripped
@@ -6917,7 +6941,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.779703, y: 1}
+    m_SensorSize: {x: 1.7782369, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -9301,7 +9325,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.779703, y: 1}
+    m_SensorSize: {x: 1.7782369, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -11787,6 +11811,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2072431794}
     m_Modifications:
+    - target: {fileID: 5241508551550743558, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b010095a79dea4a4b9d0cf25d9e8059d,
+        type: 3}
     - target: {fileID: 7932993669650361086, guid: 14a29a36ee4100c448631d9a89539e31,
         type: 3}
       propertyPath: m_Name
@@ -11902,5 +11932,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7932993670790699509, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 895d939f398e0e34ba2ea10655cd7573,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14a29a36ee4100c448631d9a89539e31, type: 3}
