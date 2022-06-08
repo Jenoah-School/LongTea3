@@ -48,8 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b9bfebd181a6294d861d896ec6b8e87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 200
-  weight: 0
   weaponOrder: 0
   damage: 0.5
   isPair: 0
