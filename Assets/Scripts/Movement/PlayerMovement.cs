@@ -7,23 +7,14 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Speed")]
-    [SerializeField] private float accelerationSpeed = 60f;
-    [SerializeField] private float maximumSpeed = 10f;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField, Range(0f, 1f)] private float minRotationSpeed = 0.2f;
     [SerializeField] private float backwardsMultiplier = 0.5f;
     [SerializeField] private float maxRotationSpeed = 3f;
     [SerializeField] private bool isGrounded = false;
 
-    [Header("Drag")]
-    [SerializeField, Range(0f, 1f)] private float brakeDrag = .2f;
-    [SerializeField, Range(0f, 1f)] private float driftDrag = 0.3f;
-    [Space(10)]
-    [SerializeField, Range(0f, 1f)] private float airDrag = 0.4f;
-    [SerializeField, Range(0f, 1f)] private float airVerticalDrag = 0.2f;
-
     [Header("Grounded state")]
-    [SerializeField] private Transform groundedTransform = null;
+    [SerializeField, Tooltip("The fallback of the origin for the grounded checkbox")] private Transform groundedTransform = null;
     [SerializeField] private Vector3 groundedCheckBox = Vector3.one;
     [SerializeField] private LayerMask groundedLayers = Physics.AllLayers;
 
@@ -41,6 +32,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool canMove = true;
 
     private Rigidbody rb = null;
+
+    //Speeds
+    private float accelerationSpeed = 60f;
+    private float maximumSpeed = 10f;
+
+    //Drag
+    private float brakeDrag = .2f;
+    private float driftDrag = 0.3f;
+    private float airDrag = 0.4f;
+    private float airVerticalDrag = 0.2f;
 
     private Vector2 movementVector = Vector2.zero;
     private float movementInput = 0;
@@ -208,6 +209,29 @@ public class PlayerMovement : MonoBehaviour
     public void SetMoveState(bool newMoveState)
     {
         canMove = newMoveState;
+    }
+
+    public void SetMoveSpeed(float newMoveSpeed)
+    {
+        maximumSpeed = newMoveSpeed;
+    }
+
+    public void SetAccelerationSpeed(float newAccelerationSpeed)
+    {
+        accelerationSpeed = newAccelerationSpeed;
+    }
+
+    public void SetDrag(float brakeDrag = -1, float driftDrag = -1f, float airDrag = -1f, float airVerticalDrag = -1f)
+    {
+        if (brakeDrag != -1) this.brakeDrag = brakeDrag;
+        if (driftDrag != -1) this.driftDrag = driftDrag;
+        if (airDrag != -1) this.airDrag = airDrag;
+        if (airVerticalDrag != -1) this.airVerticalDrag = airVerticalDrag;
+    }
+
+    public void SetGroundedTransform(Transform groundedCheckTransform)
+    {
+        groundedTransform = groundedCheckTransform;
     }
 
     private void OnDrawGizmosSelected()

@@ -357,10 +357,11 @@ MonoBehaviour:
   playerMovement: {fileID: 0}
   body: {fileID: 0}
   powerup: {fileID: 0}
-  healthThreshold: 0
   fallDamageTreshHold: 0
   fallDamageMultiplier: 0
   damageText: {fileID: 0}
+  healthPoints: 0
+  startHealth: 0
   isDead: 0
   fighterColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &773460765973924353
@@ -389,7 +390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773460765973924353}
   m_LocalRotation: {x: -0.010622316, y: -0, z: -0, w: 0.99994355}
-  m_LocalPosition: {x: 0, y: 0.687, z: -2.31}
+  m_LocalPosition: {x: 0, y: 1.25, z: -3.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -613,8 +614,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9074006450363577636}
   m_LocalRotation: {x: 0.70710677, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.2, z: 0.1}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 0, y: -0.05, z: 0.1}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 773460763969126356}

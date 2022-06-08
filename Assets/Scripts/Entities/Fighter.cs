@@ -85,6 +85,7 @@ public class Fighter : MonoBehaviour
         IgnoreCollisionOnItself();
         SetFighterPartReferences();
         SetCenterOfMass();
+        SetReferences();
     }
 
     private void GetPartReferences()
@@ -98,6 +99,17 @@ public class Fighter : MonoBehaviour
             }
         }
         fighterParts.AddRange(fighterPartRefences);
+    }
+
+    private void SetReferences()
+    {
+        if (playerMovement)
+        {
+            if (body.GetGroundedCheckOriginTransform()) playerMovement.SetGroundedTransform(body.GetGroundedCheckOriginTransform());
+            playerMovement.SetMoveSpeed(body.GetMoveSpeed());
+            playerMovement.SetAccelerationSpeed(body.GetAccelerationSpeed());
+            playerMovement.SetDrag(body.GetBrakeDrag(), body.GetDriftDrag(), body.GetAirDrag(), body.GetAirVerticalDrag());
+        }
     }
 
     public float GetStartHealth()

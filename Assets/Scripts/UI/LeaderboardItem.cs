@@ -20,8 +20,27 @@ public class LeaderboardItem : MonoBehaviour
         playerNameText.text = newName;
     }
 
-    public void SetRank(string newRank)
+    public void SetRank(int newRank)
     {
-        rankText.text = newRank;
+        string suffix;
+        switch (newRank)
+        {
+            case 1:
+                suffix = "st";
+                break;
+            case 2:
+                suffix = "nd";
+                break;
+            case 3:
+                suffix = "rd";
+                break;
+            case 4:
+                suffix = "th";
+                break;
+            default:
+                suffix = "";
+                break;
+        }
+        rankText.text = newRank + suffix;
     }
 }

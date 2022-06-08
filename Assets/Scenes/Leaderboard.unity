@@ -278,11 +278,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterHealth: 0
+  maxMoveSpeed: 10
+  accelerationSpeed: 25
+  brakeDrag: 0.1
+  driftDrag: 0.4
+  airDrag: 0.6
+  airVerticalDrag: 0.025
   weaponLocationFront: {fileID: 1728742461}
   weaponLocationTop: {fileID: 568047061}
   weaponLocationSideLeft: {fileID: 1665448546}
   weaponLocationSideRight: {fileID: 1683265436}
   centerOfMass: {fileID: 1539134648}
+  groundCheckOrigin: {fileID: 0}
 --- !u!1 &387159128
 GameObject:
   m_ObjectHideFlags: 0
@@ -664,7 +671,7 @@ MonoBehaviour:
   emptyFighter: {fileID: 5880640649918137463, guid: ea0e7afe39aeb2941b67f434ce66284d,
     type: 3}
   fighterBodies:
-  - {fileID: 2819372194517125383, guid: 6bafc6aed2b06454fa85d6c7b1a81c4a, type: 3}
+  - {fileID: 2819372194517125383, guid: 873719922ae997942bed2993c1217a9f, type: 3}
   fighterWeapons:
   - {fileID: 4489666271711470983, guid: a5b977abd9f0c33428a98a276539e77b, type: 3}
   - {fileID: 587068950702300206, guid: bd886fb8aa574b540885e32cc7d32513, type: 3}

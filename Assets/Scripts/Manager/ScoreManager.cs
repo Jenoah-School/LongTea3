@@ -60,7 +60,7 @@ public class ScoreManager : MonoBehaviour
                 ScoreManagerProxy.singleton.BuildPreview(fighterInfos[i].playerID);
                 scoreItem.GetComponent<QuickAnimations>().Squish(.5f);
                 scoreItem.SetName($"Player {fighterInfos[i].playerID + 1}");
-                scoreItem.SetRank($"{fighterInfos.Count() - fighterInfos[i].ranking}th");
+                scoreItem.SetRank(fighterInfos.Count() - fighterInfos[i].ranking);
                 OnSpawnEvent.Invoke();
                 yield return new WaitForSeconds(spawnDelay);
             }

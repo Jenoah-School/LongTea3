@@ -148,10 +148,25 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 3.2999878
       objectReference: {fileID: 0}
+    - target: {fileID: 5911444961644113065, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -99.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911444961807802916, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -229.79999
+      objectReference: {fileID: 0}
     - target: {fileID: 5911444961821310280, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_text
       value: Robot 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911444962212428043, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -98.89996
       objectReference: {fileID: 0}
     - target: {fileID: 5911444962225737748, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -689,10 +704,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 029c21826d904f5429a693addd49921f,
         type: 3}
+    - target: {fileID: 5911444961644113065, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -99.00006
+      objectReference: {fileID: 0}
     - target: {fileID: 5911444961821310280, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_text
       value: Robot 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911444962212428043, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -98.89996
       objectReference: {fileID: 0}
     - target: {fileID: 5911444962225737748, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -868,8 +893,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667558bfb4f19ca449ab211c7c9b9909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 150
-  weight: 0
 --- !u!1 &408153123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,8 +1251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667558bfb4f19ca449ab211c7c9b9909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 150
-  weight: 0
 --- !u!1 &481660850
 GameObject:
   m_ObjectHideFlags: 0
@@ -2325,6 +2346,10 @@ MonoBehaviour:
   mineObject: {fileID: 6591348074570471556, guid: 31cc3d3d042117d4781e7ec5307eb862,
     type: 3}
   mineAmount: 5
+  mineSpeed: 0
+  mineLaunchForce: 0
+  mineLifetime: 0
+  damage: 0
 --- !u!1 &940446363
 GameObject:
   m_ObjectHideFlags: 0
@@ -3047,7 +3072,7 @@ MonoBehaviour:
   emptyFighter: {fileID: 5880640649918137463, guid: ea0e7afe39aeb2941b67f434ce66284d,
     type: 3}
   fighterBodies:
-  - {fileID: 2819372194517125383, guid: 6bafc6aed2b06454fa85d6c7b1a81c4a, type: 3}
+  - {fileID: 2819372194517125383, guid: 873719922ae997942bed2993c1217a9f, type: 3}
   fighterWeapons:
   - {fileID: 4489666271711470983, guid: a5b977abd9f0c33428a98a276539e77b, type: 3}
   - {fileID: 587068950702300206, guid: bd886fb8aa574b540885e32cc7d32513, type: 3}
@@ -3153,8 +3178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667558bfb4f19ca449ab211c7c9b9909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 150
-  weight: 0
 --- !u!1 &1302936132
 GameObject:
   m_ObjectHideFlags: 0
@@ -3398,10 +3421,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: dd90adf95a9e6694fbd613f104c4d404,
         type: 3}
+    - target: {fileID: 5911444961644113065, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -99.00006
+      objectReference: {fileID: 0}
     - target: {fileID: 5911444961821310280, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_text
       value: Robot 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911444962212428043, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -98.89996
       objectReference: {fileID: 0}
     - target: {fileID: 5911444962225737748, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -3577,8 +3610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667558bfb4f19ca449ab211c7c9b9909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 150
-  weight: 0
 --- !u!1 &1482582494
 GameObject:
   m_ObjectHideFlags: 0
@@ -3631,10 +3662,11 @@ MonoBehaviour:
   playerMovement: {fileID: 0}
   body: {fileID: 1816914273}
   powerup: {fileID: 911944668}
-  healthThreshold: 0
   fallDamageTreshHold: 0
   fallDamageMultiplier: 0
   damageText: {fileID: 0}
+  healthPoints: 0
+  startHealth: 0
   isDead: 0
   fighterColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1482582497
@@ -4098,8 +4130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54962054ade70cc40b81acd82f397fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 200
-  weight: 0
   weaponOrder: 0
   damage: 100
   isPair: 0
@@ -4183,13 +4213,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c144d1ea8b0e70d44b0185a43e50ff99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 300
-  weight: 0
+  fighterHealth: 0
+  maxMoveSpeed: 10
+  accelerationSpeed: 25
+  brakeDrag: 0.1
+  driftDrag: 0.4
+  airDrag: 0.6
+  airVerticalDrag: 0.025
   weaponLocationFront: {fileID: 695784656}
   weaponLocationTop: {fileID: 272927909}
   weaponLocationSideLeft: {fileID: 1560067901}
   weaponLocationSideRight: {fileID: 408153124}
   centerOfMass: {fileID: 549216031}
+  groundCheckOrigin: {fileID: 0}
 --- !u!1 &1829155866
 GameObject:
   m_ObjectHideFlags: 0
@@ -5082,6 +5118,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 940446364}
     m_Modifications:
+    - target: {fileID: 5911444961644113065, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -99.00006
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911444961807802916, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -229.79999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911444962212428043, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -98.89996
+      objectReference: {fileID: 0}
     - target: {fileID: 5911444962225737748, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_Name
