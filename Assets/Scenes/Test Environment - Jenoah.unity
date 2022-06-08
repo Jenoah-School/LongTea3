@@ -6941,7 +6941,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7782369, y: 1}
+    m_SensorSize: {x: 1.779703, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -9325,7 +9325,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7782369, y: 1}
+    m_SensorSize: {x: 1.779703, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10468,7 +10468,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leaderboardParentName: Leaderboard list
-  leaderboardItem: {fileID: 3846162234170773893, guid: 46dd7842b092ded43bec606f34acdf1a,
+  regularLeaderboard: {fileID: 3846162234170773893, guid: 46dd7842b092ded43bec606f34acdf1a,
+    type: 3}
+  winnerLeaderboard: {fileID: 3846162234170773893, guid: 8e4fa063840c52d409e934bde6d4874a,
     type: 3}
   spawnDelay: 0.5
   OnSpawnEvent:

@@ -8,11 +8,12 @@ public class ScoreManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private string leaderboardParentName = "Leaderboard list";
-    [SerializeField] private GameObject leaderboardItem = null;
+    [SerializeField] private GameObject regularLeaderboard = null;
+    [SerializeField] private GameObject winnerLeaderboard = null;
     [SerializeField] private float spawnDelay = .5f;
     [SerializeField] private UnityEvent OnSpawnEvent;
 
-    [HideInInspector] public List<FighterInfo> fighterInfos = new List<FighterInfo>();
+    /*[HideInInspector] */public List<FighterInfo> fighterInfos = new List<FighterInfo>();
 
     public static ScoreManager singleton;
 
@@ -49,13 +50,22 @@ public class ScoreManager : MonoBehaviour
 
     public IEnumerator ShowScoresTimed()
     {
-        fighterInfos = fighterInfos.OrderByDescending(player => player.ranking).ToList();
+        fighterInfos = fighterInfos.OrderBy(player => player.ranking).ToList();
         GameObject leaderboardGO = GameObject.Find(leaderboardParentName);
         if (leaderboardGO != null)
         {
-            for (int i = 0; i < fighterInfos.Count(); i++)
+            for (int i = fighterInfos.Count() - 1; i >= 0; i--)
             {
-                LeaderboardItem scoreItem = Instantiate(leaderboardItem, leaderboardGO.transform).GetComponent<LeaderboardItem>();
+                LeaderboardItem scoreItem;
+                if (i == fighterInfos.Count() - 1)
+                {
+                    scoreItem = Instantiate(winnerLeaderboard, leaderboardGO.transform).GetComponent<LeaderboardItem>();
+                }
+                else
+                {
+                    scoreItem = Instantiate(regularLeaderboard, leaderboardGO.transform).GetComponent<LeaderboardItem>();
+                }
+
                 scoreItem.SetPreview(fighterInfos[i].playerID);
                 ScoreManagerProxy.singleton.BuildPreview(fighterInfos[i].playerID);
                 scoreItem.GetComponent<QuickAnimations>().Squish(.5f);
