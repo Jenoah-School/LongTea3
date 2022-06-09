@@ -61,7 +61,7 @@ public class FlameThrower : FighterWeapon, IWeapon
         foreach (GameObject fighter in GameObject.FindGameObjectsWithTag("Fighter"))
         {
             if (fighter == fighterRoot.gameObject) continue;
-            if (Vector3.Angle(flamethrowerTip.transform.forward, fighter.transform.position - fighterRoot.transform.position) < (flames.shape.angle * 4))
+            if (Vector3.Angle(flamethrowerTip.transform.forward, fighter.transform.position - fighterRoot.transform.position) < (flames.shape.angle * 5))
             {
                 if (Vector3.Distance(flamethrowerTip.transform.position, fighter.transform.position) < (((flames.main.startSpeed.constant * 0.75f) * flames.main.startLifetime.constant) * flames.transform.lossyScale.x))
                 {

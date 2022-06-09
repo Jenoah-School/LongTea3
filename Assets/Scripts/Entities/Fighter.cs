@@ -91,19 +91,6 @@ public class Fighter : MonoBehaviour
         SetReferences();
     }
 
-    private void GetPartReferences()
-    {
-        List<FighterPart> fighterPartRefences = GetComponentsInChildren<FighterPart>().ToList();
-        foreach(FighterPart fighterPart in fighterPartRefences)
-        {
-            if(fighterPart is FighterWeapon)
-            {
-                fighterWeapons.Add(fighterPart as FighterWeapon);
-            }
-        }
-        fighterParts.AddRange(fighterPartRefences);
-    }
-
     private void SetReferences()
     {
         if (playerMovement)
@@ -114,17 +101,6 @@ public class Fighter : MonoBehaviour
             playerMovement.SetDrag(body.GetBrakeDrag(), body.GetDriftDrag(), body.GetAirDrag(), body.GetAirVerticalDrag());
         }
     }
-
-    public float GetStartHealth()
-    {
-        return startHealth;
-    }
-
-    public float GetCurrentHealth()
-    {
-        return healthPoints;
-    }
-
    
     private void SetCenterOfMass()
     {
