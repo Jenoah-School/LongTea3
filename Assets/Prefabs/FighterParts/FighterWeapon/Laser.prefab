@@ -5129,7 +5129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponOrder: 0
-  damage: 10
+  damage: 30
   isPair: 0
   weaponLocation: 1
   OnAttack:
@@ -5140,7 +5140,7 @@ MonoBehaviour:
   endPointParticles: {fileID: 8368384795917341199}
   chargeTime: 1.25
   laserTime: 1.25
-  damageTime: 0.5
+  damageTime: 0.3
   knockbackForceSelf: 15
   knockbackForceHit: 3
   lineSegmentCount: 10

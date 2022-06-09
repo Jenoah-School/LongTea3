@@ -23,11 +23,13 @@ public class FlameThrower : FighterWeapon, IWeapon
     {
         if (context.action.WasPerformedThisFrame())
         {
-            isShooting = true;           
+            isShooting = true;   
+            OnAttack.Invoke();        
         }
         else
         {
             isShooting = false;
+            OnStop.Invoke(); 
         }
     }
 
@@ -45,15 +47,34 @@ public class FlameThrower : FighterWeapon, IWeapon
                 }
             }
             flames.Play();
+            
+            
             if (overheatValue < 100) overheatValue += 0.02f * overheatRate;
         }
         else
         {
+            
             flames.Stop();
             if (overheatValue > 0) overheatValue -= 0.03f * overheatRate;
         }
 
         Debug.Log(overheatValue);
+    }
+
+    private void Shooting() {
+        if (Time.time >= nextDamageTime)
+            {
+                CheckDamage();
+                nextDamageTime = Time.time + damageInterval;
+                if (overheatValue > overheatValueMargin)
+                {
+                    fighterRoot.TakeDamage(1 * overheatDamageMultiplier, fighterRoot, true, true);
+                }
+            }
+            flames.Play();
+            
+            
+            if (overheatValue < 100) overheatValue += 0.02f * overheatRate;
     }
 
     public void CheckDamage()
