@@ -20,7 +20,7 @@ public class Fighter : MonoBehaviour
     [SerializeField] private int fallDamageTreshHold;
     [SerializeField] private float fallDamageMultiplier;
 
-    [SerializeField] protected GameObject damageText;
+    [SerializeField] protected TextMeshPro damageText;
 
     [SerializeField, HideInInspector] float healthPoints;
     [SerializeField, HideInInspector] private float startHealth;
@@ -32,12 +32,15 @@ public class Fighter : MonoBehaviour
     public delegate void OnAttack();
     public Color fighterColor;
 
-
     private List<FighterPart> fighterParts = new List<FighterPart>();
 
     private float lastFallDmgTime;
 
     private float lastPowerUpTime;
+
+    private TextMeshPro stackDamageTextObject;
+
+    #region Assembly
 
     public void AssembleFighterParts(FighterBody body, List<FighterWeapon> weapons, FighterPower powerup)
     {
@@ -122,6 +125,7 @@ public class Fighter : MonoBehaviour
         return healthPoints;
     }
 
+   
     private void SetCenterOfMass()
     {
         if (rb != null && body.GetCenterOfMass() != null)
@@ -130,31 +134,21 @@ public class Fighter : MonoBehaviour
         }
     }
 
-    public Rigidbody GetRigidBody()
-    {
-        return rb;
-    }
+    #endregion
 
-    private void IgnoreCollisionOnItself()
+    #region Getters
+
+    private void GetPartReferences()
     {
-        foreach (Collider col1 in GetComponentsInChildren<Collider>())
+        List<FighterPart> fighterPartRefences = GetComponentsInChildren<FighterPart>().ToList();
+        foreach (FighterPart fighterPart in fighterPartRefences)
         {
-            foreach (Collider col2 in GetComponentsInChildren<Collider>())
+            if (fighterPart is FighterWeapon)
             {
-                Physics.IgnoreCollision(col1, col2);
+                fighterWeapons.Add(fighterPart as FighterWeapon);
             }
         }
-    }
-
-    public void IgnoreCollisionWithObject(GameObject gameObject)
-    {
-        foreach (Collider fighterCol in GetComponentsInChildren<Collider>())
-        {
-            foreach (Collider gameObjectCol in gameObject.GetComponentsInChildren<Collider>())
-            {
-                Physics.IgnoreCollision(fighterCol, gameObjectCol);
-            }
-        }
+        fighterParts.AddRange(fighterPartRefences);
     }
 
     private void SetFighterPartReferences()
@@ -165,25 +159,24 @@ public class Fighter : MonoBehaviour
         }
     }
 
-    public void CheckDeath()
+    public Rigidbody GetRigidBody()
     {
-        if (isDead) return;
-        if(healthPoints <= 0)
-        {
-            Debug.Log("DEATH");
-            OnDeath();
-        }
+        return rb;
     }
 
-    private void OnDeath()
+    public float GetStartHealth()
     {
-        isDead = true;
-        onTakeDamage();
-        PlayerManager.singleton.TogglePlayer(this, false);
-        PlayerManager.singleton.CheckDeathRate();
-        PlayerManager.singleton.IncreaseRankingForAlive();
-        Debug.Log($"<color='red'>Player {gameObject.name} died</color>");
+        return startHealth;
     }
+
+    public float GetCurrentHealth()
+    {
+        return healthPoints;
+    }
+
+    #endregion
+
+    #region ActivateStuff
 
     public void ExecutePrimary(InputAction.CallbackContext context)
     {
@@ -218,6 +211,10 @@ public class Fighter : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region DamageAndDeath
+
     private void OnCollisionEnter(Collision collision)
     {
         FallDamage(collision);
@@ -239,8 +236,6 @@ public class Fighter : MonoBehaviour
     {
         if (isDead) return;
 
-        Debug.Log("TAKING DAMAGE " + damage);
-
         damage = (float)System.Math.Round(damage, 2);
         healthPoints -= damage;
         if (origin = null) origin = this;
@@ -253,16 +248,84 @@ public class Fighter : MonoBehaviour
 
     public void DamageIndication(float damage, Fighter origin, bool doStack = false)
     {
-        GameObject damageTextObject = LeanPool.Spawn(damageText, transform.position, transform.rotation);
-        TextMeshPro damageTextObjectText = damageTextObject.GetComponent<TextMeshPro>();
+        TextMeshPro damageTextClone = null;
 
-        damageTextObjectText.alpha = 1;
-        damageTextObjectText.text = damage.ToString();
-        damageTextObjectText.color = fighterColor;
+        if (!doStack)
+        {
+            damageTextClone = LeanPool.Spawn(damageText, transform.position, transform.rotation);
+            damageTextClone.text = damage.ToString();
+            damageTextClone.transform.DOMoveY(transform.position.y + damageTextClone.transform.position.y + Random.Range(1.5f, 2.5f), Random.Range(2.5f, 3.5f));
+        }
+        else
+        {
+            if (!stackDamageTextObject)
+            {
+                stackDamageTextObject = LeanPool.Spawn(damageText, transform.position, transform.rotation);
+                stackDamageTextObject.text = "0";
+                stackDamageTextObject.transform.DOMoveY(transform.position.y + stackDamageTextObject.transform.position.y + Random.Range(1.5f, 2.5f), Random.Range(2.5f, 3.5f));
+            }
+            if(stackDamageTextObject)
+            {
+                stackDamageTextObject.transform.position = new Vector3(transform.position.x, stackDamageTextObject.transform.position.y, transform.position.z);
+                stackDamageTextObject.text = (float.Parse(stackDamageTextObject.text) + damage).ToString();             
+                stackDamageTextObject.alpha = 1;
+                damageTextClone = stackDamageTextObject;
+                damageTextClone.GetComponent<Fade3DText>().StopFadeOut();
+            }
+        }
 
-        damageTextObject.transform.DOMoveY(transform.position.y + damageTextObject.transform.position.y + Random.Range(1.5f, 2.5f), Random.Range(2.5f, 3.5f));
+        damageTextClone.GetComponent<Fade3DText>().StartFadeOut();
 
-        LeanPool.Despawn(damageTextObject, 3);
+        if (damageTextClone.alpha < 0.0001f)
+        {
+            damageTextClone.alpha = 1;
+            damageTextClone.color = fighterColor;
+        }
+    }
+
+    public void CheckDeath()
+    {
+        if (isDead) return;
+        if (healthPoints <= 0)
+        {
+            OnDeath();
+        }
+    }
+
+    private void OnDeath()
+    {
+        isDead = true;
+        onTakeDamage();
+        PlayerManager.singleton.TogglePlayer(this, false);
+        PlayerManager.singleton.CheckDeathRate();
+        PlayerManager.singleton.IncreaseRankingForAlive();
+        Debug.Log($"<color='red'>Player {gameObject.name} died</color>");
+    }
+
+    #endregion
+
+    #region Misc
+
+    private void IgnoreCollisionOnItself()
+    {
+        foreach (Collider col1 in GetComponentsInChildren<Collider>())
+        {
+            foreach (Collider col2 in GetComponentsInChildren<Collider>())
+            {
+                Physics.IgnoreCollision(col1, col2);
+            }
+        }
+    }
+
+    public void IgnoreCollisionWithObject(GameObject gameObject)
+    {
+        foreach (Collider fighterCol in GetComponentsInChildren<Collider>())
+        {
+            foreach (Collider gameObjectCol in gameObject.GetComponentsInChildren<Collider>())
+            {
+                Physics.IgnoreCollision(fighterCol, gameObjectCol);
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -273,4 +336,6 @@ public class Fighter : MonoBehaviour
             Gizmos.DrawSphere(rb.position + rb.centerOfMass, 0.2f);
         }
     }
+
+    #endregion
 }

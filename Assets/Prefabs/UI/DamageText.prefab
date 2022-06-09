@@ -102,7 +102,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 12
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 07faa3fc82c9a5b46a4947ac5dcebcb2, type: 2}
   m_sharedMaterial: {fileID: 2491692343564422817, guid: 07faa3fc82c9a5b46a4947ac5dcebcb2,
@@ -202,7 +202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetColor: {r: 1, g: 1, b: 1, a: 1}
-  startFadeOnSpawn: 1
+  startFadeOnSpawn: 0
+  destroyOnFinish: 1
   startFadeDelay: 1
   startFadeDuration: 2
   pulseTextAlpha: 0

@@ -8,6 +8,7 @@ public class Fade3DText : MonoBehaviour
     [SerializeField] private Color targetColor = Color.white;
     [Header("Start fade")]
     [SerializeField] private bool startFadeOnSpawn = false;
+    [SerializeField] private bool destroyOnFinish = false;
     [SerializeField] private float startFadeDelay = 2f;
     [SerializeField] private float startFadeDuration = 1f;
 
@@ -68,6 +69,16 @@ public class Fade3DText : MonoBehaviour
         StartCoroutine(FadeColor(0f, fadeSpeed));
     }
 
+    public void StartFadeOut()
+    {
+        StartCoroutine(FadeDelayed(startFadeDelay, startFadeDuration));
+    }
+
+    public void StopFadeOut()
+    {
+        StopAllCoroutines();
+    }
+
     public void PulseAlpha()
     {
         float targetAlpha = 1f / 255f * (minPulseAlpha + (Mathf.Sin(Time.time * pulseSpeed) + 1f) / 2f * (255f - minPulseAlpha));
@@ -85,6 +96,8 @@ public class Fade3DText : MonoBehaviour
             textObject.alpha = Mathf.SmoothStep(currentAlpha, targetAlpha, elapsedTime / fadeSpeed);
             yield return new WaitForEndOfFrame();
         }
+
+        if (destroyOnFinish) Destroy(this.gameObject);
 
         textObject.alpha = targetAlpha;
     }

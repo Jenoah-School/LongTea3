@@ -852,7 +852,7 @@ MonoBehaviour:
   powerup: {fileID: 0}
   fallDamageTreshHold: 8
   fallDamageMultiplier: 10
-  damageText: {fileID: 5358459428584915330, guid: b93281c106ecca2448815a3859578236,
+  damageText: {fileID: 1136103764196846668, guid: b93281c106ecca2448815a3859578236,
     type: 3}
   healthPoints: 0
   startHealth: 0
