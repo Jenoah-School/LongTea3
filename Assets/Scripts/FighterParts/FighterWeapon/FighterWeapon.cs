@@ -15,6 +15,7 @@ public abstract class FighterWeapon : FighterPart, IWeapon
     public bool isPair;
     public WeaponLocations weaponLocation;
     public UnityEvent OnAttack;
+    public UnityEvent OnStop;
 
     public virtual void ActivateWeapon(InputAction.CallbackContext context) { }
     public virtual void CheckCollision() { }
