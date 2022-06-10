@@ -14,17 +14,20 @@ public class Disk : Projectile
 
     float damage;
     float moveSpeed;
-    [SerializeField] float diskLaunchDelay;
+    float diskLaunchDelay;
+    float diskAccuracy;
     Fighter fighterRoot;
 
     bool isMoving = false;
 
-    public void SetVariables(float damage, float moveSpeed, float diskLaunchDelay, Fighter fighterRoot)
+    public void SetVariables(float damage, float moveSpeed, float diskLaunchDelay, float diskAccuracy, Fighter fighterRoot)
     {
         this.damage = damage;
         this.moveSpeed = moveSpeed;
-        this.fighterRoot = fighterRoot;
         this.diskLaunchDelay = diskLaunchDelay;
+        this.diskLaunchDelay = diskLaunchDelay;
+        this.diskAccuracy = diskAccuracy;
+        this.fighterRoot = fighterRoot;
     }
 
     private void Start()
@@ -58,7 +61,10 @@ public class Disk : Projectile
         if(isMoving)
         {
             var step = moveSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
+            transform.position += transform.forward * (moveSpeed / 100);
+            transform.forward = Vector3.Lerp(transform.forward, (target.transform.position - transform.position).normalized, diskAccuracy);
+
+            //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
         }
     }
 
