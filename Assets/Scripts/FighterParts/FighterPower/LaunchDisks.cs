@@ -10,6 +10,7 @@ public class LaunchDisks : FighterPower
     [SerializeField] float diskAmount;
     [SerializeField] float diskSpeed;
     [SerializeField] float diskDamage;
+    [SerializeField, Range(0.01f, 0.1f)] float diskAccuracy;
     [SerializeField] float diskLaunchDelay;
 
     Vector3 initialPos;
@@ -35,7 +36,7 @@ public class LaunchDisks : FighterPower
         for (int i = 0; i < diskAmount; i++)
         {
             Disk disk = Instantiate(diskObject);
-            disk.SetVariables(diskDamage, diskSpeed, diskLaunchDelay, fighterRoot);
+            disk.SetVariables(diskDamage, diskSpeed, diskLaunchDelay, diskAccuracy, fighterRoot);
             disk.transform.position = fighterRoot.transform.position + new Vector3(0, 1, 0);
             disk.transform.eulerAngles = new Vector3(0, totalDegrees, 0);
             fighterRoot.IgnoreCollisionWithObject(disk.gameObject);
