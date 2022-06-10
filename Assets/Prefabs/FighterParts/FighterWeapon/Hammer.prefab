@@ -66,8 +66,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnStop:
+    m_PersistentCalls:
+      m_Calls: []
   hammerForce: 350
   totalHammerLaunchForceMultiplier: 3
+  cooldown: 2
   hammerTip: {fileID: 4958063635510173404}
   hammerTipMask:
     serializedVersion: 2
