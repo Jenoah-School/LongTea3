@@ -27,7 +27,6 @@ public class FirepitCircleLoop : MonoBehaviour
             yield return new WaitForSeconds(fireDuration);
             firepit.StopFire();
         }
-
         StartCoroutine(StartLoop());
     }
 

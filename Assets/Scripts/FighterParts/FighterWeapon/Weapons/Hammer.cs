@@ -10,6 +10,7 @@ public class Hammer : FighterWeapon, IWeapon
     [Header("Hammer behaviour properties")]
     [SerializeField] float hammerForce;
     [SerializeField, Range(-10,10)] float totalHammerLaunchForceMultiplier;
+    [SerializeField] float cooldown;
 
     [Header("Hammer references")]
     [SerializeField] GameObject hammerTip;
@@ -96,6 +97,6 @@ public class Hammer : FighterWeapon, IWeapon
     {
         yield return new WaitForSeconds(hammerTime);
         isSwinging = false;
-        hammerSwingRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(0, 0, 0), transform.localEulerAngles.x / 90);
+        hammerSwingRotationRoutine = RotateObject.instance.RotateObjectToAngle(this.transform.gameObject, new Vector3(0, 0, 0), cooldown);
     }
 }

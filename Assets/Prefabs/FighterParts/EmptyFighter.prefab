@@ -414,10 +414,11 @@ MonoBehaviour:
   direction: {x: 0, y: -1, z: 0}
   hitLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 128
   maxDistance: 25
   offset: {x: 0, y: 0, z: 0.025}
   castOrigin: {fileID: 2303582392232483765}
+  castOffset: {x: 0, y: 0.1, z: 0}
 --- !u!1 &3857859258927894118
 GameObject:
   m_ObjectHideFlags: 0

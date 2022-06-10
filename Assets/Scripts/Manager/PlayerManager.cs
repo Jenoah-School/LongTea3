@@ -105,7 +105,7 @@ public class PlayerManager : MonoBehaviour
         if (spawnFighterController) SpawnController(playerID);
 
         OnPlayerJoin.Invoke();
-        Debug.Log($"Player {playerID + 1} succesfully spawned");
+        Debug.Log($"Player {playerID + 1} succesfully spawned", spawnedPlayerInput.gameObject);
     }
 
     public void SpawnController(int playerID)
