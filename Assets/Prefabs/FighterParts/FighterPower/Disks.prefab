@@ -50,4 +50,5 @@ MonoBehaviour:
   diskAmount: 3
   diskSpeed: 10
   diskDamage: 50
+  diskAccuracy: 0.05
   diskLaunchDelay: 2
