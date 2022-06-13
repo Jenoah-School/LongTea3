@@ -35,6 +35,7 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private UnityEvent OnSceneSwitch;
 
     [Header("Colors")]
+    [ColorUsage(true, true)] public List<Color> antennaColors;
     [SerializeField] private Color playerListInactiveColor = new Color(200f, 200f, 200f, 1f);
     [SerializeField] private Color playerListActiveColor = Color.white;
     [SerializeField] private List<Color> playerRingColors = new List<Color>();
@@ -123,7 +124,7 @@ public class PlayerManager : MonoBehaviour
             fighterInfo.playerID = playerID;
             fighterInfo.bodyID = 0;
             fighterInfo.powerupID = 0;
-            fighterInfo.weaponID = 0;
+            fighterInfo.weaponID1 = 0;
             fighterInfo.ranking = 0;
             fighterInfo.fighterColor = playerRingColors[playerID % playerRingColors.Count];
             fighterInfos.Add(fighterInfo);
@@ -166,17 +167,18 @@ public class PlayerManager : MonoBehaviour
         GameObject fighterGameObject;
         if (fighterInfos.Count > playerID)
         {
-            fighterGameObject = FighterCreator.singleton.CreateNewFighter(fighterInfos[playerID].bodyID, fighterInfos[playerID].weaponID, fighterInfos[playerID].powerupID, 0).gameObject;
+            fighterGameObject = FighterCreator.singleton.CreateNewFighter(fighterInfos[playerID].bodyID, fighterInfos[playerID].weaponID1, fighterInfos[playerID].weaponID2, fighterInfos[playerID].powerupID).gameObject;
         }
         else
         {
             Debug.Log("No info found about fighter");
-            fighterGameObject = FighterCreator.singleton.CreateNewFighter(defaultFighterBuild.bodyID, defaultFighterBuild.weaponID, defaultFighterBuild.powerupID, 0).gameObject;
+            fighterGameObject = FighterCreator.singleton.CreateNewFighter(defaultFighterBuild.bodyID, defaultFighterBuild.weaponID1, defaultFighterBuild.weaponID2, defaultFighterBuild.powerupID).gameObject;
         }
 
         PlayerInput fighterInput = PlayerInput.Instantiate(fighterGameObject, -1, controlScheme, -1, playerInputDevices[0]);
         GameObject fighterObject = fighterInput.gameObject;
         Fighter fighter = fighterInput.GetComponent<Fighter>();
+        fighter.fighterID = playerID + 1;
         fighters.Add(fighter);
         if (spawnPoints.Count > 0)
         {
@@ -241,7 +243,7 @@ public class PlayerManager : MonoBehaviour
         {
             FighterInfo fighterInfo = fighterInfos[i];
             fighterInfo.bodyID = fighterPartSelections[i].currentBodyID;
-            fighterInfo.weaponID = fighterPartSelections[i].currentWeaponID;
+            fighterInfo.weaponID1 = fighterPartSelections[i].currentWeaponID;
             fighterInfo.powerupID = fighterPartSelections[i].currentPowerupID;
 
             fighterInfos[i] = fighterInfo;
@@ -350,7 +352,8 @@ public struct FighterInfo
 {
     public int playerID;
     public int bodyID;
-    public int weaponID;
+    public int weaponID1;
+    public int weaponID2;
     public int powerupID;
     public int ranking;
     public Color fighterColor;

@@ -13,14 +13,15 @@ public class Fighter : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerMovement playerMovement;
 
-    [SerializeField] private FighterBody body;    
-    private List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
-    [SerializeField] private FighterPower powerup;
+    public FighterBody body;
+    public List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
+    public FighterPower powerup;
 
     [SerializeField] private int fallDamageTreshHold;
     [SerializeField] private float fallDamageMultiplier;
 
     [SerializeField] protected TextMeshPro damageText;
+    public int fighterID = 0;
 
     [SerializeField, HideInInspector] float healthPoints;
     [SerializeField, HideInInspector] private float startHealth;
@@ -35,7 +36,6 @@ public class Fighter : MonoBehaviour
     private List<FighterPart> fighterParts = new List<FighterPart>();
 
     private float lastFallDmgTime;
-
     private float lastPowerUpTime;
 
     private TextMeshPro stackDamageTextObject;
@@ -100,8 +100,12 @@ public class Fighter : MonoBehaviour
             playerMovement.SetAccelerationSpeed(body.GetAccelerationSpeed());
             playerMovement.SetDrag(body.GetBrakeDrag(), body.GetDriftDrag(), body.GetAirDrag(), body.GetAirVerticalDrag());
         }
+        if (body)
+        {
+            if(fighterID != 0 && PlayerManager.singleton.antennaColors.Count > fighterID - 1) body.SetAntennaColor(PlayerManager.singleton.antennaColors[fighterID - 1]);
+        }
     }
-   
+
     private void SetCenterOfMass()
     {
         if (rb != null && body.GetCenterOfMass() != null)
@@ -116,6 +120,8 @@ public class Fighter : MonoBehaviour
 
     private void GetPartReferences()
     {
+        fighterParts.Clear();
+        fighterWeapons.Clear();
         List<FighterPart> fighterPartRefences = GetComponentsInChildren<FighterPart>().ToList();
         foreach (FighterPart fighterPart in fighterPartRefences)
         {
@@ -180,7 +186,7 @@ public class Fighter : MonoBehaviour
 
     public void ExecutePowerUp(InputAction.CallbackContext context)
     {
-        if(Time.time >= lastPowerUpTime)
+        if (Time.time >= lastPowerUpTime)
         {
             lastPowerUpTime = Time.time + powerup.cooldown;
             powerup.Activate();
@@ -200,14 +206,14 @@ public class Fighter : MonoBehaviour
     {
         Vector3 direction = collision.transform.position - transform.position;
         //Debug.Log(direction);
-        if(Mathf.Abs(collision.relativeVelocity.y) > 10 && Time.time > lastFallDmgTime && !playerMovement.IsGrounded())
+        if (Mathf.Abs(collision.relativeVelocity.y) > 10 && Time.time > lastFallDmgTime && !playerMovement.IsGrounded())
         {
             lastFallDmgTime = Time.time + 1;
-            float fallDamage =  Mathf.Abs(Mathf.Round(collision.relativeVelocity.magnitude * fallDamageMultiplier));
+            float fallDamage = Mathf.Abs(Mathf.Round(collision.relativeVelocity.magnitude * fallDamageMultiplier));
             TakeDamage(fallDamage, this);
         }
     }
-    
+
     public void TakeDamage(float damage, Fighter origin = null, bool showDamage = true, bool doStack = false)
     {
         if (isDead) return;
@@ -240,10 +246,10 @@ public class Fighter : MonoBehaviour
                 stackDamageTextObject.text = "0";
                 stackDamageTextObject.transform.DOMoveY(transform.position.y + stackDamageTextObject.transform.position.y + Random.Range(1.5f, 2.5f), Random.Range(2.5f, 3.5f));
             }
-            if(stackDamageTextObject)
+            if (stackDamageTextObject)
             {
                 stackDamageTextObject.transform.position = new Vector3(transform.position.x, stackDamageTextObject.transform.position.y, transform.position.z);
-                stackDamageTextObject.text = (float.Parse(stackDamageTextObject.text) + damage).ToString();             
+                stackDamageTextObject.text = (float.Parse(stackDamageTextObject.text) + damage).ToString();
                 stackDamageTextObject.alpha = 1;
                 damageTextClone = stackDamageTextObject;
                 damageTextClone.GetComponent<Fade3DText>().StopFadeOut();

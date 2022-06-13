@@ -411,7 +411,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7782516, y: 1}
+    m_SensorSize: {x: 1.779703, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -511,6 +511,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748110817008683343, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163185cd5fa6f244bbdbbb6fac61ee6f, type: 3}
@@ -1344,6 +1349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 20
   axisWeight: {x: 0, y: 0, z: 1}
+  canRotate: 1
 --- !u!212 &181427281
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1487,6 +1493,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748110817008683343, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163185cd5fa6f244bbdbbb6fac61ee6f, type: 3}
@@ -1939,6 +1950,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748110817008683343, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163185cd5fa6f244bbdbbb6fac61ee6f, type: 3}
@@ -4095,6 +4111,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4748110817008683343, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.125
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163185cd5fa6f244bbdbbb6fac61ee6f, type: 3}
 --- !u!4 &666999213 stripped
@@ -4180,8 +4201,9 @@ MonoBehaviour:
   defaultFighterBuild:
     playerID: 0
     bodyID: 0
-    weaponID: 4
-    powerupID: 2
+    weaponID1: 3
+    weaponID2: 0
+    powerupID: 0
     ranking: 0
     fighterColor: {r: 0, g: 0, b: 0, a: 0}
   showPlayerRing: 1
@@ -4194,6 +4216,11 @@ MonoBehaviour:
   OnSceneSwitch:
     m_PersistentCalls:
       m_Calls: []
+  antennaColors:
+  - {r: 2, g: 0, b: 0, a: 1}
+  - {r: 0.14901961, g: 2, b: 0, a: 1}
+  - {r: 0, g: 0.50980395, b: 2, a: 1}
+  - {r: 2, g: 1.0980393, b: 0, a: 1}
   playerListInactiveColor: {r: 200, g: 200, b: 200, a: 1}
   playerListActiveColor: {r: 1, g: 1, b: 1, a: 1}
   playerRingColors:
@@ -4272,6 +4299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: -20
   axisWeight: {x: 0, y: 0, z: 1}
+  canRotate: 1
 --- !u!212 &680748265
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4415,6 +4443,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748110817008683343, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163185cd5fa6f244bbdbbb6fac61ee6f, type: 3}
@@ -4749,6 +4782,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4748110817008683343, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.125
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163185cd5fa6f244bbdbbb6fac61ee6f, type: 3}
 --- !u!4 &755184617 stripped
@@ -4879,6 +4917,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748110817008683343, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163185cd5fa6f244bbdbbb6fac61ee6f, type: 3}
@@ -6581,6 +6624,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4748110817008683343, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.125
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163185cd5fa6f244bbdbbb6fac61ee6f, type: 3}
 --- !u!4 &966798255 stripped
@@ -6636,6 +6684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: -20
   axisWeight: {x: 0, y: 0, z: 1}
+  canRotate: 1
 --- !u!212 &970435529
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6895,6 +6944,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748110817008683343, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163185cd5fa6f244bbdbbb6fac61ee6f, type: 3}
@@ -8459,6 +8513,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4748110817008683343, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.125
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163185cd5fa6f244bbdbbb6fac61ee6f, type: 3}
 --- !u!4 &1329339195 stripped
@@ -8597,6 +8656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 20
   axisWeight: {x: 0, y: 0, z: 1}
+  canRotate: 1
 --- !u!212 &1339367331
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9386,6 +9446,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748110817008683343, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163185cd5fa6f244bbdbbb6fac61ee6f, type: 3}
@@ -11063,6 +11128,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4748110817008683343, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.125
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163185cd5fa6f244bbdbbb6fac61ee6f, type: 3}
 --- !u!4 &1587362852 stripped
@@ -11215,6 +11285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 20
   axisWeight: {x: 0, y: 0, z: 1}
+  canRotate: 1
 --- !u!212 &1706428766
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12133,6 +12204,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4748110817008683343, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.125
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163185cd5fa6f244bbdbbb6fac61ee6f, type: 3}
 --- !u!4 &1805300185 stripped
@@ -12188,6 +12264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 20
   axisWeight: {x: 0, y: 0, z: 1}
+  canRotate: 1
 --- !u!212 &1820236742
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13824,6 +13901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 10
   axisWeight: {x: 0, y: 0, z: 1}
+  canRotate: 1
 --- !u!114 &1991113138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14088,6 +14166,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748110817008683343, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163185cd5fa6f244bbdbbb6fac61ee6f, type: 3}

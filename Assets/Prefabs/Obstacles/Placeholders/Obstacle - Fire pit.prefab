@@ -352,7 +352,7 @@ MonoBehaviour:
   damageOverTime: {fileID: 4748110816915136756}
   offTime: 30
   onTime: 10
-  fireAudioSource: {fileID: 0}
+  fireAudioSource: {fileID: 4748110817008683343}
   targetFireVolume: 0.6
   audioFadeDuration: 0.3
   isOnTimer: 0

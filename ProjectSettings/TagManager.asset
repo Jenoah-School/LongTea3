@@ -7,6 +7,7 @@ TagManager:
   - Fighter
   - Spawnpoint
   - Mirror
+  - ExcludeItem
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Laser
   - Mine
   - Disk
-  - 
+  - Previews
   - 
   - 
   - 

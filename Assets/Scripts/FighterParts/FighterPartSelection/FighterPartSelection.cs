@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.Events;
+using System.Linq;
 
 public class FighterPartSelection : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class FighterPartSelection : MonoBehaviour
     private int currentBodyIndex;
     private int currentWeaponIndex;
     private int currentPowerupIndex;
+
+    [Header("General references")]
+    [SerializeField] private Fighter fighterReference;
 
     [Header("Body references")]
     [SerializeField] private Image hpBar = null;
@@ -38,6 +42,10 @@ public class FighterPartSelection : MonoBehaviour
     [SerializeField] private TextMeshProUGUI powerupNameField = null;
     [SerializeField] private TextMeshProUGUI powerupDescriptionField = null;
 
+    [Header("Part flashing")]
+    [SerializeField] private float flashSpeed = 0.2f;
+    [SerializeField] private Gradient flashGradient = new Gradient();
+
     [Header("Events")]
     [SerializeField] private UnityEvent OnChangePart = new UnityEvent();
 
@@ -48,6 +56,11 @@ public class FighterPartSelection : MonoBehaviour
 
     private float maxWeaponDamage = 0;
     private float maxWeaponRange = 0;
+
+    private bool bodyChanged = false;
+    private bool weapon1Changed = false;
+    private bool weapon2Changed = false;
+    private bool powerupChanged = false;
 
     private void Start()
     {
@@ -84,7 +97,54 @@ public class FighterPartSelection : MonoBehaviour
         speedBar.DOFillAmount(1f / maxAvailableSpeed * fighterBody.speed, 0.1f);
         weightString.text = $"Weight: {fighterBody.weight}";
 
+        bodyChanged = true;
+
         OnChangePart.Invoke();
+
+    }
+
+    public void FlashChangedParts()
+    {
+        List<FighterPart> changedFighterParts = new List<FighterPart>();
+
+        int weaponIndexOffset = 0;
+
+        if (bodyChanged && fighterReference.body != null) changedFighterParts.Add(fighterReference.body);
+        if (weapon1Changed && fighterReference.fighterWeapons.Count > 0 && fighterReference.fighterWeapons[0] != null)
+        {
+            changedFighterParts.Add(fighterReference.fighterWeapons[0]);
+            if (fighterReference.fighterWeapons[0].isPair)
+            {
+                changedFighterParts.Add(fighterReference.fighterWeapons[1]);
+                weaponIndexOffset++;
+            }
+        }
+        if (weapon2Changed && fighterReference.fighterWeapons.Count > 1 + weaponIndexOffset && fighterReference.fighterWeapons[1 + weaponIndexOffset] != null)
+        {
+            changedFighterParts.Add(fighterReference.fighterWeapons[1 + weaponIndexOffset]);
+            if (fighterReference.fighterWeapons[1 + weaponIndexOffset].isPair)
+            {
+                changedFighterParts.Add(fighterReference.fighterWeapons[2 + weaponIndexOffset]);
+            }
+        }
+        //if (powerupChanged && fighterReference.powerup != null) changedFighterParts.Add(fighterReference.powerup);
+
+        foreach (FighterPart changedPart in changedFighterParts)
+        {
+            foreach (MeshRenderer meshRenderer in changedPart.GetComponentsInChildren<MeshRenderer>())
+            {
+                if (!meshRenderer.transform.CompareTag("ExcludeItem"))
+                {
+                    StartCoroutine(FlashPartEnum(meshRenderer.material));
+                }
+            }
+        }
+
+        bodyChanged = false;
+        weapon1Changed = false;
+        weapon2Changed = false;
+        powerupChanged = false;
+
     }
 
     public void SelectNextBody()
@@ -95,6 +155,22 @@ public class FighterPartSelection : MonoBehaviour
     public void SelectPreviousBody()
     {
         ChangeBody(currentBodyIndex - 1 >= 0 ? currentBodyIndex - 1 : fighterBodies.Count - 1);
+    }
+
+    public IEnumerator FlashPartEnum(Material changeMaterial)
+    {
+        float elapsedTime = 0f;
+        changeMaterial.EnableKeyword("_Emmision");
+        changeMaterial.globalIlluminationFlags = MaterialGlobalIlluminationFlags.None;
+
+        while (elapsedTime < flashSpeed)
+        {
+            elapsedTime += Time.deltaTime;
+            changeMaterial.SetColor("_EmissionColor", flashGradient.Evaluate(elapsedTime / flashSpeed));
+            yield return new WaitForEndOfFrame();
+        }
+
+        changeMaterial.SetColor("_EmissionColor", flashGradient.Evaluate(1));
     }
 
     #endregion
@@ -112,6 +188,8 @@ public class FighterPartSelection : MonoBehaviour
         rangeBar.DOFillAmount(1f / maxWeaponRange * fighterWeapon.range, 0.1f);
 
         OnChangePart.Invoke();
+
+        weapon1Changed = true;
     }
 
     public void SelectNextWeapon()
@@ -138,6 +216,8 @@ public class FighterPartSelection : MonoBehaviour
         powerupDescriptionField.text = fighterPowerup.powerupDescription;
 
         OnChangePart.Invoke();
+
+        powerupChanged = true;
     }
 
     public void SelectNextPowerup()

@@ -55,6 +55,7 @@ MonoBehaviour:
   driftDrag: 0.4
   airDrag: 0.6
   airVerticalDrag: 0
+  antennaMeshRenderer: {fileID: 2459888445704988612}
   weaponLocationFront: {fileID: 8593379393771262636}
   weaponLocationTop: {fileID: 7491732604597283371}
   weaponLocationSideLeft: {fileID: 8107035010811674230}
@@ -75,7 +76,7 @@ GameObject:
   - component: {fileID: 8513230688707135895}
   m_Layer: 0
   m_Name: Light
-  m_TagString: Untagged
+  m_TagString: ExcludeItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -633,7 +634,7 @@ GameObject:
   - component: {fileID: 2624100576004913109}
   m_Layer: 0
   m_Name: Stick
-  m_TagString: Untagged
+  m_TagString: ExcludeItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -845,7 +846,7 @@ GameObject:
   - component: {fileID: 5031698907746722676}
   m_Layer: 0
   m_Name: Antenna
-  m_TagString: Untagged
+  m_TagString: ExcludeItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
