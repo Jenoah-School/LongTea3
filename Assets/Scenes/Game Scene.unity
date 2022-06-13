@@ -411,7 +411,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.779703, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4171,7 +4171,7 @@ MonoBehaviour:
   playerListInactiveColor: {r: 200, g: 200, b: 200, a: 1}
   playerListActiveColor: {r: 1, g: 1, b: 1, a: 1}
   playerRingColors:
-  - {r: 1, g: 0.20784314, b: 0.18431373, a: 1}
+  - {r: 1, g: 0.028846152, b: 0, a: 1}
   - {r: 0, g: 1, b: 0.12156863, a: 1}
   - {r: 0.10980392, g: 0.69803923, b: 1, a: 1}
   - {r: 1, g: 0.8039216, b: 0, a: 1}
