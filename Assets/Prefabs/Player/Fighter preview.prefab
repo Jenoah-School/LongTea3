@@ -41,22 +41,70 @@ LightProbeGroup:
   m_GameObject: {fileID: 171463285}
   m_Enabled: 1
   m_SourcePositions:
-  - {x: 1, y: 2, z: 1}
-  - {x: 1, y: 2, z: -1}
-  - {x: 1, y: -1, z: 1}
-  - {x: 1, y: -1, z: -1}
-  - {x: -1, y: 2, z: 1}
-  - {x: -1, y: 2, z: -1}
+  - {x: 2.5, y: 2.25, z: 2.5}
+  - {x: 2.5, y: 2.25, z: -1.75}
+  - {x: 2.5, y: -1, z: 2.5}
+  - {x: 2.5, y: -1, z: -1.75}
+  - {x: -2.5, y: 2.25, z: 2.5}
+  - {x: -2.5, y: 2.25, z: -1.75}
+  - {x: -2.5, y: -1, z: 2.5}
+  - {x: -2.5, y: -1, z: -1.75}
+  - {x: 2.5, y: 0, z: 2.5}
+  - {x: 2.5, y: 0, z: -1.75}
+  - {x: -2.5, y: 0, z: 2.5}
+  - {x: -2.5, y: 0, z: -1.75}
+  - {x: 2.5, y: 1, z: 2.5}
+  - {x: 2.5, y: 1, z: -1.75}
+  - {x: -2.5, y: 1, z: 2.5}
+  - {x: -2.5, y: 1, z: -1.75}
+  - {x: 2.5, y: 2.25, z: -0.25}
+  - {x: 2.5, y: -1, z: -0.25}
+  - {x: -2.5, y: 2.25, z: -0.25}
+  - {x: -2.5, y: -1, z: -0.25}
+  - {x: 2.5, y: 0, z: -0.25}
+  - {x: -2.5, y: 0, z: -0.25}
+  - {x: 2.5, y: 1, z: -0.25}
+  - {x: -2.5, y: 1, z: -0.25}
+  - {x: 2.5, y: 2.25, z: 1}
+  - {x: 2.5, y: -1, z: 1}
+  - {x: -2.5, y: 2.25, z: 1}
+  - {x: -2.5, y: -1, z: 1}
+  - {x: 2.5, y: 0, z: 1}
+  - {x: -2.5, y: 0, z: 1}
+  - {x: 2.5, y: 1, z: 1}
+  - {x: -2.5, y: 1, z: 1}
+  - {x: -1, y: 2.25, z: 2.5}
+  - {x: -1, y: 2.25, z: -1.75}
+  - {x: -1, y: -1, z: 2.5}
+  - {x: -1, y: -1, z: -1.75}
+  - {x: -1, y: 0, z: 2.5}
+  - {x: -1, y: 0, z: -1.75}
+  - {x: -1, y: 1, z: 2.5}
+  - {x: -1, y: 1, z: -1.75}
+  - {x: -1, y: 2.25, z: -0.25}
+  - {x: -1, y: -1, z: -0.25}
+  - {x: -1, y: 0, z: -0.25}
+  - {x: -1, y: 1, z: -0.25}
+  - {x: -1, y: 2.25, z: 1}
   - {x: -1, y: -1, z: 1}
-  - {x: -1, y: -1, z: -1}
-  - {x: 1, y: 0, z: 1}
-  - {x: 1, y: 0, z: -1}
   - {x: -1, y: 0, z: 1}
-  - {x: -1, y: 0, z: -1}
-  - {x: 1, y: 1, z: 1}
-  - {x: 1, y: 1, z: -1}
   - {x: -1, y: 1, z: 1}
-  - {x: -1, y: 1, z: -1}
+  - {x: 1, y: 2.25, z: 2.5}
+  - {x: 1, y: 2.25, z: -1.75}
+  - {x: 1, y: -1, z: 2.5}
+  - {x: 1, y: -1, z: -1.75}
+  - {x: 1, y: 0, z: 2.5}
+  - {x: 1, y: 0, z: -1.75}
+  - {x: 1, y: 1, z: 2.5}
+  - {x: 1, y: 1, z: -1.75}
+  - {x: 1, y: 2.25, z: -0.25}
+  - {x: 1, y: -1, z: -0.25}
+  - {x: 1, y: 0, z: -0.25}
+  - {x: 1, y: 1, z: -0.25}
+  - {x: 1, y: 2.25, z: 1}
+  - {x: 1, y: -1, z: 1}
+  - {x: 1, y: 0, z: 1}
+  - {x: 1, y: 1, z: 1}
   m_Dering: 1
 --- !u!1 &1964733580
 GameObject:
@@ -74,7 +122,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1964733581
 Transform:
@@ -84,7 +132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1964733580}
   m_LocalRotation: {x: 0.25881913, y: -0, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: 1.75, z: -1.5}
+  m_LocalPosition: {x: 0, y: 2.453, z: -2.217}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1528,7 +1576,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.4785518e-38, y: 8.586619e-39, z: 3.67342e-40, w: 3.67342e-39}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
