@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c144d1ea8b0e70d44b0185a43e50ff99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fighterHealth: 2000
+  fighterHealth: 800
   maxMoveSpeed: 10
   accelerationSpeed: 25
   brakeDrag: 0.1
