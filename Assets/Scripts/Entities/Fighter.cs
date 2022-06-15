@@ -6,10 +6,11 @@ using System.Linq;
 using Lean.Pool;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.Events;
 
 public class Fighter : MonoBehaviour
 {
-    [Header("Vehicle")]
+    [Header("References")]
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerMovement playerMovement;
 
@@ -17,21 +18,35 @@ public class Fighter : MonoBehaviour
     public List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
     public FighterPower powerup;
 
-    [SerializeField] private int fallDamageTreshHold;
-    [SerializeField] private float fallDamageMultiplier;
 
-    [SerializeField] protected TextMeshPro damageText;
+    [Header("Fighter info")]
     public int fighterID = 0;
-
+    public Color fighterColor;
     [SerializeField, HideInInspector] float healthPoints;
     [SerializeField, HideInInspector] private float startHealth;
+    [SerializeField] protected TextMeshPro damageText;
 
+    [Header("Particles")]
+    [SerializeField] private ParticleSystem healthSmoke;
+    [SerializeField] private Gradient smokeColor;
+
+    private ParticleSystem.MainModule healthSmokeMainModule;
+    private ParticleSystem.EmissionModule healthSmokeEmissionModule;
+    private float healthSmokeMaxEmission = 20f;
+
+    [Header("Health")]
     public bool isDead = false;
     public OnTakeDamage onAttack;
-    public delegate void OnTakeDamage();
     public OnTakeDamage onTakeDamage;
+    public delegate void OnTakeDamage();
     public delegate void OnAttack();
-    public Color fighterColor;
+    [SerializeField] private int fallDamageTreshHold;
+    [SerializeField] private float fallDamageMultiplier;
+    [Space(20)]
+    [SerializeField] private UnityEvent OnDamageEvent;
+    [SerializeField] private UnityEvent OnDeathEvent;
+
+    
 
     private List<FighterPart> fighterParts = new List<FighterPart>();
 
@@ -103,6 +118,15 @@ public class Fighter : MonoBehaviour
         if (body)
         {
             if(fighterID != 0 && PlayerManager.singleton.antennaColors.Count > fighterID - 1) body.SetAntennaColor(PlayerManager.singleton.antennaColors[fighterID - 1]);
+        }
+        if (healthSmoke)
+        {
+            healthSmokeMainModule = healthSmoke.main;
+            healthSmokeEmissionModule = healthSmoke.emission;
+            if(healthSmokeEmissionModule.rateOverTime.constant != 0) healthSmokeMaxEmission = healthSmokeEmissionModule.rateOverTime.constant;
+            healthSmokeEmissionModule.rateOverTime = 0f;
+            healthSmoke.Play();
+
         }
     }
 
@@ -223,9 +247,15 @@ public class Fighter : MonoBehaviour
         if (origin = null) origin = this;
 
         if (showDamage) DamageIndication(damage, origin, doStack);
+        if (healthSmoke)
+        {
+            healthSmokeMainModule.startColor = smokeColor.Evaluate(1f - (1f / startHealth * healthPoints));
+            healthSmokeEmissionModule.rateOverTime = Mathf.Lerp(healthSmokeMaxEmission, 0f, (1f / startHealth * healthPoints));
+        }
 
         CheckDeath();
         onTakeDamage();
+        OnDamageEvent.Invoke();
     }
 
     public void DamageIndication(float damage, Fighter origin, bool doStack = false)
@@ -279,6 +309,7 @@ public class Fighter : MonoBehaviour
     {
         isDead = true;
         onTakeDamage();
+        OnDeathEvent.Invoke();
         PlayerManager.singleton.TogglePlayer(this, false);
         PlayerManager.singleton.CheckDeathRate();
         PlayerManager.singleton.IncreaseRankingForAlive();
