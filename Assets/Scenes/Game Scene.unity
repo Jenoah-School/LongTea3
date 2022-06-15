@@ -4496,8 +4496,8 @@ MonoBehaviour:
   defaultFighterBuild:
     playerID: 0
     bodyID: 0
-    weaponID1: 3
-    weaponID2: 0
+    rangedWeaponID: 0
+    meleeWeaponID: 0
     powerupID: 0
     ranking: 0
     fighterColor: {r: 0, g: 0, b: 0, a: 0}
@@ -5801,7 +5801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &837210684
 RectTransform:
   m_ObjectHideFlags: 0

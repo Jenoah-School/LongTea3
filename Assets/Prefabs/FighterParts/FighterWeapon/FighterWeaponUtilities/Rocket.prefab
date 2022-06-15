@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0cfa9a7aadd34498db29275c812c83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocketForce: 20
+  rocketForce: 27.5
   rocketHitLaunchForce: 1250
   rocketMaxTime: 4
   explosion: {fileID: 4904167690773235388}

@@ -10,15 +10,19 @@ using System.Linq;
 public class FighterPartSelection : MonoBehaviour
 {
     [SerializeField] private List<FighterBodyInformation> fighterBodies = new List<FighterBodyInformation>();
-    [SerializeField] private List<FighterWeaponInformation> fighterWeapons = new List<FighterWeaponInformation>();
+    [SerializeField] private List<FighterWeaponInformation> fighterRangedWeapons = new List<FighterWeaponInformation>();
+    [SerializeField] private List<FighterWeaponInformation> fighterMeleeWeapons = new List<FighterWeaponInformation>();
     [SerializeField] private List<FighterPowerupInformation> fighterPowerups = new List<FighterPowerupInformation>();
+    [Space(10)]
 
     public int currentBodyID = 0;
-    public int currentWeaponID = 0;
+    public int currentRangedWeaponID = 0;
+    public int currentMeleeWeaponID = 0;
     public int currentPowerupID = 0;
 
     private int currentBodyIndex;
-    private int currentWeaponIndex;
+    private int currentRangedWeaponIndex;
+    private int currentMeleeWeaponIndex;
     private int currentPowerupIndex;
 
     [Header("General references")]
@@ -31,12 +35,17 @@ public class FighterPartSelection : MonoBehaviour
     [SerializeField] private Image speedBar = null;
     [SerializeField] private TextMeshProUGUI bodyDescription = null;
 
-    [Header("Weapon references")]
-    [SerializeField] private Image weaponSecondaryPreviewImage = null;
-    [SerializeField] private TextMeshProUGUI weaponNameField = null;
-    [SerializeField] private Image damageBar = null;
-    [SerializeField] private Image rangeBar = null;
-    [SerializeField] private TextMeshProUGUI weapon1Description = null;
+    [Header("Ranged weapon references")]
+    [SerializeField] private TextMeshProUGUI rangedWeaponNameField = null;
+    [SerializeField] private Image rangedDamageBar = null;
+    [SerializeField] private Image rangedRangeBar = null;
+    [SerializeField] private TextMeshProUGUI rangedWeaponDescription = null;
+
+    [Header("Melee weapon references")]
+    [SerializeField] private TextMeshProUGUI meleeWeaponNameField = null;
+    [SerializeField] private Image meleeDamageBar = null;
+    [SerializeField] private Image meleeRangeBar = null;
+    [SerializeField] private TextMeshProUGUI meleeWeaponDescription = null;
 
     [Header("Powerup references")]
     [SerializeField] private Image powerupSecondaryPreviewImage = null;
@@ -55,12 +64,15 @@ public class FighterPartSelection : MonoBehaviour
     private float maxAvailableDefense = 0;
     private float maxAvailableSpeed = 0;
 
-    private float maxWeaponDamage = 0;
-    private float maxWeaponRange = 0;
+    private float maxRangedWeaponDamage = 0;
+    private float maxRangedWeaponRange = 0;
+
+    private float maxMeleeWeaponDamage = 0;
+    private float maxMeleeWeaponRange = 0;
 
     private bool bodyChanged = false;
-    private bool weapon1Changed = false;
-    private bool weapon2Changed = false;
+    private bool rangedWeaponChanged = false;
+    private bool meleeWeaponChanged = false;
     private bool powerupChanged = false;
 
     private void Start()
@@ -73,14 +85,21 @@ public class FighterPartSelection : MonoBehaviour
             maxAvailableSpeed = bodyInfo.speed > maxAvailableSpeed ? bodyInfo.speed : maxAvailableSpeed;
         }
 
-        foreach (FighterWeaponInformation weaponInfo in fighterWeapons)
+        foreach (FighterWeaponInformation weaponInfo in fighterRangedWeapons)
         {
-            maxWeaponDamage = weaponInfo.damage > maxWeaponDamage ? weaponInfo.damage : maxWeaponDamage;
-            maxWeaponRange = weaponInfo.range > maxWeaponRange ? weaponInfo.range : maxWeaponRange;
+            maxRangedWeaponDamage = weaponInfo.damage > maxRangedWeaponDamage ? weaponInfo.damage : maxRangedWeaponDamage;
+            maxRangedWeaponRange = weaponInfo.range > maxRangedWeaponRange ? weaponInfo.range : maxRangedWeaponRange;
+        }
+
+        foreach (FighterWeaponInformation weaponInfo in fighterMeleeWeapons)
+        {
+            maxMeleeWeaponDamage = weaponInfo.damage > maxMeleeWeaponDamage ? weaponInfo.damage : maxMeleeWeaponDamage;
+            maxMeleeWeaponRange = weaponInfo.range > maxMeleeWeaponRange ? weaponInfo.range : maxMeleeWeaponRange;
         }
 
         ChangeBody(0);
-        ChangeWeapon(0);
+        ChangeRangedWeapon(0);
+        ChangeMeleeWeapon(0);
         ChangePowerup(0);
     }
 
@@ -101,50 +120,6 @@ public class FighterPartSelection : MonoBehaviour
         bodyChanged = true;
 
         OnChangePart.Invoke();
-
-    }
-
-    public void FlashChangedParts()
-    {
-        List<FighterPart> changedFighterParts = new List<FighterPart>();
-
-        int weaponIndexOffset = 0;
-
-        if (bodyChanged && fighterReference.body != null) changedFighterParts.Add(fighterReference.body);
-        if (weapon1Changed && fighterReference.fighterWeapons.Count > 0 && fighterReference.fighterWeapons[0] != null)
-        {
-            changedFighterParts.Add(fighterReference.fighterWeapons[0]);
-            if (fighterReference.fighterWeapons[0].isPair)
-            {
-                changedFighterParts.Add(fighterReference.fighterWeapons[1]);
-                weaponIndexOffset++;
-            }
-        }
-        if (weapon2Changed && fighterReference.fighterWeapons.Count > 1 + weaponIndexOffset && fighterReference.fighterWeapons[1 + weaponIndexOffset] != null)
-        {
-            changedFighterParts.Add(fighterReference.fighterWeapons[1 + weaponIndexOffset]);
-            if (fighterReference.fighterWeapons[1 + weaponIndexOffset].isPair)
-            {
-                changedFighterParts.Add(fighterReference.fighterWeapons[2 + weaponIndexOffset]);
-            }
-        }
-        //if (powerupChanged && fighterReference.powerup != null) changedFighterParts.Add(fighterReference.powerup);
-
-        foreach (FighterPart changedPart in changedFighterParts)
-        {
-            foreach (MeshRenderer meshRenderer in changedPart.GetComponentsInChildren<MeshRenderer>())
-            {
-                if (!meshRenderer.transform.CompareTag("ExcludeItem"))
-                {
-                    StartCoroutine(FlashPartEnum(meshRenderer.material));
-                }
-            }
-        }
-
-        bodyChanged = false;
-        weapon1Changed = false;
-        weapon2Changed = false;
-        powerupChanged = false;
 
     }
 
@@ -177,31 +152,57 @@ public class FighterPartSelection : MonoBehaviour
     #endregion
     #region Weapon
 
-    public void ChangeWeapon(int index)
+    public void ChangeRangedWeapon(int index)
     {
-        currentWeaponIndex = index;
-        FighterWeaponInformation fighterWeapon = fighterWeapons[currentWeaponIndex];
-        currentWeaponID = fighterWeapon.partID;
-        if (weaponSecondaryPreviewImage) weaponSecondaryPreviewImage.sprite = fighterWeapon.previewImage;
-        if (weaponNameField != null) weaponNameField.text = fighterWeapon.weaponName;
-        if (weapon1Description != null) weapon1Description.SetText($"{fighterWeapon.partDescription}");
+        currentRangedWeaponIndex = index;
+        FighterWeaponInformation fighterWeapon = fighterRangedWeapons[currentRangedWeaponIndex];
+        currentRangedWeaponID = fighterWeapon.partID;
+        if (rangedWeaponNameField != null) rangedWeaponNameField.text = fighterWeapon.weaponName;
+        if (rangedWeaponDescription != null) rangedWeaponDescription.SetText($"{fighterWeapon.partDescription}");
 
-        damageBar.DOFillAmount(1f / maxWeaponDamage * fighterWeapon.damage, 0.1f);
-        rangeBar.DOFillAmount(1f / maxWeaponRange * fighterWeapon.range, 0.1f);
+        rangedDamageBar.DOFillAmount(1f / maxRangedWeaponDamage * fighterWeapon.damage, 0.1f);
+        rangedRangeBar.DOFillAmount(1f / maxRangedWeaponRange * fighterWeapon.range, 0.1f);
 
         OnChangePart.Invoke();
 
-        weapon1Changed = true;
+        rangedWeaponChanged = true;
     }
 
-    public void SelectNextWeapon()
+    public void ChangeMeleeWeapon(int index)
     {
-        ChangeWeapon((currentWeaponIndex + 1) % fighterWeapons.Count);
+        currentMeleeWeaponIndex = index;
+        FighterWeaponInformation fighterWeapon = fighterMeleeWeapons[currentMeleeWeaponIndex];
+        currentMeleeWeaponID = fighterWeapon.partID;
+        if (meleeWeaponNameField != null) meleeWeaponNameField.text = fighterWeapon.weaponName;
+        if (meleeWeaponDescription != null) meleeWeaponDescription.SetText($"{fighterWeapon.partDescription}");
+
+        meleeDamageBar.DOFillAmount(1f / maxRangedWeaponDamage * fighterWeapon.damage, 0.1f);
+        meleeRangeBar.DOFillAmount(1f / maxRangedWeaponRange * fighterWeapon.range, 0.1f);
+
+        OnChangePart.Invoke();
+
+        meleeWeaponChanged = true;
     }
 
-    public void SelectPreviousWeapon()
+
+    public void SelectNextRangedWeapon()
     {
-        ChangeWeapon(currentWeaponIndex - 1 >= 0 ? currentWeaponIndex - 1 : fighterWeapons.Count - 1);
+        ChangeRangedWeapon((currentRangedWeaponIndex + 1) % fighterRangedWeapons.Count);
+    }
+
+    public void SelectNextMeleeWeapon()
+    {
+        ChangeMeleeWeapon((currentMeleeWeaponIndex + 1) % fighterMeleeWeapons.Count);
+    }
+
+    public void SelectPreviousRangedWeapon()
+    {
+        ChangeRangedWeapon(currentRangedWeaponIndex - 1 >= 0 ? currentRangedWeaponIndex - 1 : fighterRangedWeapons.Count - 1);
+    }
+
+    public void SelectPreviousMeleeWeapon()
+    {
+        ChangeMeleeWeapon(currentMeleeWeaponIndex - 1 >= 0 ? currentMeleeWeaponIndex - 1 : fighterMeleeWeapons.Count - 1);
     }
 
     #endregion
@@ -233,4 +234,48 @@ public class FighterPartSelection : MonoBehaviour
     }
 
     #endregion
+
+    public void FlashChangedParts()
+    {
+        List<FighterPart> changedFighterParts = new List<FighterPart>();
+
+        int weaponIndexOffset = 0;
+
+        if (bodyChanged && fighterReference.body != null) changedFighterParts.Add(fighterReference.body);
+        if (rangedWeaponChanged && fighterReference.fighterWeapons.Count > 0 && fighterReference.fighterWeapons[0] != null)
+        {
+            changedFighterParts.Add(fighterReference.fighterWeapons[0]);
+            if (fighterReference.fighterWeapons[0].isPair)
+            {
+                changedFighterParts.Add(fighterReference.fighterWeapons[1]);
+                weaponIndexOffset++;
+            }
+        }
+        if (meleeWeaponChanged && fighterReference.fighterWeapons.Count > 1 + weaponIndexOffset && fighterReference.fighterWeapons[1 + weaponIndexOffset] != null)
+        {
+            changedFighterParts.Add(fighterReference.fighterWeapons[1 + weaponIndexOffset]);
+            if (fighterReference.fighterWeapons[1 + weaponIndexOffset].isPair)
+            {
+                changedFighterParts.Add(fighterReference.fighterWeapons[2 + weaponIndexOffset]);
+            }
+        }
+        //if (powerupChanged && fighterReference.powerup != null) changedFighterParts.Add(fighterReference.powerup);
+
+        foreach (FighterPart changedPart in changedFighterParts)
+        {
+            foreach (MeshRenderer meshRenderer in changedPart.GetComponentsInChildren<MeshRenderer>())
+            {
+                if (!meshRenderer.transform.CompareTag("ExcludeItem"))
+                {
+                    StartCoroutine(FlashPartEnum(meshRenderer.material));
+                }
+            }
+        }
+
+        bodyChanged = false;
+        rangedWeaponChanged = false;
+        meleeWeaponChanged = false;
+        powerupChanged = false;
+
+    }
 }

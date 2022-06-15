@@ -73,7 +73,8 @@ public class PlayerJoinView : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
-        fighterWeapons.Add(FighterCreator.singleton.fighterWeapons[fighterPartSelection.currentWeaponID]);
+        fighterWeapons.Add(FighterCreator.singleton.fighterWeapons[fighterPartSelection.currentRangedWeaponID]);
+        fighterWeapons.Add(FighterCreator.singleton.fighterWeapons[fighterPartSelection.currentMeleeWeaponID]);
         previewGameObject.fighterWeapons.Clear();
         previewGameObject.AssembleFighterParts(FighterCreator.singleton.fighterBodies[fighterPartSelection.currentBodyID], fighterWeapons, FighterCreator.singleton.fighterPowerups[fighterPartSelection.currentPowerupID]);
         fighterPartSelection.FlashChangedParts();
