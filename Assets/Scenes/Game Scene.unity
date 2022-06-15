@@ -4084,7 +4084,7 @@ GameObject:
   - component: {fileID: 678347908}
   m_Layer: 0
   m_Name: --== Player Manager ==--
-  m_TagString: Spawnpoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

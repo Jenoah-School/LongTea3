@@ -2476,6 +2476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 10
   axisWeight: {x: 0, y: 0, z: 1}
+  canRotate: 1
 --- !u!114 &382126097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6941,7 +6942,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7769607, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8725,7 +8726,7 @@ GameObject:
   - component: {fileID: 1566668147}
   m_Layer: 0
   m_Name: --== Player Manager ==--
-  m_TagString: Spawnpoint
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8777,7 +8778,8 @@ MonoBehaviour:
   defaultFighterBuild:
     playerID: 0
     bodyID: 0
-    weaponID: 4
+    weaponID1: 0
+    weaponID2: 0
     powerupID: 2
     ranking: 0
     fighterColor: {r: 0, g: 0, b: 0, a: 0}
@@ -8791,6 +8793,7 @@ MonoBehaviour:
   OnSceneSwitch:
     m_PersistentCalls:
       m_Calls: []
+  antennaColors: []
   playerListInactiveColor: {r: 200, g: 200, b: 200, a: 1}
   playerListActiveColor: {r: 1, g: 1, b: 1, a: 1}
   playerRingColors:
@@ -9325,7 +9328,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7769607, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
