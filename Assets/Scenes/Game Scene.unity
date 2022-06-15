@@ -411,7 +411,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7788697, y: 1}
+    m_SensorSize: {x: 1.7769607, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4104,6 +4104,7 @@ MonoBehaviour:
   emptyFighter: {fileID: 5880640649918137463, guid: ea0e7afe39aeb2941b67f434ce66284d,
     type: 3}
   fighterBodies:
+  - {fileID: 2819372194517125383, guid: 39e8250e56afe1840a43f8bb6fa6ec93, type: 3}
   - {fileID: 2819372194517125383, guid: 1d4e8fa573817764b883011904fb5bde, type: 3}
   - {fileID: 2819372194517125383, guid: fab9bff4f1ccd234f9e54601f06e82fb, type: 3}
   - {fileID: 2819372194517125383, guid: 873719922ae997942bed2993c1217a9f, type: 3}
