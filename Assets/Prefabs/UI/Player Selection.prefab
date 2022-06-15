@@ -4070,7 +4070,6 @@ RectTransform:
   - {fileID: 5911444961179537984}
   - {fileID: 5911444961336962009}
   - {fileID: 5911444962279733993}
-  - {fileID: 5999800970366216194}
   m_Father: {fileID: 5911444960616296121}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5277,7 +5276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.05}
   m_AnchorMax: {x: 1, y: 0.125}
-  m_AnchoredPosition: {x: 0, y: -25.899963}
+  m_AnchoredPosition: {x: 0, y: -25.899902}
   m_SizeDelta: {x: -72, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5911444961285325653
@@ -7549,7 +7548,7 @@ MonoBehaviour:
   hpBar: {fileID: 5169561707713567743}
   attackBar: {fileID: 5977073945394055615}
   defenseBar: {fileID: 8941336573952911107}
-  speedBar: {fileID: 0}
+  speedBar: {fileID: 1581296953339211450}
   weightString: {fileID: 5911444960551653954}
   weaponSecondaryPreviewImage: {fileID: 0}
   weaponNameField: {fileID: 5911444961585457193}

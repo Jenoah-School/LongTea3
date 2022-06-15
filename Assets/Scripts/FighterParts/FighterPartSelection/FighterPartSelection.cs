@@ -29,13 +29,14 @@ public class FighterPartSelection : MonoBehaviour
     [SerializeField] private Image attackBar = null;
     [SerializeField] private Image defenseBar = null;
     [SerializeField] private Image speedBar = null;
-    [SerializeField] private TextMeshProUGUI weightString = null;
+    [SerializeField] private TextMeshProUGUI bodyDescription = null;
 
     [Header("Weapon references")]
     [SerializeField] private Image weaponSecondaryPreviewImage = null;
     [SerializeField] private TextMeshProUGUI weaponNameField = null;
     [SerializeField] private Image damageBar = null;
     [SerializeField] private Image rangeBar = null;
+    [SerializeField] private TextMeshProUGUI weapon1Description = null;
 
     [Header("Powerup references")]
     [SerializeField] private Image powerupSecondaryPreviewImage = null;
@@ -91,11 +92,11 @@ public class FighterPartSelection : MonoBehaviour
         FighterBodyInformation fighterBody = fighterBodies[currentBodyIndex];
         currentBodyID = fighterBody.partID;
 
-        hpBar.DOFillAmount(1f / maxAvailableHP * fighterBody.hp, 0.1f);
-        attackBar.DOFillAmount(1f / maxAvailableAttack * fighterBody.attack, 0.1f);
-        defenseBar.DOFillAmount(1f / maxAvailableDefense * fighterBody.defense, 0.1f);
-        speedBar.DOFillAmount(1f / maxAvailableSpeed * fighterBody.speed, 0.1f);
-        weightString.text = $"Weight: {fighterBody.weight}";
+        if (hpBar != null) hpBar.DOFillAmount(1f / maxAvailableHP * fighterBody.hp, 0.1f);
+        if (attackBar != null) attackBar.DOFillAmount(1f / maxAvailableAttack * fighterBody.attack, 0.1f);
+        if (defenseBar != null) defenseBar.DOFillAmount(1f / maxAvailableDefense * fighterBody.defense, 0.1f);
+        if (speedBar != null) speedBar.DOFillAmount(1f / maxAvailableSpeed * fighterBody.speed, 0.1f);
+        if (bodyDescription != null) bodyDescription.SetText($"{fighterBody.partDescription}");
 
         bodyChanged = true;
 
@@ -182,7 +183,8 @@ public class FighterPartSelection : MonoBehaviour
         FighterWeaponInformation fighterWeapon = fighterWeapons[currentWeaponIndex];
         currentWeaponID = fighterWeapon.partID;
         if (weaponSecondaryPreviewImage) weaponSecondaryPreviewImage.sprite = fighterWeapon.previewImage;
-        weaponNameField.text = fighterWeapon.weaponName;
+        if (weaponNameField != null) weaponNameField.text = fighterWeapon.weaponName;
+        if (weapon1Description != null) weapon1Description.SetText($"{fighterWeapon.partDescription}");
 
         damageBar.DOFillAmount(1f / maxWeaponDamage * fighterWeapon.damage, 0.1f);
         rangeBar.DOFillAmount(1f / maxWeaponRange * fighterWeapon.range, 0.1f);
@@ -212,8 +214,8 @@ public class FighterPartSelection : MonoBehaviour
         currentPowerupID = fighterPowerup.partID;
         if (powerupSecondaryPreviewImage) powerupSecondaryPreviewImage.sprite = fighterPowerup.previewImage;
 
-        powerupNameField.text = fighterPowerup.powerupName;
-        powerupDescriptionField.text = fighterPowerup.powerupDescription;
+        if (powerupNameField != null) powerupNameField.text = fighterPowerup.powerupName;
+        if(powerupDescriptionField != null) powerupDescriptionField.SetText($"{fighterPowerup.partDescription}");
 
         OnChangePart.Invoke();
 

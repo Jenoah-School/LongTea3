@@ -5,4 +5,5 @@ public class FighterPartInformation : ScriptableObject
 {
     public int partID = 0;
     public Sprite previewImage;
+    public string partDescription;
 }
