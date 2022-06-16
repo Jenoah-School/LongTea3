@@ -211,7 +211,7 @@ public class PlayerMovement : MonoBehaviour
         canMove = newMoveState;
     }
 
-    public void SetMoveSpeed(float newMoveSpeed)
+    public void SetMaxMoveSpeed(float newMoveSpeed)
     {
         maximumSpeed = newMoveSpeed;
     }
@@ -219,6 +219,16 @@ public class PlayerMovement : MonoBehaviour
     public void SetAccelerationSpeed(float newAccelerationSpeed)
     {
         accelerationSpeed = newAccelerationSpeed;
+    }
+
+    public float GetAccelarationSpeed()
+    {
+        return accelerationSpeed;
+    }
+
+    public float GetMaxMoveSpeed()
+    {
+        return maximumSpeed;
     }
 
     public void SetDrag(float brakeDrag = -1, float driftDrag = -1f, float airDrag = -1f, float airVerticalDrag = -1f)

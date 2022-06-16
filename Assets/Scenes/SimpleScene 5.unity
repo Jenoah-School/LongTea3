@@ -998,9 +998,15 @@ MonoBehaviour:
   - {fileID: 6813855325985768809, guid: 198a857d9d277cd4cb36d3b1ddc20928, type: 3}
   - {fileID: 8298522946460067170, guid: a8c4d3fc5825540418e5e1ee3664df77, type: 3}
   - {fileID: 3005014066751963533, guid: 4b275713cbc60a2479a315ea8e9ff797, type: 3}
+  - {fileID: 4881526196771357933, guid: dc192dc68dfacaa499bf3d4e6a2fdd36, type: 3}
+  - {fileID: 3660432561152377591, guid: 1a6c98bc9042c7e4b87406c4d8983c19, type: 3}
   fighterPowerups:
   - {fileID: 885014263667337596, guid: da3eedfb62945ea48845155dae05c145, type: 3}
   - {fileID: 6616186503281569847, guid: f4f3c9f1ef743fb4e958fa6d2cb35b28, type: 3}
+  - {fileID: 369372314518718813, guid: e9dea8765358f824a864ff53981ddd07, type: 3}
+  - {fileID: 8221862447740667382, guid: 635757aaded8cfb49a3d35201302a602, type: 3}
+  - {fileID: 2064585546474919007, guid: d6a05137082a5ae49b218ecbadbd4092, type: 3}
+  - {fileID: 4138700617142882199, guid: 175b17664feb2d64cb79938794bdbfe1, type: 3}
   spawnOnInitialisation: 1
   spawnDummyOnInitialisation: 1
 --- !u!114 &1079827558
@@ -1445,7 +1451,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2036957178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.11, y: 0.94, z: -3.927}
+  m_LocalPosition: {x: 0.08, y: 0.94, z: -3.927}
   m_LocalScale: {x: 3, y: 3, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []

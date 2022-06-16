@@ -6,13 +6,14 @@ using UnityEngine.Events;
 public abstract class Projectile : MonoBehaviour
 {
     private Fighter hitFighter;
+    private GameObject hitObject = null;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast"))
         {
+            hitObject = collision.transform.gameObject;
             OnHitObject();
-            Debug.Log("1 " + collision.transform.name);
             if (collision.transform.GetComponent<Fighter>())
             {
                 hitFighter = collision.transform.GetComponent<Fighter>();
@@ -25,8 +26,8 @@ public abstract class Projectile : MonoBehaviour
     {
         if (other.transform.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast"))
         {
+            hitObject = other.transform.gameObject;
             OnHitObject();
-            Debug.Log("2 " + other.transform.parent.name);
             if (other.GetComponentInParent<Fighter>())
             {
                 hitFighter = other.GetComponentInParent<Fighter>();
@@ -38,6 +39,11 @@ public abstract class Projectile : MonoBehaviour
     public Fighter GetHitFighter()
     {
         return hitFighter;
+    }
+
+    public GameObject GetHitObject()
+    {
+        return hitObject;
     }
 
     public virtual void OnHitObject() { }

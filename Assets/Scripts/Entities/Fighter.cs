@@ -25,6 +25,7 @@ public class Fighter : MonoBehaviour
     [SerializeField, HideInInspector] float healthPoints;
     [SerializeField, HideInInspector] private float startHealth;
 
+    public bool canDamage;
     public bool isDead = false;
     public OnTakeDamage onAttack;
     public delegate void OnTakeDamage();
@@ -70,6 +71,7 @@ public class Fighter : MonoBehaviour
         FighterPower power = Instantiate(powerup, transform);
         power.SetFighterRoot(this);
         this.powerup = power;
+        canDamage = true;
 
         foreach (FighterWheels wheelsPart in bodyObject.GetComponentsInChildren<FighterWheels>())
         {
@@ -96,7 +98,7 @@ public class Fighter : MonoBehaviour
         if (playerMovement)
         {
             if (body.GetGroundedCheckOriginTransform()) playerMovement.SetGroundedTransform(body.GetGroundedCheckOriginTransform());
-            playerMovement.SetMoveSpeed(body.GetMoveSpeed());
+            playerMovement.SetMaxMoveSpeed(body.GetMoveSpeed());
             playerMovement.SetAccelerationSpeed(body.GetAccelerationSpeed());
             playerMovement.SetDrag(body.GetBrakeDrag(), body.GetDriftDrag(), body.GetAirDrag(), body.GetAirVerticalDrag());
         }
@@ -135,9 +137,29 @@ public class Fighter : MonoBehaviour
         }
     }
 
+    public FighterBody GetBody()
+    {
+        return body;
+    }
+
+    public FighterWeapon GetFighterWeapon(int index)
+    {
+        return fighterWeapons[index];
+    }
+
+    public FighterPower GetFighterPower()
+    {
+        return powerup;
+    }
+
     public Rigidbody GetRigidBody()
     {
         return rb;
+    }
+
+    public PlayerMovement GetPlayerMovement()
+    {
+        return playerMovement;
     }
 
     public float GetStartHealth()
@@ -198,8 +220,7 @@ public class Fighter : MonoBehaviour
 
     private void FallDamage(Collision collision)
     {
-        Vector3 direction = collision.transform.position - transform.position;
-        //Debug.Log(direction);
+        //Debug.Log("FALL DAMAGE");
         if(Mathf.Abs(collision.relativeVelocity.y) > 10 && Time.time > lastFallDmgTime && !playerMovement.IsGrounded())
         {
             lastFallDmgTime = Time.time + 1;
@@ -210,13 +231,14 @@ public class Fighter : MonoBehaviour
     
     public void TakeDamage(float damage, Fighter origin = null, bool showDamage = true, bool doStack = false)
     {
-        if (isDead) return;
+        if (isDead || !canDamage) return;
 
         damage = (float)System.Math.Round(damage, 2);
         healthPoints -= damage;
         if (origin = null) origin = this;
 
         if (showDamage) DamageIndication(damage, origin, doStack);
+        if (healthPoints > startHealth) healthPoints = startHealth;
 
         CheckDeath();
         onTakeDamage();

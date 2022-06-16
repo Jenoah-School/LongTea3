@@ -50,6 +50,7 @@ public class Flipper : FighterWeapon, IWeapon
                 if (hit.GetComponentInParent<Fighter>())
                 {
                     Fighter otherFighter = hit.GetComponentInParent<Fighter>();
+                    if (otherFighter == fighterRoot) continue;
 
                     otherFighter.GetRigidBody().AddForceAtPosition((fighterRoot.transform.up + (fighterRoot.transform.forward + fighterRoot.transform.up) / 5).normalized * (flipForce * 250) * flipLaunchForce * Mathf.Abs(Physics.gravity.y / 10), otherFighter.transform.position);
                     //otherFighter.GetRigidBody().AddRelativeTorque(transform.forward * flipForce * 400);

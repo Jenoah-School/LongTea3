@@ -57,8 +57,6 @@ public class FlameThrower : FighterWeapon, IWeapon
             flames.Stop();
             if (overheatValue > 0) overheatValue -= 0.03f * overheatRate;
         }
-
-        Debug.Log(overheatValue);
     }
 
     private void Shooting() {

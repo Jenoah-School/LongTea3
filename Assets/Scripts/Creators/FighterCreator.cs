@@ -21,13 +21,13 @@ public class FighterCreator : MonoBehaviour
         Fighter fighterDummy;
         if (spawnOnInitialisation)
         {
-            fighter = CreateNewFighter(0, 5, 2, 1);
+            fighter = CreateNewFighter(0, 6, 7, 4);
             fighter.transform.name = "main";
         }
         if (spawnDummyOnInitialisation)
         {
             fighterDummy = CreateNewFighter(0, 0, 2,0);
-            fighterDummy.transform.position = new Vector3(0, 1, 6);
+            fighterDummy.transform.position = new Vector3(0, 1, 9);
             fighterDummy.transform.name = "dummy";
         }
         if(singleton == null)

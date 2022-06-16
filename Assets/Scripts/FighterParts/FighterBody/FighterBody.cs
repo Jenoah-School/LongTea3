@@ -25,6 +25,14 @@ public class FighterBody : FighterPart
     [SerializeField] Transform centerOfMass;
     [SerializeField] Transform groundCheckOrigin;
 
+    private float origionalBrakeDrag;
+    private float origionalDriftDrag;
+
+    private void Start()
+    {
+        origionalBrakeDrag = brakeDrag;
+        origionalDriftDrag = driftDrag;
+    }
 
     public float GetBrakeDrag() {
         return brakeDrag;
@@ -33,6 +41,28 @@ public class FighterBody : FighterPart
     public float GetDriftDrag()
     {
         return driftDrag;
+    }
+
+    public float GetOrigionalBrakeDrag()
+    {
+        return origionalBrakeDrag;
+    }
+
+    public float GetOrigionalDriftDrag()
+    {
+        return origionalDriftDrag;
+    }
+
+    public void SetBrakeDrag(float drag)
+    {
+        brakeDrag = drag;
+        fighterRoot.GetPlayerMovement().SetDrag(brakeDrag);
+    }
+
+    public void SetDriftDrag(float drag)
+    {
+        driftDrag = drag;
+        fighterRoot.GetPlayerMovement().SetDrag(brakeDrag, driftDrag);
     }
 
     public float GetAirDrag()
