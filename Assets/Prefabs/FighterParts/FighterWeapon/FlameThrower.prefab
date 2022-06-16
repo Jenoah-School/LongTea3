@@ -1046,6 +1046,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4134713267187540880, guid: 237f6ff200b7ea941abbcf0bc9b9760c,
         type: 3}
+      propertyPath: autoRandomSeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134713267187540880, guid: 237f6ff200b7ea941abbcf0bc9b9760c,
+        type: 3}
       propertyPath: simulationSpeed
       value: 2
       objectReference: {fileID: 0}
@@ -1056,8 +1061,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4134713267187540880, guid: 237f6ff200b7ea941abbcf0bc9b9760c,
         type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134713267187540880, guid: 237f6ff200b7ea941abbcf0bc9b9760c,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134713267187540880, guid: 237f6ff200b7ea941abbcf0bc9b9760c,
+        type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4134713267187540880, guid: 237f6ff200b7ea941abbcf0bc9b9760c,
         type: 3}
@@ -1069,11 +1084,31 @@ PrefabInstance:
       propertyPath: InitialModule.startSpeed.minScalar
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4134713267187540880, guid: 237f6ff200b7ea941abbcf0bc9b9760c,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.72124696
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134713267187540880, guid: 237f6ff200b7ea941abbcf0bc9b9760c,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.95767725
+      objectReference: {fileID: 0}
+    - target: {fileID: 4134713267187540880, guid: 237f6ff200b7ea941abbcf0bc9b9760c,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911685421524021150, guid: 237f6ff200b7ea941abbcf0bc9b9760c,
+        type: 3}
+      propertyPath: m_MaxParticleSize
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6911685421524021150, guid: 237f6ff200b7ea941abbcf0bc9b9760c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b535910656c91d640bc8435b1dbb7c1e, type: 2}
+      objectReference: {fileID: 2100000, guid: 8be718f3cc42d92409541ad14f1f5584, type: 2}
     - target: {fileID: 7706399213590406677, guid: 237f6ff200b7ea941abbcf0bc9b9760c,
         type: 3}
       propertyPath: m_RootOrder
