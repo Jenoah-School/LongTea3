@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private bool spawnFighter = false;
+    [SerializeField] private bool showCutscene = true;
     [SerializeField] private bool spawnFighterController = false;
     [SerializeField] private int spawnFighterSceneIndex = -1;
     [SerializeField] private UnityEvent OnPlayerJoin;
@@ -152,6 +153,12 @@ public class PlayerManager : MonoBehaviour
         for (int i = 0; i < players.Count; i++)
         {
             SpawnFighter(i);
+        }
+
+        if (CutsceneManager.singleton != null)
+        {
+            CutsceneManager.singleton.PopulateCameras();
+            CutsceneManager.singleton.CycleCams();
         }
     }
 

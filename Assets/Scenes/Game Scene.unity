@@ -4503,6 +4503,7 @@ MonoBehaviour:
     fighterColor: {r: 0, g: 0, b: 0, a: 0}
   showPlayerRing: 1
   spawnFighter: 1
+  showCutscene: 1
   spawnFighterController: 0
   spawnFighterSceneIndex: -1
   OnPlayerJoin:
@@ -6319,7 +6320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &890145417
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13981,6 +13982,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1875652430}
+  - component: {fileID: 1875652431}
   m_Layer: 0
   m_Name: --== Cameras ==--
   m_TagString: Untagged
@@ -14005,6 +14007,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1875652431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875652429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b256e5c7534014a499cbbfb9c3c04a31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cinemachineBrain: {fileID: 2028382208}
+  camerasToExclude:
+  - {fileID: 55220252}
+  transitionTime: 3
+  afterCycleEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 890145416}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 55220252}
+        m_TargetAssemblyTypeName: Cinemachine.CinemachineVirtualCameraBase, Cinemachine
+        m_MethodName: set_Priority
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 15
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  lowPriority: 5
+  highPriority: 15
 --- !u!1 &1898600609
 GameObject:
   m_ObjectHideFlags: 0
@@ -14922,7 +14969,7 @@ MonoBehaviour:
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
-    m_Time: 2
+    m_Time: 1
     m_CustomCurve:
       serializedVersion: 2
       m_Curve: []
