@@ -45,7 +45,7 @@ public class ScoreManagerProxy : MonoBehaviour
             }
 
         List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
-        fighterWeapons.Add(FighterCreator.singleton.fighterWeapons[ScoreManager.singleton.fighterInfos[playerID].weaponID]);
+        fighterWeapons.Add(FighterCreator.singleton.fighterWeapons[ScoreManager.singleton.fighterInfos[playerID].rangedWeaponID]);
         previewGameObjects[playerID].AssembleFighterParts(FighterCreator.singleton.fighterBodies[ScoreManager.singleton.fighterInfos[playerID].bodyID], fighterWeapons, FighterCreator.singleton.fighterPowerups[ScoreManager.singleton.fighterInfos[playerID].powerupID]);
     }
 }

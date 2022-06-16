@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Shield
   m_EditorClassIdentifier: 
   partID: 1
-  previewImage: {fileID: 21300000, guid: 31f769d6185c44842b2586188dc58869, type: 3}
+  previewImage: {fileID: 21300000, guid: 0a133339a5b18eb4cb4d70fb07f75503, type: 3}
+  partDescription: 'Protects you from all types of damage for a while. '
   powerupName: Shield
-  powerupDescription: No more pain?

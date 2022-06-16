@@ -6,37 +6,52 @@ using System.Linq;
 using Lean.Pool;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.Events;
 
 public class Fighter : MonoBehaviour
 {
-    [Header("Vehicle")]
+    [Header("References")]
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerMovement playerMovement;
 
-    [SerializeField] private FighterBody body;    
-    private List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
-    [SerializeField] private FighterPower powerup;
+    public FighterBody body;
+    public List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
+    public FighterPower powerup;
 
-    [SerializeField] private int fallDamageTreshHold;
-    [SerializeField] private float fallDamageMultiplier;
 
-    [SerializeField] protected TextMeshPro damageText;
-
+    [Header("Fighter info")]
+    public int fighterID = 0;
+    public Color fighterColor;
     [SerializeField, HideInInspector] float healthPoints;
     [SerializeField, HideInInspector] private float startHealth;
+    [SerializeField] protected TextMeshPro damageText;
 
     public bool canDamage;
+    [Header("Particles")]
+    [SerializeField] private ParticleSystem healthSmoke;
+    [SerializeField] private Gradient smokeColor;
+
+    private ParticleSystem.MainModule healthSmokeMainModule;
+    private ParticleSystem.EmissionModule healthSmokeEmissionModule;
+    private float healthSmokeMaxEmission = 20f;
+
+    [Header("Health")]
     public bool isDead = false;
     public OnTakeDamage onAttack;
-    public delegate void OnTakeDamage();
     public OnTakeDamage onTakeDamage;
+    public delegate void OnTakeDamage();
     public delegate void OnAttack();
-    public Color fighterColor;
+    [SerializeField] private int fallDamageTreshHold;
+    [SerializeField] private float fallDamageMultiplier;
+    [Space(20)]
+    [SerializeField] private UnityEvent OnDamageEvent;
+    [SerializeField] private UnityEvent OnDeathEvent;
+
+    
 
     private List<FighterPart> fighterParts = new List<FighterPart>();
 
     private float lastFallDmgTime;
-
     private float lastPowerUpTime;
 
     private TextMeshPro stackDamageTextObject;
@@ -102,8 +117,21 @@ public class Fighter : MonoBehaviour
             playerMovement.SetAccelerationSpeed(body.GetAccelerationSpeed());
             playerMovement.SetDrag(body.GetBrakeDrag(), body.GetDriftDrag(), body.GetAirDrag(), body.GetAirVerticalDrag());
         }
+        if (body)
+        {
+            if(fighterID != 0 && PlayerManager.singleton.antennaColors.Count > fighterID - 1) body.SetAntennaColor(PlayerManager.singleton.antennaColors[fighterID - 1]);
+        }
+        if (healthSmoke)
+        {
+            healthSmokeMainModule = healthSmoke.main;
+            healthSmokeEmissionModule = healthSmoke.emission;
+            if(healthSmokeEmissionModule.rateOverTime.constant != 0) healthSmokeMaxEmission = healthSmokeEmissionModule.rateOverTime.constant;
+            healthSmokeEmissionModule.rateOverTime = 0f;
+            healthSmoke.Play();
+
+        }
     }
-   
+
     private void SetCenterOfMass()
     {
         if (rb != null && body.GetCenterOfMass() != null)
@@ -118,6 +146,8 @@ public class Fighter : MonoBehaviour
 
     private void GetPartReferences()
     {
+        fighterParts.Clear();
+        fighterWeapons.Clear();
         List<FighterPart> fighterPartRefences = GetComponentsInChildren<FighterPart>().ToList();
         foreach (FighterPart fighterPart in fighterPartRefences)
         {
@@ -202,7 +232,7 @@ public class Fighter : MonoBehaviour
 
     public void ExecutePowerUp(InputAction.CallbackContext context)
     {
-        if(Time.time >= lastPowerUpTime)
+        if (Time.time >= lastPowerUpTime)
         {
             lastPowerUpTime = Time.time + powerup.cooldown;
             powerup.Activate();
@@ -222,13 +252,16 @@ public class Fighter : MonoBehaviour
     {
         //Debug.Log("FALL DAMAGE");
         if(Mathf.Abs(collision.relativeVelocity.y) > 10 && Time.time > lastFallDmgTime && !playerMovement.IsGrounded())
+        Vector3 direction = collision.transform.position - transform.position;
+        //Debug.Log(direction);
+        if (Mathf.Abs(collision.relativeVelocity.y) > 10 && Time.time > lastFallDmgTime && !playerMovement.IsGrounded())
         {
             lastFallDmgTime = Time.time + 1;
-            float fallDamage =  Mathf.Abs(Mathf.Round(collision.relativeVelocity.magnitude * fallDamageMultiplier));
+            float fallDamage = Mathf.Abs(Mathf.Round(collision.relativeVelocity.magnitude * fallDamageMultiplier));
             TakeDamage(fallDamage, this);
         }
     }
-    
+
     public void TakeDamage(float damage, Fighter origin = null, bool showDamage = true, bool doStack = false)
     {
         if (isDead || !canDamage) return;
@@ -239,9 +272,15 @@ public class Fighter : MonoBehaviour
 
         if (showDamage) DamageIndication(damage, origin, doStack);
         if (healthPoints > startHealth) healthPoints = startHealth;
+        if (healthSmoke)
+        {
+            healthSmokeMainModule.startColor = smokeColor.Evaluate(1f - (1f / startHealth * healthPoints));
+            healthSmokeEmissionModule.rateOverTime = Mathf.Lerp(healthSmokeMaxEmission, 0f, (1f / startHealth * healthPoints));
+        }
 
         CheckDeath();
         onTakeDamage();
+        OnDamageEvent.Invoke();
     }
 
     public void DamageIndication(float damage, Fighter origin, bool doStack = false)
@@ -262,10 +301,10 @@ public class Fighter : MonoBehaviour
                 stackDamageTextObject.text = "0";
                 stackDamageTextObject.transform.DOMoveY(transform.position.y + stackDamageTextObject.transform.position.y + Random.Range(1.5f, 2.5f), Random.Range(2.5f, 3.5f));
             }
-            if(stackDamageTextObject)
+            if (stackDamageTextObject)
             {
                 stackDamageTextObject.transform.position = new Vector3(transform.position.x, stackDamageTextObject.transform.position.y, transform.position.z);
-                stackDamageTextObject.text = (float.Parse(stackDamageTextObject.text) + damage).ToString();             
+                stackDamageTextObject.text = (float.Parse(stackDamageTextObject.text) + damage).ToString();
                 stackDamageTextObject.alpha = 1;
                 damageTextClone = stackDamageTextObject;
                 damageTextClone.GetComponent<Fade3DText>().StopFadeOut();
@@ -295,6 +334,7 @@ public class Fighter : MonoBehaviour
     {
         isDead = true;
         onTakeDamage();
+        OnDeathEvent.Invoke();
         PlayerManager.singleton.TogglePlayer(this, false);
         PlayerManager.singleton.CheckDeathRate();
         PlayerManager.singleton.IncreaseRankingForAlive();

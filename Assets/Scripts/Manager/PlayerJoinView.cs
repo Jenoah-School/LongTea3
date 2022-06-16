@@ -14,6 +14,7 @@ public class PlayerJoinView : MonoBehaviour
     public UnityEvent OnJoinEvent = null;
     public FighterPartSelection fighterPartSelection;
     public Fighter previewGameObject = null;
+    public float previewResetTime = 0.2f;
 
     [Header("Ready")]
     public bool isReady = false;
@@ -24,6 +25,13 @@ public class PlayerJoinView : MonoBehaviour
     public OnReadyChange onReadyChange;
 
     public bool isPlayer = false;
+
+    private Rotate previewRotate;
+
+    private void Start()
+    {
+        previewGameObject.TryGetComponent(out previewRotate);
+    }
 
     public void Ready()
     {
@@ -41,15 +49,34 @@ public class PlayerJoinView : MonoBehaviour
         onReadyChange();
     }
 
+    public void ResetPreviewRotation()
+    {
+        if (previewRotate)
+        {
+            previewRotate.ResetAngle(previewResetTime);
+        }
+    }
+
     public void BuildPreview()
+    {
+        StopAllCoroutines();
+        StartCoroutine(BuildPreviewEnum());
+    }
+
+    public IEnumerator BuildPreviewEnum()
     {
         foreach (Transform child in previewGameObject.transform)
         {
             Destroy(child.gameObject);
         }
 
+        yield return new WaitForEndOfFrame();
+
         List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
-        fighterWeapons.Add(FighterCreator.singleton.fighterWeapons[fighterPartSelection.currentWeaponID]);
+        fighterWeapons.Add(FighterCreator.singleton.fighterWeapons[fighterPartSelection.currentRangedWeaponID]);
+        fighterWeapons.Add(FighterCreator.singleton.fighterWeapons[fighterPartSelection.currentMeleeWeaponID]);
+        previewGameObject.fighterWeapons.Clear();
         previewGameObject.AssembleFighterParts(FighterCreator.singleton.fighterBodies[fighterPartSelection.currentBodyID], fighterWeapons, FighterCreator.singleton.fighterPowerups[fighterPartSelection.currentPowerupID]);
+        fighterPartSelection.FlashChangedParts();
     }
 }

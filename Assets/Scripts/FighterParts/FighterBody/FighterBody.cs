@@ -17,6 +17,9 @@ public class FighterBody : FighterPart
     [SerializeField, Range(0f, 1f)] private float airDrag = 0.6f;
     [SerializeField, Range(0f, 1f)] private float airVerticalDrag = 0.025f;
 
+    [Header("Objects")]
+    [SerializeField] private MeshRenderer antennaMeshRenderer;
+
     [Header("Anchor points")]
     [SerializeField] Transform weaponLocationFront;
     [SerializeField] Transform weaponLocationTop;
@@ -34,7 +37,8 @@ public class FighterBody : FighterPart
         origionalDriftDrag = driftDrag;
     }
 
-    public float GetBrakeDrag() {
+    public float GetBrakeDrag()
+    {
         return brakeDrag;
     }
 
@@ -115,9 +119,21 @@ public class FighterBody : FighterPart
         return groundCheckOrigin;
     }
 
+    public void SetAntennaColor(Color color)
+    {
+        if (antennaMeshRenderer != null)
+        {
+            Material antennaMaterial = antennaMeshRenderer.material;
+            antennaMaterial.globalIlluminationFlags = MaterialGlobalIlluminationFlags.None;
+            antennaMaterial.EnableKeyword("_Emission");
+            antennaMaterial.SetColor("_BaseColor", color);
+            antennaMaterial.SetColor("_EmissionColor", color);
+        }
+    }
+
     public Transform GetWeaponLocation(FighterWeapon.WeaponLocations location)
     {
-        if(location == FighterWeapon.WeaponLocations.FRONT)
+        if (location == FighterWeapon.WeaponLocations.FRONT)
         {
             return GetWeaponFrontLocation();
         }

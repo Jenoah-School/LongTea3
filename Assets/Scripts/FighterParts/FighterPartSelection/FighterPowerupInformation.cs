@@ -6,5 +6,4 @@ using UnityEngine;
 public class FighterPowerupInformation : FighterPartInformation
 {
     public string powerupName = "Powerup name";
-    public string powerupDescription = "Description";
 }
