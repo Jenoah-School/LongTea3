@@ -8699,6 +8699,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterBodies:
+  - {fileID: 11400000, guid: 69c6f58decceca74fb05202929c97e4a, type: 2}
+  - {fileID: 11400000, guid: 671a61d0591d06041aa9e2ac9c9ed27d, type: 2}
+  - {fileID: 11400000, guid: b9c98dae7a45f814fb527dac2ab8e322, type: 2}
+  - {fileID: 11400000, guid: 4a17d072c6a7cea46a15a8342fb90bc1, type: 2}
   - {fileID: 11400000, guid: 5cf91f9fca078bf4a8c696f00488cff1, type: 2}
   fighterRangedWeapons:
   - {fileID: 11400000, guid: 65dee5edc3fb25d42aecc8e0d4be8fae, type: 2}
@@ -8707,6 +8711,7 @@ MonoBehaviour:
   fighterMeleeWeapons:
   - {fileID: 11400000, guid: 7786e83f13f0ce648bc81ef4bc3d7942, type: 2}
   - {fileID: 11400000, guid: 1093fbe4a48d8eb4d840a39b8d77762e, type: 2}
+  - {fileID: 11400000, guid: 9a6afab0c4bffa240a14180bd8b3950f, type: 2}
   fighterPowerups:
   - {fileID: 11400000, guid: 9ec882c9bed34234da4a89957381ccbd, type: 2}
   - {fileID: 11400000, guid: bda46303c40749d4d9b12fd5ff9c0e9e, type: 2}

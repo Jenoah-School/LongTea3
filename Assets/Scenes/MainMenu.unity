@@ -211,17 +211,17 @@ PrefabInstance:
     - target: {fileID: 5911444960683836676, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -219.40007
+      value: -219.40004
       objectReference: {fileID: 0}
     - target: {fileID: 5911444960967414274, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -48.00003
+      value: -48.000015
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961071725889, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -232.50005
+      value: -232.50002
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961179537984, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -423,35 +423,6 @@ PrefabInstance:
       propertyPath: fighterReference
       value: 
       objectReference: {fileID: 1430425078}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 69c6f58decceca74fb05202929c97e4a,
-        type: 2}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: b9c98dae7a45f814fb527dac2ab8e322,
-        type: 2}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 4a17d072c6a7cea46a15a8342fb90bc1,
-        type: 2}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 5cf91f9fca078bf4a8c696f00488cff1,
-        type: 2}
     - target: {fileID: 5911444962225737754, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_Sprite
@@ -461,7 +432,7 @@ PrefabInstance:
     - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 227.82959
+      value: 227.82956
       objectReference: {fileID: 0}
     - target: {fileID: 5922787449091853965, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -507,6 +478,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -70.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485317938867073996, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -48.000015
       objectReference: {fileID: 0}
     - target: {fileID: 6745389670353182356, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -1749,17 +1725,17 @@ PrefabInstance:
     - target: {fileID: 5911444960683836676, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -219.40007
+      value: -219.40004
       objectReference: {fileID: 0}
     - target: {fileID: 5911444960967414274, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -48.00003
+      value: -48.000015
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961071725889, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -232.50005
+      value: -232.50002
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961179537985, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -1941,35 +1917,6 @@ PrefabInstance:
       propertyPath: fighterReference
       value: 
       objectReference: {fileID: 794142305}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 69c6f58decceca74fb05202929c97e4a,
-        type: 2}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: b9c98dae7a45f814fb527dac2ab8e322,
-        type: 2}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 4a17d072c6a7cea46a15a8342fb90bc1,
-        type: 2}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 5cf91f9fca078bf4a8c696f00488cff1,
-        type: 2}
     - target: {fileID: 5911444962225737754, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_Sprite
@@ -1979,7 +1926,7 @@ PrefabInstance:
     - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 227.82959
+      value: 227.82956
       objectReference: {fileID: 0}
     - target: {fileID: 5999800970366216194, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -2020,6 +1967,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 104
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485317938867073996, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -48.000015
       objectReference: {fileID: 0}
     - target: {fileID: 6745389670353182356, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -6498,6 +6450,7 @@ MonoBehaviour:
     fighterColor: {r: 0, g: 0, b: 0, a: 0}
   showPlayerRing: 1
   spawnFighter: 0
+  showCutscene: 1
   spawnFighterController: 1
   spawnFighterSceneIndex: 3
   OnPlayerJoin:
@@ -6643,6 +6596,7 @@ MonoBehaviour:
     type: 3}
   fighterBodies:
   - {fileID: 2819372194517125383, guid: 39e8250e56afe1840a43f8bb6fa6ec93, type: 3}
+  - {fileID: 2819372194517125383, guid: f3aba94b69a08d44b9b3920318dcda05, type: 3}
   - {fileID: 2819372194517125383, guid: 1d4e8fa573817764b883011904fb5bde, type: 3}
   - {fileID: 2819372194517125383, guid: fab9bff4f1ccd234f9e54601f06e82fb, type: 3}
   - {fileID: 2819372194517125383, guid: 873719922ae997942bed2993c1217a9f, type: 3}
@@ -7390,17 +7344,17 @@ PrefabInstance:
     - target: {fileID: 5911444960683836676, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -219.40007
+      value: -219.40004
       objectReference: {fileID: 0}
     - target: {fileID: 5911444960967414274, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -48.00003
+      value: -48.000015
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961071725889, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -232.50005
+      value: -232.50002
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961179537985, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -7582,35 +7536,6 @@ PrefabInstance:
       propertyPath: fighterReference
       value: 
       objectReference: {fileID: 507364057}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 69c6f58decceca74fb05202929c97e4a,
-        type: 2}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: b9c98dae7a45f814fb527dac2ab8e322,
-        type: 2}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 4a17d072c6a7cea46a15a8342fb90bc1,
-        type: 2}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 5cf91f9fca078bf4a8c696f00488cff1,
-        type: 2}
     - target: {fileID: 5911444962225737754, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_Sprite
@@ -7620,7 +7545,7 @@ PrefabInstance:
     - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 227.82959
+      value: 227.82956
       objectReference: {fileID: 0}
     - target: {fileID: 5999800970366216194, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -7656,6 +7581,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -33.600006
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485317938867073996, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -48.000015
       objectReference: {fileID: 0}
     - target: {fileID: 6745389670353182356, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -11695,17 +11625,17 @@ PrefabInstance:
     - target: {fileID: 5911444960683836676, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -219.40007
+      value: -219.40004
       objectReference: {fileID: 0}
     - target: {fileID: 5911444960967414274, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -49.00003
+      value: -49.000015
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961071725889, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -232.50005
+      value: -232.50002
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961285325654, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -11857,39 +11787,10 @@ PrefabInstance:
       propertyPath: fighterReference
       value: 
       objectReference: {fileID: 2134738578}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 69c6f58decceca74fb05202929c97e4a,
-        type: 2}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: b9c98dae7a45f814fb527dac2ab8e322,
-        type: 2}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 4a17d072c6a7cea46a15a8342fb90bc1,
-        type: 2}
-    - target: {fileID: 5911444962225737753, guid: daa66786bc246594fa0abdf740f63735,
-        type: 3}
-      propertyPath: fighterBodies.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 5cf91f9fca078bf4a8c696f00488cff1,
-        type: 2}
     - target: {fileID: 5911444962279733993, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 227.82959
+      value: 227.82956
       objectReference: {fileID: 0}
     - target: {fileID: 5999800970366216194, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -11915,6 +11816,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -33.600006
+      objectReference: {fileID: 0}
+    - target: {fileID: 6485317938867073996, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -48.000015
       objectReference: {fileID: 0}
     - target: {fileID: 6745389670353182356, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
