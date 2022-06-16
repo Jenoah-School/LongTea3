@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partID: 0
   previewImage: {fileID: 21300000, guid: 693225cc9e52b674f82189ce10213275, type: 3}
-  partDescription: 'Special: Perfectly balanced, as all things should be. '
+  partDescription: 'Trait: Perfectly balanced, as all things should be. '
   hp: 100
   attack: 80
   defense: 40

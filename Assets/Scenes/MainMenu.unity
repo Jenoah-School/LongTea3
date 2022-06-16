@@ -241,7 +241,7 @@ PrefabInstance:
     - target: {fileID: 5911444961285325654, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25.899902
+      value: -53
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961336962014, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -256,7 +256,7 @@ PrefabInstance:
     - target: {fileID: 5911444961644113065, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -45.899902
+      value: -79
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961746791313, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -276,7 +276,7 @@ PrefabInstance:
     - target: {fileID: 5911444961821310280, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_text
-      value: Robot 2
+      value: Select Robot
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961821310283, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -286,7 +286,7 @@ PrefabInstance:
     - target: {fileID: 5911444961821310283, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 502.35004
+      value: 507
       objectReference: {fileID: 0}
     - target: {fileID: 5911444962018902973, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -301,7 +301,7 @@ PrefabInstance:
     - target: {fileID: 5911444962212428043, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -46.19995
+      value: -77
       objectReference: {fileID: 0}
     - target: {fileID: 5911444962225737748, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -532,7 +532,7 @@ PrefabInstance:
     - target: {fileID: 8660255188822162300, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 492.69952
+      value: 492.6994
       objectReference: {fileID: 0}
     - target: {fileID: 9018566343190366601, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -1766,10 +1766,15 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5911444961285325649, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5911444961285325654, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25.899902
+      value: -51
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961336962014, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -1784,7 +1789,7 @@ PrefabInstance:
     - target: {fileID: 5911444961644113065, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -44.399902
+      value: -78
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961746791313, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -1794,7 +1799,7 @@ PrefabInstance:
     - target: {fileID: 5911444961821310280, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_text
-      value: Robot 4
+      value: Select Robot
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961821310283, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -1804,7 +1809,7 @@ PrefabInstance:
     - target: {fileID: 5911444961821310283, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 502.35004
+      value: 507
       objectReference: {fileID: 0}
     - target: {fileID: 5911444962018902973, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -1814,7 +1819,7 @@ PrefabInstance:
     - target: {fileID: 5911444962212428043, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -44.5
+      value: -77
       objectReference: {fileID: 0}
     - target: {fileID: 5911444962225737748, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -1989,7 +1994,7 @@ PrefabInstance:
     - target: {fileID: 6099043404752798968, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 4.699997
+      value: 4.700012
       objectReference: {fileID: 0}
     - target: {fileID: 6099043404752798968, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -2040,7 +2045,7 @@ PrefabInstance:
     - target: {fileID: 7997072910313689555, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 12.300003
+      value: 12.299988
       objectReference: {fileID: 0}
     - target: {fileID: 7997072910313689555, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -2060,7 +2065,7 @@ PrefabInstance:
     - target: {fileID: 8660255188822162300, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 492.69952
+      value: 492.6994
       objectReference: {fileID: 0}
     - target: {fileID: 9018566343190366601, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -7402,10 +7407,15 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5911444961285325649, guid: daa66786bc246594fa0abdf740f63735,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5911444961285325654, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -25.899902
+      value: -51
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961336962014, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -7420,7 +7430,7 @@ PrefabInstance:
     - target: {fileID: 5911444961644113065, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -42.899902
+      value: -79
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961746791313, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -7430,7 +7440,7 @@ PrefabInstance:
     - target: {fileID: 5911444961821310280, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_text
-      value: Robot 3
+      value: Select Robot
       objectReference: {fileID: 0}
     - target: {fileID: 5911444961821310283, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -7440,7 +7450,7 @@ PrefabInstance:
     - target: {fileID: 5911444961821310283, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 502.35004
+      value: 507
       objectReference: {fileID: 0}
     - target: {fileID: 5911444962018902973, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -7450,7 +7460,7 @@ PrefabInstance:
     - target: {fileID: 5911444962212428043, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -41.799805
+      value: -77
       objectReference: {fileID: 0}
     - target: {fileID: 5911444962225737748, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -7691,7 +7701,7 @@ PrefabInstance:
     - target: {fileID: 8660255188822162300, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 492.69952
+      value: 492.6994
       objectReference: {fileID: 0}
     - target: {fileID: 9018566343190366601, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -8044,14 +8054,50 @@ MonoBehaviour:
   body: {fileID: 1816914273}
   fighterWeapons: []
   powerup: {fileID: 911944668}
-  fallDamageTreshHold: 0
-  fallDamageMultiplier: 0
-  damageText: {fileID: 0}
   fighterID: 0
+  fighterColor: {r: 0, g: 0, b: 0, a: 0}
   healthPoints: 0
   startHealth: 0
+  damageText: {fileID: 0}
+  healthSmoke: {fileID: 0}
+  smokeColor:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
   isDead: 0
-  fighterColor: {r: 0, g: 0, b: 0, a: 0}
+  fallDamageTreshHold: 0
+  fallDamageMultiplier: 0
+  OnDamageEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1482582497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11679,7 +11725,7 @@ PrefabInstance:
     - target: {fileID: 5911444961821310283, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 505.7995
+      value: 505.79938
       objectReference: {fileID: 0}
     - target: {fileID: 5911444962018902973, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
@@ -11883,7 +11929,7 @@ PrefabInstance:
     - target: {fileID: 8660255188822162300, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 492.69952
+      value: 492.6994
       objectReference: {fileID: 0}
     - target: {fileID: 9018566343190366601, guid: daa66786bc246594fa0abdf740f63735,
         type: 3}
