@@ -48,10 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterHealth: 1000
-  maxMoveSpeed: 20
-  accelerationSpeed: 25
+  maxMoveSpeed: 30
+  accelerationSpeed: 35
   brakeDrag: 0.1
-  driftDrag: 0.4
+  driftDrag: 0.3
   airDrag: 0.6
   airVerticalDrag: 0
   antennaMeshRenderer: {fileID: 2459888445704988612}

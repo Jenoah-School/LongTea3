@@ -212,7 +212,7 @@ MonoBehaviour:
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 2.25
+    m_Value: 2.5
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
@@ -233,4 +233,4 @@ MonoBehaviour:
     m_Value: {fileID: 2800000, guid: c57697e47c223764ea3ac2705e56ed72, type: 3}
   dirtIntensity:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 25
