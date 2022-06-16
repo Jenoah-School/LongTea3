@@ -25,7 +25,19 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Edge_texture:
+        m_Texture: {fileID: 2800000, guid: c96fd8aab2f781a43968a5eec04889a3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 3916e87de6af62945bf60c91d5fb466f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecularMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Triplanar_115a506c687640d48b00c8c3db26f31d_Texture_1:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -43,10 +55,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Edge_Tiling: 1
+    - _Edge_offset: 1
+    - _Edge_strength: 0
     - _Metallic: 0.5
+    - _Normal_stength: 3.93
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Sizing: 0.125
+    - _Sizing: 0.1
     - _Smoothness: 0.75
     m_Colors:
     - _Color: {r: 0.14150941, g: 0.09714047, b: 0.066082224, a: 1}
