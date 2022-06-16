@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterHealth: 800
-  maxMoveSpeed: 10
+  maxMoveSpeed: 20
   accelerationSpeed: 25
   brakeDrag: 0.1
   driftDrag: 0.4
