@@ -411,7 +411,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7769607, y: 1}
+    m_SensorSize: {x: 1.7782369, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -13784,6 +13784,7 @@ MonoBehaviour:
   cinemachineBrain: {fileID: 2028382208}
   camerasToExclude:
   - {fileID: 55220252}
+  camerasToCycle: []
   transitionTime: 3
   afterCycleEvent:
     m_PersistentCalls:
@@ -15706,7 +15707,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6bd3b4781bae2eb4e9927cadf1d885a4, type: 2}
+      objectReference: {fileID: 2100000, guid: b8692f1527e53f8439f3161690677d80, type: 2}
     - target: {fileID: 1716619353149287203, guid: a46d42e2c22a7404f95c17116b876ef3,
         type: 3}
       propertyPath: m_StaticEditorFlags
