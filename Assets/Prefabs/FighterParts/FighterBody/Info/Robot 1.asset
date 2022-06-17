@@ -15,6 +15,7 @@ MonoBehaviour:
   partID: 0
   previewImage: {fileID: 21300000, guid: 693225cc9e52b674f82189ce10213275, type: 3}
   partDescription: 'Trait: Perfectly balanced, as all things should be. '
+  bodyName: Interceptor
   hp: 120
   attack: 100
   defense: 100

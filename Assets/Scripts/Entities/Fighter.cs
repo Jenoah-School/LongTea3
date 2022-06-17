@@ -251,7 +251,6 @@ public class Fighter : MonoBehaviour
     private void FallDamage(Collision collision)
     {
         //Debug.Log("FALL DAMAGE");
-        if(Mathf.Abs(collision.relativeVelocity.y) > 10 && Time.time > lastFallDmgTime && !playerMovement.IsGrounded())
         Vector3 direction = collision.transform.position - transform.position;
         //Debug.Log(direction);
         if (Mathf.Abs(collision.relativeVelocity.y) > 10 && Time.time > lastFallDmgTime && !playerMovement.IsGrounded())
