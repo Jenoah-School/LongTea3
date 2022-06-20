@@ -10,6 +10,7 @@ public class Shield : FighterPower
     public override void Activate()
     {
         StartCoroutine(ShieldFighter());
+        OnTrigger.Invoke();
     }
 
     IEnumerator ShieldFighter()

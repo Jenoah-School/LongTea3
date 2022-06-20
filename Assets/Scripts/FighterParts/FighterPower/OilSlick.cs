@@ -13,6 +13,7 @@ public class OilSlick : FighterPower
     public override void Activate()
     {
         ShootBarrel();
+        OnTrigger.Invoke();
     }
 
     private void ShootBarrel()

@@ -431,7 +431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3039886705176494698
 Transform:
   m_ObjectHideFlags: 0
@@ -480,7 +480,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: febcb58ca06cb6640a446873d15f3dc6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -973,6 +973,7 @@ MonoBehaviour:
   startHealth: 0
   damageText: {fileID: 1136103764196846668, guid: b93281c106ecca2448815a3859578236,
     type: 3}
+  canDamage: 0
   healthSmoke: {fileID: 8081560314832939273}
   smokeColor:
     serializedVersion: 2
@@ -1573,7 +1574,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7769607, y: 1}
+    m_SensorSize: {x: 1.7772397, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1610,7 +1611,7 @@ MonoBehaviour:
   m_FocusTracking: 1
   m_FocusTarget: {fileID: 0}
   m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 69eb2ceda054df145a15e4086737df6f, type: 2}
+  m_Profile: {fileID: 11400000, guid: fbcf33eb65032e74ab5c150b41ddd8ab, type: 2}
 --- !u!1 &8756055086916239761
 GameObject:
   m_ObjectHideFlags: 0

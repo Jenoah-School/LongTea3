@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d0ee5b850e725c479149208bc0e394f, type: 3}
   m_Name: Shield
   m_EditorClassIdentifier: 
-  partID: 1
+  partID: 4
   previewImage: {fileID: 21300000, guid: 0a133339a5b18eb4cb4d70fb07f75503, type: 3}
-  partDescription: 'Protects you from all types of damage for a while. '
+  partDescription: 'Protects you from all types of damage for a while. Cooldown:
+    8s'
   powerupName: Shield

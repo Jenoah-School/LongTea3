@@ -26,7 +26,9 @@ public class LaunchDisks : FighterPower
     {
         currentFighters = GameObject.FindGameObjectsWithTag("Fighter").ToList();
         currentFighters.Remove(fighterRoot.gameObject);
+        if (currentFighters.Count > 0) StartCoroutine(FireDisks());
         StartCoroutine(FireDisks());
+        OnTrigger.Invoke();
     }
 
     IEnumerator FireDisks()

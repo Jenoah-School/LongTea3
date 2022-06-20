@@ -29,6 +29,7 @@ public class FighterPartSelection : MonoBehaviour
     [SerializeField] private Fighter fighterReference;
 
     [Header("Body references")]
+    [SerializeField] private TextMeshProUGUI fighterField = null;
     [SerializeField] private Image hpBar = null;
     [SerializeField] private Image attackBar = null;
     [SerializeField] private Image defenseBar = null;
@@ -111,6 +112,7 @@ public class FighterPartSelection : MonoBehaviour
         FighterBodyInformation fighterBody = fighterBodies[currentBodyIndex];
         currentBodyID = fighterBody.partID;
 
+        if (fighterField != null) fighterField.SetText($"{fighterBody.bodyName}");
         if (hpBar != null) hpBar.DOFillAmount(1f / maxAvailableHP * fighterBody.hp, 0.1f);
         if (attackBar != null) attackBar.DOFillAmount(1f / maxAvailableAttack * fighterBody.attack, 0.1f);
         if (defenseBar != null) defenseBar.DOFillAmount(1f / maxAvailableDefense * fighterBody.defense, 0.1f);

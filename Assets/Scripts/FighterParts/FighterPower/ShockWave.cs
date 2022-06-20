@@ -32,6 +32,7 @@ public class ShockWave : FighterPower
     public override void Activate()
     {
         StartCoroutine(FireRing());
+        OnTrigger.Invoke();
     }
 
     IEnumerator FireRing()

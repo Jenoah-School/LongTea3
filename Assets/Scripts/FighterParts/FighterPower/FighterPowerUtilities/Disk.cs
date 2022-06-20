@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class Disk : Projectile
 {
@@ -11,6 +12,7 @@ public class Disk : Projectile
     float initialModelScale;
 
     [SerializeField] Fighter target;
+    [SerializeField] UnityEvent OnHitTarget;
 
     float damage;
     float moveSpeed;
@@ -50,6 +52,7 @@ public class Disk : Projectile
         Debug.Log("HIT FIGHTER");
         Fighter hitFighter = GetHitFighter();
         Destroy(this.gameObject);
+        OnHitTarget.Invoke();
         hitFighter.TakeDamage(damage, fighterRoot);
     }
 
@@ -58,13 +61,11 @@ public class Disk : Projectile
         rotationSpeed += 0.1f;
         model.transform.Rotate(transform.up, rotationSpeed);
 
-        if(isMoving)
+        if (isMoving)
         {
             var step = moveSpeed * Time.deltaTime;
             transform.position += transform.forward * (moveSpeed / 100);
             transform.forward = Vector3.Lerp(transform.forward, (target.transform.position - transform.position).normalized, diskAccuracy);
-
-            //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
         }
     }
 
