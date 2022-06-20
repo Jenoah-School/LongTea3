@@ -1573,7 +1573,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7769607, y: 1}
+    m_SensorSize: {x: 1.7772397, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1610,7 +1610,7 @@ MonoBehaviour:
   m_FocusTracking: 1
   m_FocusTarget: {fileID: 0}
   m_FocusOffset: 0
-  m_Profile: {fileID: 11400000, guid: 69eb2ceda054df145a15e4086737df6f, type: 2}
+  m_Profile: {fileID: 11400000, guid: fbcf33eb65032e74ab5c150b41ddd8ab, type: 2}
 --- !u!1 &8756055086916239761
 GameObject:
   m_ObjectHideFlags: 0

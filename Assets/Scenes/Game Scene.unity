@@ -331,6 +331,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &44426307 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1177021442672253575, guid: 0a0f0cc1a5c57a949a537d978a184767,
+    type: 3}
+  m_PrefabInstance: {fileID: 44426303}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &55220249
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,6 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 55220250}
   - component: {fileID: 55220252}
+  - component: {fileID: 55220253}
   - component: {fileID: 55220251}
   m_Layer: 0
   m_Name: Camera
@@ -411,7 +424,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.2591416, y: 1}
+    m_SensorSize: {x: 1.7772397, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -420,6 +433,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 537277417}
+--- !u!114 &55220253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55220249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 729aad4491e915a41bda2b8325cf757a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &143373900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2011,6 +2036,18 @@ MonoBehaviour:
   OnSwitchScene:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 350928985}
+        m_TargetAssemblyTypeName: SceneSwitcher, Assembly-CSharp
+        m_MethodName: SetBackgroundImageSpriteIndex
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 350928984}
         m_TargetAssemblyTypeName: PlayerManagerProxy, Assembly-CSharp
         m_MethodName: UnbindAllPlayers
@@ -2035,6 +2072,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  backgroundImage: {fileID: 44426307}
+  backgroundImageSprites:
+  - {fileID: 21300000, guid: 2ff8ab9d3621f1542a1a0e59afea6977, type: 3}
+  - {fileID: 21300000, guid: eb7cdd77a225dfb458615b55010a2acf, type: 3}
 --- !u!114 &350928986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6034,7 +6075,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &837210684
 RectTransform:
   m_ObjectHideFlags: 0

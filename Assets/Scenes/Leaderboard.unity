@@ -1695,6 +1695,10 @@ MonoBehaviour:
   OnSwitchScene:
     m_PersistentCalls:
       m_Calls: []
+  backgroundImage: {fileID: 1575659848}
+  backgroundImageSprites:
+  - {fileID: 21300000, guid: 2ff8ab9d3621f1542a1a0e59afea6977, type: 3}
+  - {fileID: 21300000, guid: eb7cdd77a225dfb458615b55010a2acf, type: 3}
 --- !u!114 &518468245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6335,6 +6339,18 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1575659846}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1575659848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1177021442672253575, guid: 0a0f0cc1a5c57a949a537d978a184767,
+    type: 3}
+  m_PrefabInstance: {fileID: 1575659846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1641337505
 GameObject:
   m_ObjectHideFlags: 0
@@ -9122,7 +9138,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.35, y: 0.025}
   m_AnchorMax: {x: 0.65, y: 0.175}
-  m_AnchoredPosition: {x: 0, y: -18}
+  m_AnchoredPosition: {x: 0, y: -17.999992}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2106028200

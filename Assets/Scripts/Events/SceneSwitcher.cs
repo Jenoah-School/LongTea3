@@ -3,14 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneSwitcher : MonoBehaviour
 {
     [SerializeField] private Animator fadeAnimator;
     [SerializeField] private float fadeDuration = 1.25f;
     [SerializeField] private UnityEvent OnSwitchScene;
+    [SerializeField] private Image backgroundImage = null;
+    [SerializeField] private List<Sprite> backgroundImageSprites = new List<Sprite>();
 
     private bool isTransitioning = false;
+    private int currentBackgroundImageIndex = 0;
+    private float waitDuration = 0f;
+
+    private void Awake()
+    {
+        currentBackgroundImageIndex = PlayerPrefs.GetInt("splashBackgroundImageIndex", 0);
+        if (backgroundImageSprites.Count > currentBackgroundImageIndex && backgroundImage != null)
+        {
+            backgroundImage.sprite = backgroundImageSprites[currentBackgroundImageIndex];
+        }
+    }
+
+    public void SetWaitDuration(float newWaitDuration)
+    {
+        waitDuration = newWaitDuration;
+    }
+
+    public void SetBackgroundImageSpriteIndex(int newIndex)
+    {
+        currentBackgroundImageIndex = newIndex;
+        PlayerPrefs.SetInt("splashBackgroundImageIndex", currentBackgroundImageIndex);
+        if (backgroundImageSprites.Count > currentBackgroundImageIndex && backgroundImage != null)
+        {
+            backgroundImage.sprite = backgroundImageSprites[currentBackgroundImageIndex];
+        }
+    }
 
     public void SwitchScene(int buildIndex)
     {
@@ -19,8 +48,8 @@ public class SceneSwitcher : MonoBehaviour
         if (!isTransitioning)
         {
             isTransitioning = true;
-            StartCoroutine(SwitchWithFade(buildIndex));
             OnSwitchScene.Invoke();
+            StartCoroutine(SwitchWithFade(buildIndex));
         }
     }
 
@@ -28,7 +57,7 @@ public class SceneSwitcher : MonoBehaviour
     {
         fadeAnimator.StopPlayback();
         fadeAnimator.Play("FadeIn");
-        yield return new WaitForSecondsRealtime(fadeDuration);
+        yield return new WaitForSecondsRealtime(waitDuration + fadeDuration);
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync(buildIndex, LoadSceneMode.Single);
     }
@@ -37,7 +66,7 @@ public class SceneSwitcher : MonoBehaviour
     {
         fadeAnimator.StopPlayback();
         fadeAnimator.Play("FadeIn");
-        yield return new WaitForSecondsRealtime(fadeDuration);
+        yield return new WaitForSecondsRealtime(waitDuration + fadeDuration);
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync(SceneManager.GetSceneByName(sceneName).buildIndex, LoadSceneMode.Single);
     }
@@ -68,5 +97,5 @@ public class SceneSwitcher : MonoBehaviour
     public void InstantReloadScene()
     {
         InstantSwitch(SceneManager.GetActiveScene().buildIndex);
-    }    
+    }
 }

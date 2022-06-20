@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: Game Profile
+  m_Name: Cutscene camera - Preview
   m_EditorClassIdentifier: 
   components:
   - {fileID: 7486480346336514086}
@@ -150,13 +150,13 @@ MonoBehaviour:
     m_Value: 0
   focusDistance:
     m_OverrideState: 1
-    m_Value: 43.4
+    m_Value: 3.72
   aperture:
     m_OverrideState: 1
-    m_Value: 11.9
+    m_Value: 2.2
   focalLength:
     m_OverrideState: 1
-    m_Value: 300
+    m_Value: 60
   bladeCount:
     m_OverrideState: 0
     m_Value: 3
