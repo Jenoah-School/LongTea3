@@ -12,7 +12,7 @@ public class Heal : FighterPower
     public override void Activate()
     {
         StartCoroutine(HealFighter());
-
+        OnTrigger.Invoke();
         healParticles.Play();
     }
 
