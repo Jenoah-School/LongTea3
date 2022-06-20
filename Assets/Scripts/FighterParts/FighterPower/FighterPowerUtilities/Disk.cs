@@ -58,13 +58,11 @@ public class Disk : Projectile
         rotationSpeed += 0.1f;
         model.transform.Rotate(transform.up, rotationSpeed);
 
-        if(isMoving)
+        if (isMoving)
         {
             var step = moveSpeed * Time.deltaTime;
             transform.position += transform.forward * (moveSpeed / 100);
             transform.forward = Vector3.Lerp(transform.forward, (target.transform.position - transform.position).normalized, diskAccuracy);
-
-            //transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
         }
     }
 

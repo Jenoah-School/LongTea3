@@ -8986,8 +8986,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1093fbe4a48d8eb4d840a39b8d77762e, type: 2}
   - {fileID: 11400000, guid: 9a6afab0c4bffa240a14180bd8b3950f, type: 2}
   fighterPowerups:
+  - {fileID: 11400000, guid: d20f36ef9cb90cc45b0e7819a5bd12b0, type: 2}
+  - {fileID: 11400000, guid: 9fcfc323340a2c44f8b864af58e3ac8b, type: 2}
   - {fileID: 11400000, guid: 9ec882c9bed34234da4a89957381ccbd, type: 2}
+  - {fileID: 11400000, guid: ba58dc60963d8e84d8a6daded9f52c4f, type: 2}
   - {fileID: 11400000, guid: bda46303c40749d4d9b12fd5ff9c0e9e, type: 2}
+  - {fileID: 11400000, guid: 31fb8fe4b665d394e90d992106597d30, type: 2}
   currentBodyID: 0
   currentRangedWeaponID: 0
   currentMeleeWeaponID: 0
