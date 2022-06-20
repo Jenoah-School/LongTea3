@@ -128,8 +128,8 @@ public class Fighter : MonoBehaviour
             if(healthSmokeEmissionModule.rateOverTime.constant != 0) healthSmokeMaxEmission = healthSmokeEmissionModule.rateOverTime.constant;
             healthSmokeEmissionModule.rateOverTime = 0f;
             healthSmoke.Play();
-
         }
+        if(powerup) powerup.SetFighterRoot(this);
     }
 
     private void SetCenterOfMass()
