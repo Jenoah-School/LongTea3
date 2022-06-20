@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Mine : Projectile
 {
     [SerializeField] GameObject model;
     [SerializeField] ParticleSystem explosion;
+    [SerializeField] UnityEvent OnHitTarget;
+    [SerializeField] UnityEvent OnBounce;
 
     private float mineDamage;
     private float mineHitLaunchForce;
@@ -32,6 +35,7 @@ public class Mine : Projectile
         GetComponent<Rigidbody>().isKinematic = true;
 
         Fighter hitFighter = GetHitFighter();
+        OnHitTarget.Invoke();
 
         Vector3 forceDirectionVector = (hitFighter.transform.position - transform.position).normalized;
 
@@ -40,6 +44,14 @@ public class Mine : Projectile
         hitFighter.TakeDamage(mineDamage, fighterRoot);
 
         explosion.Play();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject != fighterRoot.gameObject)
+        {
+            OnBounce.Invoke();
+        }
     }
 
     private IEnumerator DestroyAfterTime()

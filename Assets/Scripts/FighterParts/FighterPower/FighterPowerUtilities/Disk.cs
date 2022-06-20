@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class Disk : Projectile
 {
@@ -11,6 +12,7 @@ public class Disk : Projectile
     float initialModelScale;
 
     [SerializeField] Fighter target;
+    [SerializeField] UnityEvent OnHitTarget;
 
     float damage;
     float moveSpeed;
@@ -50,6 +52,7 @@ public class Disk : Projectile
         Debug.Log("HIT FIGHTER");
         Fighter hitFighter = GetHitFighter();
         Destroy(this.gameObject);
+        OnHitTarget.Invoke();
         hitFighter.TakeDamage(damage, fighterRoot);
     }
 
