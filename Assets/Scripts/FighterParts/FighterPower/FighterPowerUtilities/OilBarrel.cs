@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class OilBarrel : Projectile
 {
     [SerializeField] GameObject oilBarrelModel;
     [SerializeField] Oil oilPattern;
+    [SerializeField] UnityEvent OnHitFloor;
 
     float damage;
     float duration;
@@ -45,6 +47,7 @@ public class OilBarrel : Projectile
             oilPattern.transform.eulerAngles = new Vector3(90, 0, 0);
             oilPattern.transform.position = new Vector3(oilPattern.transform.position.x, (hitObject.transform.position.y + hitObject.transform.localScale.y / 2) + 0.001f, oilPattern.transform.position.z);
             oilPattern.transform.DOScale(Random.Range(maxSize / 2, maxSize), 2);
+            OnHitFloor.Invoke();
         }       
     }
 
