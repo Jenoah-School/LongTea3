@@ -251,7 +251,6 @@ public class Fighter : MonoBehaviour
     private void FallDamage(Collision collision)
     {
         //Debug.Log("FALL DAMAGE");
-        Vector3 direction = collision.transform.position - transform.position;
         //Debug.Log(direction);
         if (Mathf.Abs(collision.relativeVelocity.y) > 10 && Time.time > lastFallDmgTime && !playerMovement.IsGrounded())
         {
@@ -310,7 +309,6 @@ public class Fighter : MonoBehaviour
             }
         }
 
-        damageTextClone.color = new Color(fighterColor.r, fighterColor.g, fighterColor.b, damageTextClone.color.a);
         damageTextClone.GetComponent<Fade3DText>().StartFadeOut();
 
         if (damageTextClone.alpha < 0.0001f)
