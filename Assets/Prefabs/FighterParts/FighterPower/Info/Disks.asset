@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partID: 0
   previewImage: {fileID: 21300000, guid: bc7ed106fad890443bb37defdc8ff1b6, type: 3}
-  partDescription: 'Needs description: 0s'
+  partDescription: 'Fires three discs that chase down your enemies. Cooldown: 15s'
   powerupName: Doom Disks
