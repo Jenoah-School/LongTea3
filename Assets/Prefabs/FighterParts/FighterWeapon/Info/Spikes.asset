@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5274a77336dd73a41a6ed7d6aed3a684, type: 3}
-  m_Name: Laser
+  m_Name: Spikes
   m_EditorClassIdentifier: 
-  partID: 4
-  previewImage: {fileID: 21300000, guid: fef5e2d70f9cb5440a40a64353236087, type: 3}
-  partDescription: 'Infinite range and reflective laser. '
-  weaponName: Laser
+  partID: 7
+  previewImage: {fileID: 21300000, guid: 9a7ddd2a7d13c4d1db0fe839441f3e3b, type: 3}
+  partDescription: 'Deals damage on contact. Gives a temporary speed boost when activated. '
+  weaponName: Spikes
   damage: 7
-  range: 30
+  range: 1.5

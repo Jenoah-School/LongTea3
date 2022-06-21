@@ -21,6 +21,7 @@ public class Sawblade : FighterWeapon
             {
                 prevExtendTime = Time.time + cooldown;
                 StartCoroutine(ExtendWeapon());
+                OnAttack.Invoke(); 
             }
         }
     }
@@ -41,6 +42,7 @@ public class Sawblade : FighterWeapon
         sawBladeObject.transform.DOLocalMoveZ(2, extendTime/3);
         yield return new WaitForSeconds(extendTime);
         sawBladeObject.transform.DOLocalMoveZ(initialZPos, extendTime/3);
+        OnStop.Invoke(); 
     }
 
     void Start()

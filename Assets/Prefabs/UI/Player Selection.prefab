@@ -8981,10 +8981,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 65dee5edc3fb25d42aecc8e0d4be8fae, type: 2}
   - {fileID: 11400000, guid: 604ed81fd819b8844b7a62c87e9f9fb5, type: 2}
   - {fileID: 11400000, guid: d2ab148192fbc474085d1fb1b7b20c26, type: 2}
+  - {fileID: 11400000, guid: 9a6afab0c4bffa240a14180bd8b3950f, type: 2}
   fighterMeleeWeapons:
   - {fileID: 11400000, guid: 7786e83f13f0ce648bc81ef4bc3d7942, type: 2}
   - {fileID: 11400000, guid: 1093fbe4a48d8eb4d840a39b8d77762e, type: 2}
-  - {fileID: 11400000, guid: 9a6afab0c4bffa240a14180bd8b3950f, type: 2}
+  - {fileID: 11400000, guid: def9a6664506b9c48b11e7c1a09a36f7, type: 2}
+  - {fileID: 11400000, guid: 28f536d2cdb14df4886ee3d3a759d022, type: 2}
   fighterPowerups:
   - {fileID: 11400000, guid: d20f36ef9cb90cc45b0e7819a5bd12b0, type: 2}
   - {fileID: 11400000, guid: 9fcfc323340a2c44f8b864af58e3ac8b, type: 2}
