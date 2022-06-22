@@ -65,7 +65,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   healTime: 10
-  healAmountPerSecond: 5
+  healAmountPerSecond: 15
   healParticles: {fileID: 5767297060970733061}
 --- !u!198 &5767297060970733061
 ParticleSystem:
