@@ -15,6 +15,7 @@ MonoBehaviour:
   partID: 5
   previewImage: {fileID: 21300000, guid: 2dfb8241ba26aa148a0bc592f68e80a8, type: 3}
   partDescription: 'Sends out a shockwave that deals AOE damage to all players within
-    its range. Cooldown: 30s'
+    its range. '
   powerupName: Shockwave
   powerHUDIcon: {fileID: 21300000, guid: a0df5b9f23473c14fb82f7fb46f709b3, type: 3}
+  cooldownTime: 30

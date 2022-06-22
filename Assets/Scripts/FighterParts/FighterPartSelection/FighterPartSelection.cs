@@ -58,6 +58,7 @@ public class FighterPartSelection : MonoBehaviour
     [SerializeField] private TextMeshProUGUI powerupDescriptionField = null;
     [SerializeField] private string cooldownFieldPrefix = "Cooldown:";
     [SerializeField] private TextMeshProUGUI powerupCooldownField = null;
+    [SerializeField] private string cooldownFieldEnd = "s";
 
     [Header("Part flashing")]
     [SerializeField] private float flashSpeed = 0.2f;
@@ -253,7 +254,7 @@ public class FighterPartSelection : MonoBehaviour
 
         if (powerupNameField != null) powerupNameField.text = fighterPowerup.powerupName;
         if(powerupDescriptionField != null) powerupDescriptionField.SetText($"{fighterPowerup.partDescription}");
-        if (powerupCooldownField != null) powerupCooldownField.SetText($"{cooldownFieldPrefix}{fighterPowerup.cooldownTime}");
+        if (powerupCooldownField != null) powerupCooldownField.SetText($"{cooldownFieldPrefix}{fighterPowerup.cooldownTime}{cooldownFieldEnd}");
 
         OnChangePart.Invoke();
 
