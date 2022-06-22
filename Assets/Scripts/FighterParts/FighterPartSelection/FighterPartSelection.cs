@@ -20,10 +20,16 @@ public class FighterPartSelection : MonoBehaviour
     public int currentMeleeWeaponID = 0;
     public int currentPowerupID = 0;
 
+    private int currentSelectedRangedWeaponIndex = 0;
+    private int currentSelectedMeleeWeaponIndex = 0;
+
     private int currentBodyIndex;
     private int currentRangedWeaponIndex;
     private int currentMeleeWeaponIndex;
     private int currentPowerupIndex;
+
+    private FighterWeapon.WeaponLocations rangedWeaponLocation = FighterWeapon.WeaponLocations.TOP;
+    private FighterWeapon.WeaponLocations meleeWeaponLocation = FighterWeapon.WeaponLocations.SIDE;
 
     [Header("General references")]
     [SerializeField] private Fighter fighterReference;
@@ -59,6 +65,8 @@ public class FighterPartSelection : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private UnityEvent OnChangePart = new UnityEvent();
+    [SerializeField] private UnityEvent OnWeaponLocationNotAvailable = new UnityEvent();
+    [SerializeField] private UnityEvent OnWeaponLocationAvailable = new UnityEvent();
 
     private float maxAvailableHP = 0;
     private float maxAvailableAttack = 0;
@@ -156,55 +164,84 @@ public class FighterPartSelection : MonoBehaviour
 
     public void ChangeRangedWeapon(int index)
     {
-        currentRangedWeaponIndex = index;
-        FighterWeaponInformation fighterWeapon = fighterRangedWeapons[currentRangedWeaponIndex];
-        currentRangedWeaponID = fighterWeapon.partID;
+        currentSelectedRangedWeaponIndex = index;
+        FighterWeaponInformation fighterWeapon = fighterRangedWeapons[currentSelectedRangedWeaponIndex];
+        FighterWeapon.WeaponLocations currentWeaponLocation = FighterCreator.singleton.fighterWeapons[fighterWeapon.partID].weaponLocation;
+
+        if (meleeWeaponLocation == currentWeaponLocation)
+        {
+            //Not available
+            OnWeaponLocationNotAvailable.Invoke();
+        }
+        else
+        {
+            currentRangedWeaponIndex = currentSelectedRangedWeaponIndex;
+            currentRangedWeaponID = fighterWeapon.partID;
+            rangedWeaponLocation = currentWeaponLocation;
+
+            OnChangePart.Invoke();
+            OnWeaponLocationAvailable.Invoke();
+            rangedWeaponChanged = true;
+        }
         if (rangedWeaponNameField != null) rangedWeaponNameField.text = fighterWeapon.weaponName;
         if (rangedWeaponDescription != null) rangedWeaponDescription.SetText($"{fighterWeapon.partDescription}");
 
         rangedDamageBar.DOFillAmount(1f / maxRangedWeaponDamage * fighterWeapon.damage, 0.1f);
         rangedRangeBar.DOFillAmount(1f / maxRangedWeaponRange * fighterWeapon.range, 0.1f);
 
-        OnChangePart.Invoke();
-
-        rangedWeaponChanged = true;
+        
     }
 
     public void ChangeMeleeWeapon(int index)
     {
-        currentMeleeWeaponIndex = index;
-        FighterWeaponInformation fighterWeapon = fighterMeleeWeapons[currentMeleeWeaponIndex];
-        currentMeleeWeaponID = fighterWeapon.partID;
+        currentSelectedMeleeWeaponIndex = index;
+        Debug.Log(currentSelectedMeleeWeaponIndex);
+        FighterWeaponInformation fighterWeapon = fighterMeleeWeapons[currentSelectedMeleeWeaponIndex];
+        FighterWeapon.WeaponLocations currentWeaponLocation = FighterCreator.singleton.fighterWeapons[fighterWeapon.partID].weaponLocation;
+        if (rangedWeaponLocation == currentWeaponLocation)
+        {
+            //Not available
+            OnWeaponLocationNotAvailable.Invoke();
+        }
+        else
+        {
+            currentMeleeWeaponIndex = currentSelectedMeleeWeaponIndex;
+            currentMeleeWeaponID = fighterWeapon.partID;
+            meleeWeaponLocation = currentWeaponLocation;
+
+            OnChangePart.Invoke();
+            meleeWeaponChanged = true;
+            OnWeaponLocationAvailable.Invoke();
+        }
+        
         if (meleeWeaponNameField != null) meleeWeaponNameField.text = fighterWeapon.weaponName;
         if (meleeWeaponDescription != null) meleeWeaponDescription.SetText($"{fighterWeapon.partDescription}");
 
         meleeDamageBar.DOFillAmount(1f / maxRangedWeaponDamage * fighterWeapon.damage, 0.1f);
         meleeRangeBar.DOFillAmount(1f / maxRangedWeaponRange * fighterWeapon.range, 0.1f);
 
-        OnChangePart.Invoke();
-
-        meleeWeaponChanged = true;
+        
     }
 
 
     public void SelectNextRangedWeapon()
     {
-        ChangeRangedWeapon((currentRangedWeaponIndex + 1) % fighterRangedWeapons.Count);
+        ChangeRangedWeapon((currentSelectedRangedWeaponIndex + 1) % fighterRangedWeapons.Count);
     }
 
     public void SelectNextMeleeWeapon()
     {
-        ChangeMeleeWeapon((currentMeleeWeaponIndex + 1) % fighterMeleeWeapons.Count);
+        ChangeMeleeWeapon((currentSelectedMeleeWeaponIndex + 1) % fighterMeleeWeapons.Count);
     }
 
     public void SelectPreviousRangedWeapon()
     {
-        ChangeRangedWeapon(currentRangedWeaponIndex - 1 >= 0 ? currentRangedWeaponIndex - 1 : fighterRangedWeapons.Count - 1);
+        ChangeRangedWeapon(currentSelectedRangedWeaponIndex - 1 >= 0 ? currentSelectedRangedWeaponIndex - 1 : fighterRangedWeapons.Count - 1);
     }
 
     public void SelectPreviousMeleeWeapon()
     {
-        ChangeMeleeWeapon(currentMeleeWeaponIndex - 1 >= 0 ? currentMeleeWeaponIndex - 1 : fighterMeleeWeapons.Count - 1);
+        ChangeMeleeWeapon(currentSelectedMeleeWeaponIndex - 1 >= 0 ? currentSelectedMeleeWeaponIndex - 1 : fighterMeleeWeapons.Count - 1);
     }
 
     #endregion
