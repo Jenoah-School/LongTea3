@@ -11,6 +11,7 @@ public class Shield : FighterPower
     {
         StartCoroutine(ShieldFighter());
         OnTrigger.Invoke();
+        fighterRoot.onUsePowerup();
     }
 
     IEnumerator ShieldFighter()

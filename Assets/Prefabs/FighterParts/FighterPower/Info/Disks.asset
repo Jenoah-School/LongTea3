@@ -16,3 +16,4 @@ MonoBehaviour:
   previewImage: {fileID: 21300000, guid: bc7ed106fad890443bb37defdc8ff1b6, type: 3}
   partDescription: 'Fires three discs that chase down your enemies. Cooldown: 15s'
   powerupName: Doom Disks
+  powerHUDIcon: {fileID: 21300000, guid: dc92b2779c39b97438408834237a5244, type: 3}

@@ -16,3 +16,4 @@ MonoBehaviour:
   previewImage: {fileID: 21300000, guid: ce8c1ff61cbbac54e89d6097ff3e7ff3, type: 3}
   partDescription: 'Recovers your health overtime. Cooldown: 30s'
   powerupName: Repair
+  powerHUDIcon: {fileID: 21300000, guid: b6d9b58e787dbb249aadbba654548b15, type: 3}

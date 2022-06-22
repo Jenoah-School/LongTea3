@@ -14,6 +14,7 @@ public class OilSlick : FighterPower
     {
         ShootBarrel();
         OnTrigger.Invoke();
+        fighterRoot.onUsePowerup();
     }
 
     private void ShootBarrel()

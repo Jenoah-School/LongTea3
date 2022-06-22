@@ -17,3 +17,4 @@ MonoBehaviour:
   partDescription: 'Spawns several mines that randomly bounce around the arena. Cooldown:
     20s'
   powerupName: Roller Mines
+  powerHUDIcon: {fileID: 21300000, guid: 1b3cb1db5b374a34891413da65cde963, type: 3}

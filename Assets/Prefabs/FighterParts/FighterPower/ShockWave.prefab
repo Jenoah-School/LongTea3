@@ -95,6 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f52458d941c3b4eae4246812ca555c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fighterPowerInformation: {fileID: 11400000, guid: 31fb8fe4b665d394e90d992106597d30,
+    type: 2}
   cooldown: 30
   OnTrigger:
     m_PersistentCalls:

@@ -14,7 +14,8 @@ public class LaunchMines : FighterPower
 
     public override void Activate()
     {
-        StartCoroutine(FireMines());  
+        StartCoroutine(FireMines());
+        fighterRoot.onUsePowerup();
         OnTrigger.Invoke();  
     }
 

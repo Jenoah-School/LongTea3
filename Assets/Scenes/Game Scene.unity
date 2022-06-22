@@ -451,7 +451,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7772397, y: 1}
+    m_SensorSize: {x: 1.779703, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1480,12 +1480,47 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 329748169}
     m_Modifications:
+    - target: {fileID: 258180867291624820, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 0.85
+      objectReference: {fileID: 0}
     - target: {fileID: 5241508551550743558, guid: 14a29a36ee4100c448631d9a89539e31,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 140091b6a37b14146a005f1fb780f6cc,
         type: 3}
+    - target: {fileID: 7788131980878232617, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.175
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788131980878232617, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.475
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788131980878232617, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1.1e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788131980878232617, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788131980878232617, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7788131980878232617, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7932993669650361086, guid: 14a29a36ee4100c448631d9a89539e31,
         type: 3}
       propertyPath: m_Name
@@ -1494,7 +1529,7 @@ PrefabInstance:
     - target: {fileID: 7932993669650361086, guid: 14a29a36ee4100c448631d9a89539e31,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7932993669650361087, guid: 14a29a36ee4100c448631d9a89539e31,
         type: 3}
@@ -1600,6 +1635,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932993669879161238, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -208
+      objectReference: {fileID: 0}
+    - target: {fileID: 7932993669879161238, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 96
       objectReference: {fileID: 0}
     - target: {fileID: 7932993670790699509, guid: 14a29a36ee4100c448631d9a89539e31,
         type: 3}
@@ -5142,9 +5187,9 @@ MonoBehaviour:
   defaultFighterBuild:
     playerID: 0
     bodyID: 0
-    rangedWeaponID: 0
-    meleeWeaponID: 0
-    powerupID: 0
+    rangedWeaponID: 2
+    meleeWeaponID: 1
+    powerupID: 2
     ranking: 0
     fighterColor: {r: 0, g: 0, b: 0, a: 0}
   showPlayerRing: 1
@@ -7357,6 +7402,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: cf71446e7cd560a41980ee8716d25f69,
         type: 3}
+    - target: {fileID: 7788131980878232617, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7932993669003594537, guid: 14a29a36ee4100c448631d9a89539e31,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -7606,7 +7656,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7772397, y: 1}
+    m_SensorSize: {x: 1.779703, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8069,6 +8119,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: f3126465297856a409cc5451ffc074ca,
         type: 3}
+    - target: {fileID: 7788131980878232617, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7932993669003594537, guid: 14a29a36ee4100c448631d9a89539e31,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -8669,6 +8724,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 329748169}
     m_Modifications:
+    - target: {fileID: 7788131980878232617, guid: 14a29a36ee4100c448631d9a89539e31,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7932993669003594537, guid: 14a29a36ee4100c448631d9a89539e31,
         type: 3}
       propertyPath: m_AnchoredPosition.x
