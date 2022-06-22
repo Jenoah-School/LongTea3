@@ -153,7 +153,6 @@ public class Laser : FighterWeapon, IWeapon
             }
             else if (endPointParticles != null && endPointParticles.isPlaying) endPointParticles.Stop();
 
-            Debug.Log($"Hit {hit.transform.name}");
             if (hit.transform.root != transform.root && hit.transform.GetComponentInParent<Fighter>())
             {
                 Fighter otherFighter = hit.transform.GetComponentInParent<Fighter>();
