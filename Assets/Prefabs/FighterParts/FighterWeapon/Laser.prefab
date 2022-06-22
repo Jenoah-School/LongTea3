@@ -5147,10 +5147,10 @@ MonoBehaviour:
   knockbackForceSelf: 15
   knockbackForceHit: 3
   lineSegmentCount: 10
-  maxLineDistance: 30
+  maxLineDistance: 80
   lineHitLayers:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 129
   canReflect: 1
   reflectableSurfaces: Mirror
   reflectionLineRenderer: {fileID: 1195044126437405625}
