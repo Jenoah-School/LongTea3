@@ -60,7 +60,6 @@ public class CutsceneManager : MonoBehaviour
 
             camerasToCycle[i].Priority = highPriority;
             yield return new WaitForSeconds(transitionTime);
-            Debug.Log("Heey " + i);
         }
 
         foreach (CinemachineVirtualCamera cycleCamera in camerasToCycle)
