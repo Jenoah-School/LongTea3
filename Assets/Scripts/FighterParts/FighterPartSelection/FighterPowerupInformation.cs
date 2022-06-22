@@ -7,4 +7,5 @@ public class FighterPowerupInformation : FighterPartInformation
 {
     public string powerupName = "Powerup name";
     public Sprite powerHUDIcon = null;
+    public int cooldownTime = 10;
 }
