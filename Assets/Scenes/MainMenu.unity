@@ -716,7 +716,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -5646,6 +5646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45e3ca3b4e41284fad527f3c0a897ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fighterPowerInformation: {fileID: 0}
   cooldown: 2
   OnTrigger:
     m_PersistentCalls:
@@ -7262,23 +7263,10 @@ MonoBehaviour:
   spawnFighter: 0
   showCutscene: 1
   spawnFighterController: 1
-  spawnFighterSceneIndex: 3
+  spawnFighterSceneIndex: 2
   OnPlayerJoin:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 73d3a3b173bb6514e8d9e492cbd8fc29,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 940446367}
         m_TargetAssemblyTypeName: FadeUI, Assembly-CSharp
         m_MethodName: FadeIn
