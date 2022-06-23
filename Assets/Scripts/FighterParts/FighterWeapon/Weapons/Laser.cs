@@ -146,7 +146,6 @@ public class Laser : FighterWeapon, IWeapon
                 reflectionLineRenderer.enabled = false;
             }
 
-
             if (endPointParticles)
             {
                 endPointParticles.transform.SetPositionAndRotation(hit.point, Quaternion.LookRotation(hit.normal));
@@ -160,7 +159,6 @@ public class Laser : FighterWeapon, IWeapon
                 otherFighter.GetRigidBody().velocity += knockbackForceHit * Mathf.Abs(Physics.gravity.y) * Time.deltaTime * transform.forward;
                 if (Time.time > nextDamageTime)
                 {
-
                     otherFighter.TakeDamage(damage, fighterRoot);
                     nextDamageTime = Time.time + damageTime;
                 }

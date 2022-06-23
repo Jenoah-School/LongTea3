@@ -256,6 +256,7 @@ public class Fighter : MonoBehaviour
         {
             lastFallDmgTime = Time.time + 1;
             float fallDamage = Mathf.Abs(Mathf.Round(collision.relativeVelocity.magnitude * fallDamageMultiplier));
+            if (fallDamage > 100) fallDamage = 100;
             TakeDamage(fallDamage, this);
         }
     }
