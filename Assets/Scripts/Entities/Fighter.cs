@@ -38,11 +38,11 @@ public class Fighter : MonoBehaviour
 
     [Header("Health")]
     public bool isDead = false;
-    public OnTakeDamage onAttack;
-    public OnTakeDamage onTakeDamage;
-    public OnUsePowerup onUsePowerup;
     public delegate void OnTakeDamage();
     public delegate void OnAttack();
+    public OnAttack onAttack;
+    public OnTakeDamage onTakeDamage;
+    public OnUsePowerup onUsePowerup;
     public delegate void OnUsePowerup();
     [SerializeField] private int fallDamageTreshHold;
     [SerializeField] private float fallDamageMultiplier;
@@ -255,13 +255,12 @@ public class Fighter : MonoBehaviour
 
     private void FallDamage(Collision collision)
     {
-        //Debug.Log("FALL DAMAGE");
-        //Debug.Log(direction);
         if (Mathf.Abs(collision.relativeVelocity.y) > 10 && Time.time > lastFallDmgTime && !playerMovement.IsGrounded())
         {
             lastFallDmgTime = Time.time + 1;
             float fallDamage = Mathf.Abs(Mathf.Round(collision.relativeVelocity.magnitude * fallDamageMultiplier));
             if (fallDamage > 100) fallDamage = 100;
+            Debug.Log("falldamage " + fallDamage);
             TakeDamage(fallDamage, this);
         }
     }
@@ -272,11 +271,10 @@ public class Fighter : MonoBehaviour
         if (origin == null) origin = this;
 
         damage = (float)System.Math.Round(damage, 2);
-        Debug.Log(origin);
-        damage = damage + (damage / 100 * (100 - origin.GetBody().GetDamageIncrease()));
+        damage = damage + (damage / 100 * origin.GetBody().GetDamageIncrease());
         damage = damage / 100 * (100 - body.GetDamageReduction());
 
-        healthPoints -= damage;  
+        healthPoints -= damage;
 
         if (showDamage) DamageIndication(damage, origin, doStack);
         if (healthPoints > startHealth) healthPoints = startHealth;

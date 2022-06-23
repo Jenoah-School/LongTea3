@@ -907,8 +907,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterHealth: 0
+  hasRandomizedSettings: 0
+  maxRandomizedMoveSpeedRange: {x: 8, y: 12}
+  maxRandomizedAccelerationRange: {x: 20, y: 30}
+  randomizedBrakeDrag: {x: 0.05, y: 0.2}
+  randomizedDriftDrag: {x: 0.05, y: 0.6}
   maxMoveSpeed: 10
   accelerationSpeed: 25
+  damageIncreasePercentage: 0
+  defenceIncreasePercentage: 0
   brakeDrag: 0.1
   driftDrag: 0.4
   airDrag: 0.6
@@ -4382,7 +4389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e4edda49a1ba24da39281bc1f29acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 8
+  waitTime: 14
   autoStart: 1
   timedEvent:
     m_PersistentCalls:
@@ -6115,11 +6122,11 @@ AudioSource:
   m_GameObject: {fileID: 1563338896}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -4823663591530247096, guid: 3a421fc3667c3384085ee29a2ed96507,
+  OutputAudioMixerGroup: {fileID: 621274346667890660, guid: 3a421fc3667c3384085ee29a2ed96507,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 4023290c2c89cf04cbc5aa9867bfc318, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7009,6 +7016,7 @@ MonoBehaviour:
   body: {fileID: 369872824}
   fighterWeapons: []
   powerup: {fileID: 1641337507}
+  controllerHaptics: {fileID: 0}
   fighterID: 0
   fighterColor: {r: 0, g: 0, b: 0, a: 0}
   healthPoints: 0

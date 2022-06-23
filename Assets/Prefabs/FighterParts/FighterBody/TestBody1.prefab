@@ -56,18 +56,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterHealth: 2000
+  hasRandomizedSettings: 0
+  maxRandomizedMoveSpeedRange: {x: 8, y: 12}
+  maxRandomizedAccelerationRange: {x: 20, y: 30}
+  randomizedBrakeDrag: {x: 0.05, y: 0.2}
+  randomizedDriftDrag: {x: 0.05, y: 0.6}
+  maxMoveSpeed: 10
+  accelerationSpeed: 25
+  damageIncreasePercentage: 0
+  defenceIncreasePercentage: 0
+  brakeDrag: 0.1
+  driftDrag: 0.4
+  airDrag: 0.01
+  airVerticalDrag: 0.001
+  antennaMeshRenderer: {fileID: 0}
   weaponLocationFront: {fileID: 8593379393771262636}
   weaponLocationTop: {fileID: 7491732604597283371}
   weaponLocationSideLeft: {fileID: 8107035010811674230}
   weaponLocationSideRight: {fileID: 7131825856648458052}
   centerOfMass: {fileID: 9152473357928948603}
   groundCheckOrigin: {fileID: 5992294362605993573}
-  maxMoveSpeed: 10
-  accelerationSpeed: 25
-  brakeDrag: 0.1
-  driftDrag: 0.4
-  airDrag: 0.6
-  airVerticalDrag: 0.025
 --- !u!1 &3101863549987363965
 GameObject:
   m_ObjectHideFlags: 0
