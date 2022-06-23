@@ -10,6 +10,9 @@ public class FighterBody : FighterPart
     [SerializeField] private float maxMoveSpeed = 10f;
     [SerializeField] private float accelerationSpeed = 25f;
 
+    [SerializeField, Range(0, 100)] private int damageIncreasePercentage = 0;
+    [SerializeField, Range(0, 100)] private int defenceIncreasePercentage = 0;
+
     [Header("Drag")]
     [SerializeField, Range(0f, 1f)] private float brakeDrag = .1f;
     [SerializeField, Range(0f, 1f)] private float driftDrag = 0.4f;
@@ -35,6 +38,16 @@ public class FighterBody : FighterPart
     {
         origionalBrakeDrag = brakeDrag;
         origionalDriftDrag = driftDrag;
+    }
+
+    public int GetDamageReduction()
+    {
+        return defenceIncreasePercentage;
+    }
+
+    public int GetDamageIncrease()
+    {
+        return damageIncreasePercentage;
     }
 
     public float GetBrakeDrag()
