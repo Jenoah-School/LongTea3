@@ -908,6 +908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fighterHealth: 0
   hasRandomizedSettings: 0
+  healthRange: {x: 800, y: 1200}
   maxRandomizedMoveSpeedRange: {x: 8, y: 12}
   maxRandomizedAccelerationRange: {x: 20, y: 30}
   randomizedBrakeDrag: {x: 0.05, y: 0.2}
@@ -6138,7 +6139,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 4023290c2c89cf04cbc5aa9867bfc318, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
