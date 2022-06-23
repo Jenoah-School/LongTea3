@@ -31,7 +31,7 @@ public class LaunchMines : FighterPower
             mine.GetComponent<Rigidbody>().AddTorque(new Vector3(Random.Range(-1, 0), Random.Range(-1, 0), Random.Range(-1, 0)) * Random.Range(100,500));
             mine.SetVariables(damage, mineLaunchForce, mineLifetime, fighterRoot);
 
-            //fighterRoot.IgnoreCollisionWithObject(mine.gameObject);
+            fighterRoot.IgnoreCollisionWithObject(mine.gameObject);
 
             yield return new WaitForSeconds(0.25f);
         }

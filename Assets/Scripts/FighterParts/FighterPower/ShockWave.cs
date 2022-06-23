@@ -31,6 +31,7 @@ public class ShockWave : FighterPower
 
     public override void Activate()
     {
+        Debug.Log(fighterRoot.onUsePowerup);
         StartCoroutine(FireRing());
         OnTrigger.Invoke();
         fighterRoot.onUsePowerup();
@@ -65,6 +66,7 @@ public class ShockWave : FighterPower
                 Debug.Log("HIT" + hitFighter.name);
                 hitFighters.Add(hitFighter);
                 hitFighter.TakeDamage(ringDamage, fighterRoot);
+                hitFighter.GetComponent<Rigidbody>().AddForce((( hitFighter.transform.position - transform.position).normalized + fighterRoot.transform.up * 2) * ((350) * (3 * 20)) * Mathf.Abs(Physics.gravity.y / 10));
             }
         }
     }
