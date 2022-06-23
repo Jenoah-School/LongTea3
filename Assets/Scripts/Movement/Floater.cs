@@ -13,13 +13,13 @@ public class Floater : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        offset = transform.position;
+        offset = transform.localPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
         elapsedTime += Time.deltaTime * speed;
-        transform.position = offset + new Vector3(0, Mathf.Sin(elapsedTime) * distance, 0);
+        transform.localPosition = offset + new Vector3(0, Mathf.Sin(elapsedTime) * distance, 0);
     }
 }

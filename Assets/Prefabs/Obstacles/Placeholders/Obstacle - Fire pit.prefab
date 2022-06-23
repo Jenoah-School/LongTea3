@@ -290,8 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05adbfb1197780c47a254ee103cf1574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 20
-  cooldown: 0.3
+  damageAmount: 15
+  cooldown: 0.5
   OnHit:
     m_PersistentCalls:
       m_Calls: []
@@ -348,14 +348,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1d0f4db52952e4da6df9333a823216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireParticle: {fileID: 442432435466173652}
-  damageOverTime: {fileID: 4748110816915136756}
   offTime: 30
   onTime: 10
+  startDelay: {x: 0, y: 0}
+  isOnTimer: 0
+  onTurnOn:
+    m_PersistentCalls:
+      m_Calls: []
+  onTurnOff:
+    m_PersistentCalls:
+      m_Calls: []
+  fireParticle: {fileID: 442432435466173652}
+  damageOverTime: {fileID: 4748110816915136756}
   fireAudioSource: {fileID: 4748110817008683343}
   targetFireVolume: 0.6
   audioFadeDuration: 0.3
-  isOnTimer: 0
 --- !u!82 &4748110817008683343
 AudioSource:
   m_ObjectHideFlags: 0

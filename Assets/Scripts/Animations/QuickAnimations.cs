@@ -189,6 +189,11 @@ public class QuickAnimations : MonoBehaviour
         }
     }
 
+    public void SetScale(float newScale)
+    {
+        transform.localScale = Vector3.one * newScale;
+    }
+
     public void Shake(float duration)
     {
         transform.DOShakePosition(duration, shakeStrength);

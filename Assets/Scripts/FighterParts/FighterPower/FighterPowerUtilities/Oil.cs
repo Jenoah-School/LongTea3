@@ -16,8 +16,8 @@ public class Oil : MonoBehaviour
 
             if(disabling)
             {
-                affectedFighter.SetBrakeDrag(affectedFighter.GetOrigionalBrakeDrag());
-                affectedFighter.SetDriftDrag(affectedFighter.GetOrigionalDriftDrag());
+                affectedFighter.SetBrakeDrag(affectedFighter.GetOriginalBrakeDrag());
+                affectedFighter.SetDriftDrag(affectedFighter.GetOriginalDriftDrag());
             }
         }
     }
@@ -26,8 +26,8 @@ public class Oil : MonoBehaviour
         if (other.GetComponentInParent<Fighter>())
         {
             FighterBody affectedFighter = other.GetComponentInParent<Fighter>().GetBody();
-            affectedFighter.SetBrakeDrag(affectedFighter.GetOrigionalBrakeDrag());
-            affectedFighter.SetDriftDrag(affectedFighter.GetOrigionalDriftDrag());
+            affectedFighter.SetBrakeDrag(affectedFighter.GetOriginalBrakeDrag());
+            affectedFighter.SetDriftDrag(affectedFighter.GetOriginalDriftDrag());
         }
     }
 
