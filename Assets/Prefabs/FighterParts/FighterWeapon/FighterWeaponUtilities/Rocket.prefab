@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocketForce: 27.5
-  rocketHitLaunchForce: 1250
+  rocketHitLaunchForce: 400
   rocketMaxTime: 4
   explosion: {fileID: 4904167690773235388}
   model: {fileID: 5419897203111961401}
