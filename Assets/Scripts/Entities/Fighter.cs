@@ -268,13 +268,14 @@ public class Fighter : MonoBehaviour
     public void TakeDamage(float damage, Fighter origin = null, bool showDamage = true, bool doStack = false)
     {
         if (isDead || !canDamage) return;
+        if (origin == null) origin = this;
 
         damage = (float)System.Math.Round(damage, 2);
+        Debug.Log(origin);
         damage = damage + (damage / 100 * (100 - origin.GetBody().GetDamageIncrease()));
         damage = damage / 100 * (100 - body.GetDamageReduction());
 
-        healthPoints -= damage;
-        if (origin = null) origin = this;
+        healthPoints -= damage;  
 
         if (showDamage) DamageIndication(damage, origin, doStack);
         if (healthPoints > startHealth) healthPoints = startHealth;
