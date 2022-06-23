@@ -19,5 +19,5 @@ MonoBehaviour:
   hp: 150
   attack: 90
   defense: 120
-  speed: 65
+  speed: 40
   weight: 8

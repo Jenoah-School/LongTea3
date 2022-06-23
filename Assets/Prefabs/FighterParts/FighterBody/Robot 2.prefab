@@ -48,6 +48,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighterHealth: 1500
+  hasRandomizedSettings: 0
+  maxRandomizedMoveSpeedRange: {x: 8, y: 12}
+  maxRandomizedAccelerationRange: {x: 20, y: 30}
+  randomizedBrakeDrag: {x: 0.05, y: 0.2}
+  randomizedDriftDrag: {x: 0.05, y: 0.6}
   maxMoveSpeed: 10
   accelerationSpeed: 25
   damageIncreasePercentage: 0
