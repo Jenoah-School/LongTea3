@@ -21,7 +21,7 @@ public class FighterCreator : MonoBehaviour
         Fighter fighterDummy;
         if (spawnOnInitialisation)
         {
-            fighter = CreateNewFighter(0, 2, 7, 6);
+            fighter = CreateNewFighter(0, 2, 3, 4);
             fighter.transform.name = "main";
         }
         if (spawnDummyOnInitialisation)

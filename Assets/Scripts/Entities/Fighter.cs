@@ -270,6 +270,9 @@ public class Fighter : MonoBehaviour
         if (isDead || !canDamage) return;
 
         damage = (float)System.Math.Round(damage, 2);
+        damage = damage + (damage / 100 * (100 - origin.GetBody().GetDamageIncrease()));
+        damage = damage / 100 * (100 - body.GetDamageReduction());
+
         healthPoints -= damage;
         if (origin = null) origin = this;
 

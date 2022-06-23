@@ -1346,6 +1346,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6025122530168545794}
     m_Modifications:
+    - target: {fileID: 4610377694256545447, guid: 76b45c15b8ffe9f4480837b338552cf4,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610377694256545447, guid: 76b45c15b8ffe9f4480837b338552cf4,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.013207495
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610377694256545447, guid: 76b45c15b8ffe9f4480837b338552cf4,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.7905338
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610377694256545447, guid: 76b45c15b8ffe9f4480837b338552cf4,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913915100176508648, guid: 76b45c15b8ffe9f4480837b338552cf4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6466296498759598970, guid: 76b45c15b8ffe9f4480837b338552cf4,
         type: 3}
       propertyPath: m_Name
@@ -1445,6 +1470,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -19.475
+      objectReference: {fileID: 0}
+    - target: {fileID: 8628391931511601407, guid: 76b45c15b8ffe9f4480837b338552cf4,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8628391931511601407, guid: 76b45c15b8ffe9f4480837b338552cf4,
         type: 3}

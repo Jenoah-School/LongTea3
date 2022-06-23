@@ -50,6 +50,8 @@ MonoBehaviour:
   fighterHealth: 1500
   maxMoveSpeed: 10
   accelerationSpeed: 25
+  damageIncreasePercentage: 0
+  defenceIncreasePercentage: 20
   brakeDrag: 0.1
   driftDrag: 0.4
   airDrag: 0.6
