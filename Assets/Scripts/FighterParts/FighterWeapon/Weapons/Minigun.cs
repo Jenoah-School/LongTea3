@@ -7,6 +7,7 @@ public class Minigun : FighterWeapon, IWeapon
 {
     [SerializeField] float range = 20f;
     [SerializeField] float shootInterval = 0.1f;
+    [SerializeField] private bool vibrateController = true;
 
     [Header("Aim Assist")]
     [SerializeField] float aimAssistSpeed = 20;
@@ -59,6 +60,10 @@ public class Minigun : FighterWeapon, IWeapon
             nextShootTime = Time.time + shootInterval;
             CheckIfHit();
             OnAttack.Invoke();
+            if (vibrateController && fighterRoot.controllerHaptics)
+            {
+                fighterRoot.controllerHaptics.QuickHaptic();
+            }
         }       
     }
 
