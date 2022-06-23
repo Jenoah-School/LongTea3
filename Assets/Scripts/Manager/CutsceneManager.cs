@@ -15,6 +15,7 @@ public class CutsceneManager : MonoBehaviour
 
     [Header("Transition settings")]
     [SerializeField] private float transitionTime = 3f;
+    [SerializeField] private UnityEvent preCycleEvent;
     [SerializeField] private UnityEvent afterCycleEvent;
     [SerializeField] private int lowPriority = 5;
     [SerializeField] private int highPriority = 15;
@@ -48,7 +49,7 @@ public class CutsceneManager : MonoBehaviour
 
     IEnumerator CycleCamsEnum()
     {
-
+        preCycleEvent.Invoke();
         for (int i = 0; i < camerasToCycle.Count; i++)
         {
             if (camerasToCycle[i] == null) continue;
@@ -59,7 +60,6 @@ public class CutsceneManager : MonoBehaviour
 
             camerasToCycle[i].Priority = highPriority;
             yield return new WaitForSeconds(transitionTime);
-            Debug.Log("Heey " + i);
         }
 
         foreach (CinemachineVirtualCamera cycleCamera in camerasToCycle)

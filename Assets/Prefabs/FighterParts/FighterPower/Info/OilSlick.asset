@@ -15,5 +15,7 @@ MonoBehaviour:
   partID: 3
   previewImage: {fileID: 21300000, guid: b82ca42acc753dd4484ce61da75711f2, type: 3}
   partDescription: 'Flings an oil barrel that leaves behind a slippery puddle and
-    deals damage on impact. Cooldown: 10s'
+    deals damage on impact. '
   powerupName: Oil Slick
+  powerHUDIcon: {fileID: 21300000, guid: f7b546d2ef789774496ecc5a7153c931, type: 3}
+  cooldownTime: 10

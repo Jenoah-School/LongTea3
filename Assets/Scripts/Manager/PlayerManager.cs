@@ -216,11 +216,13 @@ public class PlayerManager : MonoBehaviour
         {
             Healthbar healthbar = healthbars[playerID];
             healthbar.SetFighter(fighter);
+            healthbar.SetPowerup(fighter.powerup);
             healthbar.gameObject.SetActive(true);
             if (setHealthbarToPlayerColor) healthbar.SetColor(playerRingColors[playerID % playerRingColors.Count]);
             healthbar.SetFill(1f);
             healthbar.RecalculateHealth();
             fighter.onTakeDamage += healthbar.RecalculateHealth;
+            fighter.onUsePowerup += healthbar.UsePowerup;
         }
     }
 

@@ -14,6 +14,7 @@ public class Heal : FighterPower
         StartCoroutine(HealFighter());
         OnTrigger.Invoke();
         healParticles.Play();
+        fighterRoot.onUsePowerup();
     }
 
     public IEnumerator HealFighter()
@@ -23,7 +24,6 @@ public class Heal : FighterPower
         while(Time.time < startTime + healTime)
         {
             fighterRoot.TakeDamage(-healAmountPerSecond, fighterRoot, false, false);
-            Debug.Log("HEAL " + fighterRoot.GetCurrentHealth());
             yield return new WaitForSeconds(1);
         }
         yield return new WaitForSeconds(1);

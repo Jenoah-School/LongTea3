@@ -24,8 +24,6 @@ public class FighterPartSelection : MonoBehaviour
     private int currentSelectedMeleeWeaponIndex = 0;
 
     private int currentBodyIndex;
-    private int currentRangedWeaponIndex;
-    private int currentMeleeWeaponIndex;
     private int currentPowerupIndex;
 
     private FighterWeapon.WeaponLocations rangedWeaponLocation = FighterWeapon.WeaponLocations.TOP;
@@ -58,6 +56,9 @@ public class FighterPartSelection : MonoBehaviour
     [SerializeField] private Image powerupSecondaryPreviewImage = null;
     [SerializeField] private TextMeshProUGUI powerupNameField = null;
     [SerializeField] private TextMeshProUGUI powerupDescriptionField = null;
+    [SerializeField] private string cooldownFieldPrefix = "Cooldown:";
+    [SerializeField] private TextMeshProUGUI powerupCooldownField = null;
+    [SerializeField] private string cooldownFieldEnd = "s";
 
     [Header("Part flashing")]
     [SerializeField] private float flashSpeed = 0.2f;
@@ -175,7 +176,6 @@ public class FighterPartSelection : MonoBehaviour
         }
         else
         {
-            currentRangedWeaponIndex = currentSelectedRangedWeaponIndex;
             currentRangedWeaponID = fighterWeapon.partID;
             rangedWeaponLocation = currentWeaponLocation;
 
@@ -195,7 +195,6 @@ public class FighterPartSelection : MonoBehaviour
     public void ChangeMeleeWeapon(int index)
     {
         currentSelectedMeleeWeaponIndex = index;
-        Debug.Log(currentSelectedMeleeWeaponIndex);
         FighterWeaponInformation fighterWeapon = fighterMeleeWeapons[currentSelectedMeleeWeaponIndex];
         FighterWeapon.WeaponLocations currentWeaponLocation = FighterCreator.singleton.fighterWeapons[fighterWeapon.partID].weaponLocation;
         if (rangedWeaponLocation == currentWeaponLocation)
@@ -205,7 +204,6 @@ public class FighterPartSelection : MonoBehaviour
         }
         else
         {
-            currentMeleeWeaponIndex = currentSelectedMeleeWeaponIndex;
             currentMeleeWeaponID = fighterWeapon.partID;
             meleeWeaponLocation = currentWeaponLocation;
 
@@ -256,6 +254,7 @@ public class FighterPartSelection : MonoBehaviour
 
         if (powerupNameField != null) powerupNameField.text = fighterPowerup.powerupName;
         if(powerupDescriptionField != null) powerupDescriptionField.SetText($"{fighterPowerup.partDescription}");
+        if (powerupCooldownField != null) powerupCooldownField.SetText($"{cooldownFieldPrefix}{fighterPowerup.cooldownTime}{cooldownFieldEnd}");
 
         OnChangePart.Invoke();
 

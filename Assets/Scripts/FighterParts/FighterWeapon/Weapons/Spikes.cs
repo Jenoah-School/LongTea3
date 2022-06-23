@@ -29,6 +29,7 @@ public class Spikes : FighterWeapon
                 movement.SetAccelerationSpeed(movement.GetAccelarationSpeed() * speedRate);
                 movement.SetMaxMoveSpeed(movement.GetMaxMoveSpeed() * speedRate);
                 StartCoroutine(ResetSpeed());
+                OnAttack.Invoke();
             }
         }
     }

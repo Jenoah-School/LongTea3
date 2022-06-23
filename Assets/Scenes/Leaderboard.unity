@@ -1765,6 +1765,10 @@ MonoBehaviour:
   emptyFighter: {fileID: 5880640649918137463, guid: ea0e7afe39aeb2941b67f434ce66284d,
     type: 3}
   fighterBodies:
+  - {fileID: 2819372194517125383, guid: 39e8250e56afe1840a43f8bb6fa6ec93, type: 3}
+  - {fileID: 2819372194517125383, guid: f3aba94b69a08d44b9b3920318dcda05, type: 3}
+  - {fileID: 2819372194517125383, guid: 1d4e8fa573817764b883011904fb5bde, type: 3}
+  - {fileID: 2819372194517125383, guid: fab9bff4f1ccd234f9e54601f06e82fb, type: 3}
   - {fileID: 2819372194517125383, guid: 873719922ae997942bed2993c1217a9f, type: 3}
   fighterWeapons:
   - {fileID: 4489666271711470983, guid: a5b977abd9f0c33428a98a276539e77b, type: 3}
@@ -1772,9 +1776,16 @@ MonoBehaviour:
   - {fileID: 3645540404555492273, guid: fad10b5167acce0468a0a3f9763beffe, type: 3}
   - {fileID: 6813855325985768809, guid: 198a857d9d277cd4cb36d3b1ddc20928, type: 3}
   - {fileID: 8298522946460067170, guid: a8c4d3fc5825540418e5e1ee3664df77, type: 3}
+  - {fileID: 3005014066751963533, guid: 4b275713cbc60a2479a315ea8e9ff797, type: 3}
+  - {fileID: 3660432561152377591, guid: 1a6c98bc9042c7e4b87406c4d8983c19, type: 3}
+  - {fileID: 4881526196771357933, guid: dc192dc68dfacaa499bf3d4e6a2fdd36, type: 3}
   fighterPowerups:
+  - {fileID: 6616186503281569847, guid: f4f3c9f1ef743fb4e958fa6d2cb35b28, type: 3}
+  - {fileID: 369372314518718813, guid: e9dea8765358f824a864ff53981ddd07, type: 3}
   - {fileID: 885014263667337596, guid: da3eedfb62945ea48845155dae05c145, type: 3}
+  - {fileID: 2064585546474919007, guid: d6a05137082a5ae49b218ecbadbd4092, type: 3}
   - {fileID: 8221862447740667382, guid: 635757aaded8cfb49a3d35201302a602, type: 3}
+  - {fileID: 4138700617142882199, guid: 175b17664feb2d64cb79938794bdbfe1, type: 3}
   spawnOnInitialisation: 0
   spawnDummyOnInitialisation: 0
 --- !u!1 &530199612
@@ -4395,7 +4406,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -6395,7 +6406,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45e3ca3b4e41284fad527f3c0a897ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fighterPowerInformation: {fileID: 0}
   cooldown: 2
+  OnTrigger:
+    m_PersistentCalls:
+      m_Calls: []
   mineObject: {fileID: 6591348074570471556, guid: 31cc3d3d042117d4781e7ec5307eb862,
     type: 3}
   mineAmount: 5
@@ -9138,7 +9153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.35, y: 0.025}
   m_AnchorMax: {x: 0.65, y: 0.175}
-  m_AnchoredPosition: {x: 0, y: -17.999992}
+  m_AnchoredPosition: {x: 0, y: -18}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2106028200

@@ -71,6 +71,12 @@ public class PlayerMovement : MonoBehaviour
         rotationVector = context.ReadValue<Vector2>();
     }
 
+    private void OnDisable()
+    {
+        engineAudioSource.pitch = pitchCurve.Evaluate(0);
+        engineAudioSource.volume = volumeCurve.Evaluate(0);
+    }
+
     private void Update()
     {
         Vector2 moveInput = new Vector2(transform.forward.x, transform.forward.z);
@@ -188,7 +194,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool IsGrounded()
     {
-        if (Physics.CheckBox(groundedTransform.position, groundedCheckBox / 2, transform.rotation, groundedLayers) && Mathf.Abs(rb.velocity.y) < 2)
+        if (groundedTransform != null && rb != null && Physics.CheckBox(groundedTransform.position, groundedCheckBox / 2, transform.rotation, groundedLayers) && Mathf.Abs(rb.velocity.y) < 2)
         {
             isGrounded = true;
         }

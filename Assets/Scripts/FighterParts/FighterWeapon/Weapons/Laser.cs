@@ -132,9 +132,8 @@ public class Laser : FighterWeapon, IWeapon
         if (!isFiring) return;
         SetOrigin(rayOrigin.position);
 
-        if (Physics.Raycast(rayOrigin.position, rayOrigin.forward, out RaycastHit hit, maxLineDistance, lineHitLayers, QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(rayOrigin.position, rayOrigin.forward, out RaycastHit hit, maxLineDistance, lineHitLayers, QueryTriggerInteraction.Ignore) && hit.transform != null)
         {
-
             SetMainEndPoint(hit.point);
 
             if (IsReflected(ref hit))
@@ -153,7 +152,7 @@ public class Laser : FighterWeapon, IWeapon
             }
             else if (endPointParticles != null && endPointParticles.isPlaying) endPointParticles.Stop();
 
-            if (hit.transform.GetComponentInParent<Fighter>())
+            if (hit.transform.root != transform.root && hit.transform.GetComponentInParent<Fighter>())
             {
                 Fighter otherFighter = hit.transform.GetComponentInParent<Fighter>();
                 otherFighter.GetRigidBody().velocity += knockbackForceHit * Mathf.Abs(Physics.gravity.y) * Time.deltaTime * transform.forward;
@@ -179,8 +178,8 @@ public class Laser : FighterWeapon, IWeapon
         if (hit.transform.CompareTag(reflectableSurfaces))
         {
             reflectionLineSegments[0] = hit.point;
-            if(Physics.Raycast(hit.point, Vector3.Reflect(rayOrigin.forward, hit.normal), out hit, maxLineDistance, lineHitLayers, QueryTriggerInteraction.Ignore)){
-
+            if(Physics.Raycast(hit.point, Vector3.Reflect(rayOrigin.forward, hit.normal), out RaycastHit otherHit, maxLineDistance, lineHitLayers, QueryTriggerInteraction.Ignore)){
+                hit = otherHit;
                 reflectionLineSegments[^1] = hit.point;
                 return true;
             }

@@ -33,6 +33,7 @@ public class ShockWave : FighterPower
     {
         StartCoroutine(FireRing());
         OnTrigger.Invoke();
+        fighterRoot.onUsePowerup();
     }
 
     IEnumerator FireRing()

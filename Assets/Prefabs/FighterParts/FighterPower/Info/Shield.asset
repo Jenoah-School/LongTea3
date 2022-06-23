@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partID: 4
   previewImage: {fileID: 21300000, guid: 0a133339a5b18eb4cb4d70fb07f75503, type: 3}
-  partDescription: 'Protects you from all types of damage for a while. Cooldown:
-    30s'
-  powerupName: Shield
+  partDescription: 'Protects you from all types of damage for a while. '
+  powerupName: Energy Shield
+  powerHUDIcon: {fileID: 21300000, guid: a32939bdced14ac4e990642d6dd350cd, type: 3}
+  cooldownTime: 30

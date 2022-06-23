@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class FighterPower : MonoBehaviour
 {
     protected Fighter fighterRoot;
+    public FighterPowerupInformation fighterPowerInformation;
     public float cooldown;
     public UnityEvent OnTrigger;
 
@@ -16,6 +17,6 @@ public class FighterPower : MonoBehaviour
 
     public virtual void Activate()
     {
-
+        fighterRoot.onUsePowerup();
     }
 }

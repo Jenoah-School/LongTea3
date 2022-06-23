@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84cec9d9590a3dc4e945fbc873dc3dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fighterPowerInformation: {fileID: 11400000, guid: 9fcfc323340a2c44f8b864af58e3ac8b,
+    type: 2}
   cooldown: 30
   OnTrigger:
     m_PersistentCalls:
@@ -65,7 +67,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   healTime: 10
-  healAmountPerSecond: 5
+  healAmountPerSecond: 15
   healParticles: {fileID: 5767297060970733061}
 --- !u!198 &5767297060970733061
 ParticleSystem:
@@ -140,7 +142,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0

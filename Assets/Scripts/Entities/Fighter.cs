@@ -39,8 +39,10 @@ public class Fighter : MonoBehaviour
     public bool isDead = false;
     public OnTakeDamage onAttack;
     public OnTakeDamage onTakeDamage;
+    public OnUsePowerup onUsePowerup;
     public delegate void OnTakeDamage();
     public delegate void OnAttack();
+    public delegate void OnUsePowerup();
     [SerializeField] private int fallDamageTreshHold;
     [SerializeField] private float fallDamageMultiplier;
     [Space(20)]
