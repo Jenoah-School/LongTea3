@@ -1701,7 +1701,19 @@ MonoBehaviour:
   fadeDuration: 1.25
   OnSwitchScene:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2073748569}
+        m_TargetAssemblyTypeName: MainVolumeSettings, Assembly-CSharp
+        m_MethodName: FadeOut
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   backgroundImage: {fileID: 1575659848}
   backgroundImageSprites:
   - {fileID: 21300000, guid: 2ff8ab9d3621f1542a1a0e59afea6977, type: 3}
