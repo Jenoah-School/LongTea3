@@ -236,6 +236,7 @@ public class Fighter : MonoBehaviour
 
     public void ExecutePowerUp(InputAction.CallbackContext context)
     {
+        if (isDead || !enabled) return;
         if (Time.time >= lastPowerUpTime)
         {
             lastPowerUpTime = Time.time + powerup.cooldown;
