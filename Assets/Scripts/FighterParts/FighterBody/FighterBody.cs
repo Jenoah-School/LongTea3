@@ -5,6 +5,14 @@ using UnityEngine;
 public class FighterBody : FighterPart
 {
     public float fighterHealth;
+    [Header("Randomized settings")]
+    [SerializeField] private bool hasRandomizedSettings = false;
+    [SerializeField] private Vector2 maxRandomizedMoveSpeedRange = new Vector2(8f, 12f);
+    [SerializeField] private Vector2 maxRandomizedAccelerationRange = new Vector2(20f, 30f);
+    [Space(10)]
+    [SerializeField] private Vector2 randomizedBrakeDrag = new Vector2(0.05f, 0.2f);
+    [SerializeField] private Vector2 randomizedDriftDrag = new Vector2(0.05f, 0.6f);
+
 
     [Header("Speeds")]
     [SerializeField] private float maxMoveSpeed = 10f;
@@ -28,17 +36,28 @@ public class FighterBody : FighterPart
     [SerializeField] Transform centerOfMass;
     [SerializeField] Transform groundCheckOrigin;
 
-    private float origionalBrakeDrag;
-    private float origionalDriftDrag;
+    private float originalBrakeDrag;
+    private float originalDriftDrag;
 
     private void Start()
     {
-        origionalBrakeDrag = brakeDrag;
-        origionalDriftDrag = driftDrag;
+        if (hasRandomizedSettings)
+        {
+            maxMoveSpeed = Random.Range(maxRandomizedMoveSpeedRange.x, maxRandomizedMoveSpeedRange.y);
+            accelerationSpeed = Random.Range(maxRandomizedAccelerationRange.x, maxRandomizedAccelerationRange.y);
+
+            brakeDrag = Random.Range(randomizedBrakeDrag.x, randomizedBrakeDrag.y);
+            driftDrag = Random.Range(randomizedDriftDrag.x, randomizedDriftDrag.y);
+        }
+
+
+        originalBrakeDrag = brakeDrag;
+        originalDriftDrag = driftDrag;
     }
 
     public float GetBrakeDrag()
     {
+
         return brakeDrag;
     }
 
@@ -47,14 +66,14 @@ public class FighterBody : FighterPart
         return driftDrag;
     }
 
-    public float GetOrigionalBrakeDrag()
+    public float GetOriginalBrakeDrag()
     {
-        return origionalBrakeDrag;
+        return originalBrakeDrag;
     }
 
-    public float GetOrigionalDriftDrag()
+    public float GetOriginalDriftDrag()
     {
-        return origionalDriftDrag;
+        return originalDriftDrag;
     }
 
     public void SetBrakeDrag(float drag)
