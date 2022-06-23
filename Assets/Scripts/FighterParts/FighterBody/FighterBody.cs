@@ -7,6 +7,9 @@ public class FighterBody : FighterPart
     public float fighterHealth;
     [Header("Randomized settings")]
     [SerializeField] private bool hasRandomizedSettings = false;
+    [Space(10)]
+    [SerializeField] private Vector2 healthRange = new Vector2(800, 1200);
+    [Space(10)]
     [SerializeField] private Vector2 maxRandomizedMoveSpeedRange = new Vector2(8f, 12f);
     [SerializeField] private Vector2 maxRandomizedAccelerationRange = new Vector2(20f, 30f);
     [Space(10)]
@@ -42,10 +45,12 @@ public class FighterBody : FighterPart
     private float originalBrakeDrag;
     private float originalDriftDrag;
 
-    private void Start()
+    private void Awake()
     {
         if (hasRandomizedSettings)
         {
+            fighterHealth = Random.Range(healthRange.x, healthRange.y);
+
             maxMoveSpeed = Random.Range(maxRandomizedMoveSpeedRange.x, maxRandomizedMoveSpeedRange.y);
             accelerationSpeed = Random.Range(maxRandomizedAccelerationRange.x, maxRandomizedAccelerationRange.y);
 
