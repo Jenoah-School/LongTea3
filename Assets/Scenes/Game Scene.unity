@@ -451,7 +451,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7768053, y: 1}
+    m_SensorSize: {x: 1.779703, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8147,7 +8147,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7768053, y: 1}
+    m_SensorSize: {x: 1.779703, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -13093,7 +13093,7 @@ GameObject:
   - component: {fileID: 1579452980}
   - component: {fileID: 1579452981}
   m_Layer: 0
-  m_Name: 2D Sound OneShot - Quiet
+  m_Name: Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13127,7 +13127,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: a3c0f7e7123c05f42a0cb1ad35bf0cf0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.194
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 0
