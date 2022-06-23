@@ -577,6 +577,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 143373900}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &143373902 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 21398970171560653, guid: 163185cd5fa6f244bbdbbb6fac61ee6f,
+    type: 3}
+  m_PrefabInstance: {fileID: 143373900}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1d0f4db52952e4da6df9333a823216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &159197853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1478,7 +1490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e4edda49a1ba24da39281bc1f29acc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 2
+  waitTime: 2.5
   autoStart: 0
   timedEvent:
     m_PersistentCalls:
@@ -2501,6 +2513,18 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 10
           m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 837210688}
+        m_TargetAssemblyTypeName: FadeUI, Assembly-CSharp
+        m_MethodName: FadeIn
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 3
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
@@ -5808,6 +5832,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 143373902}
+        m_TargetAssemblyTypeName: FirePit, Assembly-CSharp
+        m_MethodName: StartFire
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1001 &714097214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7652,6 +7688,8 @@ GameObject:
   - component: {fileID: 837210687}
   - component: {fileID: 837210686}
   - component: {fileID: 837210685}
+  - component: {fileID: 837210689}
+  - component: {fileID: 837210688}
   m_Layer: 5
   m_Name: --== UI ==--
   m_TagString: Untagged
@@ -7747,6 +7785,32 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &837210688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837210683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69a1f91ba46bc5142a844aaab0d30ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleInteractability: 0
+  toggleRaycastBlocking: 0
+--- !u!225 &837210689
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837210683}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &863158930 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c8bcac956526fb04488e7dfbf9808601,
