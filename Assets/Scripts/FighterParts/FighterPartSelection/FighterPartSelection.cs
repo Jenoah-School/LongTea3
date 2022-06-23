@@ -24,6 +24,8 @@ public class FighterPartSelection : MonoBehaviour
     private int currentSelectedMeleeWeaponIndex = 0;
 
     private int currentBodyIndex;
+    private int currentMeleeWeaponIndex;
+    private int currentRangedWeaponIndex;
     private int currentPowerupIndex;
 
     private FighterWeapon.WeaponLocations rangedWeaponLocation = FighterWeapon.WeaponLocations.TOP;
@@ -163,8 +165,9 @@ public class FighterPartSelection : MonoBehaviour
     #endregion
     #region Weapon
 
-    public void ChangeRangedWeapon(int index)
+    public void ChangeRangedWeapon(int index, bool tryChangeOther = false)
     {
+        if (currentRangedWeaponIndex == index) return;
         currentSelectedRangedWeaponIndex = index;
         FighterWeaponInformation fighterWeapon = fighterRangedWeapons[currentSelectedRangedWeaponIndex];
         FighterWeapon.WeaponLocations currentWeaponLocation = FighterCreator.singleton.fighterWeapons[fighterWeapon.partID].weaponLocation;
@@ -178,6 +181,7 @@ public class FighterPartSelection : MonoBehaviour
         {
             currentRangedWeaponID = fighterWeapon.partID;
             rangedWeaponLocation = currentWeaponLocation;
+            currentRangedWeaponIndex = index;
 
             OnChangePart.Invoke();
             OnWeaponLocationAvailable.Invoke();
@@ -189,11 +193,13 @@ public class FighterPartSelection : MonoBehaviour
         rangedDamageBar.DOFillAmount(1f / maxRangedWeaponDamage * fighterWeapon.damage, 0.1f);
         rangedRangeBar.DOFillAmount(1f / maxRangedWeaponRange * fighterWeapon.range, 0.1f);
 
-        
+        if (tryChangeOther) ChangeMeleeWeapon(currentSelectedMeleeWeaponIndex);
+
     }
 
-    public void ChangeMeleeWeapon(int index)
+    public void ChangeMeleeWeapon(int index, bool tryChangeOther = false)
     {
+        if (currentMeleeWeaponIndex == index) return;
         currentSelectedMeleeWeaponIndex = index;
         FighterWeaponInformation fighterWeapon = fighterMeleeWeapons[currentSelectedMeleeWeaponIndex];
         FighterWeapon.WeaponLocations currentWeaponLocation = FighterCreator.singleton.fighterWeapons[fighterWeapon.partID].weaponLocation;
@@ -206,6 +212,7 @@ public class FighterPartSelection : MonoBehaviour
         {
             currentMeleeWeaponID = fighterWeapon.partID;
             meleeWeaponLocation = currentWeaponLocation;
+            currentMeleeWeaponIndex = index;
 
             OnChangePart.Invoke();
             meleeWeaponChanged = true;
@@ -218,28 +225,28 @@ public class FighterPartSelection : MonoBehaviour
         meleeDamageBar.DOFillAmount(1f / maxRangedWeaponDamage * fighterWeapon.damage, 0.1f);
         meleeRangeBar.DOFillAmount(1f / maxRangedWeaponRange * fighterWeapon.range, 0.1f);
 
-        
+        if (tryChangeOther) ChangeRangedWeapon(currentSelectedRangedWeaponIndex);
     }
 
 
     public void SelectNextRangedWeapon()
     {
-        ChangeRangedWeapon((currentSelectedRangedWeaponIndex + 1) % fighterRangedWeapons.Count);
+        ChangeRangedWeapon((currentSelectedRangedWeaponIndex + 1) % fighterRangedWeapons.Count, true);
     }
 
     public void SelectNextMeleeWeapon()
     {
-        ChangeMeleeWeapon((currentSelectedMeleeWeaponIndex + 1) % fighterMeleeWeapons.Count);
+        ChangeMeleeWeapon((currentSelectedMeleeWeaponIndex + 1) % fighterMeleeWeapons.Count, true);
     }
 
     public void SelectPreviousRangedWeapon()
     {
-        ChangeRangedWeapon(currentSelectedRangedWeaponIndex - 1 >= 0 ? currentSelectedRangedWeaponIndex - 1 : fighterRangedWeapons.Count - 1);
+        ChangeRangedWeapon(currentSelectedRangedWeaponIndex - 1 >= 0 ? currentSelectedRangedWeaponIndex - 1 : fighterRangedWeapons.Count - 1, true);
     }
 
     public void SelectPreviousMeleeWeapon()
     {
-        ChangeMeleeWeapon(currentSelectedMeleeWeaponIndex - 1 >= 0 ? currentSelectedMeleeWeaponIndex - 1 : fighterMeleeWeapons.Count - 1);
+        ChangeMeleeWeapon(currentSelectedMeleeWeaponIndex - 1 >= 0 ? currentSelectedMeleeWeaponIndex - 1 : fighterMeleeWeapons.Count - 1, true);
     }
 
     #endregion
