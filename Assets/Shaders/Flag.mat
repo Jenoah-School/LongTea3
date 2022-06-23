@@ -40,12 +40,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _Height_Strength: 0.472
-    - _Metallic: 0
+    - _Metallic: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Smoothness: 0
+    - _Smoothness: 0.5
     - _Wave_Strength: 0.25
-    - _Wobble_Scale: 1.86
+    - _Wobble_Scale: 2
     m_Colors:
     - _Wave_Direction: {r: 1, g: 0, b: 0, a: 0}
     - _Wave_speed: {r: 0.5, g: 0.5, b: 0, a: 0}
