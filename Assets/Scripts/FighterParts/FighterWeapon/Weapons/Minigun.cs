@@ -1,3 +1,4 @@
+using Lean.Pool;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class Minigun : FighterWeapon, IWeapon
     [SerializeField] float range = 20f;
     [SerializeField] float shootInterval = 0.1f;
     [SerializeField] private bool vibrateController = true;
+    [SerializeField] private TrailRenderer bulletTrail = null;
 
     [Header("Aim Assist")]
     [SerializeField] float aimAssistSpeed = 20;
@@ -63,6 +65,11 @@ public class Minigun : FighterWeapon, IWeapon
             if (vibrateController && fighterRoot.controllerHaptics)
             {
                 fighterRoot.controllerHaptics.QuickHaptic();
+            }
+            if (bulletTrail)
+            {
+                    TrailRenderer bulletTrailInstance = LeanPool.Spawn(bulletTrail, barrelTip.transform.position, barrelTip.transform.rotation, null);
+                    bulletTrailInstance.Clear();
             }
         }       
     }

@@ -74,6 +74,8 @@ MonoBehaviour:
   range: 50
   shootInterval: 0.1
   vibrateController: 1
+  bulletTrail: {fileID: 6264321002987473109, guid: 3130d6a79664dcf44b1b4241762bfd97,
+    type: 3}
   aimAssistSpeed: 20
   aimAssistAngle: 25
   barrelStart: {fileID: 9006971347402420512}
