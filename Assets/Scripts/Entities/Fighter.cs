@@ -17,6 +17,7 @@ public class Fighter : MonoBehaviour
     public FighterBody body;
     public List<FighterWeapon> fighterWeapons = new List<FighterWeapon>();
     public FighterPower powerup;
+    public ControllerHaptics controllerHaptics;
 
 
     [Header("Fighter info")]
@@ -132,6 +133,7 @@ public class Fighter : MonoBehaviour
             healthSmoke.Play();
         }
         if(powerup) powerup.SetFighterRoot(this);
+        TryGetComponent(out controllerHaptics);
     }
 
     private void SetCenterOfMass()
