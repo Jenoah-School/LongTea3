@@ -525,6 +525,7 @@ GameObject:
   - component: {fileID: 1374433587749903330}
   - component: {fileID: 8591331244102317332}
   - component: {fileID: 7834102197618375119}
+  - component: {fileID: 4087956381893961124}
   m_Layer: 5
   m_Name: Weapon disabled
   m_TagString: Untagged
@@ -574,7 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 31e1be334a8fe3a4ea23ede87b541f60, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -591,6 +592,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4087956381893961124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838574619267471974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b48c410a1255f64699eca99f4249893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageReference: {fileID: 7834102197618375119}
 --- !u!1 &893902153824627823
 GameObject:
   m_ObjectHideFlags: 0
@@ -2993,6 +3007,7 @@ GameObject:
   - component: {fileID: 1267109158070976567}
   - component: {fileID: 1600104385135258041}
   - component: {fileID: 6614069819415011459}
+  - component: {fileID: 7912700045544266895}
   m_Layer: 5
   m_Name: Valve - Center
   m_TagString: Untagged
@@ -3041,7 +3056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3058,6 +3073,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7912700045544266895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4476105440015089882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b48c410a1255f64699eca99f4249893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageReference: {fileID: 6614069819415011459}
 --- !u!1 &4507154635721225593
 GameObject:
   m_ObjectHideFlags: 0
@@ -3852,6 +3880,7 @@ GameObject:
   - component: {fileID: 4140398900761327282}
   - component: {fileID: 5016956317981332557}
   - component: {fileID: 2754742285610996624}
+  - component: {fileID: 4805570784119455185}
   m_Layer: 5
   m_Name: Barometer - Center
   m_TagString: Untagged
@@ -3900,7 +3929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 54d726f660e8d984fba1428d14a19a3f, type: 2}
-  m_Color: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+  m_Color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3917,6 +3946,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4805570784119455185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5706295672474916440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b48c410a1255f64699eca99f4249893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageReference: {fileID: 2754742285610996624}
 --- !u!1 &5761957400670693211
 GameObject:
   m_ObjectHideFlags: 0
@@ -4920,6 +4962,7 @@ GameObject:
   - component: {fileID: 5911444960560778519}
   - component: {fileID: 5911444960560778518}
   - component: {fileID: 5911444960560778517}
+  - component: {fileID: 8131516505789453596}
   m_Layer: 5
   m_Name: Body
   m_TagString: Untagged
@@ -4969,7 +5012,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 31e1be334a8fe3a4ea23ede87b541f60, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5208,6 +5251,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   selectOtherObject: {fileID: 0}
+--- !u!114 &8131516505789453596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5911444960560778512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b48c410a1255f64699eca99f4249893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageReference: {fileID: 5911444960560778519}
 --- !u!1 &5911444960586178943
 GameObject:
   m_ObjectHideFlags: 0
@@ -8693,6 +8749,7 @@ GameObject:
   - component: {fileID: 5911444962086238432}
   - component: {fileID: 5911444962086238435}
   - component: {fileID: 5911444962086238438}
+  - component: {fileID: 9125794649782512257}
   m_Layer: 5
   m_Name: Ranged weapon
   m_TagString: Untagged
@@ -8742,7 +8799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 31e1be334a8fe3a4ea23ede87b541f60, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9005,6 +9062,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   selectOtherObject: {fileID: 0}
+--- !u!114 &9125794649782512257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5911444962086238429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b48c410a1255f64699eca99f4249893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageReference: {fileID: 5911444962086238432}
 --- !u!1 &5911444962212428042
 GameObject:
   m_ObjectHideFlags: 0
@@ -9155,6 +9225,7 @@ GameObject:
   - component: {fileID: 5911444962225737752}
   - component: {fileID: 5911444962225737753}
   - component: {fileID: 3970673602069394508}
+  - component: {fileID: 3197423215132061858}
   m_Layer: 5
   m_Name: Player Selection
   m_TagString: Untagged
@@ -9204,7 +9275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9315,6 +9386,138 @@ MonoBehaviour:
       - m_Target: {fileID: 5911444962225737753}
         m_TargetAssemblyTypeName: FighterPartSelection, Assembly-CSharp
         m_MethodName: SelectPreviousMeleeWeapon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 5653453162731065610}
+        m_TargetAssemblyTypeName: ChangeSpriteColor, Assembly-CSharp
+        m_MethodName: ResetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 7912700045544266895}
+        m_TargetAssemblyTypeName: ChangeSpriteColor, Assembly-CSharp
+        m_MethodName: ResetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 454672020483319996}
+        m_TargetAssemblyTypeName: ChangeSpriteColor, Assembly-CSharp
+        m_MethodName: ResetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 7496843356110015648}
+        m_TargetAssemblyTypeName: ChangeSpriteColor, Assembly-CSharp
+        m_MethodName: ResetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4805570784119455185}
+        m_TargetAssemblyTypeName: ChangeSpriteColor, Assembly-CSharp
+        m_MethodName: ResetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3197423215132061858}
+        m_TargetAssemblyTypeName: ChangeSpriteColor, Assembly-CSharp
+        m_MethodName: ResetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 8131516505789453596}
+        m_TargetAssemblyTypeName: ChangeSpriteColor, Assembly-CSharp
+        m_MethodName: ResetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4087956381893961124}
+        m_TargetAssemblyTypeName: ChangeSpriteColor, Assembly-CSharp
+        m_MethodName: ResetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 9125794649782512257}
+        m_TargetAssemblyTypeName: ChangeSpriteColor, Assembly-CSharp
+        m_MethodName: ResetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4300519391109756825}
+        m_TargetAssemblyTypeName: ChangeSpriteColor, Assembly-CSharp
+        m_MethodName: ResetColor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3754001143664256582}
+        m_TargetAssemblyTypeName: ChangeSpriteColor, Assembly-CSharp
+        m_MethodName: ResetColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9577,6 +9780,19 @@ MonoBehaviour:
   mediumLowFrequencyIntensity: 0.4
   mediumHighFrequencyIntensity: 0.3
   mediumHapticDuration: 0.1
+--- !u!114 &3197423215132061858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5911444962225737748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b48c410a1255f64699eca99f4249893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageReference: {fileID: 5911444962225737754}
 --- !u!1 &5911444962231029309
 GameObject:
   m_ObjectHideFlags: 0
@@ -9936,6 +10152,7 @@ GameObject:
   - component: {fileID: 5911444962285991943}
   - component: {fileID: 5911444962285991946}
   - component: {fileID: 4076349029198262214}
+  - component: {fileID: 3754001143664256582}
   m_Layer: 5
   m_Name: PowerUp
   m_TagString: Untagged
@@ -9985,7 +10202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 31e1be334a8fe3a4ea23ede87b541f60, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10272,6 +10489,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &3754001143664256582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5911444962285991937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b48c410a1255f64699eca99f4249893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageReference: {fileID: 5911444962285991940}
 --- !u!1 &5922787449091853965
 GameObject:
   m_ObjectHideFlags: 0
@@ -10283,6 +10513,7 @@ GameObject:
   - component: {fileID: 7997072910313689555}
   - component: {fileID: 6050445661259160528}
   - component: {fileID: 5500728405272634}
+  - component: {fileID: 454672020483319996}
   m_Layer: 5
   m_Name: Valve - Left
   m_TagString: Untagged
@@ -10331,7 +10562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6792453, g: 0.6792453, b: 0.6792453, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10348,6 +10579,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &454672020483319996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5922787449091853965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b48c410a1255f64699eca99f4249893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageReference: {fileID: 5500728405272634}
 --- !u!1 &5940413472125877528
 GameObject:
   m_ObjectHideFlags: 0
@@ -10668,6 +10912,7 @@ GameObject:
   - component: {fileID: 6397768310582240673}
   - component: {fileID: 7053586891138278337}
   - component: {fileID: 9042959825774559855}
+  - component: {fileID: 7496843356110015648}
   m_Layer: 5
   m_Name: Barometer - Right
   m_TagString: Untagged
@@ -10716,7 +10961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 54d726f660e8d984fba1428d14a19a3f, type: 2}
-  m_Color: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
+  m_Color: {r: 0.4528302, g: 0.4528302, b: 0.4528302, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10733,6 +10978,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7496843356110015648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6363951495248587312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b48c410a1255f64699eca99f4249893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageReference: {fileID: 9042959825774559855}
 --- !u!1 &6374858714397490450
 GameObject:
   m_ObjectHideFlags: 0
@@ -10744,6 +11002,7 @@ GameObject:
   - component: {fileID: 6099043404752798968}
   - component: {fileID: 106690260740716714}
   - component: {fileID: 6997833932478581053}
+  - component: {fileID: 5653453162731065610}
   m_Layer: 5
   m_Name: Sprite
   m_TagString: Untagged
@@ -10792,7 +11051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10809,6 +11068,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5653453162731065610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6374858714397490450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b48c410a1255f64699eca99f4249893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageReference: {fileID: 6997833932478581053}
 --- !u!1 &6482361314437222620
 GameObject:
   m_ObjectHideFlags: 0
@@ -12903,6 +13175,7 @@ GameObject:
   - component: {fileID: 4389769028664923845}
   - component: {fileID: 6371734771355448839}
   - component: {fileID: 7031200287657510433}
+  - component: {fileID: 4300519391109756825}
   m_Layer: 5
   m_Name: Melee weapon
   m_TagString: Untagged
@@ -12952,7 +13225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 31e1be334a8fe3a4ea23ede87b541f60, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13215,6 +13488,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   selectOtherObject: {fileID: 0}
+--- !u!114 &4300519391109756825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8348335722050362526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b48c410a1255f64699eca99f4249893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageReference: {fileID: 4389769028664923845}
 --- !u!1 &8372351321028255924
 GameObject:
   m_ObjectHideFlags: 0
