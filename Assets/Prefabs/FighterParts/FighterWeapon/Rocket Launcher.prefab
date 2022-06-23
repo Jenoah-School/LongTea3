@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponOrder: 0
-  damage: 50
+  damage: 100
   isPair: 1
   weaponLocation: 2
   OnAttack:
